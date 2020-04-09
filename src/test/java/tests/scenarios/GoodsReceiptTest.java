@@ -22,6 +22,14 @@ public class GoodsReceiptTest extends BaseClass {
         warehouseOperatorPage.selectDocumentType("Приход");
         warehouseOperatorPage.clickSaveIcon();
         warehouseOperatorPage.getConfirmModalDialog().shouldHave(text("Added"));
-
+        warehouseOperatorPage.setGateValue("00.019.1");
+        warehouseOperatorPage.setContractorValue("!!! Таранский (сыр)");
+        warehouseOperatorPage.addGoods(" Пазл Утенок");
+        warehouseOperatorPage.setGoodsQnty("5000");
+        warehouseOperatorPage.clickBeginProcessLink();
+        warehouseOperatorPage.compareDocumentStateField("Активен");
+        warehouseOperatorPage.clickDetailInfoButton();
+        warehouseOperatorPage.isOperationsListNotEmpty();
+        warehouseOperatorPage.isWHMovementListNotEmpty();
     }
 }
