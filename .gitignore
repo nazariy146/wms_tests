@@ -43,6 +43,7 @@ application-env.properties
 # Generated files/directories
 */target/
 */build/
+target/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/

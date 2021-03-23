@@ -1,4 +1,4 @@
-package tests.pages.MainTabs;
+package tests.pages.webPages;
 
 import com.codeborne.selenide.SelenideElement;
 

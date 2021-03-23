@@ -1,16 +1,14 @@
 package tests.scenarios;
 
-import org.testng.annotations.Test;
 import tests.BaseClass;
-import tests.pages.LoginPage;
-import tests.pages.MainTabs.DashboardPage;
-import tests.pages.MainTabs.WarehouseOperatorPage;
+import tests.pages.webPages.LoginPage;
+import tests.pages.webPages.DashboardPage;
+import tests.pages.webPages.WarehouseOperatorPage;
 
 import static com.codeborne.selenide.Condition.text;
 
 public class GoodsReceiptTest extends BaseClass {
 
-    @Test
     public void createGoodsReceiptDocumentTest() {
         LoginPage loginPage = new LoginPage();
         loginPage.getLoginModal().shouldHave(text(LoginPage.MODAL_DIALOG_TEXT));

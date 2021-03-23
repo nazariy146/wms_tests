@@ -1,4 +1,4 @@
-package tests.pages.MainTabs;
+package tests.pages.webPages;
 
 import com.codeborne.selenide.SelenideElement;
 import org.testng.Assert;
@@ -12,21 +12,20 @@ import static com.codeborne.selenide.Selectors.ByText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class WarehouseOperatorPage {
-    public static final long WH_OPERATOR_TIMEOUT = Duration.ofSeconds(5).toMillis();
 
     public void clickGoodsReceptionLink() {
         getGoodsReceptionLink().click();
-        $("#VW_page1caption").waitUntil(text("Монитор оператора приемки"), WH_OPERATOR_TIMEOUT);
+        $("#VW_page1caption").shouldHave(text("Монитор оператора приемки"), Duration.ofSeconds(5));
     }
 
     private SelenideElement getGoodsReceptionLink() {
-        $("#item_11").waitUntil(visible, WH_OPERATOR_TIMEOUT);
+        $("#item_11").shouldBe(visible, Duration.ofSeconds(5));
         return $x("//*[@id='item_11']//*[@class='ellipsis']");
     }
 
     public void clickCreateGoodsMovementDocumentButton() {
         getCreateGoodsMovementDocumentButton().click();
-        $("#VW_page2caption").waitUntil(text("Движения товаров (create)"), WH_OPERATOR_TIMEOUT);
+        $("#VW_page2caption").shouldHave(text("Движения товаров (create)"), Duration.ofSeconds(5));
     }
 
     private SelenideElement getCreateGoodsMovementDocumentButton() {
@@ -63,7 +62,7 @@ public class WarehouseOperatorPage {
 
     public void setContractorValue(String contractor) {
         $("#form2_Контрагент_CB").click();
-        $x("//div[@id='form3_Список']").waitUntil(visible, WH_OPERATOR_TIMEOUT);
+        $x("//div[@id='form3_Список']").shouldBe(visible, Duration.ofSeconds(5));
         $x("//div[@id='form3_Список']//*[@class='gridContent']//div[text()='"+contractor+"']").doubleClick();
     }
 
@@ -75,13 +74,13 @@ public class WarehouseOperatorPage {
 
     public void setGoodsQnty(String qnty) {
         $x("//*[text()='Количество']").getCssValue("colindex");
-        $x("//*[@id='grid_form2_ДокументыДвижения']//*[@class='gridContent']//div[@colindex='5']").waitUntil(visible, WH_OPERATOR_TIMEOUT).doubleClick();
-        $x("//*[@id='form2_ДокументыДвиженияКоличество_i0']").waitUntil(visible, WH_OPERATOR_TIMEOUT).sendKeys(qnty);
+        $x("//*[@id='grid_form2_ДокументыДвижения']//*[@class='gridContent']//div[@colindex='5']").shouldBe(visible, Duration.ofSeconds(5)).doubleClick();
+        $x("//*[@id='form2_ДокументыДвиженияКоличество_i0']").shouldBe(visible, Duration.ofSeconds(5)).sendKeys(qnty);
     }
 
     public void clickBeginProcessLink() {
         $("#form2_ФормаНачатьОбработку").click();
-        $("#form2_ФормаНачатьОбработку").waitUntil(enabled, WH_OPERATOR_TIMEOUT);
+        $("#form2_ФормаНачатьОбработку").shouldBe(enabled, Duration.ofSeconds(5));
     }
 
     public void compareDocumentStateField(String state) {
@@ -93,9 +92,10 @@ public class WarehouseOperatorPage {
     }
 
     public void isOperationsListNotEmpty() {
-        $x("//*[@id='form2_ОперацииНадТоваром']//*[@class='gridRow']").waitUntil(visible, WH_OPERATOR_TIMEOUT);
+        $x("//*[@id='form2_ОперацииНадТоваром']//*[@class='gridRow']").shouldBe(visible, Duration.ofSeconds(5));
         Assert.assertTrue($$x("//*[@id='form2_ОперацииНадТоваром']//*[@class='gridRow']").size() > 5);
     }
+
     public void isWHMovementListNotEmpty() {
         Assert.assertTrue($$x("//*[@id='grid_form2_ДвижениеПоСкладуСписок']//*[@class='gridRow gridRowOdd gridCurrentRow']").size() == 1);
     }
