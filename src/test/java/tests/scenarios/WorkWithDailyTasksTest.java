@@ -239,8 +239,12 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         allTasksPage.getRelaxMessage().shouldBe(visible).shouldHave(text("There is no available tasks for you."));
         allTasksPage.selectFindRestsMenu();
 
+        findRestsPage.checkFreeRemainSwitchState(false);
+        findRestsPage.setOnOrOffFreeRemainSwitcher(true);
+
         findRestsPage.setBarcodeInput("0001"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0001 ШТУЧНЫЙ 00001 Стол1"));
+        findRestsPage.checkFreeRemainSwitchState(true);
         findRestsPage.checkProductLocationInfo("A.1.1.1.1");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
         findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
@@ -248,6 +252,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0002"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0002 00002 Стол2"));
+        findRestsPage.checkFreeRemainSwitchState(true);
         findRestsPage.checkProductLocationInfo("A.1.1.1.2");
         findRestsPage.checkProductSeriesInfo("Series2");
         findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
@@ -255,6 +260,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0003"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0003 00003 Стол3"));
+        findRestsPage.checkFreeRemainSwitchState(true);
         findRestsPage.checkProductLocationInfo("A.1.1.1.3");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
         findRestsPage.checkProductShelfLifeInfo("31-12-2021");
@@ -262,6 +268,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0004"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0004 00004 Стол4"));
+        findRestsPage.checkFreeRemainSwitchState(true);
         findRestsPage.checkProductLocationInfo("A.1.1.1.4");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
         findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
@@ -269,6 +276,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0005"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0005 00005 Стол5"));
+        findRestsPage.checkFreeRemainSwitchState(true);
         findRestsPage.checkProductLocationInfo("A.1.1.1.5");
         findRestsPage.checkProductSeriesInfo("series5");
         findRestsPage.checkProductShelfLifeInfo("31-12-2021");
@@ -276,6 +284,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0006"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0006 00006 Стол6"));
+        findRestsPage.checkFreeRemainSwitchState(true);
         findRestsPage.checkProductLocationInfo("A.1.1.1.6");
         findRestsPage.checkProductSeriesInfo("series6");
         findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
@@ -283,6 +292,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0007"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0007 00007 Стол7"));
+        findRestsPage.checkFreeRemainSwitchState(true);
         findRestsPage.checkProductLocationInfo("A.1.1.1.7");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
         findRestsPage.checkProductShelfLifeInfo("31-12-2021");
@@ -290,6 +300,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0008"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0008 00008 Стол8"));
+        findRestsPage.checkFreeRemainSwitchState(true);
         findRestsPage.checkProductLocationInfo("A.1.1.1.8");
         findRestsPage.checkProductSeriesInfo("series8");
         findRestsPage.checkProductShelfLifeInfo("31-12-2021");
@@ -297,6 +308,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0009"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0009 00009 Стол9"));
+        findRestsPage.checkFreeRemainSwitchState(true);
         findRestsPage.checkProductLocationInfo("A.1.1.1.9");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
         findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
@@ -304,6 +316,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("00010"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("00010 ШТУЧНЫЙ 00010 Стол10"));
+        findRestsPage.checkFreeRemainSwitchState(true);
         findRestsPage.checkProductLocationInfo("A.1.1.1.10");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
         findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);

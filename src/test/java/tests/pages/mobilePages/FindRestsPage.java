@@ -24,6 +24,26 @@ public class FindRestsPage {
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
+    public void checkFreeRemainSwitchState(boolean expectedSwitchState) {
+        String actualSwitchStateText = $(By.id("com.abmcloud:id/switchFreeRemains")).getText();
+
+        String expectedSwitchStateText;
+        if (expectedSwitchState)
+        {
+            expectedSwitchStateText = "Free remain ON";
+        }
+
+        else {
+            expectedSwitchStateText = "Free remain OFF";
+        }
+        Assert.assertEquals(actualSwitchStateText, expectedSwitchStateText, "expectedSwitchState "+expectedSwitchState+ " does not match actualSwitchState");
+    }
+
+    public void setOnOrOffFreeRemainSwitcher(boolean state) {
+        $(By.id("com.abmcloud:id/switchFreeRemains")).shouldBe(visible);
+        $(By.id("com.abmcloud:id/switchFreeRemains")).click();
+    }
+
     public SelenideElement getProductDescription() {
         return $(By.id("com.abmcloud:id/card_view_title"));
     }
