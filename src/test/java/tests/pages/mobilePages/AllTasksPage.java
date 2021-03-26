@@ -8,11 +8,11 @@ import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.$;
 
 public class AllTasksPage {
-    public SelenideElement getReceptionWorkType() {
+    public SelenideElement getWorkType() {
         return $(By.id("com.abmcloud:id/text_work_type"));
     }
 
-    public SelenideElement getReceptionQuantity() {
+    public SelenideElement getWorkTypeTasksQuantity() {
         return $(By.id("com.abmcloud:id/text_qty"));
     }
 

@@ -2,8 +2,10 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverProvider;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeMethod;
@@ -46,6 +48,9 @@ public class BaseMobileClass implements WebDriverProvider {
         Configuration.startMaximized = false;
         Configuration.browserSize = null;
         Configuration.browser = BaseMobileClass.class.getName();
+
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
+
         open();
 
         loginPage.getAlertMessage().shouldHave(text("No server available"));

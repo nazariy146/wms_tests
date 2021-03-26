@@ -9,90 +9,62 @@ import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class ReceptionCardPage {
+public class SelectionCardPage {
 
     private SelenideElement getSourceInput() {
-        return $(By.id("com.abmcloud:id/editTextControlSource"));
+        return $(By.id("com.abmcloud:id/source_edit"));
     }
 
-    public void setSourceInput(String source) {
+    public void setSourceInput(String sourceInput) {
         AndroidDriver driver = (AndroidDriver) getSourceInput().getWrappedDriver();
         getSourceInput().click();
-        getSourceInput().val(source);
+        getSourceInput().val(sourceInput);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
     private SelenideElement getProductInput() {
-        return $(By.id("com.abmcloud:id/editTextControlBoxBarcode"));
+        return $(By.id("com.abmcloud:id/ware_barcode"));
     }
 
-    public void setProductInput(String product) {
+    public void setProductInput(String productInput) {
         AndroidDriver driver = (AndroidDriver) getProductInput().getWrappedDriver();
         getProductInput().click();
-        getProductInput().val(product);
+        getProductInput().val(productInput);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
     public SelenideElement getProductDescription() {
-        return $(By.id("com.abmcloud:id/textViewControlDescription"));
+        return $(By.id("com.abmcloud:id/textViewDescription"));
     }
 
-    public SelenideElement getContainerInput() {
-        return $(By.id("com.abmcloud:id/editTextControlDestination"));
+    public SelenideElement getDestinationInput() {
+        return $(By.id("com.abmcloud:id/dest_edit"));
     }
 
-    public void clearContainerInput() {
-        $(By.id("com.abmcloud:id/text_input_end_icon")).click();
-    }
-
-    public void setContainerInput(String container) {
-        AndroidDriver driver = (AndroidDriver) getContainerInput().getWrappedDriver();
-        getContainerInput().click();
-        getContainerInput().val(container);
+    public void setDestinationInput(String destinationInput) {
+        AndroidDriver driver = (AndroidDriver) getDestinationInput().getWrappedDriver();
+        getDestinationInput().click();
+        getDestinationInput().val(destinationInput);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
     public SelenideElement getQuantityInput() {
-        return $(By.id("com.abmcloud:id/editTextControlQty"));
+        return $(By.id("com.abmcloud:id/editTextQty"));
     }
 
-    public void setQuantityInput(String container) {
+    public void setQuantityInput(String quantityInput) {
         AndroidDriver driver = (AndroidDriver) getQuantityInput().getWrappedDriver();
         getQuantityInput().click();
-        getQuantityInput().val(container);
+        getQuantityInput().val(quantityInput);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
     private SelenideElement getCommitButton() {
-        return $(By.id("com.abmcloud:id/buttonControlCommit"));
+        return $(By.id("com.abmcloud:id/buttonCommit"));
     }
 
     public void clickCommitButton() {
         getCommitButton().click();
-    }
-
-    public SelenideElement getAlertDialog() {
-        return $(By.id("com.abmcloud:id/alertTitle"));
-    }
-
-    public SelenideElement getAvailableSeriesInput() {
-        return $(By.id("com.abmcloud:id/textViewSeries"));
-    }
-
-    public void createNewSeries(String name) {
-        $(By.id("com.abmcloud:id/textBoxSeriesPL")).sendKeys(name);
-    }
-
-    private SelenideElement getSetButton() {
-        return $(By.id("android:id/button1"));
-    }
-
-    public void clickSetButton() {
-        getSetButton().click();
-    }
-
-    public SelenideElement getExpirationDateInput() {
-        return $(By.id("com.abmcloud:id/textBoxShelfLifeLP"));
     }
 
     public SelenideElement getSerialNumberInput() {
