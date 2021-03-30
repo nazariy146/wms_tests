@@ -33,7 +33,6 @@ public class BaseMobileClass implements WebDriverProvider {
         capabilities.setCapability(APP_PACKAGE, "com.abmcloud");
         capabilities.setCapability(APP_ACTIVITY, ".MainActivity");
         capabilities.setCapability("autoGrantPermissions", "true");
-        capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "500");
 
         try {
             return new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);

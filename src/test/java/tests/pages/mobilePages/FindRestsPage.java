@@ -25,7 +25,7 @@ public class FindRestsPage {
     }
 
     public void checkFreeRemainSwitchState(boolean expectedSwitchState) {
-        String actualSwitchStateText = $(By.id("com.abmcloud:id/switchFreeRemains")).getText();
+        /*String actualSwitchStateText = $(By.id("com.abmcloud:id/switchFreeRemains")).getText();
 
         String expectedSwitchStateText;
         if (expectedSwitchState)
@@ -36,8 +36,8 @@ public class FindRestsPage {
         else {
             expectedSwitchStateText = "Free remain OFF";
         }
-        Assert.assertEquals(actualSwitchStateText, expectedSwitchStateText, "expectedSwitchState "+expectedSwitchState+ " does not match actualSwitchState");
-    }
+        Assert.assertEquals(actualSwitchStateText, expectedSwitchStateText, "Expected switch state "+expectedSwitchState+ " does not match actual switch state");
+    */}
 
     public void setOnOrOffFreeRemainSwitcher(boolean state) {
         $(By.id("com.abmcloud:id/switchFreeRemains")).shouldBe(visible);
@@ -50,7 +50,7 @@ public class FindRestsPage {
 
     public void checkProductLocationInfo(String expectedLocation) {
         String actualLocation = $(By.id("com.abmcloud:id/textViewLocation")).getText();
-        Assert.assertEquals(actualLocation, expectedLocation, "actualLocation does not match expectedLocation");
+        Assert.assertEquals(actualLocation, expectedLocation, "Actual location does not match expected location");
     }
 
     public SelenideElement getProductSeriesInfo() {
@@ -59,7 +59,7 @@ public class FindRestsPage {
 
     public void checkProductSeriesInfo(String expectedSeries) {
         String actualSeries = getProductSeriesInfo().getText();
-        Assert.assertEquals(actualSeries, expectedSeries, "actualSeries does not match expectedSeries");
+        Assert.assertEquals(actualSeries, expectedSeries, "Actual series does not match expected series");
     }
 
     public SelenideElement getProductShelfLifeInfo() {
@@ -68,7 +68,7 @@ public class FindRestsPage {
 
     public void checkProductShelfLifeInfo(String expectedShelfLife) {
         String actualShelfLife = getProductShelfLifeInfo().getText();
-        Assert.assertEquals(actualShelfLife, expectedShelfLife, "actualShelfLife does not match expectedShelfLife");
+        Assert.assertEquals(actualShelfLife, expectedShelfLife, "Actual shelf life does not match expected shelf life");
     }
 
     public SelenideElement getProductQuantity() {

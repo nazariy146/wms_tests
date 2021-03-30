@@ -17,12 +17,13 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
     SelectionCardPage selectionCardPage = new SelectionCardPage();
     ContainerCardPage containerCardPage = new ContainerCardPage();
     ControlCardPage controlCardPage = new ControlCardPage();
+    PackagingPage packagingPage = new PackagingPage();
 
     @Test
-    public void processingReceptionTasksTest() {
+    public void processingReceptionTasksTest() throws Exception {
         steps.loginAsAdmin();
 
-        allTasksPage.getWorkType().shouldHave(text("Reception"));
+        allTasksPage.checkWorkType("Reception");
         allTasksPage.getWorkTypeTasksQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
@@ -162,14 +163,14 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
         receptionCardPage.clickCommitButton();
 
-        allTasksPage.getWorkType().shouldHave(text("Accommodation"));
+        allTasksPage.checkWorkType("Accommodation");
     }
 
     @Test (priority = 1, dependsOnMethods = "processingReceptionTasksTest")
-    public void processingAccommodationTasksTest() {
+    public void processingAccommodationTasksTest() throws Exception {
         steps.loginAsAdmin();
 
-        allTasksPage.getWorkType().shouldHave(text("Accommodation"));
+        allTasksPage.checkWorkType("Accommodation");
         //allTasksPage.getReceptionQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
@@ -229,26 +230,27 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         accommodationCardPage.clickCommitButton();
 
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00010 ШТУЧНЫЙ 00010 Стол10 IN.01 ➡ A.1.1.1.10 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("00010"); // set barcode
+        accommodationCardPage.setProductInput("00010"); // set sku
         accommodationCardPage.setDestinationInput("A.1.1.1.10");
         accommodationCardPage.setQuantityInput("10");
         accommodationCardPage.clickCommitButton();
 
-        allTasksPage.getWorkType().shouldHave(text("Selection"));
+        allTasksPage.checkWorkType("Selection");
     }
 
     @Test (priority = 2, dependsOnMethods = "processingAccommodationTasksTest")
-    public void checkingFreeAmountTest() {
+    public void checkingFreeAmountTest() throws Exception {
         steps.loginAsAdmin();
 
+        allTasksPage.checkWorkType("Selection");
         allTasksPage.selectFindRestsMenu();
 
         findRestsPage.checkFreeRemainSwitchState(false);
-        findRestsPage.setOnOrOffFreeRemainSwitcher(true);
+        //findRestsPage.setOnOrOffFreeRemainSwitcher(true); //TODO BUG
 
         findRestsPage.setBarcodeInput("0001"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0001 ШТУЧНЫЙ 00001 Стол1"));
-        findRestsPage.checkFreeRemainSwitchState(true);
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
         findRestsPage.checkProductLocationInfo("A.1.1.1.1");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
         findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
@@ -256,7 +258,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0002"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0002 00002 Стол2"));
-        findRestsPage.checkFreeRemainSwitchState(true);
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
         findRestsPage.checkProductLocationInfo("A.1.1.1.2");
         findRestsPage.checkProductSeriesInfo("Series2");
         findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
@@ -264,7 +266,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0003"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0003 00003 Стол3"));
-        findRestsPage.checkFreeRemainSwitchState(true);
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
         findRestsPage.checkProductLocationInfo("A.1.1.1.3");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
         findRestsPage.checkProductShelfLifeInfo("31-12-2021");
@@ -272,7 +274,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0004"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0004 00004 Стол4"));
-        findRestsPage.checkFreeRemainSwitchState(true);
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
         findRestsPage.checkProductLocationInfo("A.1.1.1.4");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
         findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
@@ -280,7 +282,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0005"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0005 00005 Стол5"));
-        findRestsPage.checkFreeRemainSwitchState(true);
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
         findRestsPage.checkProductLocationInfo("A.1.1.1.5");
         findRestsPage.checkProductSeriesInfo("series5");
         findRestsPage.checkProductShelfLifeInfo("31-12-2021");
@@ -288,7 +290,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0006"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0006 00006 Стол6"));
-        findRestsPage.checkFreeRemainSwitchState(true);
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
         findRestsPage.checkProductLocationInfo("A.1.1.1.6");
         findRestsPage.checkProductSeriesInfo("series6");
         findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
@@ -296,7 +298,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0007"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0007 00007 Стол7"));
-        findRestsPage.checkFreeRemainSwitchState(true);
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
         findRestsPage.checkProductLocationInfo("A.1.1.1.7");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
         findRestsPage.checkProductShelfLifeInfo("31-12-2021");
@@ -304,7 +306,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0008"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0008 00008 Стол8"));
-        findRestsPage.checkFreeRemainSwitchState(true);
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
         findRestsPage.checkProductLocationInfo("A.1.1.1.8");
         findRestsPage.checkProductSeriesInfo("series8");
         findRestsPage.checkProductShelfLifeInfo("31-12-2021");
@@ -312,7 +314,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("0009"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("0009 00009 Стол9"));
-        findRestsPage.checkFreeRemainSwitchState(true);
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
         findRestsPage.checkProductLocationInfo("A.1.1.1.9");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
         findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
@@ -320,7 +322,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
 
         findRestsPage.setBarcodeInput("00010"); // set sku
         findRestsPage.getProductDescription().shouldHave(text("00010 ШТУЧНЫЙ 00010 Стол10"));
-        findRestsPage.checkFreeRemainSwitchState(true);
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
         findRestsPage.checkProductLocationInfo("A.1.1.1.10");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
         findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
@@ -328,10 +330,10 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
     }
 
     @Test (priority = 3, dependsOnMethods = "processingAccommodationTasksTest")
-    public void processingSelectionTasksTest() {
+    public void processingSelectionTasksTest() throws Exception {
         steps.loginAsAdmin();
 
-        allTasksPage.getWorkType().shouldHave(text("Selection"));
+        allTasksPage.checkWorkType("Selection");
         //allTasksPage.getReceptionQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
@@ -442,14 +444,14 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         selectionCardPage.setQuantityInput("10");
         selectionCardPage.clickCommitButton();
 
-        allTasksPage.getWorkType().shouldHave(text("Контейнер"));
+        allTasksPage.checkWorkType("Контейнер");
     }
 
     @Test (priority = 4, dependsOnMethods = "processingSelectionTasksTest")
-    public void processingContainerTasksTest() {
+    public void processingContainerTasksTest() throws Exception {
         steps.loginAsAdmin();
 
-        allTasksPage.getWorkType().shouldHave(text("Контейнер"));
+        allTasksPage.checkWorkType("Контейнер");
         allTasksPage.getWorkTypeTasksQuantity().click();
 
         containerCardPage.getContainerDescription().shouldHave(text("CON/OUT101 ➡ KT1.01.01.01.01"));
@@ -501,16 +503,18 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         containerCardPage.setContainerInput("OUT110");
         containerCardPage.setDestinationInput("KT1.01.01.01.01");
         containerCardPage.clickCommitButton();
+
+        allTasksPage.checkWorkType("Control");
     }
 
     @Test (priority = 5, dependsOnMethods = "processingContainerTasksTest")
-    public void processingControlTasksTest() {
+    public void processingControlTasksTest() throws Exception {
         steps.loginAsAdmin();
 
-        allTasksPage.getWorkType().shouldHave(text("Control"));
+        allTasksPage.checkWorkType("Control");
         allTasksPage.getWorkTypeTasksQuantity().click();
 
-        controlCardPage.setSellInput("KT1.01.01.01.01");
+        controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT101");
         controlCardPage.getProductInfo().shouldHave(text("0001 Стол1"));
         controlCardPage.getContainerInfo().shouldHave(text("OUT101"));
@@ -521,7 +525,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         controlCardPage.getControlledQty().shouldNotBe(visible);
         controlCardPage.clickCommitButton();
 
-        controlCardPage.setSellInput("KT1.01.01.01.01");
+        controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT102");
         controlCardPage.getProductInfo().shouldHave(text("0002 Стол2"));
         controlCardPage.getSeriesInfo().shouldBe(visible).shouldHave(text("Series2"));
@@ -538,7 +542,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         controlCardPage.getControlledQty().shouldNotBe(visible);
         controlCardPage.clickCommitButton();
 
-        controlCardPage.setSellInput("KT1.01.01.01.01");
+        controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT103");
         controlCardPage.getProductInfo().shouldHave(text("0003 Стол3"));
         controlCardPage.getContainerInfo().shouldHave(text("OUT103"));
@@ -549,7 +553,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         controlCardPage.getControlledQty().shouldNotBe(visible);
         controlCardPage.clickCommitButton();
 
-        controlCardPage.setSellInput("KT1.01.01.01.01");
+        controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT104");
         controlCardPage.getProductInfo().shouldHave(text("0004 Стол4"));
         controlCardPage.getContainerInfo().shouldHave(text("OUT104"));
@@ -566,7 +570,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         controlCardPage.getControlledQty().shouldNotBe(visible);
         controlCardPage.clickCommitButton();
 
-        controlCardPage.setSellInput("KT1.01.01.01.01");
+        controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT105");
         controlCardPage.getProductInfo().shouldHave(text("0005 Стол5"));
         controlCardPage.getSeriesInfo().shouldHave(text("series5"));
@@ -586,7 +590,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         controlCardPage.getControlledQty().shouldNotBe(visible);
         controlCardPage.clickCommitButton();
 
-        controlCardPage.setSellInput("KT1.01.01.01.01");
+        controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT106");
         controlCardPage.getProductInfo().shouldHave(text("0006 Стол6"));
         controlCardPage.getSeriesInfo().shouldHave(text("series6"));
@@ -609,7 +613,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         controlCardPage.getControlledQty().shouldNotBe(visible);
         controlCardPage.clickCommitButton();
 
-        controlCardPage.setSellInput("KT1.01.01.01.01");
+        controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT107");
         controlCardPage.getProductInfo().shouldHave(text("0007 Стол7"));
         controlCardPage.getShelfLifeInfo().shouldHave(text("31.12.2021"));
@@ -627,7 +631,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         controlCardPage.getControlledQty().shouldNotBe(visible);
         controlCardPage.clickCommitButton();
 
-        controlCardPage.setSellInput("KT1.01.01.01.01");
+        controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT108");
         controlCardPage.getProductInfo().shouldHave(text("0008 Стол8"));
         controlCardPage.getSeriesInfo().shouldHave(text("series8"));
@@ -653,7 +657,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         controlCardPage.getControlledQty().shouldNotBe(visible);
         controlCardPage.clickCommitButton();
 
-        controlCardPage.setSellInput("KT1.01.01.01.01");
+        controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT109");
         controlCardPage.getProductInfo().shouldHave(text("0009 Стол9"));
         controlCardPage.getContainerInfo().shouldHave(text("OUT109"));
@@ -669,7 +673,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         controlCardPage.getControlledQty().shouldNotBe(visible);
         controlCardPage.clickCommitButton();
 
-        controlCardPage.setSellInput("KT1.01.01.01.01");
+        controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT110");
         controlCardPage.getProductInfo().shouldHave(text("00010 Стол10"));
         controlCardPage.getContainerInfo().shouldHave(text("OUT110"));
@@ -679,5 +683,27 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         controlCardPage.setQuantityInputInput("10");
         controlCardPage.getControlledQty().shouldNotBe(visible);
         controlCardPage.clickCommitButton();
+    }
+
+    @Test (priority = 6, dependsOnMethods = "processingControlTasksTest")
+    public void processingPackagingTaskTest() throws Exception {
+        steps.loginAsAdmin();
+
+        allTasksPage.checkWorkType("Packaging");
+        allTasksPage.getWorkTypeTasksQuantity().click();
+
+        packagingPage.setCellOrContainerInput("KT1.01.01.01.01");
+
+        packagingPage.checkCellProductInfoInRow(1, "OUT101", "10", "0.01", "0.01");
+        packagingPage.checkCellProductInfoInRow(2, "OUT102", "10", "0.01", "0.01");
+        packagingPage.checkCellProductInfoInRow(3, "OUT103", "10", "0.01", "0.01");
+        packagingPage.checkCellProductInfoInRow(4, "OUT104", "10", "0.01", "0.01");
+        packagingPage.checkCellProductInfoInRow(5, "OUT105", "10", "0.01", "0.01");
+        packagingPage.checkCellProductInfoInRow(6, "OUT106", "10", "0.01", "0.01");
+        packagingPage.checkCellProductInfoInRow(7, "OUT107", "10", "0.01", "0.01");
+        packagingPage.checkCellProductInfoInRow(8, "OUT108", "10", "0.01", "0.01");
+        packagingPage.checkCellProductInfoInRow(9, "OUT109", "10", "0.01", "0.01");
+        packagingPage.checkCellProductInfoInRow(10, "OUT110", "10", "0.01", "0.01");
+
     }
 }

@@ -13,14 +13,14 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ControlCardPage {
 
-    private SelenideElement getSellInput() {
+    private SelenideElement getCellInput() {
         return $(By.id("com.abmcloud:id/editTextControlCell"));
     }
 
-    public void setSellInput(String sourceInput) {
-        AndroidDriver driver = (AndroidDriver) getSellInput().getWrappedDriver();
-        getSellInput().click();
-        getSellInput().val(sourceInput);
+    public void setCellInput(String sourceInput) {
+        AndroidDriver driver = (AndroidDriver) getCellInput().getWrappedDriver();
+        getCellInput().click();
+        getCellInput().val(sourceInput);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
