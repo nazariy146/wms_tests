@@ -1,15 +1,18 @@
 package tests.pages.mobilePages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.touch.WaitOptions;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static tests.utils.Actions.*;
+import static io.appium.java_client.touch.offset.PointOption.point;
+import static java.time.Duration.ofMillis;
 
 public class PackagingPage {
 
@@ -49,7 +52,11 @@ public class PackagingPage {
         return $(By.xpath("//androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView["+row+"]")).find(By.id("com.abmcloud:id/et_box_qty"));
     }
 
-    public void checkCellProductInfoInRow(int row, String container, String qty, String capacity, String weight) throws InterruptedException {
+    private SelenideElement getScrollableTable() {
+        return $(By.id("com.abmcloud:id/recycler_view"));
+    }
+
+    public void checkCellProductInfoInRow(int row, String container, String qty, String capacity, String weight) {
         if(!getProductContainerInfo(row).isDisplayed()) {
             scrollElement(getScrollableTable());
         }
@@ -67,7 +74,34 @@ public class PackagingPage {
         }
     }
 
-    public SelenideElement getScrollableTable() {
-        return $(By.id("com.abmcloud:id/recycler_view"));
+    public void scrollElement(SelenideElement element) {
+        AndroidDriver driver = (AndroidDriver) element.getWrappedDriver();
+
+        TouchAction touchAction= new TouchAction(driver);
+
+        touchAction.press(point(element.getLocation().x, element.getLocation().y))
+                .waitAction(WaitOptions.waitOptions(ofMillis(300)))
+                .moveTo(point(element.getLocation().x, element.getLocation().y-846))
+                .release().perform();
+    }
+
+    private SelenideElement getCreateCargoButton() {
+        return $(By.id("com.abmcloud:id/btn_create_cargo"));
+    }
+
+    public void clickCreateCargoButton() {
+        getCreateCargoButton().click();
+    }
+
+    public SelenideElement getAlertMessage() {
+        return $(By.id("android:id/message"));
+    }
+
+    public void clickCreateButtonAlertMessageDialog() {
+        $(By.id("android:id/button1")).click();
+    }
+
+    public void clickOkButtonAlertMessageDialog() {
+        $(By.id("android:id/button2")).click();
     }
 }

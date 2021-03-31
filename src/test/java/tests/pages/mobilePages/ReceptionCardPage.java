@@ -108,13 +108,6 @@ public class ReceptionCardPage {
         Assert.assertEquals(serialNumberText, text, "SerialNumberInputText is not empty");
     }
 
-    public void setSerialNumberInput(String serialNumber) {
-        AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
-        getSerialNumberInput().click();
-        getSerialNumberInput().val(serialNumber);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-    }
-
     public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
         AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
         for (int i = 0; i < numberOfReps; i++) {

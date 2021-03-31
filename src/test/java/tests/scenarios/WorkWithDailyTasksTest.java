@@ -18,12 +18,13 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
     ContainerCardPage containerCardPage = new ContainerCardPage();
     ControlCardPage controlCardPage = new ControlCardPage();
     PackagingPage packagingPage = new PackagingPage();
+    LoadingPage loadingPage = new LoadingPage();
 
     @Test
     public void processingReceptionTasksTest() throws Exception {
         steps.loginAsAdmin();
 
-        allTasksPage.checkWorkType("Reception");
+        //allTasksPage.checkWorkType("Reception");
         allTasksPage.getWorkTypeTasksQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
@@ -705,5 +706,25 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         packagingPage.checkCellProductInfoInRow(9, "OUT109", "10", "0.01", "0.01");
         packagingPage.checkCellProductInfoInRow(10, "OUT110", "10", "0.01", "0.01");
 
+        packagingPage.clickCreateCargoButton();
+        packagingPage.getAlertMessage().shouldHave(text("Cargos will be created. Continue?"));
+        packagingPage.clickCreateButtonAlertMessageDialog();
+        packagingPage.getAlertMessage().shouldBe(visible).shouldHave(text("We've created cargo bays"));
+        packagingPage.clickOkButtonAlertMessageDialog();
+    }
+
+    @Test (priority = 7, dependsOnMethods = "processingPackagingTaskTest")
+    public void processingLoadingTaskTest() throws Exception {
+        steps.loginAsAdmin();
+
+        allTasksPage.checkWorkType("Loading");
+        allTasksPage.getWorkTypeTasksQuantity().click();
+
+        loadingPage.setRouteSheetInput("I000000001");
+        loadingPage.setGateInput("OUT.01");
+        loadingPage.checkLoadingInfo("0", "Контрагент1", "0", "10");
+        loadingPage.setSerialCargoInput("9990000000012", "9990000000029", "9990000000036", "9990000000043", "9990000000050", "9990000000067", "9990000000074", "9990000000081", "9990000000098", "9990000000104");
+        loadingPage.checkLoadingInfo("0", "Контрагент1", "10", "0");
+        loadingPage.clickCommitButton();
     }
 }
