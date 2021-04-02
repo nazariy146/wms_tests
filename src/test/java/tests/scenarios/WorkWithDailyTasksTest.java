@@ -5,6 +5,8 @@ import tests.BaseMobileClass;
 import tests.pages.mobilePages.*;
 import tests.steps.Steps;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.*;
 
 public class WorkWithDailyTasksTest extends BaseMobileClass {
@@ -17,25 +19,26 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
     SelectionCardPage selectionCardPage = new SelectionCardPage();
     ContainerCardPage containerCardPage = new ContainerCardPage();
     ControlCardPage controlCardPage = new ControlCardPage();
-    PackagingPage packagingPage = new PackagingPage();
-    LoadingPage loadingPage = new LoadingPage();
+    PackagingCardPage packagingCardPage = new PackagingCardPage();
+    LoadingCardPage loadingCardPage = new LoadingCardPage();
+    InventoryCardPage inventoryCardPage = new InventoryCardPage();
 
     @Test
-    public void processingReceptionTasksTest() throws Exception {
+    public void processingReceptionTaskTest() throws Exception {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Reception");
         allTasksPage.getWorkTypeTasksQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
-        receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0001 ШТУЧНЫЙ 00001 Стол1 IN.01 Quantity 10 шт"));
+        receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0001 00001 Стол1 IN.01 Quantity 10 шт"));
         receptionCardPage.setSourceInput("IN.01");
         receptionCardPage.setProductInput("0001"); // set sku
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.setQuantityInput("10");
         receptionCardPage.clickCommitButton();
 
-        receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00010 ШТУЧНЫЙ 00010 Стол10 IN.01 Quantity 10 шт"));
+        receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00010 00010 Стол10 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("00010"); // set sku
         receptionCardPage.setQuantityInput("10");
         receptionCardPage.clickCommitButton();
@@ -163,19 +166,17 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
         receptionCardPage.clickCommitButton();
-
-        allTasksPage.checkWorkType("Accommodation");
     }
 
-    @Test (priority = 1, dependsOnMethods = "processingReceptionTasksTest")
-    public void processingAccommodationTasksTest() throws Exception {
+    @Test (priority = 1, dependsOnMethods = "processingReceptionTaskTest")
+    public void processingAccommodationTaskTest() throws Exception {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Accommodation");
         //allTasksPage.getReceptionQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
-        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0001 ШТУЧНЫЙ 00001 Стол1 IN.01 ➡ A.1.1.1.1 Quantity 10 шт"));
+        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0001 00001 Стол1 IN.01 ➡ A.1.1.1.1 Quantity 10 шт"));
         accommodationCardPage.setSourceInput("IN1");
         accommodationCardPage.setProductInput("0001"); // set sku
         accommodationCardPage.setDestinationInput("A.1.1.1.1");
@@ -230,27 +231,24 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         accommodationCardPage.setQuantityInput("10");
         accommodationCardPage.clickCommitButton();
 
-        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00010 ШТУЧНЫЙ 00010 Стол10 IN.01 ➡ A.1.1.1.10 Quantity 10 шт"));
+        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00010 00010 Стол10 IN.01 ➡ A.1.1.1.10 Quantity 10 шт"));
         accommodationCardPage.setProductInput("00010"); // set sku
         accommodationCardPage.setDestinationInput("A.1.1.1.10");
         accommodationCardPage.setQuantityInput("10");
         accommodationCardPage.clickCommitButton();
-
-        allTasksPage.checkWorkType("Selection");
     }
 
-    @Test (priority = 2, dependsOnMethods = "processingAccommodationTasksTest")
-    public void checkingFreeAmountTest() throws Exception {
+    @Test (priority = 2, dependsOnMethods = "processingAccommodationTaskTest")
+    public void checkingFreeAmountTest() {
         steps.loginAsAdmin();
 
-        allTasksPage.checkWorkType("Selection");
         allTasksPage.selectFindRestsMenu();
 
         findRestsPage.checkFreeRemainSwitchState(false);
         //findRestsPage.setOnOrOffFreeRemainSwitcher(true); //TODO BUG
 
         findRestsPage.setBarcodeInput("0001"); // set sku
-        findRestsPage.getProductDescription().shouldHave(text("0001 ШТУЧНЫЙ 00001 Стол1"));
+        findRestsPage.getProductDescription().shouldHave(text("0001 00001 Стол1"));
         findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
         findRestsPage.checkProductLocationInfo("A.1.1.1.1");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
@@ -322,7 +320,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         findRestsPage.getProductQuantity().shouldHave(exactText("10"));
 
         findRestsPage.setBarcodeInput("00010"); // set sku
-        findRestsPage.getProductDescription().shouldHave(text("00010 ШТУЧНЫЙ 00010 Стол10"));
+        findRestsPage.getProductDescription().shouldHave(text("00010 00010 Стол10"));
         findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
         findRestsPage.checkProductLocationInfo("A.1.1.1.10");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
@@ -330,15 +328,269 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         findRestsPage.getProductQuantity().shouldHave(exactText("10"));
     }
 
-    @Test (priority = 3, dependsOnMethods = "processingAccommodationTasksTest")
-    public void processingSelectionTasksTest() throws Exception {
+    @Test (priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
+    public void processingInventoryTaskTest() throws Exception {
+        steps.loginAsAdmin();
+
+        allTasksPage.checkWorkTypesQty(2);
+        allTasksPage.clickInventoryTypeTaskQuantity();
+
+        inventoryCardPage.setCellInput("A.1.1.1.1");
+        inventoryCardPage.setProductInput("0001");
+        inventoryCardPage.getProductInfo().shouldHave(exactText("0001 00001 0001-01-01T00:00:00 Стол1"));
+        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.setQtyInput("10");
+        inventoryCardPage.getItemViewInfo().shouldHave(text("0001 Стол1"));
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
+        inventoryCardPage.clickInventoryButton();
+        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
+        inventoryCardPage.clickYesMessageButton();
+
+        inventoryCardPage.setCellInput("A.1.1.1.2");
+        inventoryCardPage.setProductInput("0002");
+        inventoryCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        inventoryCardPage.getAvailableSeries().shouldHave(text("Series2"));
+        inventoryCardPage.getAvailableSeries().click();
+        inventoryCardPage.clickAlertDialogOkButton();
+        inventoryCardPage.getProductInfo().shouldHave(exactText("0002 00002 Series2 Стол2"));
+        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.setQtyInput("10");
+        //inventoryPage.getItemViewInfo().shouldHave(text("0002 Series2 Стол2")); //TODO BUG
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
+        inventoryCardPage.clickInventoryButton();
+        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
+        inventoryCardPage.clickYesMessageButton();
+
+        inventoryCardPage.setCellInput("A.1.1.1.3");
+        inventoryCardPage.setProductInput("0003");
+        inventoryCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        inventoryCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
+        inventoryCardPage.getAvailableExpirationDate().click();
+        inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
+        inventoryCardPage.clickAlertDialogOkButton();
+        inventoryCardPage.getProductInfo().shouldHave(exactText("0003 00003 31.12.2021 Стол3"));
+        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.setQtyInput("10");
+        //inventoryPage.getItemViewInfo().shouldHave(text("0003 31.12.2021 Стол3")); //TODO BUG
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
+        inventoryCardPage.clickInventoryButton();
+        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
+        inventoryCardPage.clickYesMessageButton();
+
+        inventoryCardPage.setCellInput("A.1.1.1.4");
+        inventoryCardPage.setProductInput("0004");
+        inventoryCardPage.getProductInfo().shouldHave(exactText("0004 00004 0001-01-01T00:00:00 Стол4"));
+        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.setQtyInput("10");
+        inventoryCardPage.getItemViewInfo().shouldHave(text("0004 Стол4"));
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
+        inventoryCardPage.clickInventoryButton();
+        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
+        inventoryCardPage.clickYesMessageButton();
+
+        inventoryCardPage.setCellInput("A.1.1.1.5");
+        inventoryCardPage.setProductInput("0005");
+        inventoryCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        inventoryCardPage.getAvailableSeries().shouldHave(text("series5"));
+        inventoryCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
+        inventoryCardPage.getAvailableSeries().click();
+        inventoryCardPage.getSeriesBox().shouldHave(text("series5"));
+        inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
+        inventoryCardPage.clickAlertDialogOkButton();
+        inventoryCardPage.getProductInfo().shouldHave(exactText("0005 00005 series5 31.12.2021 Стол5"));
+        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.setQtyInput("10");
+        //inventoryPage.getItemViewInfo().shouldHave(text("0005 series5 31.12.2021 Стол5")); //TODO BUG
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
+        inventoryCardPage.clickInventoryButton();
+        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
+        inventoryCardPage.clickYesMessageButton();
+
+        inventoryCardPage.setCellInput("A.1.1.1.6");
+        inventoryCardPage.setProductInput("0006");
+        inventoryCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        inventoryCardPage.getAvailableSeries().shouldHave(text("series6"));
+        inventoryCardPage.getAvailableSeries().click();
+        inventoryCardPage.getSeriesBox().shouldHave(text("series6"));
+        inventoryCardPage.clickAlertDialogOkButton();
+        inventoryCardPage.getProductInfo().shouldHave(exactText("0006 00006 series6 Стол6"));
+        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.setQtyInput("10");
+        //inventoryPage.getItemViewInfo().shouldHave(text("0006 series6 Стол6")); //TODO BUG
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
+        inventoryCardPage.clickInventoryButton();
+        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
+        inventoryCardPage.clickYesMessageButton();
+
+        inventoryCardPage.setCellInput("A.1.1.1.7");
+        inventoryCardPage.setProductInput("0007");
+        inventoryCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        inventoryCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
+        inventoryCardPage.getAvailableExpirationDate().click();
+        inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
+        inventoryCardPage.clickAlertDialogOkButton();
+        inventoryCardPage.getProductInfo().shouldHave(exactText("0007 00007 31.12.2021 Стол7"));
+        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.setQtyInput("10");
+        //inventoryPage.getItemViewInfo().shouldHave(text("0007 31.12.2021 Стол7")); //TODO BUG
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
+        inventoryCardPage.clickInventoryButton();
+        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
+        inventoryCardPage.clickYesMessageButton();
+
+        inventoryCardPage.setCellInput("A.1.1.1.8");
+        inventoryCardPage.setProductInput("0008");
+        inventoryCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        inventoryCardPage.getAvailableSeries().shouldHave(text("series8"));
+        inventoryCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
+        inventoryCardPage.getAvailableSeries().click();
+        inventoryCardPage.getSeriesBox().shouldHave(text("series8"));
+        inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
+        inventoryCardPage.clickAlertDialogOkButton();
+        inventoryCardPage.getProductInfo().shouldHave(exactText("0008 00008 series8 31.12.2021 Стол8"));
+        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.setQtyInput("10");
+        //inventoryPage.getItemViewInfo().shouldHave(text("0008 series8 31.12.2021 Стол8")); //TODO BUG
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
+        inventoryCardPage.clickInventoryButton();
+        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
+        inventoryCardPage.clickYesMessageButton();
+
+        inventoryCardPage.setCellInput("A.1.1.1.9");
+        inventoryCardPage.setProductInput("0009");
+        inventoryCardPage.getProductInfo().shouldHave(exactText("0009 00009 0001-01-01T00:00:00 Стол9"));
+        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.setQtyInput("10");
+        inventoryCardPage.getItemViewInfo().shouldHave(text("0009 Стол9"));
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
+        inventoryCardPage.clickInventoryButton();
+        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
+        inventoryCardPage.clickYesMessageButton();
+
+        inventoryCardPage.setCellInput("A.1.1.1.10");
+        inventoryCardPage.setProductInput("00010");
+        inventoryCardPage.getProductInfo().shouldHave(exactText("00010 00010 0001-01-01T00:00:00 Стол10"));
+        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.setQtyInput("10");
+        inventoryCardPage.getItemViewInfo().shouldHave(text("00010 Стол10"));
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
+        inventoryCardPage.clickInventoryButton();
+        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
+        inventoryCardPage.clickYesMessageButton();
+    }
+
+    @Test (priority = 4, dependsOnMethods = "processingInventoryTaskTest")
+    public void checkingFreeAmountAfterProcessingInventoryTest() throws Exception {
+        steps.loginAsAdmin();
+
+        allTasksPage.checkWorkTypesQty(1);
+        allTasksPage.checkWorkType("Selection");
+        allTasksPage.selectFindRestsMenu();
+
+        findRestsPage.checkFreeRemainSwitchState(false);
+        //findRestsPage.setOnOrOffFreeRemainSwitcher(true); //TODO BUG
+
+        findRestsPage.setBarcodeInput("0001"); // set sku
+        findRestsPage.getProductDescription().shouldHave(text("0001 00001 Стол1"));
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
+        findRestsPage.checkProductLocationInfo("A.1.1.1.1");
+        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
+        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
+        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+
+        findRestsPage.setBarcodeInput("0002"); // set sku
+        findRestsPage.getProductDescription().shouldHave(text("0002 00002 Стол2"));
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
+        findRestsPage.checkProductLocationInfo("A.1.1.1.2");
+        findRestsPage.checkProductSeriesInfo("Series2");
+        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
+        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+
+        findRestsPage.setBarcodeInput("0003"); // set sku
+        findRestsPage.getProductDescription().shouldHave(text("0003 00003 Стол3"));
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
+        findRestsPage.checkProductLocationInfo("A.1.1.1.3");
+        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
+        findRestsPage.checkProductShelfLifeInfo("31-12-2021");
+        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+
+        findRestsPage.setBarcodeInput("0004"); // set sku
+        findRestsPage.getProductDescription().shouldHave(text("0004 00004 Стол4"));
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
+        findRestsPage.checkProductLocationInfo("A.1.1.1.4");
+        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
+        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
+        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+
+        findRestsPage.setBarcodeInput("0005"); // set sku
+        findRestsPage.getProductDescription().shouldHave(text("0005 00005 Стол5"));
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
+        findRestsPage.checkProductLocationInfo("A.1.1.1.5");
+        findRestsPage.checkProductSeriesInfo("series5");
+        findRestsPage.checkProductShelfLifeInfo("31-12-2021");
+        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+
+        findRestsPage.setBarcodeInput("0006"); // set sku
+        findRestsPage.getProductDescription().shouldHave(text("0006 00006 Стол6"));
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
+        findRestsPage.checkProductLocationInfo("A.1.1.1.6");
+        findRestsPage.checkProductSeriesInfo("series6");
+        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
+        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+
+        findRestsPage.setBarcodeInput("0007"); // set sku
+        findRestsPage.getProductDescription().shouldHave(text("0007 00007 Стол7"));
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
+        findRestsPage.checkProductLocationInfo("A.1.1.1.7");
+        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
+        findRestsPage.checkProductShelfLifeInfo("31-12-2021");
+        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+
+        findRestsPage.setBarcodeInput("0008"); // set sku
+        findRestsPage.getProductDescription().shouldHave(text("0008 00008 Стол8"));
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
+        findRestsPage.checkProductLocationInfo("A.1.1.1.8");
+        findRestsPage.checkProductSeriesInfo("series8");
+        findRestsPage.checkProductShelfLifeInfo("31-12-2021");
+        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+
+        findRestsPage.setBarcodeInput("0009"); // set sku
+        findRestsPage.getProductDescription().shouldHave(text("0009 00009 Стол9"));
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
+        findRestsPage.checkProductLocationInfo("A.1.1.1.9");
+        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
+        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
+        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+
+        findRestsPage.setBarcodeInput("00010"); // set sku
+        findRestsPage.getProductDescription().shouldHave(text("00010 00010 Стол10"));
+        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
+        findRestsPage.checkProductLocationInfo("A.1.1.1.10");
+        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
+        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
+        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+    }
+
+    @Test (priority = 5, dependsOnMethods = "processingAccommodationTaskTest")
+    public void processingSelectionTaskTest() throws Exception {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Selection");
+
         //allTasksPage.getReceptionQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
-        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0001 ШТУЧНЫЙ 00001 Стол1 A.1.1.1.1 ➡ KT1.01.01.01.01 Quantity 10 шт"));
+        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0001 00001 Стол1 A.1.1.1.1 ➡ KT1.01.01.01.01 Quantity 10 шт"));
         selectionCardPage.setSourceInput("A.1.1.1.1");
         selectionCardPage.setProductInput("0001"); // set sku
         selectionCardPage.setDestinationInput("OUT101");
@@ -438,7 +690,7 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         selectionCardPage.getQuantityInput().shouldHave(text("10"));
         selectionCardPage.clickCommitButton();
 
-        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00010 ШТУЧНЫЙ 00010 Стол10 A.1.1.1.10 ➡ KT1.01.01.01.01 Quantity 10 шт"));
+        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00010 00010 Стол10 A.1.1.1.10 ➡ KT1.01.01.01.01 Quantity 10 шт"));
         selectionCardPage.setSourceInput("A.1.1.1.10");
         selectionCardPage.setProductInput("00010"); // set sku
         selectionCardPage.setDestinationInput("OUT110");
@@ -448,8 +700,8 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         allTasksPage.checkWorkType("Контейнер");
     }
 
-    @Test (priority = 4, dependsOnMethods = "processingSelectionTasksTest")
-    public void processingContainerTasksTest() throws Exception {
+    @Test (priority = 6, dependsOnMethods = "processingSelectionTaskTest")
+    public void processingContainerTaskTest() throws Exception {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Контейнер");
@@ -508,8 +760,8 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         allTasksPage.checkWorkType("Control");
     }
 
-    @Test (priority = 5, dependsOnMethods = "processingContainerTasksTest")
-    public void processingControlTasksTest() throws Exception {
+    @Test (priority = 7, dependsOnMethods = "processingContainerTaskTest")
+    public void processingControlTaskTest() throws Exception {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Control");
@@ -686,45 +938,45 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
         controlCardPage.clickCommitButton();
     }
 
-    @Test (priority = 6, dependsOnMethods = "processingControlTasksTest")
+    @Test (priority = 8, dependsOnMethods = "processingControlTaskTest")
     public void processingPackagingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Packaging");
         allTasksPage.getWorkTypeTasksQuantity().click();
 
-        packagingPage.setCellOrContainerInput("KT1.01.01.01.01");
+        packagingCardPage.setCellOrContainerInput("KT1.01.01.01.01");
 
-        packagingPage.checkCellProductInfoInRow(1, "OUT101", "10", "0.01", "0.01");
-        packagingPage.checkCellProductInfoInRow(2, "OUT102", "10", "0.01", "0.01");
-        packagingPage.checkCellProductInfoInRow(3, "OUT103", "10", "0.01", "0.01");
-        packagingPage.checkCellProductInfoInRow(4, "OUT104", "10", "0.01", "0.01");
-        packagingPage.checkCellProductInfoInRow(5, "OUT105", "10", "0.01", "0.01");
-        packagingPage.checkCellProductInfoInRow(6, "OUT106", "10", "0.01", "0.01");
-        packagingPage.checkCellProductInfoInRow(7, "OUT107", "10", "0.01", "0.01");
-        packagingPage.checkCellProductInfoInRow(8, "OUT108", "10", "0.01", "0.01");
-        packagingPage.checkCellProductInfoInRow(9, "OUT109", "10", "0.01", "0.01");
-        packagingPage.checkCellProductInfoInRow(10, "OUT110", "10", "0.01", "0.01");
+        packagingCardPage.checkCellProductInfoInRow(1, "OUT101", "10", "0.01", "0.01");
+        packagingCardPage.checkCellProductInfoInRow(2, "OUT102", "10", "0.01", "0.01");
+        packagingCardPage.checkCellProductInfoInRow(3, "OUT103", "10", "0.01", "0.01");
+        packagingCardPage.checkCellProductInfoInRow(4, "OUT104", "10", "0.01", "0.01");
+        packagingCardPage.checkCellProductInfoInRow(5, "OUT105", "10", "0.01", "0.01");
+        packagingCardPage.checkCellProductInfoInRow(6, "OUT106", "10", "0.01", "0.01");
+        packagingCardPage.checkCellProductInfoInRow(7, "OUT107", "10", "0.01", "0.01");
+        packagingCardPage.checkCellProductInfoInRow(8, "OUT108", "10", "0.01", "0.01");
+        packagingCardPage.checkCellProductInfoInRow(9, "OUT109", "10", "0.01", "0.01");
+        packagingCardPage.checkCellProductInfoInRow(10, "OUT110", "10", "0.01", "0.01");
 
-        packagingPage.clickCreateCargoButton();
-        packagingPage.getAlertMessage().shouldHave(text("Cargos will be created. Continue?"));
-        packagingPage.clickCreateButtonAlertMessageDialog();
-        packagingPage.getAlertMessage().shouldBe(visible).shouldHave(text("We've created cargo bays"));
-        packagingPage.clickOkButtonAlertMessageDialog();
+        packagingCardPage.clickCreateCargoButton();
+        packagingCardPage.getAlertMessage().shouldHave(text("Cargos will be created. Continue?"));
+        packagingCardPage.clickCreateButtonAlertMessageDialog();
+        packagingCardPage.getAlertMessage().shouldBe(visible, Duration.ofSeconds(10)).shouldHave(text("We've created cargo bays"));
+        packagingCardPage.clickOkButtonAlertMessageDialog();
     }
 
-    @Test (priority = 7, dependsOnMethods = "processingPackagingTaskTest")
+    @Test (priority = 9, dependsOnMethods = "processingPackagingTaskTest")
     public void processingLoadingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Loading");
         allTasksPage.getWorkTypeTasksQuantity().click();
 
-        loadingPage.setRouteSheetInput("I000000001");
-        loadingPage.setGateInput("OUT.01");
-        loadingPage.checkLoadingInfo("0", "Контрагент1", "0", "10");
-        loadingPage.setSerialCargoInput("9990000000012", "9990000000029", "9990000000036", "9990000000043", "9990000000050", "9990000000067", "9990000000074", "9990000000081", "9990000000098", "9990000000104");
-        loadingPage.checkLoadingInfo("0", "Контрагент1", "10", "0");
-        loadingPage.clickCommitButton();
+        loadingCardPage.setRouteSheetInput("I000000001");
+        loadingCardPage.setGateInput("OUT.01");
+        loadingCardPage.checkLoadingInfo("0", "Контрагент1", "0", "10");
+        loadingCardPage.setSerialCargoInput("9990000000012", "9990000000029", "9990000000036", "9990000000043", "9990000000050", "9990000000067", "9990000000074", "9990000000081", "9990000000098", "9990000000104");
+        loadingCardPage.checkLoadingInfo("0", "Контрагент1", "10", "0");
+        loadingCardPage.clickCommitButton();
     }
 }

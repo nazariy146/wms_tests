@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 
-public class LoadingPage {
+public class LoadingCardPage {
 
     private SelenideElement getRouteSheetInput() {
         return $(By.id("com.abmcloud:id/textBoxRouteSheet"));

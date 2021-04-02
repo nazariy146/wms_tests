@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static io.appium.java_client.touch.offset.PointOption.point;
 import static java.time.Duration.ofMillis;
 
-public class PackagingPage {
+public class PackagingCardPage {
 
     private SelenideElement getCellOrContainerInput() {
         return $(By.id("com.abmcloud:id/et_consolidate_cell"));
