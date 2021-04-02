@@ -1,4 +1,4 @@
-package tests.scenarios;
+package tests.scenarios.case1;
 
 import org.testng.annotations.Test;
 import tests.BaseMobileClass;
@@ -9,7 +9,7 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
 
-public class WorkWithDailyTasksTest extends BaseMobileClass {
+public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
     Steps steps = new Steps();
     AllTasksPage allTasksPage = new AllTasksPage();
@@ -22,6 +22,12 @@ public class WorkWithDailyTasksTest extends BaseMobileClass {
     PackagingCardPage packagingCardPage = new PackagingCardPage();
     LoadingCardPage loadingCardPage = new LoadingCardPage();
     InventoryCardPage inventoryCardPage = new InventoryCardPage();
+
+    /**
+     * All tests run on Regress/Case1/wms_regress_case1_Reception_Inventory DB
+     * All tests run according to TestNG priority.
+     * If test fails - next one will be skipped according to TestNG dependsOnMethods
+     */
 
     @Test
     public void processingReceptionTaskTest() throws Exception {
