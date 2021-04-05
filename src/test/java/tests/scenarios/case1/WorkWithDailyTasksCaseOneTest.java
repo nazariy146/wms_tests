@@ -343,7 +343,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
         inventoryCardPage.setCellInput("A.1.1.1.1");
         inventoryCardPage.setProductInput("0001");
-        inventoryCardPage.getProductInfo().shouldHave(exactText("0001 00001 0001-01-01T00:00:00 Стол1"));
+        inventoryCardPage.getProductInfo().shouldHave(exactText("0001 00001 Стол1"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
         inventoryCardPage.getItemViewInfo().shouldHave(text("0001 Стол1"));
@@ -388,7 +388,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
         inventoryCardPage.setCellInput("A.1.1.1.4");
         inventoryCardPage.setProductInput("0004");
-        inventoryCardPage.getProductInfo().shouldHave(exactText("0004 00004 0001-01-01T00:00:00 Стол4"));
+        inventoryCardPage.getProductInfo().shouldHave(exactText("0004 00004 Стол4"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
         inventoryCardPage.getItemViewInfo().shouldHave(text("0004 Стол4"));
@@ -472,7 +472,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
         inventoryCardPage.setCellInput("A.1.1.1.9");
         inventoryCardPage.setProductInput("0009");
-        inventoryCardPage.getProductInfo().shouldHave(exactText("0009 00009 0001-01-01T00:00:00 Стол9"));
+        inventoryCardPage.getProductInfo().shouldHave(exactText("0009 00009 Стол9"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
         inventoryCardPage.getItemViewInfo().shouldHave(text("0009 Стол9"));
@@ -484,7 +484,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
         inventoryCardPage.setCellInput("A.1.1.1.10");
         inventoryCardPage.setProductInput("00010");
-        inventoryCardPage.getProductInfo().shouldHave(exactText("00010 00010 0001-01-01T00:00:00 Стол10"));
+        inventoryCardPage.getProductInfo().shouldHave(exactText("00010 00010 Стол10"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
         inventoryCardPage.getItemViewInfo().shouldHave(text("00010 Стол10"));
@@ -820,7 +820,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.getQty().shouldHave(text("10"));
         controlCardPage.setItemInput("0004");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
-        controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("0004 0001-01-01T00:00:00 Стол4"));
+        controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("0004 Стол4"));
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.setSerialNumberInputSeveralTimes("serialnumber4", 10);
         controlCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
@@ -863,7 +863,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.getSeriesBox().shouldHave(text("series6"));
         controlCardPage.clickAlertDialogOkButton();
         controlCardPage.getSerialNumberInput().shouldBe(visible);
-        controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("0006 series6 0001-01-01T00:00:00 Стол6"));
+        controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("0006 series6 Стол6"));
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.setSerialNumberInputSeveralTimes("serialnumber6", 10);
         controlCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
@@ -882,7 +882,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.setItemInput("0007");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("0007 0001-01-01T00:00:00 Стол7")); //TODO BUG: incorrect expiration date
+        controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("0007 Стол7")); //TODO BUG: incorrect expiration date
         controlCardPage.setSerialNumberInputSeveralTimes("serialnumber7", 10);
         controlCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         controlCardPage.checkSerialNumberInputText("");
@@ -924,7 +924,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.getQty().shouldHave(text("10"));
         controlCardPage.setItemInput("0009");
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("0009 0001-01-01T00:00:00 Стол9"));
+        controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("0009 Стол9"));
         controlCardPage.setSerialNumberInputSeveralTimes("serialnumber90", "serialnumber91", "serialnumber92", "serialnumber93", "serialnumber94", "serialnumber95", "serialnumber96", "serialnumber97", "serialnumber98", "serialnumber99");
         controlCardPage.checkSerialNumberQtyFactInEveryRow("1", 10);
         controlCardPage.checkSerialNumberInputText("");
