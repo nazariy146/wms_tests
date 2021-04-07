@@ -1,15 +1,21 @@
 package tests.pages.mobilePages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.touch.WaitOptions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.testng.Assert;
+import tests.utils.Actions;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static io.appium.java_client.touch.offset.PointOption.point;
+import static java.time.Duration.ofMillis;
 
 public class ControlCardPage {
 
@@ -78,12 +84,12 @@ public class ControlCardPage {
         return $(By.id("com.abmcloud:id/tv_container"));
     }
 
-    public SelenideElement getControlledQty() {
-        return $(By.id("com.abmcloud:id/tv_qty_controlled"));
+    public SelenideElement getControlledQty(int row) {
+        return $(By.xpath("//androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView["+row+"]")).find((By.id("com.abmcloud:id/tv_qty_controlled")));
     }
 
-    public SelenideElement getQty() {
-        return $(By.id("com.abmcloud:id/tv_qty"));
+    public SelenideElement getQty(int row) {
+        return $(By.xpath("//androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView["+row+"]")).find((By.id("com.abmcloud:id/tv_qty")));
     }
 
     public SelenideElement getAlertDialog() {
@@ -179,10 +185,35 @@ public class ControlCardPage {
         getShipmentStatusButton().click();
     }
 
-    public void scrollElement(SelenideElement element, int x, int y) {
+    public void scrollElement(SelenideElement element) {
         AndroidDriver driver = (AndroidDriver) element.getWrappedDriver();
-        TouchActions action = new TouchActions(driver);
-        action.scroll(element, x, y);
-        action.perform();
+
+        TouchAction touchAction= new TouchAction(driver);
+
+        touchAction.press(point(element.getLocation().x, element.getLocation().y))
+                .waitAction(WaitOptions.waitOptions(ofMillis(300)))
+                .moveTo(point(element.getLocation().x, element.getLocation().y-854))
+                .release().perform();
+    }
+
+    private SelenideElement getScrollableTable() {
+        return $(By.id("com.abmcloud:id/listViewControlContainer"));
+    }
+
+    public void checkAllProductsInfoAndQty(int row, String qty, String productInfo) {
+        Actions.hideKeyboard(getScrollableTable());
+        if(!getQty(row).isDisplayed()) {
+            scrollElement(getScrollableTable());
+        }
+        if (row > 7) {
+            $(By.xpath("//androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView["+(row-2)+"]")).find((By.id("com.abmcloud:id/tv_good"))).shouldHave(text(productInfo));
+            getQty(row-2).shouldHave(text(qty));
+            getControlledQty(row-2).shouldNotBe(visible);
+        }
+        else {
+            $(By.xpath("//androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView["+row+"]")).find((By.id("com.abmcloud:id/tv_good"))).shouldHave(text(productInfo));
+            getQty(row).shouldHave(text(qty));
+            getControlledQty(row).shouldNotBe(visible);
+        }
     }
 }

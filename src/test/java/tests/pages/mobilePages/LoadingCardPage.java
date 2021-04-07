@@ -11,7 +11,14 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class LoadingCardPage {
 
-    private SelenideElement getRouteSheetInput() {
+    public void checkAndSelectAvailableRouteSheet(String description, String driver) {
+        $(By.id("com.abmcloud:id/buttonRouteSheetChoice")).click();
+        $(By.id("com.abmcloud:id/select_dialog_listview")).shouldBe(visible);
+        $(By.id("com.abmcloud:id/textViewDoc_title")).shouldHave(text(description));
+        $(By.id("com.abmcloud:id/textViewDriver")).shouldHave(text(driver)).click();
+    }
+
+    public SelenideElement getRouteSheetInput() {
         return $(By.id("com.abmcloud:id/textBoxRouteSheet"));
     }
 

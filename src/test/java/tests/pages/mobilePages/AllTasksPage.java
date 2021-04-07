@@ -3,6 +3,7 @@ package tests.pages.mobilePages;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.$;
@@ -24,11 +25,11 @@ public class AllTasksPage {
         {
             waitUntilPass(WAIT_TASK_TIMEOUT, () -> {
                 refreshPage($(By.id("com.abmcloud:id/top_app_bar")));
-                assertEquals(getWorkType().getText(), taskTitle, "Expected task doesn't match actual");
+                getWorkType().shouldHave(exactText(taskTitle));
             });
         }
         else
-            assertEquals(getWorkType().getText(), taskTitle, "Expected task doesn't match actual");
+            getWorkType().shouldHave(exactText(taskTitle));
     }
 
     public void checkWorkTypesQty(int qty) throws Exception{
@@ -61,5 +62,11 @@ public class AllTasksPage {
         clickMenuIcon();
         $(By.id("com.abmcloud:id/design_navigation_view")).shouldBe(visible);
         $(By.id("com.abmcloud:id/design_navigation_view")).find(byId("com.abmcloud:id/find_rests")).click();
+    }
+
+    public void selectConsolidateContainerMenu() {
+        clickMenuIcon();
+        $(By.id("com.abmcloud:id/design_navigation_view")).shouldBe(visible);
+        $(By.id("com.abmcloud:id/design_navigation_view")).find(byId("com.abmcloud:id/consolidate_container")).click();
     }
 }

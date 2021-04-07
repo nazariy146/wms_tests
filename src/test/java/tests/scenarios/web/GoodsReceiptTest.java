@@ -1,4 +1,4 @@
-package tests.scenarios;
+package tests.scenarios.web;
 
 import tests.BaseClass;
 import tests.pages.webPages.LoginPage;
