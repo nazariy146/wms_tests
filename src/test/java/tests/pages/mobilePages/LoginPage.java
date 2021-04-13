@@ -7,13 +7,6 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
-    public SelenideElement getAlertMessage() {
-            return $(By.id("android:id/message"));
-    }
-
-    public SelenideElement getOkAlertButton() {
-        return $(By.id("android:id/button2"));
-    }
 
     public SettingsPage clickSettingIcon() {
         $(By.id("com.abmcloud:id/buttonSettings")).shouldBe(enabled).click();

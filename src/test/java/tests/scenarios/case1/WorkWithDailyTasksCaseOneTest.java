@@ -8,6 +8,7 @@ import tests.steps.Steps;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
+import static tests.utils.ModalDialogs.*;
 
 public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
@@ -51,18 +52,18 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0002 00002 Стол2 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("0002"); // set sku
-        receptionCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series"));
         receptionCardPage.createNewSeries("Series2");
-        receptionCardPage.clickSetButton();
+        clickSetOkYesButton();
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0002 00002 Series2 Стол2 IN.01 Quantity 10 шт"));
         receptionCardPage.setQuantityInput("10");
         receptionCardPage.clickCommitButton();
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0003 00003 Стол3 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("0003"); // set sku
-        receptionCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Shelf life"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Shelf life"));
         receptionCardPage.getExpirationDateInput().sendKeys("31.12.2021");
-        receptionCardPage.clickSetButton();
+        clickSetOkYesButton();
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0003 00003 31.12.2021 Стол3 IN.01 Quantity 10 шт"));
         receptionCardPage.setQuantityInput("10");
         receptionCardPage.clickCommitButton();
@@ -83,19 +84,19 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0005 00005 Стол5 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("0005"); // set sku
-        receptionCardPage.getAlertDialog().shouldHave(text("Series / shelf life"));
+        getAlertModalDialog().shouldHave(text("Series / shelf life"));
         receptionCardPage.getExpirationDateInput().sendKeys("31.12.2021");
         receptionCardPage.createNewSeries("series5");
-        receptionCardPage.clickSetButton();
+        clickSetOkYesButton();
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0005 00005 series5 31.12.2021 Стол5 IN.01 Quantity 10 шт"));
         receptionCardPage.setQuantityInput("10");
         receptionCardPage.clickCommitButton();
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0006 00006 Стол6 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("0006"); // set sku
-        receptionCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series"));
         receptionCardPage.createNewSeries("series6");
-        receptionCardPage.clickSetButton();
+        clickSetOkYesButton();
         receptionCardPage.getSerialNumberInput().shouldBe(visible);
         receptionCardPage.checkSerialNumberInputText("");
         selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("0006 Стол6"));
@@ -114,9 +115,9 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0007 00007 Стол7 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("0007"); // set sku
-        receptionCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Shelf life"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Shelf life"));
         receptionCardPage.getExpirationDateInput().sendKeys("31.12.2021");
-        receptionCardPage.clickSetButton();
+        clickSetOkYesButton();
         receptionCardPage.getSerialNumberInput().shouldBe(visible);
         receptionCardPage.checkSerialNumberInputText("");
         selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("0007 Стол7"));
@@ -135,10 +136,10 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0008 00008 Стол8 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("0008"); // set sku000
-        receptionCardPage.getAlertDialog().shouldHave(text("Series / shelf life"));
+        getAlertModalDialog().shouldHave(text("Series / shelf life"));
         receptionCardPage.getExpirationDateInput().sendKeys("31.12.2021");
         receptionCardPage.createNewSeries("series8");
-        receptionCardPage.clickSetButton();
+        clickSetOkYesButton();
         receptionCardPage.getSerialNumberInput().shouldBe(visible);
         receptionCardPage.checkSerialNumberInputText("");
         selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("0008 Стол8"));
@@ -350,15 +351,15 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
-        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
-        inventoryCardPage.clickYesMessageButton();
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
+        clickSetOkYesButton();
 
         inventoryCardPage.setCellInput("A.1.1.1.2");
         inventoryCardPage.setProductInput("0002");
-        inventoryCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         inventoryCardPage.getAvailableSeries().shouldHave(text("Series2"));
         inventoryCardPage.getAvailableSeries().click();
-        inventoryCardPage.clickAlertDialogOkButton();
+        clickSetOkYesButton();
         inventoryCardPage.getProductInfo().shouldHave(exactText("0002 00002 Series2 Стол2"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
@@ -366,16 +367,16 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
-        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
-        inventoryCardPage.clickYesMessageButton();
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
+        clickSetOkYesButton();
 
         inventoryCardPage.setCellInput("A.1.1.1.3");
         inventoryCardPage.setProductInput("0003");
-        inventoryCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         inventoryCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableExpirationDate().click();
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        inventoryCardPage.clickAlertDialogOkButton();
+        clickSetOkYesButton();
         inventoryCardPage.getProductInfo().shouldHave(exactText("0003 00003 31.12.2021 Стол3"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
@@ -383,8 +384,8 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
-        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
-        inventoryCardPage.clickYesMessageButton();
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
+        clickSetOkYesButton();
 
         inventoryCardPage.setCellInput("A.1.1.1.4");
         inventoryCardPage.setProductInput("0004");
@@ -395,18 +396,18 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
-        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
-        inventoryCardPage.clickYesMessageButton();
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
+        clickSetOkYesButton();
 
         inventoryCardPage.setCellInput("A.1.1.1.5");
         inventoryCardPage.setProductInput("0005");
-        inventoryCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         inventoryCardPage.getAvailableSeries().shouldHave(text("series5"));
         inventoryCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableSeries().click();
         inventoryCardPage.getSeriesBox().shouldHave(text("series5"));
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        inventoryCardPage.clickAlertDialogOkButton();
+        clickSetOkYesButton();
         inventoryCardPage.getProductInfo().shouldHave(exactText("0005 00005 series5 31.12.2021 Стол5"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
@@ -414,16 +415,16 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
-        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
-        inventoryCardPage.clickYesMessageButton();
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
+        clickSetOkYesButton();
 
         inventoryCardPage.setCellInput("A.1.1.1.6");
         inventoryCardPage.setProductInput("0006");
-        inventoryCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         inventoryCardPage.getAvailableSeries().shouldHave(text("series6"));
         inventoryCardPage.getAvailableSeries().click();
         inventoryCardPage.getSeriesBox().shouldHave(text("series6"));
-        inventoryCardPage.clickAlertDialogOkButton();
+        clickSetOkYesButton();
         inventoryCardPage.getProductInfo().shouldHave(exactText("0006 00006 series6 Стол6"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
@@ -431,16 +432,16 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
-        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
-        inventoryCardPage.clickYesMessageButton();
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
+        clickSetOkYesButton();
 
         inventoryCardPage.setCellInput("A.1.1.1.7");
         inventoryCardPage.setProductInput("0007");
-        inventoryCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         inventoryCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableExpirationDate().click();
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        inventoryCardPage.clickAlertDialogOkButton();
+        clickSetOkYesButton();
         inventoryCardPage.getProductInfo().shouldHave(exactText("0007 00007 31.12.2021 Стол7"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
@@ -448,18 +449,18 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
-        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
-        inventoryCardPage.clickYesMessageButton();
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
+        clickSetOkYesButton();
 
         inventoryCardPage.setCellInput("A.1.1.1.8");
         inventoryCardPage.setProductInput("0008");
-        inventoryCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         inventoryCardPage.getAvailableSeries().shouldHave(text("series8"));
         inventoryCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableSeries().click();
         inventoryCardPage.getSeriesBox().shouldHave(text("series8"));
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        inventoryCardPage.clickAlertDialogOkButton();
+        clickSetOkYesButton();
         inventoryCardPage.getProductInfo().shouldHave(exactText("0008 00008 series8 31.12.2021 Стол8"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
@@ -467,8 +468,8 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
-        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
-        inventoryCardPage.clickYesMessageButton();
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
+        clickSetOkYesButton();
 
         inventoryCardPage.setCellInput("A.1.1.1.9");
         inventoryCardPage.setProductInput("0009");
@@ -479,8 +480,8 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
-        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
-        inventoryCardPage.clickYesMessageButton();
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
+        clickSetOkYesButton();
 
         inventoryCardPage.setCellInput("A.1.1.1.10");
         inventoryCardPage.setProductInput("00010");
@@ -491,8 +492,8 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
-        inventoryCardPage.getAlertMessage().shouldHave(text("Complete Cell Inventory?"));
-        inventoryCardPage.clickYesMessageButton();
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
+        clickSetOkYesButton();
     }
 
     @Test (priority = 4, dependsOnMethods = "processingInventoryTaskTest")
@@ -792,10 +793,10 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.setItemInput("0002");
-        controlCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         controlCardPage.getAvailableSeries().shouldHave(text("Series2"));
         controlCardPage.getAvailableSeries().click();
-        controlCardPage.clickAlertDialogOkButton();
+        clickSetOkYesButton();
         controlCardPage.getSeriesInfo().shouldBe(visible).shouldHave(text("Series2"));
         controlCardPage.setQuantityInputInput("10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
@@ -838,13 +839,13 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.setItemInput("0005");
-        controlCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         controlCardPage.getAvailableSeries().shouldHave(text("series5"));
         controlCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
         controlCardPage.getAvailableSeries().click();
         controlCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
         controlCardPage.getSeriesBox().shouldHave(text("series5"));
-        controlCardPage.clickAlertDialogOkButton();
+        clickSetOkYesButton();
         controlCardPage.setQuantityInputInput("10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickCommitButton();
@@ -857,11 +858,11 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.setItemInput("0006");
-        controlCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         controlCardPage.getAvailableSeries().shouldHave(text("series6"));
         controlCardPage.getAvailableSeries().click();
         controlCardPage.getSeriesBox().shouldHave(text("series6"));
-        controlCardPage.clickAlertDialogOkButton();
+        clickSetOkYesButton();
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("0006 series6 Стол6"));
         controlCardPage.checkSerialNumberInputText("");
@@ -899,13 +900,13 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.setItemInput("0008");
-        controlCardPage.getAlertDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         controlCardPage.getAvailableSeries().shouldHave(text("series8"));
         controlCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
         controlCardPage.getAvailableSeries().click();
         controlCardPage.getSeriesBox().shouldHave(text("series8"));
         controlCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        controlCardPage.clickAlertDialogOkButton();
+        clickSetOkYesButton();
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("0008 series8 2021-12-31T00:00:00 Стол8"));
@@ -965,10 +966,10 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         packagingCardPage.checkCellProductInfoInRow(10, "OUT110", "10", "0.01", "0.01");
 
         packagingCardPage.clickCreateCargoButton();
-        packagingCardPage.getAlertMessage().shouldHave(text("Cargos will be created. Continue?"));
-        packagingCardPage.clickCreateButtonAlertMessageDialog();
-        packagingCardPage.getAlertMessage().shouldBe(visible, Duration.ofSeconds(10)).shouldHave(text("We've created cargo bays"));
-        packagingCardPage.clickOkButtonAlertMessageDialog();
+        getMessageModalDialog().shouldHave(text("Cargos will be created. Continue?"));
+        clickSetOkYesButton();
+        getMessageModalDialog().shouldBe(visible, Duration.ofSeconds(10)).shouldHave(text("We've created cargo bays"));
+        clickErrorDialogOkButton();
     }
 
     @Test (priority = 9, dependsOnMethods = "processingPackagingTaskTest")

@@ -92,16 +92,4 @@ public class PackagingCardPage {
     public void clickCreateCargoButton() {
         getCreateCargoButton().click();
     }
-
-    public SelenideElement getAlertMessage() {
-        return $(By.id("android:id/message"));
-    }
-
-    public void clickCreateButtonAlertMessageDialog() {
-        $(By.id("android:id/button1")).click();
-    }
-
-    public void clickOkButtonAlertMessageDialog() {
-        $(By.id("android:id/button2")).click();
-    }
 }

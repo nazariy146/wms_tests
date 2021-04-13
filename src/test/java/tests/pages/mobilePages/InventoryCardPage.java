@@ -45,10 +45,6 @@ public class InventoryCardPage {
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
-    public SelenideElement getAlertDialog() {
-        return $(By.id("com.abmcloud:id/alertTitle"));
-    }
-
     public SelenideElement getAvailableSeries() {
         return $(By.id("com.abmcloud:id/textViewSeries"));
     }
@@ -63,10 +59,6 @@ public class InventoryCardPage {
 
     public SelenideElement getExpirationDateBox() {
         return $(By.id("com.abmcloud:id/textBoxShelfLifeLP"));
-    }
-
-    public void clickAlertDialogOkButton() {
-        $(By.id("android:id/button1")).click();
     }
 
     public void selectQuality(String qualityType) {
@@ -88,14 +80,6 @@ public class InventoryCardPage {
 
     public SelenideElement getQtyViewInfo() {
         return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewQtyInv"));
-    }
-
-    public SelenideElement getAlertMessage() {
-        return $(By.id("android:id/message"));
-    }
-
-    public void clickYesMessageButton() {
-        $(By.id("android:id/button1")).click();
     }
 
     public void clickInventoryButton() {

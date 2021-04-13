@@ -92,10 +92,6 @@ public class ControlCardPage {
         return $(By.xpath("//androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView["+row+"]")).find((By.id("com.abmcloud:id/tv_qty")));
     }
 
-    public SelenideElement getAlertDialog() {
-        return $(By.id("com.abmcloud:id/alertTitle"));
-    }
-
     public SelenideElement getAvailableSeries() {
         return $(By.id("com.abmcloud:id/textViewSeries"));
     }
@@ -110,10 +106,6 @@ public class ControlCardPage {
 
     public SelenideElement getExpirationDateBox() {
         return $(By.id("com.abmcloud:id/textBoxShelfLifeLP"));
-    }
-
-    public void clickAlertDialogOkButton() {
-        $(By.id("android:id/button1")).click();
     }
 
     public SelenideElement getSerialNumberInput() {

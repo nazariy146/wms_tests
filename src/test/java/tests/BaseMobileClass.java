@@ -19,6 +19,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_ACTIVITY;
 import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_PACKAGE;
+import static tests.utils.ModalDialogs.*;
 
 public class BaseMobileClass implements WebDriverProvider {
 
@@ -52,14 +53,14 @@ public class BaseMobileClass implements WebDriverProvider {
 
         open();
 
-        loginPage.getAlertMessage().shouldHave(text("No server available"));
-        loginPage.getOkAlertButton().click();
-        loginPage.getAlertMessage().shouldHave(text("Unable to connect the device under the terms of licensing. Contact your administrator."));
-        loginPage.getOkAlertButton().click();
-        loginPage.getAlertMessage().shouldHave(text("No server available"));
-        loginPage.getOkAlertButton().click();
-        loginPage.getAlertMessage().shouldHave(text("No connection string set"));
-        loginPage.getOkAlertButton().click();
+        getMessageModalDialog().shouldHave(text("No server available"));
+        clickErrorDialogOkButton();
+        getMessageModalDialog().shouldHave(text("Unable to connect the device under the terms of licensing. Contact your administrator."));
+        clickErrorDialogOkButton();
+        getMessageModalDialog().shouldHave(text("No server available"));
+        clickErrorDialogOkButton();
+        getMessageModalDialog().shouldHave(text("No connection string set"));
+        clickErrorDialogOkButton();
 
         settingsPage = loginPage.clickSettingIcon();
         settingsPage.getConnectionStringInput().shouldHave(text("Connection string"));

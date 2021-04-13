@@ -71,24 +71,12 @@ public class ReceptionCardPage {
         getCommitButton().click();
     }
 
-    public SelenideElement getAlertDialog() {
-        return $(By.id("com.abmcloud:id/alertTitle"));
-    }
-
     public SelenideElement getAvailableSeriesInput() {
         return $(By.id("com.abmcloud:id/textViewSeries"));
     }
 
     public void createNewSeries(String name) {
         $(By.id("com.abmcloud:id/textBoxSeriesPL")).sendKeys(name);
-    }
-
-    private SelenideElement getSetButton() {
-        return $(By.id("android:id/button1"));
-    }
-
-    public void clickSetButton() {
-        getSetButton().click();
     }
 
     public SelenideElement getExpirationDateInput() {
