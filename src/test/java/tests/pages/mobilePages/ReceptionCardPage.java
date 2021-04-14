@@ -7,7 +7,9 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class ReceptionCardPage {
 
@@ -22,6 +24,10 @@ public class ReceptionCardPage {
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
+    public void clearSourceInput() {
+        $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[1]")).click();
+    }
+
     private SelenideElement getProductInput() {
         return $(By.id("com.abmcloud:id/editTextControlBoxBarcode"));
     }
@@ -33,6 +39,10 @@ public class ReceptionCardPage {
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
+    public void clearProductInput() {
+        $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[2]")).click();
+    }
+
     public SelenideElement getProductDescription() {
         return $(By.id("com.abmcloud:id/textViewControlDescription"));
     }
@@ -42,7 +52,7 @@ public class ReceptionCardPage {
     }
 
     public void clearContainerInput() {
-        $(By.id("com.abmcloud:id/text_input_end_icon")).click();
+        $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[3]")).click();
     }
 
     public void setContainerInput(String container) {
@@ -79,8 +89,24 @@ public class ReceptionCardPage {
         $(By.id("com.abmcloud:id/textBoxSeriesPL")).sendKeys(name);
     }
 
+    public void selectSeries(String series) {
+        $$(By.id("com.abmcloud:id/textViewSeries")).find(exactText(series)).click();
+    }
+
     public SelenideElement getExpirationDateInput() {
         return $(By.id("com.abmcloud:id/textBoxShelfLifeLP"));
+    }
+
+    public void selectExpirationDate(String date) {
+        $$(By.id("com.abmcloud:id/textViewShelfLife")).find(exactText(date)).click();
+    }
+
+    public void setExpirationDate(String date) {
+        AndroidDriver driver = (AndroidDriver) getExpirationDateInput().getWrappedDriver();
+        getExpirationDateInput().click();
+        getExpirationDateInput().val(date);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+
     }
 
     public SelenideElement getSerialNumberInput() {
@@ -135,5 +161,14 @@ public class ReceptionCardPage {
 
     public void clickCommitSerialNumberButton() {
         getCommitSerialNumberButton().click();
+    }
+
+    public void checkAmountAndPackaging(String amount, String packaging) {
+        $(By.id("android:id/text1")).shouldHave(exactText(amount));
+        $(By.id("com.abmcloud:id/labelHintControl")).shouldHave(exactText(packaging));
+    }
+
+    public SelenideElement getControlItemIcon() {
+        return $(By.id("com.abmcloud:id/buttonControlItemChoice"));
     }
 }
