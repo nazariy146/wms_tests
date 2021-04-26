@@ -171,4 +171,106 @@ public class ReceptionCardPage {
     public SelenideElement getControlItemIcon() {
         return $(By.id("com.abmcloud:id/buttonControlItemChoice"));
     }
+
+    public SelenideElement getPalletWeight() {
+        return $(By.id("com.abmcloud:id/editTextPalletWeight"));
+    }
+
+    public void setPalletWeight(String PalletWeight) {
+        AndroidDriver driver = (AndroidDriver) getPalletWeight().getWrappedDriver();
+        getPalletWeight().click();
+        getPalletWeight().val(PalletWeight);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public SelenideElement getTareQty() {
+        return $(By.id("com.abmcloud:id/editTextTareQty"));
+    }
+
+    public void setTareQty(String TareQty) {
+        AndroidDriver driver = (AndroidDriver) getTareQty().getWrappedDriver();
+        getTareQty().val(TareQty);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public SelenideElement getTareWeight() {
+        return $(By.id("com.abmcloud:id/editTextTareWeight"));
+    }
+
+    public void setTareWeight(String TareWeight) {
+        AndroidDriver driver = (AndroidDriver) getTareWeight().getWrappedDriver();
+        getTareWeight().val(TareWeight);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public SelenideElement getParametersHeight() {
+        //return $(By.id("com.abmcloud:id/et_ware_parameters_height"));
+        return $(By.id("com.abmcloud:id/textBoxHeightWP"));
+    }
+
+    public void setParametersHeight(String parametersHeight) {
+        AndroidDriver driver = (AndroidDriver) getParametersHeight().getWrappedDriver();
+        getParametersHeight().click();
+        getParametersHeight().val(parametersHeight);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public SelenideElement getParametersWidth() {
+        //return $(By.id("com.abmcloud:id/et_ware_parameters_width"));
+        return $(By.id("com.abmcloud:id/textBoxWidthWP"));
+    }
+
+    public void setParametersWidth(String parametersWidth) {
+        AndroidDriver driver = (AndroidDriver) getParametersWidth().getWrappedDriver();
+        getParametersWidth().click();
+        getParametersWidth().val(parametersWidth);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public SelenideElement getParametersLength() {
+        //return $(By.id("com.abmcloud:id/et_ware_parameters_length"));
+        return $(By.id("com.abmcloud:id/textBoxLengthWP"));
+    }
+
+    public void setParametersLength(String parametersLength) {
+        AndroidDriver driver = (AndroidDriver) getParametersLength().getWrappedDriver();
+        getParametersLength().click();
+        getParametersLength().val(parametersLength);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public SelenideElement getParametersCapacity() {
+        return $(By.id("com.abmcloud:id/et_ware_parameters_capacity"));
+    }
+
+    public void setParametersCapacity(String parametersCapacity) {
+        AndroidDriver driver = (AndroidDriver) getParametersCapacity().getWrappedDriver();
+        getParametersCapacity().click();
+        getParametersCapacity().val(parametersCapacity);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public SelenideElement getParametersWeight() {
+        //return $(By.id("com.abmcloud:id/et_ware_parameters_weight"));
+        return $(By.id("com.abmcloud:id/textBoxWeightWP"));
+    }
+
+    public void setParametersWeight(String parametersWeight) {
+        AndroidDriver driver = (AndroidDriver) getParametersWeight().getWrappedDriver();
+        getParametersWeight().click();
+        getParametersWeight().val(parametersWeight);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public SelenideElement getParametersStoragePeriod() {
+        //return $(By.id("com.abmcloud:id/et_ware_parameters_storage_period"));
+        return $(By.id("com.abmcloud:id/textBoxStoragePeriod"));
+    }
+
+    public void setParametersStoragePeriod(String parametersStoragePeriod) {
+        AndroidDriver driver = (AndroidDriver) getParametersStoragePeriod().getWrappedDriver();
+        getParametersStoragePeriod().click();
+        getParametersStoragePeriod().val(parametersStoragePeriod);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
 }

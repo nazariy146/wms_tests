@@ -36,6 +36,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
         allTasksPage.checkWorkType("Reception");
         allTasksPage.getWorkTypeTasksQuantity().shouldHave(text("10")); // by default 10
+        //allTasksPage.getWorkTypeTasksQuantity().shouldHave(text("1")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00021 Стол21 IN.01 Quantity 10 уп. (5)"));
@@ -197,6 +198,70 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.clickCommitButton();
 
+        receptionCardPage.setSourceInput("IN.01");
+        receptionCardPage.setProductInput("00025");
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00025 Стол25 IN.01 Quantity 10 шт"));
+        receptionCardPage.setContainerInput("IN1");
+        receptionCardPage.setPalletWeight("2");
+        receptionCardPage.setTareQty("5");
+        receptionCardPage.setTareWeight("0.2");
+        receptionCardPage.setQuantityInput("2");
+        receptionCardPage.clickCommitButton();
+        getMessageModalDialog().shouldBe(visible).shouldHave(text("The total weight, taking into account the weight of the pallet and the tare weight, cannot be equal to zero."));
+        clickErrorDialogOkButton();
+        receptionCardPage.setQuantityInput("13");
+        receptionCardPage.clickCommitButton();
+
+        receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00026 Стол26 IN.01 Quantity 10 шт"));
+        receptionCardPage.setProductInput("00026");
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series"));
+        receptionCardPage.createNewSeries("26series01");
+        clickSetOkYesButton();
+        receptionCardPage.setContainerInput("IN1");
+        receptionCardPage.setPalletWeight("2");
+        receptionCardPage.setTareQty("5");
+        receptionCardPage.setTareWeight("0.2");
+        receptionCardPage.setQuantityInput("13");
+        receptionCardPage.clickCommitButton();
+
+        receptionCardPage.setSourceInput("IN.01");
+        receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00027 Стол27 IN.01 Quantity 10 шт"));
+        receptionCardPage.setProductInput("00027");
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Shelf life"));
+        receptionCardPage.getExpirationDateInput().sendKeys("31.12.2021");
+        clickSetOkYesButton();
+        receptionCardPage.setContainerInput("IN1");
+        receptionCardPage.setPalletWeight("2");
+        receptionCardPage.setTareQty("5");
+        receptionCardPage.setTareWeight("0.2");
+        receptionCardPage.setQuantityInput("13");
+        receptionCardPage.clickCommitButton();
+
+        receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00028 Стол28 IN.01 Quantity 10 шт"));
+        receptionCardPage.setProductInput("00028");
+        receptionCardPage.setContainerInput("IN1");
+        receptionCardPage.setQuantityInput("10");
+        receptionCardPage.clickCommitButton();
+
+        receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00029 Стол29 IN.01 Quantity 10 шт"));
+        receptionCardPage.setProductInput("00029");
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series"));
+        receptionCardPage.createNewSeries("29Series01");
+        clickSetOkYesButton();
+        receptionCardPage.setContainerInput("IN1");
+        receptionCardPage.setQuantityInput("10");
+        receptionCardPage.clickCommitButton();
+
+        receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00030 Стол30 IN.01 Quantity 10 шт"));
+        receptionCardPage.setSourceInput("IN.01");
+        receptionCardPage.setProductInput("00030");
+        receptionCardPage.setParametersHeight("0.1");
+        receptionCardPage.setParametersWidth("0.1");
+        receptionCardPage.setParametersLength("0.2");
+        receptionCardPage.setParametersWeight("0.4");
+        clickSetOkYesButton();
+        receptionCardPage.setContainerInput("IN1");
+        receptionCardPage.setQuantityInput("10");
+        receptionCardPage.clickCommitButton();
     }
 }
