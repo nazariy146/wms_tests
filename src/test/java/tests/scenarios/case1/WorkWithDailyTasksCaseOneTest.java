@@ -107,7 +107,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        hideKeyboard(receptionCardPage.getControlItemIcon());
+        hideKeyboard();
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0006 00006 series6 Стол6 IN.01 Quantity 10 шт"));
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
@@ -127,7 +127,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        hideKeyboard(receptionCardPage.getControlItemIcon());
+        hideKeyboard();
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0007 00007 31.12.2021 Стол7 IN.01 Quantity 10 шт"));
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
@@ -148,7 +148,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        hideKeyboard(receptionCardPage.getControlItemIcon());
+        hideKeyboard();
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0008 00008 series8 31.12.2021 Стол8 IN.01 Quantity 10 шт"));
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
@@ -165,7 +165,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.checkSerialNumberQtyFactInEveryRow("1", 10);
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        hideKeyboard(receptionCardPage.getControlItemIcon());
+        hideKeyboard();
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0009 00009 Стол9 IN.01 Quantity 10 шт"));
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));

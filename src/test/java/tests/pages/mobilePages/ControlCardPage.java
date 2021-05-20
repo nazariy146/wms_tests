@@ -193,7 +193,7 @@ public class ControlCardPage {
     }
 
     public void checkAllProductsInfoAndQty(int row, String qty, String productInfo) {
-        Actions.hideKeyboard(getScrollableTable());
+        Actions.hideKeyboard();
         if(!getQty(row).isDisplayed()) {
             scrollElement(getScrollableTable());
         }

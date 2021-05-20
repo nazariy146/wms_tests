@@ -6,6 +6,7 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class AccommodationCardPage {
@@ -65,4 +66,18 @@ public class AccommodationCardPage {
     public void clickCommitButton() {
         getCommitButton().click();
     }
+
+    public void clearQuantityInput() {
+        $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[4]")).click();
+    }
+
+    public SelenideElement getControlItemIcon() {
+        return $(By.id("com.abmcloud:id/action_more_menu"));
+    }
+
+    public void checkAmountAndPackaging(String amount, String packaging) {
+        $(By.id("android:id/text1")).shouldHave(exactText(amount));
+        $(By.id("com.abmcloud:id/textViewLabelHint")).shouldHave(exactText(packaging));
+    }
+
 }

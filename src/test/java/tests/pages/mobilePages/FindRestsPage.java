@@ -74,4 +74,51 @@ public class FindRestsPage {
     public SelenideElement getProductQuantity() {
         return $(By.id("com.abmcloud:id/textViewRecord_count"));
     }
+
+    public SelenideElement getLocationString1() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ListView/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.TextView"));
+    }
+
+    public void checkLocationString1(String expectedLocation1) {
+        String actualLocation1 = getLocationString1().getText();
+        Assert.assertEquals(actualLocation1, expectedLocation1, "Actual shelf life does not match expected shelf life");
+    }
+
+    public SelenideElement getPartyInfoString1() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ListView/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.TextView"));
+    }
+
+    public void checkPartyInfoString1(String partyInfoString1) {
+        String actualPartyInfoString1 = getPartyInfoString1().getText();
+        Assert.assertEquals(actualPartyInfoString1, partyInfoString1, "Actual shelf life does not match expected shelf life");
+    }
+
+    public SelenideElement getQuantityString1() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ListView/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"));
+    }
+
+    public SelenideElement getLocationString2() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.TextView"));
+    }
+
+    public void checkLocationString2(String expectedLocation2) {
+        String actualLocation2 = getLocationString2().getText();
+        Assert.assertEquals(actualLocation2, expectedLocation2, "Actual shelf life does not match expected shelf life");
+    }
+
+    public SelenideElement getPartyInfoString2() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.TextView"));
+    }
+
+    public void checkPartyInfoString2(String partyInfoString1) {
+        String partyInfoString2 = getPartyInfoString2().getText();
+        Assert.assertEquals(partyInfoString2, partyInfoString1, "Actual shelf life does not match expected shelf life");
+    }
+
+    public SelenideElement getQuantityString2() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.TextView"));
+    }
+
 }
+
+

@@ -5,7 +5,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.WaitOptions;
+import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Selenide.$;
 import static io.appium.java_client.touch.offset.PointOption.point;
 import static java.time.Duration.ofMillis;
 
@@ -33,8 +35,8 @@ public class Actions {
                 .release().perform();
     }
 
-    public static void hideKeyboard(SelenideElement element) {
-        AppiumDriver driver = (AppiumDriver) element.getWrappedDriver();
+    public static void hideKeyboard() {
+        AppiumDriver driver = (AppiumDriver) $(By.id("com.abmcloud:id/action_more_menu")).getWrappedDriver();
         driver.hideKeyboard();
     }
 }

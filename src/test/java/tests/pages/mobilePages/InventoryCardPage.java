@@ -85,4 +85,58 @@ public class InventoryCardPage {
     public void clickInventoryButton() {
         $(By.id("com.abmcloud:id/buttonCommitInv")).click();
     }
+
+    public SelenideElement getAvailableExpirationDate1() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView[2]"));
+    }
+
+    public SelenideElement getAvailableExpirationDate2() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.TextView[2]"));
+    }
+
+    public SelenideElement getAvailableSeries1() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView[1]"));
+    }
+
+    public SelenideElement getAvailableSeries2() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.TextView[1]"));
+    }
+
+
+    private SelenideElement getPalletWeight() {
+        return $(By.id("com.abmcloud:id/editTextPalletWeight"));
+    }
+    public void setPalletWeight(String container) {
+        AndroidDriver driver = (AndroidDriver) getPalletWeight().getWrappedDriver();
+        getPalletWeight().click();
+        getPalletWeight().val(container);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+    private SelenideElement getTareQty() {
+        return $(By.id("com.abmcloud:id/editTextTareQty"));
+    }
+    public void setTareQty(String container) {
+        AndroidDriver driver = (AndroidDriver) getTareQty().getWrappedDriver();
+        getTareQty().click();
+        getTareQty().val(container);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+    private SelenideElement getTareWeight() {
+        return $(By.id("com.abmcloud:id/editTextTareWeight"));
+    }
+    public void setTareWeight(String container) {
+        AndroidDriver driver = (AndroidDriver) getTareWeight().getWrappedDriver();
+        getTareWeight().click();
+        getTareWeight().val(container);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    //////////////////////////////////////
+    public SelenideElement getProductUnit() {
+        return $(By.id("com.abmcloud:id/labelHintInv"));
+    }
+
+    public SelenideElement getProductQuantity() {
+        return $(By.id("com.abmcloud:id/textBoxQtyInv"));
+    }
 }
