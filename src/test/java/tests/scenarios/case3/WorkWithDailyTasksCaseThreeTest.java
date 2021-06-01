@@ -294,7 +294,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         accommodationCardPage.setDestinationInput("A.1.1.1.1");//negative test
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Location was changed. Continue?"));
         clickErrorDialogOkButton();
-        accommodationCardPage.setDestinationInput("B.1.1.1.1");//negative test
+        accommodationCardPage.setDestinationInput("B.1.1.1.1");//positive test
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Location was changed. Continue?"));
         clickSetOkYesButton();
         accommodationCardPage.checkAmountAndPackaging("5.0", "2");

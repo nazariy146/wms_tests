@@ -318,7 +318,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         inventoryCardPage.getAvailableSeries().shouldHave(text("12Series01"));
         inventoryCardPage.getAvailableSeries().click();
         clickSetOkYesButton();
-        inventoryCardPage.getProductInfo().shouldHave(exactText("00012 000012 12Series01 Сто1л2"));
+        inventoryCardPage.getProductInfo().shouldHave(exactText("00012 000012 12Series01 Стол12"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
         //inventoryPage.getItemViewInfo().shouldHave(text("00012 12Series01 Стол12)); //TODO BUG
@@ -538,9 +538,9 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         findRestsPage.getProductQuantity().shouldHave(exactText("10"));
 
         findRestsPage.setBarcodeInput("20fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00020 000020 Стол10"));
+        findRestsPage.getProductDescription().shouldHave(text("00020 000020 Стол20"));
         findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.10");
+        findRestsPage.checkProductLocationInfo("A.1.1.1.20");
         findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
         findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
         findRestsPage.getProductQuantity().shouldHave(exactText("10"));
@@ -671,7 +671,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
 
         allTasksPage.checkWorkType("Контейнер");
         allTasksPage.getWorkTypeTasksQuantity().click();
-
         containerCardPage.getContainerDescription().shouldHave(text("CON/OUT111 ➡ KT1.01.01.01.01"));
         containerCardPage.setContainerInput("OUT111");
         containerCardPage.setDestinationInput("KT1.01.01.01.01");
@@ -740,6 +739,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.setItemInput("11fragbc");
         controlCardPage.setQuantityInputInput("10");
+        controlCardPage.clickCommitButton();
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT112");
@@ -755,6 +755,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         clickSetOkYesButton();
         controlCardPage.getSeriesInfo().shouldBe(visible).shouldHave(text("12Series01"));
         controlCardPage.setQuantityInputInput("10");
+        controlCardPage.clickCommitButton();
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT113");
@@ -764,6 +765,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.setItemInput("13fragbc");
         controlCardPage.setQuantityInputInput("10");
+        controlCardPage.clickCommitButton();
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT114");
@@ -779,6 +781,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickCommitButton();
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT115");
@@ -797,6 +800,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.getSeriesBox().shouldHave(text("15series01"));
         clickSetOkYesButton();
         controlCardPage.setQuantityInputInput("10");
+        controlCardPage.clickCommitButton();
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT116");
@@ -818,6 +822,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickCommitButton();
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT117");
@@ -834,6 +839,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickCommitButton();
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT118");
@@ -858,6 +864,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickCommitButton();
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT119");
@@ -872,6 +879,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.checkSerialNumberQtyFactInEveryRow("1", 10);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickCommitButton();
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT120");
@@ -881,8 +889,9 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.setItemInput("20fragbc");
         controlCardPage.setQuantityInputInput("10");
+        controlCardPage.clickCommitButton();
 
-        controlCardPage.setCellInput("KT1.01.01.01.01");
+       /* controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setOnOrOffFreeWCSwitcher(true);
         controlCardPage.checkAllProductsInfoAndQty(1, "10", "00011 Стол11");
         controlCardPage.checkAllProductsInfoAndQty(2, "10", "00012 Стол12");
@@ -894,7 +903,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.checkAllProductsInfoAndQty(8, "10", "00018 Стол18");
         controlCardPage.checkAllProductsInfoAndQty(9, "10", "00019 Стол19");
         controlCardPage.checkAllProductsInfoAndQty(10, "10", "00020 Стол20");
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickCommitButton();*/
     }
 
     @Test (priority = 8, dependsOnMethods = "processingControlTaskTest")
@@ -993,7 +1002,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
 
         consolidateContainerPage.setSeveralConsolidateContainer(true);
         consolidateContainerPage.setContainerSeveralTimes("9990000000012", "9990000000029", "9990000000036", "9990000000043", "9990000000050", "9990000000067", "9990000000074", "9990000000081", "9990000000098", "9990000000104");
-        consolidateContainerPage.checkAllProductsInfoAndQty(1, "9990000000012", "Контрагент1 (count 10/countprod. 1) -->");
+/*        consolidateContainerPage.checkAllProductsInfoAndQty(1, "9990000000012", "Контрагент1 (count 10/countprod. 1) -->");
         consolidateContainerPage.checkAllProductsInfoAndQty(2, "9990000000029", "Контрагент1 (count 10/countprod. 1) -->");
         consolidateContainerPage.checkAllProductsInfoAndQty(3, "9990000000036", "Контрагент1 (count 10/countprod. 1) -->");
         consolidateContainerPage.checkAllProductsInfoAndQty(4, "9990000000043", "Контрагент1 (count 10/countprod. 1) -->");
@@ -1002,7 +1011,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         consolidateContainerPage.checkAllProductsInfoAndQty(7, "9990000000074", "Контрагент1 (count 10/countprod. 1) -->");
         consolidateContainerPage.checkAllProductsInfoAndQty(8, "9990000000081", "Контрагент1 (count 10/countprod. 1) -->");
         consolidateContainerPage.checkAllProductsInfoAndQty(9, "9990000000098", "Контрагент1 (count 10/countprod. 1) -->");
-        consolidateContainerPage.checkAllProductsInfoAndQty(10, "9990000000104", "Контрагент1 (count 10/countprod. 1) -->");
+        consolidateContainerPage.checkAllProductsInfoAndQty(10, "9990000000104", "Контрагент1 (count 10/countprod. 1) -->");*/
         consolidateContainerPage.setCreateConsolidateContainer(true);
         consolidateContainerPage.getReceiverInput().shouldBe(disabled);
         consolidateContainerPage.clickConsolidateButton();
