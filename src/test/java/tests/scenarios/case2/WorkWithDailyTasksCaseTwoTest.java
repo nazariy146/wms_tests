@@ -298,10 +298,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         steps.loginAsAdmin();
 
         //allTasksPage.checkWorkTypesQty(2);
-        //dell
-
         allTasksPage.clickInventoryTypeTaskQuantity();
-
 
         inventoryCardPage.setCellInput("A.1.1.1.11");
         inventoryCardPage.setProductInput("11fragbc");
