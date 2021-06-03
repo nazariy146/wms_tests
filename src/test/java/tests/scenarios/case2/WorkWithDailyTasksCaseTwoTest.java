@@ -302,6 +302,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
 
         allTasksPage.clickInventoryTypeTaskQuantity();
 
+
         inventoryCardPage.setCellInput("A.1.1.1.11");
         inventoryCardPage.setProductInput("11fragbc");
         inventoryCardPage.getProductInfo().shouldHave(exactText("00011 000011 Стол11"));
