@@ -161,6 +161,75 @@ public class ControlCardPage {
         getCommitSerialNumberButton().click();
     }
 
+
+
+
+
+
+
+    public SelenideElement getProductInfo1() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[1]"));
+    }
+    public void getProductInfo1(String expectedProductInfo1) {
+        String actualProductInfo1 = getProductInfo1().getText();
+        Assert.assertEquals(actualProductInfo1, expectedProductInfo1, "Actual shelf life does not match expected shelf life");
+    }
+
+    public SelenideElement getShelfLifeInfo1() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.LinearLayout[1]/android.widget.TextView"));
+    }
+    public void getShelfLifeInfo1(String expectedShelfLifeInfo1) {
+        String actualShelfLifeInfo1 = getShelfLifeInfo1().getText();
+        Assert.assertEquals(actualShelfLifeInfo1, expectedShelfLifeInfo1, "Actual shelf life does not match expected shelf life");
+    }
+
+    public SelenideElement getContainerInfo1() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView"));
+    }
+    public void getContainerInfo1(String expectedContainerInfo1) {
+        String actualContainerInfo1 = getContainerInfo1().getText();
+        Assert.assertEquals(actualContainerInfo1, expectedContainerInfo1, "Actual shelf life does not match expected shelf life");
+    }
+
+    public SelenideElement getControlledQty1() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[4]"));
+    }
+    public void getControlledQty1(String expectedControlledQty1) {
+        String actualControlledQty1 = getControlledQty1().getText();
+        Assert.assertEquals(actualControlledQty1, expectedControlledQty1, "Actual shelf life does not match expected shelf life");
+    }
+
+    public SelenideElement getQty1() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[5]"));
+    }
+    public void getQty1(String expectedQty1) {
+        String actualQty1 = getQty1().getText();
+        Assert.assertEquals(actualQty1, expectedQty1, "Actual shelf life does not match expected shelf life");
+    }
+
+
+
+
+
+
+    public SelenideElement getSeriesInfo1() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.LinearLayout[1]/android.widget.TextView"));
+    }
+    public void getSeriesInfo1(String expectedSeriesInfo1) {
+        String actualSeriesInfo1 = getSeriesInfo1().getText();
+        Assert.assertEquals(actualSeriesInfo1, expectedSeriesInfo1, "Actual shelf life does not match expected shelf life");
+    }
+
+    public SelenideElement getAvailableSeries1() {
+        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.TextView[1]"));
+    }
+
+
+
+
+
+
+
     private SelenideElement getCommitButton() {
         return $(By.id("com.abmcloud:id/buttonCommitControlContainer"));
     }

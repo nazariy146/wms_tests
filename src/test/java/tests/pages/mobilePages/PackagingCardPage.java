@@ -60,7 +60,7 @@ public class PackagingCardPage {
         if(!getProductContainerInfo(row).isDisplayed()) {
             scrollElement(getScrollableTable());
         }
-        if (row > 6) {
+        if (row > 10) {
             getProductContainerInfo(row-4).shouldHave(text(container));
             getProductQtyInfo(row-4).shouldHave(text(qty));
             getProductCapacityInfo(row-4).shouldHave(text(capacity));
