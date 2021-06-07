@@ -128,14 +128,6 @@ public class SelectionCardPage {
         getCommitSerialNumberButton().click();
     }
 
-
-
-
-
-
-
-
-
     public SelenideElement getTareQty() {
         return $(By.id("com.abmcloud:id/editTextTareQty"));
     }
