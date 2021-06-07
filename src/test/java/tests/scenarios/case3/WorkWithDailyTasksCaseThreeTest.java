@@ -34,8 +34,8 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
      * If test fails - next one will be skipped according to TestNG dependsOnMethods
      */
 
-    @Test (priority = 1)
-    public void processingNegativeReceptionTaskTest() throws Exception {
+    @Test
+    public void processingReceptionTaskTest() throws Exception {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Reception");
@@ -260,8 +260,8 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.clickCommitButton();
     }
 
-    @Test (priority = 2)//, dependsOnMethods = "processingNegativeReceptionTaskTest")
-    public void processingAccommodationTaskTest() throws Exception{
+    @Test (priority = 1, dependsOnMethods = "processingReceptionTaskTest")
+    public void processingAccommodationTaskTest() throws Exception {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Accommodation");
@@ -390,7 +390,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         accommodationCardPage.clickCommitButton();
     }
 
-    @Test (priority = 3)//, dependsOnMethods = "processingAccommodationTaskTest")
+    @Test (priority = 2, dependsOnMethods = "processingAccommodationTaskTest")
     public void checkingFreeAmountTest() {
         steps.loginAsAdmin();
 
@@ -481,14 +481,9 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         findRestsPage.getProductQuantity().shouldHave(exactText("10"));
     }
 
-    @Test (priority = 4)
+    @Test (priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
-
-        //allTasksPage.checkWorkType("Inventory");
-
-        //allTasksPage.getWorkTypeTasksQuantity();//.shouldHave(text("5")); // by default 10
-       // allTasksPage.getWorkTypeTasksQuantity().click();
 
         allTasksPage.clickInventoryTypeTaskQuantity();
 
@@ -678,8 +673,8 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
     }
 
-    @Test (priority = 5, dependsOnMethods = "processingInventoryTaskTest")
-    public void checkingFreeAmountTest2() {
+    @Test (priority = 4, dependsOnMethods = "processingInventoryTaskTest")
+    public void checkingFreeAmountAfterProcessingInventoryTest() throws Exception {
         steps.loginAsAdmin();
 
         allTasksPage.selectFindRestsMenu();
@@ -782,7 +777,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
 
 
-    @Test (priority = 6) //, dependsOnMethods = "processingAccommodationTaskTest")
+    @Test (priority = 5, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingSelectionTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -886,7 +881,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
     }
 
-    @Test (priority = 7)// dependsOnMethods = "processingSelectionTaskTest")
+    @Test (priority = 6, dependsOnMethods = "processingSelectionTaskTest")
     public void processingContainerTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -900,54 +895,45 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
         containerCardPage.getContainerDescription().shouldHave(text("CON/OUT122 ➡ KT1.01.01.01.01"));
         containerCardPage.setContainerInput("OUT122");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
         containerCardPage.clickCommitButton();
 
         containerCardPage.getContainerDescription().shouldHave(text("CON/OUT123 ➡ KT1.01.01.01.01"));
         containerCardPage.setContainerInput("OUT123");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
         containerCardPage.clickCommitButton();
 
         containerCardPage.getContainerDescription().shouldHave(text("CON/OUT124 ➡ KT1.01.01.01.01"));
         containerCardPage.setContainerInput("OUT124");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
         containerCardPage.clickCommitButton();
 
         containerCardPage.getContainerDescription().shouldHave(text("CON/OUT125 ➡ KT1.01.01.01.01"));
         containerCardPage.setContainerInput("OUT125");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
         containerCardPage.clickCommitButton();
 
         containerCardPage.getContainerDescription().shouldHave(text("CON/OUT126 ➡ KT1.01.01.01.01"));
         containerCardPage.setContainerInput("OUT126");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
         containerCardPage.clickCommitButton();
 
         containerCardPage.getContainerDescription().shouldHave(text("CON/OUT127 ➡ KT1.01.01.01.01"));
         containerCardPage.setContainerInput("OUT127");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
         containerCardPage.clickCommitButton();
 
         containerCardPage.getContainerDescription().shouldHave(text("CON/OUT128 ➡ KT1.01.01.01.01"));
         containerCardPage.setContainerInput("OUT128");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
         containerCardPage.clickCommitButton();
 
         containerCardPage.getContainerDescription().shouldHave(text("CON/OUT129 ➡ KT1.01.01.01.01"));
         containerCardPage.setContainerInput("OUT129");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
         containerCardPage.clickCommitButton();
 
         containerCardPage.getContainerDescription().shouldHave(text("CON/OUT130 ➡ KT1.01.01.01.01"));
         containerCardPage.setContainerInput("OUT130");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
         containerCardPage.clickCommitButton();
 
 
         allTasksPage.checkWorkType("Control");
     }
 
-    @Test (priority = 8)// dependsOnMethods = "processingContainerTaskTest")
+    @Test (priority = 7, dependsOnMethods = "processingContainerTaskTest")
     public void processingControlTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -1113,7 +1099,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     }
 
 
-    @Test (priority = 9)// dependsOnMethods = "processingControlTaskTest")
+    @Test (priority = 8, dependsOnMethods = "processingControlTaskTest")
     public void processingPackagingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -1141,7 +1127,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     }
 
 
-    @Test (priority = 10)// dependsOnMethods = "processingPackagingTaskTest")
+    @Test (priority = 9, dependsOnMethods = "processingPackagingTaskTest")
     public void processingLoadingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
