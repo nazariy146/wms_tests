@@ -775,8 +775,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         findRestsPage.getProductQuantity().shouldHave(exactText("10"));
     }
 
-
-
     @Test (priority = 5, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingSelectionTaskTest() throws Exception {
         steps.loginAsAdmin();
@@ -843,11 +841,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         selectionCardPage.setQuantityInput("12");
         selectionCardPage.setTareQty("10");
         selectionCardPage.clickCommitButton();
-
-
-
-
-
 
         selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00027 31.12.2021 Стол27(0.2) B.1.1.1.7 ➡ KT1.01.01.01.01 Quantity 10 шт"));
         selectionCardPage.setSourceInput("B.1.1.1.7");
@@ -965,7 +958,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT123");
         controlCardPage.getProductInfoString1().shouldHave(text("00023 Стол23"));
-        controlCardPage.getShelfLifeInfo1().shouldHave(text("30.12.2021"));
+        controlCardPage.getShelfLifeInfoString1().shouldHave(text("30.12.2021"));
         controlCardPage.getContainerInfo1().shouldHave(text("OUT123"));
         controlCardPage.getControlledQty1().shouldHave(text("0"));
         controlCardPage.getQty1().shouldHave(text("5.5"));
@@ -976,7 +969,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT123");
         controlCardPage.getProductInfoString1().shouldHave(text("00023 Стол23"));
-        controlCardPage.getShelfLifeInfo1().shouldHave(text("31.12.2021"));
+        controlCardPage.getShelfLifeInfoString1().shouldHave(text("31.12.2021"));
         controlCardPage.getContainerInfo1().shouldHave(text("OUT123"));
         controlCardPage.getControlledQty1().shouldHave(text("0"));
         controlCardPage.getQty1().shouldHave(text("4.5"));
@@ -1016,8 +1009,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.setQuantityInputInput("8");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickCommitButton();
-
-
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT125");
@@ -1098,7 +1089,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
     }
 
-
     @Test (priority = 8, dependsOnMethods = "processingControlTaskTest")
     public void processingPackagingTaskTest() throws Exception {
         steps.loginAsAdmin();
@@ -1125,7 +1115,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         getMessageModalDialog().shouldBe(visible, Duration.ofSeconds(10)).shouldHave(text("We've created cargo bays"));
         clickErrorDialogOkButton();
     }
-
 
     @Test (priority = 9, dependsOnMethods = "processingPackagingTaskTest")
     public void processingLoadingTaskTest() throws Exception {

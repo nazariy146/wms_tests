@@ -175,12 +175,12 @@ public class ControlCardPage {
         Assert.assertEquals(actualProductInfoString1, expectedgetProductInfoString1, "Actual shelf life does not match expected shelf life");
     }
 
-    public SelenideElement getShelfLifeInfo1() {
+    public SelenideElement getShelfLifeInfoString1() {
         return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.LinearLayout[1]/android.widget.TextView"));
     }
-    public void getShelfLifeInfo1(String expectedShelfLifeInfo1) {
-        String actualShelfLifeInfo1 = getShelfLifeInfo1().getText();
-        Assert.assertEquals(actualShelfLifeInfo1, expectedShelfLifeInfo1, "Actual shelf life does not match expected shelf life");
+    public void getShelfLifeInfoString1(String expectedShelfLifeInfoString1) {
+        String actualShelfLifeInfoString1 = getShelfLifeInfoString1().getText();
+        Assert.assertEquals(actualShelfLifeInfoString1, expectedShelfLifeInfoString1, "Actual shelf life does not match expected shelf life");
     }
 
     public SelenideElement getContainerInfo1() {
