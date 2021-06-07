@@ -964,7 +964,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT123");
-        controlCardPage.getProductInfo1().shouldHave(text("00023 Стол23"));
+        controlCardPage.getProductInfoString1().shouldHave(text("00023 Стол23"));
         controlCardPage.getShelfLifeInfo1().shouldHave(text("30.12.2021"));
         controlCardPage.getContainerInfo1().shouldHave(text("OUT123"));
         controlCardPage.getControlledQty1().shouldHave(text("0"));
@@ -975,7 +975,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT123");
-        controlCardPage.getProductInfo1().shouldHave(text("00023 Стол23"));
+        controlCardPage.getProductInfoString1().shouldHave(text("00023 Стол23"));
         controlCardPage.getShelfLifeInfo1().shouldHave(text("31.12.2021"));
         controlCardPage.getContainerInfo1().shouldHave(text("OUT123"));
         controlCardPage.getControlledQty1().shouldHave(text("0"));
@@ -987,7 +987,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT124");
-        controlCardPage.getProductInfo1().shouldHave(text("00024 Стол24"));
+        controlCardPage.getProductInfoString1().shouldHave(text("00024 Стол24"));
         controlCardPage.getSeriesInfo1().shouldHave(text("24Series01"));
         controlCardPage.getContainerInfo1().shouldHave(text("OUT124"));
         controlCardPage.getControlledQty1().shouldHave(text("0"));
@@ -1002,7 +1002,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setContainerInput("OUT124");
-        controlCardPage.getProductInfo1().shouldHave(text("00024 Стол24"));
+        controlCardPage.getProductInfoString1().shouldHave(text("00024 Стол24"));
         controlCardPage.getSeriesInfo1().shouldHave(text("24Series02"));
         controlCardPage.getContainerInfo1().shouldHave(text("OUT124"));
         controlCardPage.getControlledQty1().shouldHave(text("0"));

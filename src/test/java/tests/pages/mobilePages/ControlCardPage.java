@@ -167,12 +167,12 @@ public class ControlCardPage {
 
 
 
-    public SelenideElement getProductInfo1() {
+    public SelenideElement getProductInfoString1() {
         return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[1]"));
     }
-    public void getProductInfo1(String expectedProductInfo1) {
-        String actualProductInfo1 = getProductInfo1().getText();
-        Assert.assertEquals(actualProductInfo1, expectedProductInfo1, "Actual shelf life does not match expected shelf life");
+    public void getProductInfoString1(String expectedgetProductInfoString1) {
+        String actualProductInfoString1 = getProductInfoString1().getText();
+        Assert.assertEquals(actualProductInfoString1, expectedgetProductInfoString1, "Actual shelf life does not match expected shelf life");
     }
 
     public SelenideElement getShelfLifeInfo1() {
@@ -206,11 +206,6 @@ public class ControlCardPage {
         String actualQty1 = getQty1().getText();
         Assert.assertEquals(actualQty1, expectedQty1, "Actual shelf life does not match expected shelf life");
     }
-
-
-
-
-
 
     public SelenideElement getSeriesInfo1() {
         return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.LinearLayout[1]/android.widget.TextView"));
