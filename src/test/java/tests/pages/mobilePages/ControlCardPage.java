@@ -162,14 +162,10 @@ public class ControlCardPage {
     }
 
 
-
-
-
-
-
     public SelenideElement getProductInfoString1() {
         return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[1]"));
     }
+
     public void getProductInfoString1(String expectedgetProductInfoString1) {
         String actualProductInfoString1 = getProductInfoString1().getText();
         Assert.assertEquals(actualProductInfoString1, expectedgetProductInfoString1, "Actual shelf life does not match expected shelf life");
@@ -178,52 +174,51 @@ public class ControlCardPage {
     public SelenideElement getShelfLifeInfoString1() {
         return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.LinearLayout[1]/android.widget.TextView"));
     }
+
     public void getShelfLifeInfoString1(String expectedShelfLifeInfoString1) {
         String actualShelfLifeInfoString1 = getShelfLifeInfoString1().getText();
         Assert.assertEquals(actualShelfLifeInfoString1, expectedShelfLifeInfoString1, "Actual shelf life does not match expected shelf life");
     }
 
-    public SelenideElement getContainerInfo1() {
+    public SelenideElement getContainerInfoString1() {
         return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView"));
     }
-    public void getContainerInfo1(String expectedContainerInfo1) {
-        String actualContainerInfo1 = getContainerInfo1().getText();
-        Assert.assertEquals(actualContainerInfo1, expectedContainerInfo1, "Actual shelf life does not match expected shelf life");
+
+    public void getContainerInfoString1(String expectedContainerInfoString1) {
+        String actualContainerInfoString1 = getContainerInfoString1().getText();
+        Assert.assertEquals(actualContainerInfoString1, expectedContainerInfoString1, "Actual shelf life does not match expected shelf life");
     }
 
-    public SelenideElement getControlledQty1() {
+    public SelenideElement getControlledQtyString1() {
         return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[4]"));
     }
-    public void getControlledQty1(String expectedControlledQty1) {
-        String actualControlledQty1 = getControlledQty1().getText();
-        Assert.assertEquals(actualControlledQty1, expectedControlledQty1, "Actual shelf life does not match expected shelf life");
+
+    public void getControlledQtyString1(String expectedControlledQtyString1) {
+        String actualControlledQtyString1 = getControlledQtyString1().getText();
+        Assert.assertEquals(actualControlledQtyString1, expectedControlledQtyString1, "Actual shelf life does not match expected shelf life");
     }
 
-    public SelenideElement getQty1() {
+    public SelenideElement getQtyString1() {
         return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[5]"));
     }
-    public void getQty1(String expectedQty1) {
-        String actualQty1 = getQty1().getText();
-        Assert.assertEquals(actualQty1, expectedQty1, "Actual shelf life does not match expected shelf life");
+
+    public void getQtyString1(String expectedQtyString1) {
+        String actualQtyString1 = getQtyString1().getText();
+        Assert.assertEquals(actualQtyString1, expectedQtyString1, "Actual shelf life does not match expected shelf life");
     }
 
-    public SelenideElement getSeriesInfo1() {
+    public SelenideElement getSeriesInfoString1() {
         return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.LinearLayout[1]/android.widget.TextView"));
     }
-    public void getSeriesInfo1(String expectedSeriesInfo1) {
-        String actualSeriesInfo1 = getSeriesInfo1().getText();
-        Assert.assertEquals(actualSeriesInfo1, expectedSeriesInfo1, "Actual shelf life does not match expected shelf life");
+
+    public void getSeriesInfoString1(String expectedSeriesInfoString1) {
+        String actualSeriesInfoString1 = getSeriesInfoString1().getText();
+        Assert.assertEquals(actualSeriesInfoString1, expectedSeriesInfoString1, "Actual shelf life does not match expected shelf life");
     }
 
-    public SelenideElement getAvailableSeries1() {
+    public SelenideElement getAvailableSeriesString1() {
         return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.TextView[1]"));
     }
-
-
-
-
-
-
 
     private SelenideElement getCommitButton() {
         return $(By.id("com.abmcloud:id/buttonCommitControlContainer"));
