@@ -127,4 +127,24 @@ public class SelectionCardPage {
     public void clickCommitSerialNumberButton() {
         getCommitSerialNumberButton().click();
     }
+
+    public SelenideElement getTareQty() {
+        return $(By.id("com.abmcloud:id/editTextTareQty"));
+    }
+
+    public void setTareQty(String TareQty) {
+        AndroidDriver driver = (AndroidDriver) getTareQty().getWrappedDriver();
+        getTareQty().val(TareQty);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public SelenideElement getTareWeight() {
+        return $(By.id("com.abmcloud:id/editTextTareWeight"));
+    }
+
+    public void setTareWeight(String TareWeight) {
+        AndroidDriver driver = (AndroidDriver) getTareWeight().getWrappedDriver();
+        getTareWeight().val(TareWeight);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
 }
