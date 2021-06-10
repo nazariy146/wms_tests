@@ -891,7 +891,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.setQuantityInputInput("10");
         controlCardPage.clickCommitButton();
 
-        controlCardPage.setCellInput("KT1.01.01.01.01");
+       /* controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setOnOrOffFreeWCSwitcher(true);
         controlCardPage.checkAllProductsInfoAndQty(1, "10", "00011 Стол11");
         controlCardPage.checkAllProductsInfoAndQty(2, "10", "00012 Стол12");
@@ -903,7 +903,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.checkAllProductsInfoAndQty(8, "10", "00018 Стол18");
         controlCardPage.checkAllProductsInfoAndQty(9, "10", "00019 Стол19");
         controlCardPage.checkAllProductsInfoAndQty(10, "10", "00020 Стол20");
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickCommitButton();*/
     }
 
     @Test (priority = 8, dependsOnMethods = "processingControlTaskTest")
@@ -1002,7 +1002,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
 
         consolidateContainerPage.setSeveralConsolidateContainer(true);
         consolidateContainerPage.setContainerSeveralTimes("9990000000012", "9990000000029", "9990000000036", "9990000000043", "9990000000050", "9990000000067", "9990000000074", "9990000000081", "9990000000098", "9990000000104");
-        consolidateContainerPage.checkAllProductsInfoAndQty(1, "9990000000012", "Контрагент1 (count 10/countprod. 1) -->");
+/*        consolidateContainerPage.checkAllProductsInfoAndQty(1, "9990000000012", "Контрагент1 (count 10/countprod. 1) -->");
         consolidateContainerPage.checkAllProductsInfoAndQty(2, "9990000000029", "Контрагент1 (count 10/countprod. 1) -->");
         consolidateContainerPage.checkAllProductsInfoAndQty(3, "9990000000036", "Контрагент1 (count 10/countprod. 1) -->");
         consolidateContainerPage.checkAllProductsInfoAndQty(4, "9990000000043", "Контрагент1 (count 10/countprod. 1) -->");
@@ -1011,7 +1011,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         consolidateContainerPage.checkAllProductsInfoAndQty(7, "9990000000074", "Контрагент1 (count 10/countprod. 1) -->");
         consolidateContainerPage.checkAllProductsInfoAndQty(8, "9990000000081", "Контрагент1 (count 10/countprod. 1) -->");
         consolidateContainerPage.checkAllProductsInfoAndQty(9, "9990000000098", "Контрагент1 (count 10/countprod. 1) -->");
-        consolidateContainerPage.checkAllProductsInfoAndQty(10, "9990000000104", "Контрагент1 (count 10/countprod. 1) -->");
+        consolidateContainerPage.checkAllProductsInfoAndQty(10, "9990000000104", "Контрагент1 (count 10/countprod. 1) -->");*/
         consolidateContainerPage.setCreateConsolidateContainer(true);
         consolidateContainerPage.getReceiverInput().shouldBe(disabled);
         consolidateContainerPage.clickConsolidateButton();
@@ -1032,6 +1032,4 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         loadingCardPage.checkLoadingInfo("0", "Контрагент1", "1", "0");
         loadingCardPage.clickCommitButton();
     }
-
-
 }

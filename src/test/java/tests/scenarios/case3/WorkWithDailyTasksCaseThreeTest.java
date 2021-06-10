@@ -5,8 +5,6 @@ import tests.BaseMobileClass;
 import tests.pages.mobilePages.*;
 import tests.steps.Steps;
 
-import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.*;
 import static tests.utils.Actions.hideKeyboard;
 import static tests.utils.Actions.scrollElement;
@@ -35,7 +33,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
      */
 
     @Test
-    public void processingReceptionTaskTest() throws Exception {
+    public void processingNegativeReceptionTaskTest() throws Exception {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Reception");
@@ -260,8 +258,8 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.clickCommitButton();
     }
 
-    @Test (priority = 1, dependsOnMethods = "processingReceptionTaskTest")
-    public void processingAccommodationTaskTest() throws Exception {
+    @Test (priority = 1, dependsOnMethods = "processingNegativeReceptionTaskTest")
+    public void processingAccommodationTaskTest() throws Exception{
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Accommodation");
@@ -950,7 +948,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getContainerInfo().shouldHave(text("OUT122"));
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("00022");
+        controlCardPage.setItemInput("2110022100000");
         controlCardPage.setQuantityInputInput("10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickCommitButton();
@@ -962,7 +960,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getContainerInfoString1().shouldHave(text("OUT123"));
         controlCardPage.getControlledQtyString1().shouldHave(text("0"));
         controlCardPage.getQtyString1().shouldHave(text("5.5"));
-        controlCardPage.setItemInput("00023");
+        controlCardPage.setItemInput("2110023055000");
         controlCardPage.setQuantityInputInput("5.5");
 
 
@@ -973,7 +971,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getContainerInfoString1().shouldHave(text("OUT123"));
         controlCardPage.getControlledQtyString1().shouldHave(text("0"));
         controlCardPage.getQtyString1().shouldHave(text("4.5"));
-        controlCardPage.setItemInput("00023");
+        controlCardPage.setItemInput("2110023045000");
         controlCardPage.setQuantityInputInput("4.5");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickCommitButton();
@@ -985,7 +983,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getContainerInfoString1().shouldHave(text("OUT124"));
         controlCardPage.getControlledQtyString1().shouldHave(text("0"));
         controlCardPage.getQtyString1().shouldHave(text("2"));
-        controlCardPage.setItemInput("00024");
+        controlCardPage.setItemInput("2110024020000");
         getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         controlCardPage.getAvailableSeries().shouldHave(text("24Series01"));
         controlCardPage.getAvailableSeries().click();
@@ -1000,7 +998,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getContainerInfoString1().shouldHave(text("OUT124"));
         controlCardPage.getControlledQtyString1().shouldHave(text("0"));
         controlCardPage.getQtyString1().shouldHave(text("8"));
-        controlCardPage.setItemInput("00024");
+        controlCardPage.setItemInput("2110024080000");
         getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         controlCardPage.getAvailableSeriesString1().shouldHave(text("24Series02"));
         controlCardPage.getAvailableSeriesString1().click();
@@ -1112,7 +1110,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         packagingCardPage.clickCreateCargoButton();
         getMessageModalDialog().shouldHave(text("Cargos will be created. Continue?"));
         clickSetOkYesButton();
-        getMessageModalDialog().shouldBe(visible, Duration.ofSeconds(10)).shouldHave(text("We've created cargo bays"));
+        //getMessageModalDialog().shouldBe(visible, Duration.ofSeconds(10)).shouldHave(text("We've created cargo bays"));
         clickErrorDialogOkButton();
     }
 

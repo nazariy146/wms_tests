@@ -8,14 +8,18 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import tests.pages.mobilePages.LoginPage;
 import tests.pages.mobilePages.SettingsPage;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_ACTIVITY;
 import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_PACKAGE;
@@ -27,7 +31,7 @@ public class BaseMobileClass implements WebDriverProvider {
     SettingsPage settingsPage = new SettingsPage();
 
     public WebDriver createDriver(DesiredCapabilities capabilities) {
-        capabilities.setCapability(MobileCapabilityType.VERSION, "11.0");
+        capabilities.setCapability(MobileCapabilityType.VERSION, "10.0");
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Appium");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
@@ -69,5 +73,35 @@ public class BaseMobileClass implements WebDriverProvider {
         settingsPage.getConnectionStringInput().sendKeys("http://dmz.abmretail.com:8080/wms_regress_eleo/hs/TSDExchange");
         settingsPage.getLicenseInput().sendKeys("9999900014");
         settingsPage.getSaveButton().click();
+    }
+
+    @BeforeClass
+    private void bdUpdateMethod() {
+        open("http://dmz.abmretail.com:8080/wms_qa_regress");
+
+        $("#userName").shouldBe(visible, Duration.ofSeconds(10));
+        $("#userName").val("Администратор");
+        $("#userPassword").val("Password1");
+        $("#okButton").click();
+
+        $("#captionbarMore").shouldBe(visible, Duration.ofSeconds(10));
+        $("#captionbarMore").click();
+        $("#fileSubMenu").hover();
+        $("#fileOpen").click();
+
+        File file = new File("src/OpenAndSending.epf");
+        $("#fileSelectButton").uploadFile(file);
+        $("#fileSelectDialogOk").click();
+
+        $x("//a//span[text()='Clear base']").click();
+        $("#msg0").shouldHave(text("База очищена!"));
+        $x("//a//span[text()='Sending test1']").click();
+        $("#msg1").shouldHave(text("Код статуса: 200 - Запрос отправлен!"), Duration.ofSeconds(10));
+        $("#msg2").shouldHave(text("Тело POST, OK, Документ записан (номер WMS - 1)"));
+        $("#msg3").shouldHave(text("Документ приход отправлен!"));
+
+        $("#LogoutButton").click();
+        $("#LogoutCloseButton").click();
+        System.out.println("log out complete");
     }
 }
