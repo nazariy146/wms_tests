@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.ByText;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class WarehouseOperatorPage {
@@ -34,7 +34,7 @@ public class WarehouseOperatorPage {
 
     public void selectDocumentType(String docType) {
         $("#form2_ВидДокументаДвижения_CB").click();
-        $("#editDropDown").find(new ByText(docType)).click();
+        $("#editDropDown").find(byText(docType)).click();
     }
 
     public void clickSaveIcon() {
@@ -57,7 +57,7 @@ public class WarehouseOperatorPage {
 
     public void setGateValue(String gate) {
         $("#form2_Ворота_CB").click();
-        $("#editDropDown").find(new ByText(gate)).click();
+        $("#editDropDown").find(byText(gate)).click();
     }
 
     public void setContractorValue(String contractor) {
