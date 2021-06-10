@@ -22,4 +22,8 @@ public class ModalDialogs {
     public static void clickErrorDialogOkButton() {
         $(By.id("android:id/button2")).click();
     }
+
+    public static SelenideElement getControlMessageModalDialog() {
+        return $(By.id("com.abmcloud:id/alertTitle"));
+    }
 }
