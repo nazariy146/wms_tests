@@ -37,7 +37,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Reception");
-        allTasksPage.getWorkTypeTasksQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
         //Стол21
@@ -108,7 +107,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
         receptionCardPage.setProductInput("2110022090000");
         receptionCardPage.clickCommitButton();
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Can not handle19. Remaining 10(excluding factor. admission = 1,5)"));
+        getMessageModalDialog().shouldBe(visible).shouldHave(text("Can not handle19. Remaining 10"));
         clickErrorDialogOkButton();
 
         receptionCardPage.clearSourceInput();
@@ -238,6 +237,11 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00029 Стол29 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("00029");
+        receptionCardPage.setParametersHeight("0.1");
+        receptionCardPage.setParametersWidth("1");
+        receptionCardPage.setParametersLength("0.1");
+        receptionCardPage.setParametersWeight("1");
+        clickSetOkYesButton();
         getAlertModalDialog().shouldBe(visible).shouldHave(text("Series"));
         receptionCardPage.createNewSeries("29Series01");
         clickSetOkYesButton();
@@ -249,9 +253,9 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.setSourceInput("IN.01");
         receptionCardPage.setProductInput("00030");
         receptionCardPage.setParametersHeight("0.1");
-        receptionCardPage.setParametersWidth("0.1");
-        receptionCardPage.setParametersLength("0.2");
-        receptionCardPage.setParametersWeight("0.4");
+        receptionCardPage.setParametersWidth("1");
+        receptionCardPage.setParametersLength("0.1");
+        receptionCardPage.setParametersWeight("1");
         clickSetOkYesButton();
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.setQuantityInput("10");
@@ -778,8 +782,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Selection");
-
-        //allTasksPage.getReceptionQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
         selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00021 Стол21 B.1.1.1.1 ➡ KT1.01.01.01.01 Quantity 10 уп. (5)"));
@@ -869,7 +871,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         selectionCardPage.setQuantityInput("10");
         selectionCardPage.clickCommitButton();
 
-
     }
 
     @Test (priority = 6, dependsOnMethods = "processingSelectionTaskTest")
@@ -920,7 +921,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         containerCardPage.setContainerInput("OUT130");
         containerCardPage.clickCommitButton();
 
-
         allTasksPage.checkWorkType("Control");
     }
 
@@ -948,8 +948,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getContainerInfo().shouldHave(text("OUT122"));
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("2110022100000");
-        controlCardPage.setQuantityInputInput("10");
+        controlCardPage.setItemInput("2110022100000 ");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickCommitButton();
 
@@ -961,19 +960,10 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getControlledQtyString1().shouldHave(text("0"));
         controlCardPage.getQtyString1().shouldHave(text("5.5"));
         controlCardPage.setItemInput("2110023055000");
-        controlCardPage.setQuantityInputInput("5.5");
-
-
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT123");
-        controlCardPage.getProductInfoString1().shouldHave(text("00023 Стол23"));
         controlCardPage.getShelfLifeInfoString1().shouldHave(text("31.12.2021"));
         controlCardPage.getContainerInfoString1().shouldHave(text("OUT123"));
         controlCardPage.getControlledQtyString1().shouldHave(text("0"));
-        controlCardPage.getQtyString1().shouldHave(text("4.5"));
         controlCardPage.setItemInput("2110023045000");
-        controlCardPage.setQuantityInputInput("4.5");
-        controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickCommitButton();
 
         controlCardPage.setCellInput("KT1.01.01.01.01");
@@ -983,7 +973,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getContainerInfoString1().shouldHave(text("OUT124"));
         controlCardPage.getControlledQtyString1().shouldHave(text("0"));
         controlCardPage.getQtyString1().shouldHave(text("2"));
-        controlCardPage.setItemInput("2110024020000");
+        controlCardPage.setItemInput("00024");
         getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         controlCardPage.getAvailableSeries().shouldHave(text("24Series01"));
         controlCardPage.getAvailableSeries().click();
@@ -991,14 +981,12 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         clickSetOkYesButton();
         controlCardPage.setQuantityInputInput("2");
 
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT124");
         controlCardPage.getProductInfoString1().shouldHave(text("00024 Стол24"));
         controlCardPage.getSeriesInfoString1().shouldHave(text("24Series02"));
         controlCardPage.getContainerInfoString1().shouldHave(text("OUT124"));
         controlCardPage.getControlledQtyString1().shouldHave(text("0"));
         controlCardPage.getQtyString1().shouldHave(text("8"));
-        controlCardPage.setItemInput("2110024080000");
+        controlCardPage.setItemInput("00024");
         getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
         controlCardPage.getAvailableSeriesString1().shouldHave(text("24Series02"));
         controlCardPage.getAvailableSeriesString1().click();
@@ -1084,7 +1072,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.setQuantityInputInput("10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickCommitButton();
-
     }
 
     @Test (priority = 8, dependsOnMethods = "processingControlTaskTest")
@@ -1104,8 +1091,8 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         packagingCardPage.checkCellProductInfoInRow(6, "OUT126", "10", "0.1", "0.1");
         packagingCardPage.checkCellProductInfoInRow(7, "OUT127", "10", "0.1", "0.1");
         packagingCardPage.checkCellProductInfoInRow(8, "OUT128", "10", "0.1", "0.1");
-        packagingCardPage.checkCellProductInfoInRow(9, "OUT129", "10", "0", "0");
-        packagingCardPage.checkCellProductInfoInRow(10, "OUT130", "10", "0.02", "0.02");
+        packagingCardPage.checkCellProductInfoInRow(9, "OUT129", "10", "0.1", "0.1");
+        packagingCardPage.checkCellProductInfoInRow(10, "OUT130", "10", "0.1", "0.1");
 
         packagingCardPage.clickCreateCargoButton();
         getMessageModalDialog().shouldHave(text("Cargos will be created. Continue?"));

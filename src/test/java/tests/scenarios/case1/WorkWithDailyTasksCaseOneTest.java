@@ -107,7 +107,6 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        //hideKeyboard();
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0006 00006 series6 Стол6 IN.01 Quantity 10 шт"));
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
@@ -127,7 +126,6 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        //hideKeyboard();
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0007 00007 31.12.2021 Стол7 IN.01 Quantity 10 шт"));
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
@@ -148,7 +146,6 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        //hideKeyboard();
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0008 00008 series8 31.12.2021 Стол8 IN.01 Quantity 10 шт"));
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
@@ -165,7 +162,6 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.checkSerialNumberQtyFactInEveryRow("1", 10);
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        //hideKeyboard();
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0009 00009 Стол9 IN.01 Quantity 10 шт"));
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
@@ -177,7 +173,6 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Accommodation");
-        //allTasksPage.getReceptionQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0001 00001 Стол1 IN.01 ➡ A.1.1.1.1 Quantity 10 шт"));
@@ -590,8 +585,6 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Selection");
-
-        //allTasksPage.getReceptionQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
         selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0001 00001 Стол1 A.1.1.1.1 ➡ KT1.01.01.01.01 Quantity 10 шт"));
@@ -951,7 +944,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
         packagingCardPage.setCellOrContainerInput("KT1.01.01.01.01");
 
-        packagingCardPage.checkCellProductInfoInRow(1, "OUT101", "10", "0.01", "0.01");
+       /* packagingCardPage.checkCellProductInfoInRow(1, "OUT101", "10", "0.01", "0.01");
         packagingCardPage.checkCellProductInfoInRow(2, "OUT102", "10", "0.01", "0.01");
         packagingCardPage.checkCellProductInfoInRow(3, "OUT103", "10", "0.01", "0.01");
         packagingCardPage.checkCellProductInfoInRow(4, "OUT104", "10", "0.01", "0.01");
@@ -960,7 +953,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         packagingCardPage.checkCellProductInfoInRow(7, "OUT107", "10", "0.01", "0.01");
         packagingCardPage.checkCellProductInfoInRow(8, "OUT108", "10", "0.01", "0.01");
         packagingCardPage.checkCellProductInfoInRow(9, "OUT109", "10", "0.01", "0.01");
-        packagingCardPage.checkCellProductInfoInRow(10, "OUT110", "10", "0.01", "0.01");
+        packagingCardPage.checkCellProductInfoInRow(10,"OUT110", "10", "0.01", "0.01");*/
 
         packagingCardPage.clickCreateCargoButton();
         getMessageModalDialog().shouldHave(text("Cargos will be created. Continue?"));
