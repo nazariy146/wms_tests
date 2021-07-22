@@ -30,7 +30,7 @@ public class BaseMobileClass implements WebDriverProvider {
         capabilities.setCapability(MobileCapabilityType.VERSION, "10.0");
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Appium");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "b966497");
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         capabilities.setCapability(APP_PACKAGE, "com.abmcloud");
         capabilities.setCapability(APP_ACTIVITY, ".MainActivity");
         capabilities.setCapability("autoGrantPermissions", "true");
@@ -66,8 +66,8 @@ public class BaseMobileClass implements WebDriverProvider {
 
         settingsPage = loginPage.clickSettingIcon();
         settingsPage.getConnectionStringInput().shouldHave(text("Connection string"));
-        settingsPage.getConnectionStringInput().sendKeys("http://dmz.abmretail.com:8080/wms_qa_regress/hs/TSDExchange");
-        settingsPage.getLicenseInput().sendKeys("9999900011");
+        settingsPage.getConnectionStringInput().sendKeys("http://dmz.abmretail.com:8080/wms_regress_radl/hs/TSDExchange");
+        settingsPage.getLicenseInput().sendKeys("9999900017");
         settingsPage.getSaveButton().click();
     }
 }
