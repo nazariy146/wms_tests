@@ -89,6 +89,10 @@ public class ReceptionCardPage {
         $(By.id("com.abmcloud:id/textBoxSeriesPL")).sendKeys(name);
     }
 
+    public void createNewShelfLife(String name) {
+        $(By.id("com.abmcloud:id/textBoxShelfLifeLP")).sendKeys(name);
+    }
+
     public void selectSeries(String series) {
         $$(By.id("com.abmcloud:id/textViewSeries")).find(exactText(series)).click();
     }
@@ -273,4 +277,9 @@ public class ReceptionCardPage {
         getParametersStoragePeriod().val(parametersStoragePeriod);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
+
+    public SelenideElement buttonCancel () { return $(By.id("android:id/button2")); }
+
+    public SelenideElement fieldProduct () { return $(By.id("com.abmcloud:id/editTextControlBoxBarcode")); }
+
 }

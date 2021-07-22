@@ -23,7 +23,7 @@ public class InventoryCardPage {
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
-    private SelenideElement getProductInput() {
+    public SelenideElement getProductInput() {
         return $(By.id("com.abmcloud:id/textBoxBarcodeInv"));
     }
 
