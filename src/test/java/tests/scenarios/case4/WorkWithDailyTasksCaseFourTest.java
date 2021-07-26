@@ -16,7 +16,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
     Steps steps = new Steps();
     AllTasksPage allTasksPage = new AllTasksPage();
     ReceptionCardPage receptionCardPage = new ReceptionCardPage();
-    ReceptionCardPage setPalletWeightreceptionCardPage = new ReceptionCardPage();
     AccommodationCardPage accommodationCardPage = new AccommodationCardPage();
     FindRestsPage findRestsPage = new FindRestsPage();
     SelectionCardPage selectionCardPage = new SelectionCardPage();
@@ -327,7 +326,141 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Inventory");
         allTasksPage.getWorkTypeTasksQuantity().click();
+     /**
+     * Обычная Инвентаризация для номенклатур Стол31-40
+     */
+        //Стол 31
+        inventoryCardPage.setCellInput("C.1.1.1.1"); //ввод ШК ячейки
+        inventoryCardPage.setProductInput("31FRAGSN31Series0131122021"); //ввод СН номенклатуры
+        //inventoryCardPage.getProductInfo().shouldHave(exactText("00031 Стол31")); //проверка поля наименования номенклатуры на форме Инвентуры
+        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
+        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
+        //inventoryCardPage.getItemViewInfo().shouldHave(text("00031 Стол31")); //проверка поля наименования номенклатуры в колонке Item
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
+        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
+        clickSetOkYesButton(); //клик на кнопку Ок
 
+        //Стол 32
+        inventoryCardPage.setCellInput("C.1.1.1.2"); //ввод ШК ячейки
+        inventoryCardPage.setProductInput("32FRAGSN32Series0131122021"); //ввод ШК номенклатуры
+        //inventoryCardPage.getProductInfo().shouldHave(exactText("00032 32Series01 Стол32")); //проверка поля наименования номенклатуры на форме Инвентуры
+        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
+        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
+        //inventoryCardPage.getItemViewInfo().shouldHave(text("00032 32Series01 Стол32")); //проверка поля наименования номенклатуры в колонке Item
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
+        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
+        clickSetOkYesButton(); //клик на кнопку Ок
+
+        //Стол 33
+        inventoryCardPage.setCellInput("C.1.1.1.3"); //ввод ШК ячейки
+        inventoryCardPage.setProductInput("33FRAGSN33Series0131122021"); //ввод ШК номенклатуры
+        //inventoryCardPage.getProductInfo().shouldHave(exactText("00033 2021-12-31T00:00:00 Стол33")); //проверка поля наименования номенклатуры на форме Инвентуры
+        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
+        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
+        //inventoryCardPage.getItemViewInfo().shouldHave(text("00033 2021-12-31T00:00:00 Стол33")); //проверка поля наименования номенклатуры в колонке Item
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
+        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
+        clickSetOkYesButton(); //клик на кнопку Ок
+
+        //Стол 34
+        inventoryCardPage.setCellInput("C.1.1.1.4"); //ввод ШК ячейки
+        inventoryCardPage.setProductInput("34FRAGSN34Series0131122021"); //ввод ШК номенклатуры
+        //inventoryCardPage.getProductInfo().shouldHave(exactText("00034 34Series01 2021-12-31T00:00:00 Стол34")); //проверка поля наименования номенклатуры на форме Инвентуры
+        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
+        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
+        //inventoryCardPage.getItemViewInfo().shouldHave(text("00034 34Series01 2021-12-31T00:00:00 Стол34")); //проверка поля наименования номенклатуры в колонке Item
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
+        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
+        clickSetOkYesButton(); //клик на кнопку Ок
+
+        //Стол 35
+        inventoryCardPage.setCellInput("C.1.1.1.5"); //ввод ШК ячейки
+        inventoryCardPage.setProductInput("35FRAGBC35Series0131122021"); //ввод ШК номенклатуры
+        //inventoryCardPage.getProductInfo().shouldHave(exactText("00035 Стол35")); //проверка поля наименования номенклатуры на форме Инвентуры
+        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
+        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
+        //inventoryCardPage.getItemViewInfo().shouldHave(text("00035 Стол35")); //проверка поля наименования номенклатуры в колонке Item
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
+        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
+        clickSetOkYesButton(); //клик на кнопку Ок
+
+        //Стол 36
+        inventoryCardPage.setCellInput("C.1.1.1.6"); //ввод ШК ячейки
+        inventoryCardPage.setProductInput("36FRAGBC36Series0131122021"); //ввод ШК номенклатуры
+        //inventoryCardPage.getProductInfo().shouldHave(exactText("00036 36Series01 Стол36")); //проверка поля наименования номенклатуры на форме Инвентуры
+        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
+        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
+        //inventoryCardPage.getItemViewInfo().shouldHave(text("00036 36Series01 Стол36")); //проверка поля наименования номенклатуры в колонке Item
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
+        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
+        clickSetOkYesButton(); //клик на кнопку Ок
+
+        //Стол 37
+        inventoryCardPage.setCellInput("C.1.1.1.7"); //ввод ШК ячейки
+        inventoryCardPage.setProductInput("37FRAGBC37Series0131122021"); //ввод ШК номенклатуры
+        //inventoryCardPage.getProductInfo().shouldHave(exactText("00037 2021-12-31T00:00:00 Стол37")); //проверка поля наименования номенклатуры на форме Инвентуры
+        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
+        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
+        //inventoryCardPage.getItemViewInfo().shouldHave(text("00037 2021-12-31T00:00:00 Стол37")); //проверка поля наименования номенклатуры в колонке Item
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
+        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
+        clickSetOkYesButton(); //клик на кнопку Ок
+
+        //Стол 38
+        inventoryCardPage.setCellInput("C.1.1.1.8"); //ввод ШК ячейки
+        inventoryCardPage.setProductInput("38FRAGBC38Series0131122021"); //ввод ШК номенклатуры
+        //inventoryCardPage.getProductInfo().shouldHave(exactText("00038 38Series01 2021-12-31T00:00:00 Стол38")); //проверка поля наименования номенклатуры на форме Инвентуры
+        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
+        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
+        //inventoryCardPage.getItemViewInfo().shouldHave(text("00038 38Series01 2021-12-31T00:00:00 Стол38")); //проверка поля наименования номенклатуры в колонке Item
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
+        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
+        clickSetOkYesButton(); //клик на кнопку Ок
+
+        //Стол 39
+        inventoryCardPage.setCellInput("C.1.1.1.9"); //ввод ШК ячейки
+        inventoryCardPage.setProductInput("39FRAGSN39Series013112202101"); //ввод ШК номенклатуры
+        //inventoryCardPage.getProductInfo().shouldHave(exactText("00039 39Series01 2021-12-31T00:00:00 Стол39")); //проверка поля наименования номенклатуры на форме Инвентуры
+        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
+        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
+        //inventoryCardPage.getItemViewInfo().shouldHave(text("00039 39Series01 2021-12-31T00:00:00 Стол39")); //проверка поля наименования номенклатуры в колонке Item
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
+        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
+        clickSetOkYesButton(); //клик на кнопку Ок
+
+        //Стол 40
+        inventoryCardPage.setCellInput("C.1.1.1.10"); //ввод ШК ячейки
+        inventoryCardPage.setProductInput("40FRAGSN40Series013112202101 "+"40FRAGSN40Series013112202102 "+"40FRAGSN40Series013112202103"); //ввод ШК номенклатуры
+        //inventoryCardPage.getProductInfo().shouldHave(exactText("00040 40Series01 2021-12-31T00:00:00 Стол40")); //проверка поля наименования номенклатуры на форме Инвентуры
+        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
+        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
+        //inventoryCardPage.getItemViewInfo().shouldHave(text("00040 40Series01 2021-12-31T00:00:00 Стол40")); //проверка поля наименования номенклатуры в колонке Item
+        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
+        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
+        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
+        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
+        clickSetOkYesButton(); //клик на кнопку Ок
+     /**
+     * Инвентаризация по СН для номенклатур Стол31-34, 39-40
+     */
         //Стол31
         inventoryCardPage.setCellInput("C.1.1.1.1"); //ввод ШК ячейки
         inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
@@ -403,58 +536,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
         getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
         clickSetOkYesButton();  //клик на кнопку Ок
-
-        //Стол 35
-        inventoryCardPage.setCellInput("C.1.1.1.5"); //ввод ШК ячейки
-        inventoryCardPage.setProductInput("35FRAGBC35Series0131122021"); //ввод ШК номенклатуры
-        //inventoryCardPage.getProductInfo().shouldHave(exactText("00035 Стол35")); //проверка поля наименования номенклатуры на форме Инвентуры
-        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
-        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
-        //inventoryCardPage.getItemViewInfo().shouldHave(text("00035 Стол35")); //проверка поля наименования номенклатуры в колонке Item
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
-        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
-        clickSetOkYesButton(); //клик на кнопку Ок
-
-        //Стол 36
-        inventoryCardPage.setCellInput("C.1.1.1.6"); //ввод ШК ячейки
-        inventoryCardPage.setProductInput("36FRAGBC36Series0131122021"); //ввод ШК номенклатуры
-        //inventoryCardPage.getProductInfo().shouldHave(exactText("00036 36Series01 Стол36")); //проверка поля наименования номенклатуры на форме Инвентуры
-        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
-        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
-        //inventoryCardPage.getItemViewInfo().shouldHave(text("00036 36Series01 Стол36")); //проверка поля наименования номенклатуры в колонке Item
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
-        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
-        clickSetOkYesButton(); //клик на кнопку Ок
-
-        //Стол 37
-        inventoryCardPage.setCellInput("C.1.1.1.7"); //ввод ШК ячейки
-        inventoryCardPage.setProductInput("37FRAGBC37Series0131122021"); //ввод ШК номенклатуры
-        //inventoryCardPage.getProductInfo().shouldHave(exactText("00037 2021-12-31T00:00:00 Стол37")); //проверка поля наименования номенклатуры на форме Инвентуры
-        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
-        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
-        //inventoryCardPage.getItemViewInfo().shouldHave(text("00037 2021-12-31T00:00:00 Стол37")); //проверка поля наименования номенклатуры в колонке Item
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
-        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
-        clickSetOkYesButton(); //клик на кнопку Ок
-
-        //Стол 38
-        inventoryCardPage.setCellInput("C.1.1.1.8"); //ввод ШК ячейки
-        inventoryCardPage.setProductInput("38FRAGBC38Series0131122021"); //ввод ШК номенклатуры
-        //inventoryCardPage.getProductInfo().shouldHave(exactText("00038 38Series01 2021-12-31T00:00:00 Стол38")); //проверка поля наименования номенклатуры на форме Инвентуры
-        inventoryCardPage.selectQuality("Кондиция"); //выбор статуса номенклатуры
-        inventoryCardPage.setQtyInput("10"); //ввод количества номенклатуры
-        //inventoryCardPage.getItemViewInfo().shouldHave(text("00038 38Series01 2021-12-31T00:00:00 Стол38")); //проверка поля наименования номенклатуры в колонке Item
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция")); //проверка статуса номенклатуры в колонке Quality
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0")); //проверка количества в колонке Qty
-        inventoryCardPage.clickInventoryButton(); //клик на кнопку Inventory
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?")); //получения диалогового окна
-        clickSetOkYesButton(); //клик на кнопку Ок
 
         //Стол39
         inventoryCardPage.setCellInput("C.1.1.1.9"); //ввод ШК ячейки
