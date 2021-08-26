@@ -43,8 +43,12 @@ public class AllTasksPage {
         return $(By.id("com.abmcloud:id/text_qty"));
     }
 
-    public void clickInventoryTypeTaskQuantity() {
+    /*public void clickInventoryTypeTaskQuantity() {
         $(By.xpath("//androidx.cardview.widget.CardView[2]")).find(By.id("com.abmcloud:id/text_qty")).click();
+    }*/
+
+    public void clickInventoryTypeTaskQuantity() {
+        $(By.id("com.abmcloud:id/text_qty")).click();
     }
 
     public SelenideElement getRelaxMessage() {

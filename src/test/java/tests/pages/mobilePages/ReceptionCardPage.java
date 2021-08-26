@@ -282,4 +282,10 @@ public class ReceptionCardPage {
 
     public SelenideElement fieldProduct () { return $(By.id("com.abmcloud:id/editTextControlBoxBarcode")); }
 
+    public SelenideElement getNameSerialNumber(int string) {
+        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]")); } //поле наименования СН в колонке Serial number для формы СН
+
+    public SelenideElement getQtySerialNumber(int string) {
+        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]")); } //поле количества СН в колонке Qty fact: для формы СН
+
 }

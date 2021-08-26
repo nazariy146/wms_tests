@@ -56,7 +56,7 @@ public class PackagingCardPage {
         return $(By.id("com.abmcloud:id/recycler_view"));
     }
 
-    public void checkCellProductInfoInRow(int row, String container, String qty, String capacity, String weight) {
+    public void checkCellProductInfoInRow(int row, String container, String qty, String capacity, String weight) {//старый метод проверки табчасти
         if(!getProductContainerInfo(row).isDisplayed()) {
             scrollElement(getScrollableTable());
         }
@@ -72,6 +72,19 @@ public class PackagingCardPage {
             getProductCapacityInfo(row).shouldHave(text(capacity));
             getProductWeightInfo(row).shouldHave(text(weight));
         }
+    }
+
+    public void checkCellProductInfoInRow2(int row, String container, String qty, String capacity, String weight, String label, String box) {//новый метод проверки табчасти
+        if(!getProductContainerInfo(row).isDisplayed()) {
+            scrollElement(getScrollableTable());
+        }
+            getProductContainerInfo(row).shouldHave(text(container));
+            getProductQtyInfo(row).shouldHave(text(qty));
+            getProductCapacityInfo(row).shouldHave(text(capacity));
+            getProductWeightInfo(row).shouldHave(text(weight));
+            getProductLabelInfo(row).shouldHave(text(label));
+            getBoxQtyInfo(row).shouldHave(text(box));
+
     }
 
     public void scrollElement(SelenideElement element) {
