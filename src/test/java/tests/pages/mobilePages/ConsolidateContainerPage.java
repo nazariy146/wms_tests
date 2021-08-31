@@ -50,7 +50,7 @@ public class ConsolidateContainerPage {
     }
 
     public void checkAllProductsInfoAndQty(int row, String source, String description) {
-        Actions.hideKeyboard();
+        //Actions.hideKeyboard();
 
         getSourceInfo(row).shouldHave(text(source));
         getDescriptionInfo(row).shouldHave(text(description));
