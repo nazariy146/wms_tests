@@ -8,7 +8,6 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.textCaseSensitive;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
@@ -205,8 +204,8 @@ public class ReceptionCardPage {
     }
 
     public SelenideElement getParametersHeight() {
-        return $(By.id("com.abmcloud:id/et_ware_parameters_height"));
-        //return $(By.id("com.abmcloud:id/textBoxHeightWP"));
+        //return $(By.id("com.abmcloud:id/et_ware_parameters_height"));
+        return $(By.id("com.abmcloud:id/textBoxHeightWP"));
     }
 
     public void setParametersHeight(String parametersHeight) {
@@ -217,8 +216,8 @@ public class ReceptionCardPage {
     }
 
     public SelenideElement getParametersWidth() {
-        return $(By.id("com.abmcloud:id/et_ware_parameters_width"));
-        //return $(By.id("com.abmcloud:id/textBoxWidthWP"));
+        //return $(By.id("com.abmcloud:id/et_ware_parameters_width"));
+        return $(By.id("com.abmcloud:id/textBoxWidthWP"));
     }
 
     public void setParametersWidth(String parametersWidth) {
@@ -229,8 +228,8 @@ public class ReceptionCardPage {
     }
 
     public SelenideElement getParametersLength() {
-        return $(By.id("com.abmcloud:id/et_ware_parameters_length"));
-        //return $(By.id("com.abmcloud:id/textBoxLengthWP"));
+        //return $(By.id("com.abmcloud:id/et_ware_parameters_length"));
+        return $(By.id("com.abmcloud:id/textBoxLengthWP"));
     }
 
     public void setParametersLength(String parametersLength) {
@@ -252,8 +251,8 @@ public class ReceptionCardPage {
     }
 
     public SelenideElement getParametersWeight() {
-        return $(By.id("com.abmcloud:id/et_ware_parameters_weight"));
-        //return $(By.id("com.abmcloud:id/textBoxWeightWP"));
+        //return $(By.id("com.abmcloud:id/et_ware_parameters_weight"));
+        return $(By.id("com.abmcloud:id/textBoxWeightWP"));
     }
 
     public void setParametersWeight(String parametersWeight) {
@@ -274,17 +273,4 @@ public class ReceptionCardPage {
         getParametersStoragePeriod().val(parametersStoragePeriod);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
-
-    public SelenideElement getSeries() {
-        return $(By.id("com.abmcloud:id/textBoxSeriesPL"));
-    }
-
-    public void setSeries(String Series) {
-        AndroidDriver driver = (AndroidDriver) getSeries().getWrappedDriver();
-        getSeries().click();
-        getSeries().val(Series);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-
-    }
-
 }
