@@ -288,4 +288,42 @@ public class ReceptionCardPage {
     public SelenideElement getQtySerialNumber(int string) {
         return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]")); } //поле количества СН в колонке Qty fact: для формы СН
 
+    /**
+     * Методы для формы ВГХ
+     */
+    private SelenideElement getHeightSKU() { return $(By.id("com.abmcloud:id/et_ware_parameters_height"));}//обращение к полю Height
+
+    public void setHeightSKU(String parametersHeight) { //метод ввода параметров в поле Height
+        AndroidDriver driver = (AndroidDriver) getHeightSKU().getWrappedDriver();
+        getHeightSKU().click();
+        getHeightSKU().val(parametersHeight);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    private SelenideElement getWidthSKU() { return $(By.id("com.abmcloud:id/et_ware_parameters_width"));}//обращение к полю Width
+
+    public void setWidthSKU(String parametersWidth) { //метод ввода параметров в поле Width
+        AndroidDriver driver = (AndroidDriver) getWidthSKU().getWrappedDriver();
+        getWidthSKU().click();
+        getWidthSKU().val(parametersWidth);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    private SelenideElement getLengthSKU() { return $(By.id("com.abmcloud:id/et_ware_parameters_length"));}//обращение к полю Length
+
+    public void setLenghtSKU(String parametersLength) { //метод ввода параметров в поле Length
+        AndroidDriver driver = (AndroidDriver) getLengthSKU().getWrappedDriver();
+        getLengthSKU().click();
+        getLengthSKU().val(parametersLength);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    private SelenideElement getWeightSKU() { return $(By.id("com.abmcloud:id/et_ware_parameters_weight"));}//обращение к полю Weight
+
+    public void setWeightSKU(String parametersWeight) { //метод ввода параметров в поле Weight
+        AndroidDriver driver = (AndroidDriver) getWeightSKU().getWrappedDriver();
+        getWeightSKU().click();
+        getWeightSKU().val(parametersWeight);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
 }
