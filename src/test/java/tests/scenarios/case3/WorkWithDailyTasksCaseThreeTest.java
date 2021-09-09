@@ -251,6 +251,44 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         allTasksPage.checkWorkType("Accommodation");
         allTasksPage.getWorkTypeTasksQuantity().click();
 
+    //Стол21
+        accommodationCardPage.setSourceInput("IN.02");//negative test
+        getMessageModalDialog().shouldBe(visible).shouldHave(text("Source does not match the task"));
+        clickErrorDialogOkButton();
+        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00021 Стол21 IN.01 ➡ R.1.1.1.1 Quantity 10 уп. (5)"));
+        accommodationCardPage.setSourceInput("IN");//negative test
+        getMessageModalDialog().shouldBe(visible).shouldHave(text("Source does not match the task"));
+        clickErrorDialogOkButton();
+        accommodationCardPage.setSourceInput("IN.01");//negative test
+        getMessageModalDialog().shouldBe(visible).shouldHave(text("Source does not match the task"));
+        clickErrorDialogOkButton();
+        accommodationCardPage.setSourceInput("IN1");//positive test
+        getMessageModalDialog().shouldNotBe(visible);
+        accommodationCardPage.setProductInput("IN.01");//negative test
+        getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: IN.01"));
+        clickErrorDialogOkButton();
+        accommodationCardPage.setProductInput("IN");//negative test
+        getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: IN"));
+        clickErrorDialogOkButton();
+        accommodationCardPage.setProductInput("00001");//negative test
+        getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: 00001"));
+        clickErrorDialogOkButton();
+        accommodationCardPage.setProductInput("00002102");//positive test
+        getMessageModalDialog().shouldNotBe(visible);
+        accommodationCardPage.setDestinationInput("A.1.1.1.1");//negative test
+        getMessageModalDialog().shouldBe(visible).shouldHave(text("Location was changed. Continue?"));
+        clickErrorDialogOkButton();
+        accommodationCardPage.setDestinationInput("B.1.1.1.1");//positive test
+        getMessageModalDialog().shouldBe(visible).shouldHave(text("Location was changed. Continue?"));
+        clickSetOkYesButton();
+        accommodationCardPage.checkAmountAndPackaging("5.0", "2");
+        accommodationCardPage.setQuantityInput("3");//negative test
+        accommodationCardPage.clickCommitButton();
+        getMessageModalDialog().shouldBe(visible).shouldHave(text("It is impossible to confirm15. Remaining 10"));
+        clickErrorDialogOkButton();
+        accommodationCardPage.setQuantityInput("2");//positive test
+        accommodationCardPage.clickCommitButton();
+        getMessageModalDialog().shouldNotBe(visible);
     //Стол22
         accommodationCardPage.setSourceInput("IN1");
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00022 Стол22 IN.01 ➡ B.1.1.1.2 Quantity 10 шт"));
@@ -328,45 +366,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         accommodationCardPage.setDestinationInput("B.1.1.1.10");
         accommodationCardPage.setQuantityInput("10");
         accommodationCardPage.clickCommitButton();
-    //Стол21
-        accommodationCardPage.setSourceInput("IN.02");//negative test
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Source does not match the task"));
-        clickErrorDialogOkButton();
-        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00021 Стол21 IN.01 ➡ C.1.1.1.1 Quantity 10 уп. (5)"));
-        accommodationCardPage.setSourceInput("IN");//negative test
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Source does not match the task"));
-        clickErrorDialogOkButton();
-        accommodationCardPage.setSourceInput("IN.01");//negative test
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Source does not match the task"));
-        clickErrorDialogOkButton();
-        accommodationCardPage.setSourceInput("IN1");//positive test
-        getMessageModalDialog().shouldNotBe(visible);
-        accommodationCardPage.setProductInput("IN.01");//negative test
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: IN.01"));
-        clickErrorDialogOkButton();
-        accommodationCardPage.setProductInput("IN");//negative test
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: IN"));
-        clickErrorDialogOkButton();
-        accommodationCardPage.setProductInput("00001");//negative test
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: 00001"));
-        clickErrorDialogOkButton();
-        accommodationCardPage.setProductInput("00002102");//positive test
-        getMessageModalDialog().shouldNotBe(visible);
-        accommodationCardPage.setDestinationInput("A.1.1.1.1");//negative test
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Location was changed. Continue?"));
-        clickErrorDialogOkButton();
-        accommodationCardPage.setDestinationInput("B.1.1.1.1");//positive test
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Location was changed. Continue?"));
-        clickSetOkYesButton();
-        accommodationCardPage.checkAmountAndPackaging("5.0", "2");
-        accommodationCardPage.setQuantityInput("3");//negative test
-        accommodationCardPage.clickCommitButton();
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("It is impossible to confirm15. Remaining 10"));
-        clickErrorDialogOkButton();
-        accommodationCardPage.setQuantityInput("2");//positive test
-        accommodationCardPage.clickCommitButton();
-        getMessageModalDialog().shouldNotBe(visible);
-    }
+        }
 
     @Test (priority = 2, dependsOnMethods = "processingAccommodationTaskTest")
     public void checkingFreeAmountTest() {
@@ -464,7 +464,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
 
-        allTasksPage.clickInventoryTypeTaskQuantity();
+        allTasksPage.getStringTasks(2).click();
 
     //Стол21
         inventoryCardPage.setCellInput("B.1.1.1.1");
@@ -1069,8 +1069,8 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         packagingCardPage.checkCellProductInfoInRow2(6, "OUT126", "10", "0.1", "0.1", "1", "1");
         packagingCardPage.checkCellProductInfoInRow2(7, "OUT127", "10", "0.1", "0.1", "1", "1");
         packagingCardPage.checkCellProductInfoInRow2(8, "OUT128", "10", "0.1", "0.1", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(9, "OUT129", "10", "0.01", "0.01", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(10, "OUT130", "10", "0.1", "0.1", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(9, "OUT129", "10", "0.1", "0.1", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(10, "OUT130", "10", "0.02", "0.02", "1", "1");
 
         packagingCardPage.clickCreateCargoButton();
         getMessageModalDialog().shouldHave(text("Cargos will be created. Continue?"));
@@ -1083,14 +1083,14 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     public void processingLoadingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
-        //allTasksPage.checkWorkType("Loading");
+        allTasksPage.checkWorkType("Loading");
         allTasksPage.getWorkTypeTasksQuantity().click();
 
         loadingCardPage.setRouteSheetInput("I000000001");
         loadingCardPage.setGateInput("OUT.01");
-        loadingCardPage.checkLoadingInfo("0", "Костенко", "0", "10");
+        loadingCardPage.checkLoadingInfo("5", "Костенко", "0", "10");
         loadingCardPage.setSerialCargoInput("9990000000012", "9990000000029", "9990000000036", "9990000000043", "9990000000050", "9990000000067", "9990000000074", "9990000000081", "9990000000098", "9990000000104");
-        loadingCardPage.checkLoadingInfo("0", "Костенко", "10", "0");
+        loadingCardPage.checkLoadingInfo("5", "Костенко", "10", "0");
         loadingCardPage.clickCommitButton();
     }
 }

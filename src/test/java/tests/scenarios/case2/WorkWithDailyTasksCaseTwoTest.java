@@ -37,9 +37,8 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Reception");
-        allTasksPage.getWorkTypeTasksQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
-    //Стол11
+
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00011 000011 Стол11 IN.01 Quantity 10 шт"));
         receptionCardPage.setSourceInput("IN.01");
         receptionCardPage.setProductInput("11fragbc");
@@ -49,19 +48,25 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00012 000012 12Series01 Стол12 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("12fragbc");
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series"));
+        receptionCardPage.selectSeries("12Series01");
+        clickSetOkYesButton();
         receptionCardPage.setQuantityInput("10");
         receptionCardPage.clickCommitButton();
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00013 000013 31.12.2021 Стол13 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("13fragbc");
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Shelf life"));
+        receptionCardPage.setExpirationDate("31.12.2021");
+        clickSetOkYesButton();
         receptionCardPage.setQuantityInput("10");
         receptionCardPage.clickCommitButton();
-
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00014 000014 Стол14 IN.01 Quantity 10 шт"));
+        receptionCardPage.setSourceInput("IN.01");
         receptionCardPage.setProductInput("14fragbc");
         receptionCardPage.getSerialNumberInput().shouldBe(visible);
         receptionCardPage.checkSerialNumberInputText("");
-        selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("00014 Стол14"));
+        receptionCardPage.getSerialNumberProductInfo().shouldHave(exactText("00014 Стол14"));
         receptionCardPage.setSerialNumberInputSeveralTimes("14serialnumber01", 10);
         receptionCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         receptionCardPage.checkSerialNumberInputText("");
@@ -72,43 +77,55 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00015 000015 15series01 31.12.2021 Стол15 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("15fragbc");
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        receptionCardPage.setExpirationDate("31.12.2021");
+        receptionCardPage.setSeries("15series01");
+        clickSetOkYesButton();
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.setQuantityInput("10");
         receptionCardPage.clickCommitButton();
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00016 000016 16series01 Стол16 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("16fragbc");
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series"));
+        receptionCardPage.selectSeries("16series01");
+        clickSetOkYesButton();
+        receptionCardPage.getSerialNumberInput().shouldBe(visible);
         receptionCardPage.setSerialNumberInputSeveralTimes("16serialnumber01", 10);
         receptionCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        receptionCardPage.getContainerInput().click();
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
         receptionCardPage.clickCommitButton();
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00017 000017 31.12.2021 Стол17 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("17fragbc");
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Shelf life"));
+        receptionCardPage.setExpirationDate("31.12.2021");
+        clickSetOkYesButton();
         receptionCardPage.getSerialNumberInput().shouldBe(visible);
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.setSerialNumberInputSeveralTimes("17serialnumber01", 10);
         receptionCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        receptionCardPage.getContainerInput().click();
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
         receptionCardPage.clickCommitButton();
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00018 000018 18series01 31.12.2021 Стол18 IN.01 Quantity 10 шт"));
         receptionCardPage.setProductInput("18fragbc");
+        getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));
+        receptionCardPage.setExpirationDate("31.12.2021");
+        receptionCardPage.setSeries("18series01");
+        clickSetOkYesButton();
         receptionCardPage.getSerialNumberInput().shouldBe(visible);
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.setSerialNumberInputSeveralTimes("18serialnumber01", 10);
         receptionCardPage.checkSerialNumberQtyFactInEveryRow("10", 1);
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        receptionCardPage.getContainerInput().click();
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
         receptionCardPage.clickCommitButton();
@@ -138,7 +155,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Accommodation");
-        //allTasksPage.getReceptionQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00011 000011 Стол11 IN.01 ➡ A.1.1.1.11 Quantity 10 шт"));
@@ -297,7 +313,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
 
-        //allTasksPage.checkWorkTypesQty(2);
         allTasksPage.clickInventoryTypeTaskQuantity();
 
         inventoryCardPage.setCellInput("A.1.1.1.11");
@@ -551,8 +566,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Selection");
-
-        //allTasksPage.getReceptionQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
         selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00011 000011 Стол11 A.1.1.1.11 ➡ KT1.01.01.01.01 Quantity 10 шт"));
