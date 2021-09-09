@@ -358,7 +358,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         steps.loginAsAdmin();
 
         //allTasksPage.checkWorkTypesQty(2);
-        allTasksPage.clickInventoryTypeTaskQuantity();
+        allTasksPage.getStringTasks(2).click();//запуск инвентуры
 
     //Стол1
         inventoryCardPage.setCellInput("A.1.1.1.1");

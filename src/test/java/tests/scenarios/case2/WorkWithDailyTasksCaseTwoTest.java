@@ -321,7 +321,8 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         steps.loginAsAdmin();
 
         //allTasksPage.checkWorkTypesQty(2);
-        allTasksPage.clickInventoryTypeTaskQuantity();
+        //allTasksPage.clickInventoryTypeTaskQuantity();
+        allTasksPage.getStringTasks(2).click();
 
     //Стол11
         inventoryCardPage.setCellInput("A.1.1.1.11");
@@ -1097,15 +1098,15 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
     public void processingLoadingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
-        //allTasksPage.checkWorkType("Loading");
+        allTasksPage.checkWorkType("Loading");
         allTasksPage.getWorkTypeTasksQuantity().click();
 
         loadingCardPage.checkAndSelectAvailableRouteSheet("Маршрутный лист 000000001 от", "Нікулін Олександр Миколайович");
         loadingCardPage.getRouteSheetInput().shouldHave(exactText("I000000001"));
         loadingCardPage.setGateInput("OUT.01");
-        loadingCardPage.checkLoadingInfo("5", "Костенко", "0", "1");
+        loadingCardPage.checkLoadingInfo("0", "Костенко", "0", "1");
         loadingCardPage.setSerialCargoInput("9990000000111");
-        loadingCardPage.checkLoadingInfo("5", "Костенко", "1", "0");
+        loadingCardPage.checkLoadingInfo("0", "Костенко", "1", "0");
         loadingCardPage.clickCommitButton();
     }
 }
