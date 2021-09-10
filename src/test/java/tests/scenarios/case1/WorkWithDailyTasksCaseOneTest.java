@@ -41,7 +41,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("0001 Стол1 IN.01 Quantity 10 шт"));
         receptionCardPage.setSourceInput("IN.01");
-        receptionCardPage.setProductInput("0001"); // set sku
+        receptionCardPage.setProductInput("0001"); //set sku
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.setQuantityInput("10");
         receptionCardPage.clickCommitButton();
