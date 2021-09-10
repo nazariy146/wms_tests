@@ -34,7 +34,7 @@ public class BaseMobileClass implements WebDriverProvider {
         capabilities.setCapability(MobileCapabilityType.VERSION, "10.0");
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Appium");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "b966497");
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         capabilities.setCapability(APP_PACKAGE, "com.abmcloud");
         capabilities.setCapability(APP_ACTIVITY, ".MainActivity");
         capabilities.setCapability("autoGrantPermissions", "true");

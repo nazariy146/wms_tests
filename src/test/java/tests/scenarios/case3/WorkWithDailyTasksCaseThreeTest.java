@@ -252,10 +252,10 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00030 Стол30 IN.01 Quantity 10 шт"));
         receptionCardPage.setSourceInput("IN.01");
         receptionCardPage.setProductInput("00030");
-        receptionCardPage.setParametersHeight("0.1");
-        receptionCardPage.setParametersWidth("1");
-        receptionCardPage.setParametersLength("0.1");
-        receptionCardPage.setParametersWeight("1");
+        receptionCardPage.setHeightSKU("0.1");
+        receptionCardPage.setWidthSKU("0.1");
+        receptionCardPage.setLenghtSKU("0.2");
+        receptionCardPage.setWeightSKU("0.4");
         clickSetOkYesButton();
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.setQuantityInput("10");
@@ -483,7 +483,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         findRestsPage.getProductQuantity().shouldHave(exactText("10"));
     }
 
-    @Test (priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
+    @Test (priority = 3)
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
 

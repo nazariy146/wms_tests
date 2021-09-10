@@ -19,6 +19,10 @@ public class ModalDialogs {
         $(By.id("android:id/button1")).click();
     }
 
+    public static void clickCancelButton() {
+        $(By.id("android:id/button2")).click();
+    }
+
     public static void clickErrorDialogOkButton() {
         $(By.id("android:id/button2")).click();
     }

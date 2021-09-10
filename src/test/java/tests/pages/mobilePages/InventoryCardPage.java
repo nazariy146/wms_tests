@@ -23,7 +23,7 @@ public class InventoryCardPage {
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
-    private SelenideElement getProductInput() {
+    public SelenideElement getProductInput() {
         return $(By.id("com.abmcloud:id/textBoxBarcodeInv"));
     }
 
@@ -67,19 +67,18 @@ public class InventoryCardPage {
     }
 
     public SelenideElement getProductInfo() {
-        return $(By.id("com.abmcloud:id/textViewInfoProduct"));
-    }
+        return $(By.id("com.abmcloud:id/textViewInfoProduct"));} // поле наименования номенклатуры на форме Инвентуры
 
     public SelenideElement getItemViewInfo() {
-        return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewItemInv"));
+        return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewItemInv")); //поле наименования номенклатуры в колонке Item
     }
 
     public SelenideElement getQualityViewInfo() {
-        return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewQualityInv"));
+        return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewQualityInv")); //поле статуса номенклатуры в колонке Quality
     }
 
     public SelenideElement getQtyViewInfo() {
-        return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewQtyInv"));
+        return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewQtyInv")); //поле количества номенклатуры в колонке Qty
     }
 
     public void clickInventoryButton() {
@@ -138,5 +137,48 @@ public class InventoryCardPage {
 
     public SelenideElement getProductQuantity() {
         return $(By.id("com.abmcloud:id/textBoxQtyInv"));
+    }
+
+    /**
+     * Методы для формы СН при Инвентуре по СН
+     */
+    public SelenideElement getTextViewInfo() {
+        return $(By.id("com.abmcloud:id/textViewInfo")); } //поле наименования номенклатуры на форме СН
+
+    public SelenideElement getTextViewCSNSerialNumber(int string) {
+        return $(By.xpath("//android.view.ViewGroup["+string+"]")).find(By.id("com.abmcloud:id/textViewCSNSerialNumber")); //поле для СН в колонке Serial number
+    }
+
+    public SelenideElement getQtySerialNumber(int string) {
+        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]")); } //поле для количества СН в колонке Qty fact:
+
+    public SelenideElement getSerialNumberInput() {
+        return $(By.id("com.abmcloud:id/editTextSerialNumber"));} //поле для ввода СН на форме СН
+
+    public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) { //метод ввода СН в поле Serial number несколько раз подряд
+        AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
+        for (int i = 0; i < numberOfReps; i++) {
+            getSerialNumberInput().click();
+            getSerialNumberInput().val(serialNumber);
+            driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+        }
+    }
+
+    public SelenideElement getButtonCommit() {return $(By.id("com.abmcloud:id/buttonSNCommit"));} //кнопка Commit на форме СН
+
+    public void setSerialNumberInputSeveralTimes(String ... serialNumbers) { //метод для ввода уникальных СН
+        AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
+        for (String s : serialNumbers) {
+            getSerialNumberInput().click();
+            getSerialNumberInput().val(s);
+            driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+        }
+    }
+
+    public void setSerialNumberOrQRcode(String container) { //метод ввода одиночного СН или QR-code в поле Serial number
+        AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
+        getSerialNumberInput().click();
+        getSerialNumberInput().val(container);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 }
