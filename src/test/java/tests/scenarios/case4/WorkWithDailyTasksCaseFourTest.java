@@ -342,7 +342,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
 
-        allTasksPage.clickInventoryTypeTaskQuantity();
+        allTasksPage.getStringTasks(2).click();
      /**
      * Обычная Инвентаризация для номенклатур Стол31-40
      */
