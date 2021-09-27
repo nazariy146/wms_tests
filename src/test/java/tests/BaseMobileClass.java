@@ -66,8 +66,8 @@ public class BaseMobileClass implements WebDriverProvider {
 
         settingsPage = loginPage.clickSettingIcon();
         settingsPage.getConnectionStringInput().shouldHave(text("Connection string"));
-        settingsPage.getConnectionStringInput().sendKeys("http://dmz.abmretail.com:8080/wms_regress_radl/hs/TSDExchange");
-        settingsPage.getLicenseInput().sendKeys("9999900017");
+        settingsPage.getConnectionStringInput().sendKeys("http://dmz.abmretail.com:8080/wms_regress_mikn/hs/TSDExchange");
+        settingsPage.getLicenseInput().sendKeys("wms_regress_mikn");
         settingsPage.getSaveButton().click();
     }
 }
