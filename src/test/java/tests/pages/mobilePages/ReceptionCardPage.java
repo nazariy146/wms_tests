@@ -110,7 +110,6 @@ public class ReceptionCardPage {
         getExpirationDateInput().click();
         getExpirationDateInput().val(date);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-
     }
 
     public SelenideElement getSerialNumberInput() {
