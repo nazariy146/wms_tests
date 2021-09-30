@@ -49,7 +49,8 @@ public class FindRestsPage {
     }
 
     public void checkProductLocationInfo(String expectedLocation) {
-        String actualLocation = $(By.id("com.abmcloud:id/textViewLocation")).getText();
+        //String actualLocation = $(By.id("com.abmcloud:id/textViewLocation")).getText();
+        String actualLocation = $(By.id("com.abmcloud:id/textViewItem")).getText();
         Assert.assertEquals(actualLocation, expectedLocation, "Actual location does not match expected location");
     }
 

@@ -47,6 +47,7 @@ public class InventoryCardPage {
 
     public SelenideElement getAvailableSeries() {
         return $(By.id("com.abmcloud:id/textViewSeries"));
+
     }
 
     public SelenideElement getSeriesBox() {

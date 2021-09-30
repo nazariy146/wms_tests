@@ -84,6 +84,16 @@ public class AllTasksPage {
 }
 
 
+
+
+
+
+
+2
+3
+4
+6
+
     /*public void searchTasks (String nameTasks) throws Exception {
         switch (nameTasks) {
             case 1:

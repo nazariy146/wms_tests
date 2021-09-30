@@ -84,7 +84,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        receptionCardPage.getContainerInput().click();
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
         receptionCardPage.clickCommitButton();
@@ -98,7 +97,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        receptionCardPage.getContainerInput().click();
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
         receptionCardPage.clickCommitButton();
@@ -112,7 +110,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        receptionCardPage.getContainerInput().click();
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
         receptionCardPage.clickCommitButton();
@@ -144,7 +141,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         receptionCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickCommitSerialNumberButton();
-        receptionCardPage.getContainerInput().click();
         receptionCardPage.setContainerInput("IN1");
         receptionCardPage.getQuantityInput().shouldHave(text("10"));
         receptionCardPage.clickCommitButton();

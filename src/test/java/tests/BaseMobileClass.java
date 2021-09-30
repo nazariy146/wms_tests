@@ -55,13 +55,9 @@ public class BaseMobileClass implements WebDriverProvider {
 
         open();
 
-        getMessageModalDialog().shouldHave(text("No server available"));
         clickErrorDialogOkButton();
-        getMessageModalDialog().shouldHave(text("Unable to connect the device under the terms of licensing. Contact your administrator."));
         clickErrorDialogOkButton();
-        getMessageModalDialog().shouldHave(text("No server available"));
         clickErrorDialogOkButton();
-        getMessageModalDialog().shouldHave(text("No connection string set"));
         clickErrorDialogOkButton();
 
         settingsPage = loginPage.clickSettingIcon();
