@@ -46,20 +46,25 @@ public class InventoryCardPage {
     }
 
     public SelenideElement getAvailableSeries() {
-        return $(By.id("com.abmcloud:id/textViewSeries"));
-
+        //return $(By.id("com.abmcloud:id/tv_series"));
+        return $(By.xpath("//android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView[1]"));
     }
 
     public SelenideElement getSeriesBox() {
-        return $(By.id("com.abmcloud:id/textBoxSeriesPL"));
+        return $(By.id("com.abmcloud:id/et_series"));
     }
 
     public SelenideElement getAvailableExpirationDate() {
-        return $(By.id("com.abmcloud:id/textViewShelfLife"));
+        //return $(By.id("com.abmcloud:id/textViewShelfLife"));
+        //return $(By.xpath("//androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView[2]"));
+        return $(By.xpath("//androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView"));
+    }
+    public SelenideElement getAvailableExpirationDateZ22() {
+        return $(By.xpath("//androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView[2]"));
     }
 
     public SelenideElement getExpirationDateBox() {
-        return $(By.id("com.abmcloud:id/textBoxShelfLifeLP"));
+        return $(By.id("com.abmcloud:id/et_shelf_life"));
     }
 
     public void selectQuality(String qualityType) {
@@ -91,7 +96,8 @@ public class InventoryCardPage {
     }
 
     public SelenideElement getAvailableExpirationDate2() {
-        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.TextView[2]"));
+        //return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.TextView[2]"));
+        return $(By.xpath("//android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView"));
     }
 
     public SelenideElement getAvailableSeries1() {
@@ -132,6 +138,13 @@ public class InventoryCardPage {
     }
 
     //////////////////////////////////////
+    public SelenideElement getAvailableSeries(int stroka) {
+        return $(By.xpath("//android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView["+stroka+"]/android.view.ViewGroup/android.widget.TextView")); //поле количества СН в колонке Qty fact: для формы СН
+        //return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]")); //поле количества СН в колонке Qty fact: для формы СН
+
+        // /hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView["+string+"]/android.view.ViewGroup/android.widget.TextView
+    }
+
     public SelenideElement getProductUnit() {
         return $(By.id("com.abmcloud:id/labelHintInv"));
     }

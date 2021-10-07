@@ -1,3 +1,4 @@
+/*
 package tests.scenarios.testsCancel;
 
 import org.testng.annotations.Test;
@@ -13,9 +14,11 @@ import static tests.utils.ModalDialogs.clickCancelButton;
 import static tests.utils.ModalDialogs.getAlertModalDialog;
 
 public class TestsCancel extends BaseMobileClass {
-    /**
+    */
+/**
      * Тест на проверку закрытия формы Серий/СГ кнопками Cancel и Esc на разных формах (Задача 1182)
-     */
+     *//*
+
     Steps steps = new Steps();
     AllTasksPage allTasksPage = new AllTasksPage();
     ReceptionCardPage receptionCardPage = new ReceptionCardPage();
@@ -24,16 +27,20 @@ public class TestsCancel extends BaseMobileClass {
     RelocationCardPage relocationCardPage = new RelocationCardPage();
 
     @Test
-    /**
+    */
+/**
      * Тест на проверку закрытия формы Серий/СГ кнопками Cancel и Esc на форме Reception
-     */
+     *//*
+
     public void testingCancelReception() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Reception");
         allTasksPage.getWorkTypeTasksQuantity().click();
-        /**
+        */
+/**
          * Стол21
-         */
+         *//*
+
         receptionCardPage.setSourceInput("IN.01");//ввод ячейки Источника
         receptionCardPage.setProductInput("000021");//ввод ШК номенклатуры
         getAlertModalDialog().shouldBe(visible).shouldHave(text("Series"));//проверка отображенной формы Серии/СГ
@@ -71,9 +78,11 @@ public class TestsCancel extends BaseMobileClass {
         receptionCardPage.setContainerInput("IN1");//ввод контейнера
         receptionCardPage.setQuantityInput("10");//ввод количества номенклатуры
         receptionCardPage.clickCommitButton();//клик на кнопку Commit (Подтвердить)
-        /**
+        */
+/**
          * Стол22
-         */
+         *//*
+
         receptionCardPage.setProductInput("000022");//ввод ШК номенклатуры
         getAlertModalDialog().shouldBe(visible).shouldHave(text("Shelf life"));//проверка отображенной формы Серии/СГ
         clickCancelButton();//клик на кнопку "Отмена" на форме Серии/СГ
@@ -110,9 +119,11 @@ public class TestsCancel extends BaseMobileClass {
         receptionCardPage.setContainerInput("IN1");//ввод контейнера
         receptionCardPage.setQuantityInput("10");//ввод количества номенклатуры
         receptionCardPage.clickCommitButton();//клик на кнопку Commit (Подтвердить)
-        /**
+        */
+/**
          * Стол23
-         */
+         *//*
+
         receptionCardPage.setProductInput("000023");//ввод ШК номенклатуры
         getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));//проверка отображенной формы Серии/СГ
         clickCancelButton();//клик на кнопку "Отмена" на форме Серии/СГ
@@ -155,9 +166,11 @@ public class TestsCancel extends BaseMobileClass {
     }
 
     @Test (priority = 1)
-    /**
+    */
+/**
      * Тест на проверку закрытия формы Серий/СГ кнопками Cancel и Esc на форме Relocation (Перемещение через ТСД)
-     */
+     *//*
+
     public void testingCancelRelocation() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.selectRelocation();
@@ -180,9 +193,11 @@ public class TestsCancel extends BaseMobileClass {
     }
 
     @Test (priority = 2)
-    /**
+    */
+/**
      * Тест на проверку закрытия формы Серий/СГ кнопками Cancel и Esc на форме SelectionControl (ОтгрузкаКонтроль)
-     */
+     *//*
+
     public void testingCancelSelectionControl() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Control");
@@ -214,9 +229,11 @@ public class TestsCancel extends BaseMobileClass {
     }
 
     @Test (priority = 3)
-    /**
+    */
+/**
      * Тест на проверку закрытия формы Серий/СГ кнопками Cancel и Esc на форме Inventory
-     */
+     *//*
+
     public void testingCancelInventory() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.clickInventoryTypeTaskQuantity();
@@ -232,3 +249,4 @@ public class TestsCancel extends BaseMobileClass {
         backPage(inventoryCardPage.getProductInput());//закрытие формы Inventory
     }
 }
+*/

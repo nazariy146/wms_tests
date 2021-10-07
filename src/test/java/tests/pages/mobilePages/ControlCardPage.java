@@ -11,9 +11,9 @@ import org.openqa.selenium.interactions.touch.TouchActions;
 import org.testng.Assert;
 import tests.utils.Actions;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static io.appium.java_client.touch.offset.PointOption.point;
 import static java.time.Duration.ofMillis;
 
@@ -74,6 +74,7 @@ public class ControlCardPage {
 
     public SelenideElement getSeriesInfo() {
         return $(By.id("com.abmcloud:id/tv_series"));
+        //return $(By.id("com.abmcloud:id/et_series"));
     }
 
     public SelenideElement getShelfLifeInfo() {
@@ -97,7 +98,9 @@ public class ControlCardPage {
     }
 
     public SelenideElement getSeriesBox() {
-        return $(By.id("com.abmcloud:id/textBoxSeriesPL"));
+        //return $(By.id("com.abmcloud:id/textBoxSeriesPL"));
+        return $(By.id("com.abmcloud:id/et_shelf_life"));
+
     }
 
     public SelenideElement getAvailableExpirationDate() {
@@ -273,5 +276,9 @@ public class ControlCardPage {
 
     public SelenideElement getQtySerialNumber(int string) {
         return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]")); } //поле количества СН в колонке Qty fact: для формы СН
+
+    public void selectSeries(String series) {
+        $$(By.id("com.abmcloud:id/textViewSeries")).find(exactText(series)).click();
+    }
 
 }
