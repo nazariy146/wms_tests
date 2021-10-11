@@ -61,19 +61,20 @@ public class LoadingCardPage {
     }
 
     private SelenideElement getPriorityInfo() {
-        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/text_resource"));
+        //return $(By.xpath("//android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/text_resource"));
+        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/text_resource"));
     }
 
     private SelenideElement getClientInfo() {
-        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/textViewClient"));
+        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/textViewClient"));
     }
 
     private SelenideElement getLoadedInfo() {
-        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/textViewLoaded"));
+        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/textViewLoaded"));
     }
 
     private SelenideElement getNotLoadedInfo() {
-        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/textViewNotLoaded"));
+        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/textViewNotLoaded"));
     }
 
     public void clickCommitButton() {

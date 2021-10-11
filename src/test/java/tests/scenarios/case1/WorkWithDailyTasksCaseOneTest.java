@@ -25,6 +25,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     PackagingCardPage packagingCardPage = new PackagingCardPage();
     LoadingCardPage loadingCardPage = new LoadingCardPage();
     InventoryCardPage inventoryCardPage = new InventoryCardPage();
+    SettingsPage settingsPage = new SettingsPage();
 
     /**
      * All tests run on Regress/Case1/wms_regress_case1_Reception_Inventory DB
@@ -35,125 +36,115 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     @Test
     public void processingReceptionTaskTest() throws Exception {
         steps.loginAsAdmin();
-
         allTasksPage.checkWorkType("Reception");
         //allTasksPage.getWorkTypeTasksQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
+        settingsPage.andrDriver("source");
+
     //Стол1
-        receptionCardPage.verifyData("productInfo", "0001 Стол1 IN.01 Quantity 10 шт");
-        receptionCardPage.inputData("source", "IN.01");
-        receptionCardPage.inputData("product","0001");
-        receptionCardPage.inputData("container","IN1");
-        receptionCardPage.inputData("qty","10");
-        receptionCardPage.clickButton("commit");
+        settingsPage.verifyData("productInfo", "0001 Стол1 IN.01 Quantity 10 шт");
+        settingsPage.inputData("source", "IN.01");
+        settingsPage.inputData("product","0001");
+        settingsPage.inputData("container","IN1");
+        settingsPage.inputData("qty","10");
+        settingsPage.clickButton("commit");
     //Стол10
-        receptionCardPage.verifyData("productInfo", "00010 Стол10 IN.01 Quantity 10 шт");
-        receptionCardPage.inputData("product","00010");
-        receptionCardPage.inputData("qty","10");
-        receptionCardPage.clickButton("commit");
+        settingsPage.verifyData("productInfo", "00010 Стол10 IN.01 Quantity 10 шт");
+        settingsPage.inputData("product","00010");
+        settingsPage.inputData("qty","10");
+        settingsPage.clickButton("commit");
     //Стол2
-        receptionCardPage.verifyData("productInfo", "0002 Стол2 IN.01 Quantity 10 шт");
-        receptionCardPage.inputData("product","0002");
-        receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputData("newSeries","Series2");
-        receptionCardPage.clickButton("modalDialogOK");
-        receptionCardPage.verifyData("productInfo", "0002 Series2 Стол2 IN.01 Quantity 10 шт");
-        receptionCardPage.inputData("qty","10");
-        receptionCardPage.clickButton("commit");
+        settingsPage.verifyData("productInfo", "0002 Стол2 IN.01 Quantity 10 шт");
+        settingsPage.inputData("product","0002");
+        settingsPage.verifyData("modalDialogTitle", "Batch properties");
+        settingsPage.inputData("newSeries","Series2");
+        settingsPage.clickButton("modalDialogOK");
+        settingsPage.verifyData("productInfo", "0002 Series2 Стол2 IN.01 Quantity 10 шт");
+        settingsPage.inputData("qty","10");
+        settingsPage.clickButton("commit");
     //Стол3
-        receptionCardPage.verifyData("productInfo", "0003 Стол3 IN.01 Quantity 10 шт");
-        receptionCardPage.inputData("product","0003");
-        receptionCardPage.clickButton("cancel");//TODO
-        receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputData("expirationDate","31.12.2021");
-        receptionCardPage.clickButton("modalDialogOK");
-        receptionCardPage.verifyData("productInfo", "0003 31.12.2021 Стол3 IN.01 Quantity 10 шт");
-        receptionCardPage.inputData("qty","10");
-        receptionCardPage.clickButton("commit");
+        settingsPage.verifyData("productInfo", "0003 Стол3 IN.01 Quantity 10 шт");
+        settingsPage.inputData("product","0003");
+        settingsPage.verifyData("modalDialogTitle", "Batch properties");
+        settingsPage.inputData("expirationDate","31.12.2021");
+        settingsPage.clickButton("modalDialogOK");
+        settingsPage.verifyData("productInfo", "0003 31.12.2021 Стол3 IN.01 Quantity 10 шт");
+        settingsPage.inputData("qty","10");
+        settingsPage.clickButton("commit");
     //Стол4
-        receptionCardPage.verifyData("productInfo", "0004 Стол4 IN.01 Quantity 10 шт");
-        receptionCardPage.inputData("product","0004");
+        settingsPage.verifyData("productInfo", "0004 Стол4 IN.01 Quantity 10 шт");
+        settingsPage.inputData("product","0004");
         receptionCardPage.checkSerialNumberInputText("");
-        receptionCardPage.verifyData("productInfoSN", "0004 Стол4");
-        //receptionCardPage.getCancelSerialNumberButton().shouldBe(visible);
+        settingsPage.verifyData("productInfoSN", "0004 Стол4");
         receptionCardPage.setSerialNumberInputSeveralTimes("serialnumber4", 10);
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber4"));
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));
         receptionCardPage.checkSerialNumberInputText("");
-        receptionCardPage.clickButton("commitSN");
-        receptionCardPage.verifyData("qty", "10");
-        receptionCardPage.clickButton("commit");
+        settingsPage.clickButton("commitSN");
+        settingsPage.verifyData("qty", "10");
+        settingsPage.clickButton("commit");
     //Стол5
-        receptionCardPage.verifyData("productInfo", "0005 Стол5 IN.01 Quantity 10 шт");
-        receptionCardPage.inputData("product","0005");
-        receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputData("newSeries","series5");
-        receptionCardPage.clickButton("cancel");//TODO
-        receptionCardPage.inputData("expirationDate","31.12.2021");
-        receptionCardPage.clickButton("modalDialogOK");
-        receptionCardPage.verifyData("productInfo", "0005 series5 31.12.2021 Стол5 IN.01 Quantity 10 шт");
-        receptionCardPage.inputData("qty","10");
-        receptionCardPage.clickButton("commit");
+        settingsPage.verifyData("productInfo", "0005 Стол5 IN.01 Quantity 10 шт");
+        settingsPage.inputData("product","0005");
+        settingsPage.verifyData("modalDialogTitle", "Batch properties");
+        settingsPage.inputData("newSeries","series5");
+        settingsPage.inputData("expirationDate","31.12.2021");
+        settingsPage.clickButton("modalDialogOK");
+        settingsPage.verifyData("productInfo", "0005 series5 31.12.2021 Стол5 IN.01 Quantity 10 шт");
+        settingsPage.inputData("qty","10");
+        settingsPage.clickButton("commit");
     //Стол6
-        receptionCardPage.verifyData("productInfo", "0006 Стол6 IN.01 Quantity 10 шт");
-        receptionCardPage.inputData("product","0006");
-        receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputData("newSeries","series6");
-        receptionCardPage.clickButton("modalDialogOK");
-        receptionCardPage.checkSerialNumberInputText("");
-        receptionCardPage.verifyData("productInfoSN", "0006 series6 Стол6");
-        //receptionCardPage.getCancelSerialNumberButton().shouldBe(visible);
+        settingsPage.verifyData("productInfo", "0006 Стол6 IN.01 Quantity 10 шт");
+        settingsPage.inputData("product","0006");
+        settingsPage.verifyData("modalDialogTitle", "Batch properties");
+        settingsPage.inputData("newSeries","series6");
+        settingsPage.clickButton("modalDialogOK");
+        settingsPage.verifyData("productInfoSN", "0006 series6 Стол6");
         receptionCardPage.setSerialNumberInputSeveralTimes("serialnumber6", 10);
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber6"));
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));
         receptionCardPage.checkSerialNumberInputText("");
-        receptionCardPage.clickButton("commitSN");
-        receptionCardPage.verifyData("productInfo", "0006 series6 Стол6 IN.01 Quantity 10 шт");
-        receptionCardPage.verifyData("qty","10");
-        receptionCardPage.clickButton("commit");
+        settingsPage.clickButton("commitSN");
+        settingsPage.verifyData("productInfo", "0006 series6 Стол6 IN.01 Quantity 10 шт");
+        settingsPage.verifyData("qty","10");
+        settingsPage.clickButton("commit");
     //Стол7
-        receptionCardPage.verifyData("productInfo", "0007 Стол7 IN.01 Quantity 10 шт");
-        receptionCardPage.inputData("product","0007");
-        receptionCardPage.clickButton("cancel");//TODO
-        receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputData("expirationDate","31.12.2021");
-        receptionCardPage.clickButton("modalDialogOK");
+        settingsPage.inputData("product","0007");
+        settingsPage.verifyData("modalDialogTitle", "Batch properties");
+        settingsPage.inputData("expirationDate","31.12.2021");
+        settingsPage.clickButton("modalDialogOK");
         receptionCardPage.checkSerialNumberInputText("");
-        receptionCardPage.verifyData("productInfoSN", "0007 31.12.2021 Стол7");
-        //receptionCardPage.getCancelSerialNumberButton().shouldBe(visible);
+        settingsPage.verifyData("productInfoSN", "0007 31.12.2021 Стол7");
         receptionCardPage.setSerialNumberInputSeveralTimes("serialnumber7", 10);
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber7"));
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));
         receptionCardPage.checkSerialNumberInputText("");
-        receptionCardPage.clickButton("commitSN");
-        receptionCardPage.verifyData("productInfo", "0007 31.12.2021 Стол7 IN.01 Quantity 10 шт");
-        receptionCardPage.verifyData("qty","10");
-        receptionCardPage.clickButton("commit");
+        settingsPage.clickButton("commitSN");
+        settingsPage.verifyData("productInfo", "0007 31.12.2021 Стол7 IN.01 Quantity 10 шт");
+        settingsPage.verifyData("qty","10");
+        settingsPage.clickButton("commit");
     //Стол8
-        receptionCardPage.verifyData("productInfo", "0008 Стол8 IN.01 Quantity 10 шт");
-        receptionCardPage.inputData("product","0008");
-        receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputData("newSeries","series8");
-        receptionCardPage.clickButton("cancel");//TODO
-        receptionCardPage.inputData("expirationDate","31.12.2021");
-        receptionCardPage.clickButton("modalDialogOK");
+        settingsPage.verifyData("productInfo", "0008 Стол8 IN.01 Quantity 10 шт");
+        settingsPage.inputData("product","0008");
+        settingsPage.verifyData("modalDialogTitle", "Batch properties");
+        settingsPage.inputData("newSeries","series8");
+        settingsPage.inputData("expirationDate","31.12.2021");
+        settingsPage.clickButton("modalDialogOK");
         receptionCardPage.checkSerialNumberInputText("");
-        receptionCardPage.verifyData("productInfoSN", "0008 series8 31.12.2021 Стол8");
-        //receptionCardPage.getCancelSerialNumberButton().shouldBe(visible);
+        settingsPage.verifyData("productInfoSN", "0008 series8 31.12.2021 Стол8");
         receptionCardPage.setSerialNumberInputSeveralTimes("serialnumber8", 10);
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber8"));
         receptionCardPage.setSerialNumberInputSeveralTimes();
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));
-        receptionCardPage.clickButton("commitSN");
-        receptionCardPage.verifyData("productInfo", "0008 series8 31.12.2021 Стол8 IN.01 Quantity 10 шт");
-        receptionCardPage.verifyData("qty","10");
-        receptionCardPage.clickButton("commit");
+        settingsPage.clickButton("commitSN");
+        settingsPage.verifyData("productInfo", "0008 series8 31.12.2021 Стол8 IN.01 Quantity 10 шт");
+        settingsPage.verifyData("qty","10");
+        settingsPage.clickButton("commit");
     //Стол9
-        receptionCardPage.verifyData("productInfo", "0009 Стол9 IN.01 Quantity 10 шт");
-        receptionCardPage.inputData("product","0009");
+        settingsPage.verifyData("productInfo", "0009 Стол9 IN.01 Quantity 10 шт");
+        settingsPage.inputData("product","0009");
         receptionCardPage.checkSerialNumberInputText("");
-        receptionCardPage.verifyData("productInfoSN", "0009 Стол9");
-        //receptionCardPage.getCancelSerialNumberButton().shouldBe(visible);
+        settingsPage.verifyData("productInfoSN", "0009 Стол9");
         receptionCardPage.inputSerialNumbers("serialnumber9", 10);
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber90"));//проверка СН в колонке Serial Number
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
@@ -176,10 +167,10 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.getNameSerialNumber(11).shouldHave(exactText("serialnumber99"));//проверка СН в колонке Serial Number
         receptionCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
         receptionCardPage.checkSerialNumberInputText("");
-        receptionCardPage.clickButton("commitSN");
-        receptionCardPage.verifyData("productInfo", "0009 Стол9 IN.01 Quantity 10 шт");
-        receptionCardPage.verifyData("qty","10");
-        receptionCardPage.clickButton("commit");
+        settingsPage.clickButton("commitSN");
+        settingsPage.verifyData("productInfo", "0009 Стол9 IN.01 Quantity 10 шт");
+        settingsPage.verifyData("qty","10");
+        settingsPage.clickButton("commit");
     }
 
     @Test (priority = 1, dependsOnMethods = "processingReceptionTaskTest")
@@ -336,14 +327,14 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         findRestsPage.getProductQuantity().shouldHave(exactText("10"));
     }
 
-    @Test (priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
+    @Test //(priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
 
         //allTasksPage.checkWorkTypesQty(2);
         allTasksPage.getStringTasks(2).click();//запуск инвентуры
 
-    //Стол1
+  /*  //Стол1
         inventoryCardPage.setCellInput("A.1.1.1.1");
         inventoryCardPage.setProductInput("0001");
         inventoryCardPage.getProductInfo().shouldHave(exactText("0001 Стол1"));
@@ -365,7 +356,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getProductInfo().shouldHave(exactText("0002 Series2 Стол2"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
-        //inventoryPage.getItemViewInfo().shouldHave(text("0002 Series2 Стол2")); //TODO BUG
+        inventoryCardPage.getItemViewInfo().shouldHave(text("0002 Series2 Стол2"));
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
@@ -382,7 +373,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getProductInfo().shouldHave(exactText("0003 31.12.2021 Стол3"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
-        //inventoryPage.getItemViewInfo().shouldHave(text("0003 31.12.2021 Стол3")); //TODO BUG
+        inventoryCardPage.getItemViewInfo().shouldHave(text("0003 31.12.2021 Стол3"));
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
@@ -413,12 +404,12 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getProductInfo().shouldHave(exactText("0005 series5 31.12.2021 Стол5"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
-        //inventoryPage.getItemViewInfo().shouldHave(text("0005 series5 31.12.2021 Стол5")); //TODO BUG
+        inventoryCardPage.getItemViewInfo().shouldHave(text("0005 series5 31.12.2021 Стол5"));
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
         getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
-        clickSetOkYesButton();
+        clickSetOkYesButton();*/
     //Стол6
         inventoryCardPage.setCellInput("A.1.1.1.6");
         inventoryCardPage.setProductInput("0006");
@@ -430,7 +421,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getProductInfo().shouldHave(exactText("0006 series6 Стол6"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
-        //inventoryPage.getItemViewInfo().shouldHave(text("0006 series6 Стол6")); //TODO BUG
+        inventoryCardPage.getItemViewInfo().shouldHave(text("0006 series6 Стол6"));
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
@@ -447,7 +438,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getProductInfo().shouldHave(exactText("0007 31.12.2021 Стол7"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
-        //inventoryPage.getItemViewInfo().shouldHave(text("0007 31.12.2021 Стол7")); //TODO BUG
+        inventoryCardPage.getItemViewInfo().shouldHave(text("0007 31.12.2021 Стол7"));
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
@@ -466,7 +457,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getProductInfo().shouldHave(exactText("0008 series8 31.12.2021 Стол8"));
         inventoryCardPage.selectQuality("Кондиция");
         inventoryCardPage.setQtyInput("10");
-        //inventoryPage.getItemViewInfo().shouldHave(text("0008 series8 31.12.2021 Стол8")); //TODO BUG
+        inventoryCardPage.getItemViewInfo().shouldHave(text("0008 series8 31.12.2021 Стол8"));
         inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
@@ -507,7 +498,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         allTasksPage.selectFindRestsMenu();
 
         findRestsPage.checkFreeRemainSwitchState(false);
-        //findRestsPage.setOnOrOffFreeRemainSwitcher(true); //TODO BUG
+        findRestsPage.setOnOrOffFreeRemainSwitcher(true); //TODO BUG
 
     //Стол1
         findRestsPage.setBarcodeInput("0001"); // set sku
@@ -1030,7 +1021,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         clickErrorDialogOkButton();
     }
 
-    @Test //(priority = 9, dependsOnMethods = "processingPackagingTaskTest")
+    @Test (priority = 9, dependsOnMethods = "processingPackagingTaskTest")
     public void processingLoadingTaskTest() throws Exception {
         steps.loginAsAdmin();
 

@@ -62,6 +62,9 @@ public class InventoryCardPage {
     public SelenideElement getAvailableExpirationDateZ22() {
         return $(By.xpath("//androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView[2]"));
     }
+    public SelenideElement getAvailableExpirationDateZ23() {
+        return $(By.xpath("//androidx.cardview.widget.CardView[3]/android.view.ViewGroup/android.widget.TextView"));
+    }
 
     public SelenideElement getExpirationDateBox() {
         return $(By.id("com.abmcloud:id/et_shelf_life"));
@@ -101,11 +104,12 @@ public class InventoryCardPage {
     }
 
     public SelenideElement getAvailableSeries1() {
-        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView[1]"));
+        //return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView[1]"));
+        return $(By.xpath("//androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView"));
     }
 
     public SelenideElement getAvailableSeries2() {
-        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.TextView[1]"));
+        return $(By.xpath("//androidx.cardview.widget.CardView[3]/android.view.ViewGroup/android.widget.TextView"));
     }
 
 
@@ -146,7 +150,7 @@ public class InventoryCardPage {
     }
 
     public SelenideElement getProductUnit() {
-        return $(By.id("com.abmcloud:id/labelHintInv"));
+        return $(By.xpath("//android.widget.LinearLayout/android.view.ViewGroup[2]/android.widget.LinearLayout[3]/android.widget.Spinner/android.widget.TextView"));
     }
 
     public SelenideElement getProductQuantity() {

@@ -19,7 +19,8 @@ public class AllTasksPage {
     }
 
     public void checkWorkType(String taskTitle) throws Exception {
-        $(By.id("com.abmcloud:id/top_app_bar")).shouldBe(visible);
+        //$(By.id("com.abmcloud:id/top_app_bar")).shouldBe(visible);
+        $(By.id("com.abmcloud:id/text_work_type")).shouldBe(visible);
         if (getRelaxMessage().isDisplayed()) {
             waitUntilPass(WAIT_TASK_TIMEOUT, () -> {
                 refreshPage($(By.id("com.abmcloud:id/top_app_bar")));

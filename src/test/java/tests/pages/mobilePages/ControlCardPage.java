@@ -166,7 +166,11 @@ public class ControlCardPage {
 
 
     public SelenideElement getProductInfoString1() {
-        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[1]"));
+        return $(By.xpath("//androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[1]"));
+    }
+    public SelenideElement getProductInfoString2() {
+        return $(By.xpath("//androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView[1]"));
+
     }
 
     public void getProductInfoString1(String expectedgetProductInfoString1) {
@@ -175,7 +179,10 @@ public class ControlCardPage {
     }
 
     public SelenideElement getShelfLifeInfoString1() {
-        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.LinearLayout[1]/android.widget.TextView"));
+        return $(By.xpath("//androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.LinearLayout[1]/android.widget.TextView"));
+    }
+    public SelenideElement getShelfLifeInfoString2() {
+        return $(By.xpath("androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.LinearLayout[1]/android.widget.TextView"));
     }
 
     public void getShelfLifeInfoString1(String expectedShelfLifeInfoString1) {
@@ -184,16 +191,22 @@ public class ControlCardPage {
     }
 
     public SelenideElement getContainerInfoString1() {
-        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView"));
+        return $(By.xpath("//androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView"));
     }
 
+    public SelenideElement getContainerInfoString2() {
+        return $(By.xpath("//androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.LinearLayout[2]/android.widget.TextView"));
+    }
     public void getContainerInfoString1(String expectedContainerInfoString1) {
         String actualContainerInfoString1 = getContainerInfoString1().getText();
         Assert.assertEquals(actualContainerInfoString1, expectedContainerInfoString1, "Actual shelf life does not match expected shelf life");
     }
 
     public SelenideElement getControlledQtyString1() {
-        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[4]"));
+        return $(By.xpath("//androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[3]"));
+    }
+    public SelenideElement getControlledQtyString2() {
+        return $(By.xpath("//androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView[3]"));
     }
 
     public void getControlledQtyString1(String expectedControlledQtyString1) {
@@ -202,7 +215,7 @@ public class ControlCardPage {
     }
 
     public SelenideElement getQtyString1() {
-        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[5]"));
+        return $(By.xpath("//androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[5]"));
     }
 
     public void getQtyString1(String expectedQtyString1) {
