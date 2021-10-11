@@ -327,14 +327,14 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         findRestsPage.getProductQuantity().shouldHave(exactText("10"));
     }
 
-    @Test //(priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
+    @Test (priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
 
         //allTasksPage.checkWorkTypesQty(2);
         allTasksPage.getStringTasks(2).click();//запуск инвентуры
 
-  /*  //Стол1
+    //Стол1
         inventoryCardPage.setCellInput("A.1.1.1.1");
         inventoryCardPage.setProductInput("0001");
         inventoryCardPage.getProductInfo().shouldHave(exactText("0001 Стол1"));
@@ -346,7 +346,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.clickInventoryButton();
         getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
         clickSetOkYesButton();
-    //Стол2
+        //Стол2
         inventoryCardPage.setCellInput("A.1.1.1.2");
         inventoryCardPage.setProductInput("0002");
         getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
@@ -362,7 +362,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.clickInventoryButton();
         getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
         clickSetOkYesButton();
-    //Стол3
+        //Стол3
         inventoryCardPage.setCellInput("A.1.1.1.3");
         inventoryCardPage.setProductInput("0003");
         getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
@@ -379,7 +379,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.clickInventoryButton();
         getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
         clickSetOkYesButton();
-    //Стол4
+        //Стол4
         inventoryCardPage.setCellInput("A.1.1.1.4");
         inventoryCardPage.setProductInput("0004");
         inventoryCardPage.getProductInfo().shouldHave(exactText("0004 Стол4"));
@@ -391,7 +391,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.clickInventoryButton();
         getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
         clickSetOkYesButton();
-    //Стол5
+        //Стол5
         inventoryCardPage.setCellInput("A.1.1.1.5");
         inventoryCardPage.setProductInput("0005");
         getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
@@ -409,7 +409,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
         inventoryCardPage.clickInventoryButton();
         getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
-        clickSetOkYesButton();*/
+        clickSetOkYesButton();
     //Стол6
         inventoryCardPage.setCellInput("A.1.1.1.6");
         inventoryCardPage.setProductInput("0006");

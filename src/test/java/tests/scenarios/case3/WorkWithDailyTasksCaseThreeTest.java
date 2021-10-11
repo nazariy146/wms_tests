@@ -1105,7 +1105,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         clickErrorDialogOkButton();
     }
 
-    @Test //(priority = 9, dependsOnMethods = "processingPackagingTaskTest")
+    @Test (priority = 9, dependsOnMethods = "processingPackagingTaskTest")
     public void processingLoadingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
