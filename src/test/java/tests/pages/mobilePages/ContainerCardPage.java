@@ -13,20 +13,24 @@ public class ContainerCardPage {
     private SelenideElement getContainerInput() {
         return $(By.id("com.abmcloud:id/editTextBoxBarcodeContainerMoving"));
     }
+    public SelenideElement getContainerDescription() {
+        return $(By.id("com.abmcloud:id/textViewDescriptionContainerMoving"));
+    }
+    public SelenideElement getDestinationInput() {
+        return $(By.id("com.abmcloud:id/editTextDestinationContainerMoving"));
+    }
+    private SelenideElement getCommitButton() {
+        return $(By.id("com.abmcloud:id/buttonCommitContainerMoving"));
+    }
+    public SelenideElement getSerialNumberInput() {
+        return $(By.id("com.abmcloud:id/editTextSerialNumber"));
+    }
 
     public void setContainerInput(String sourceInput) {
         AndroidDriver driver = (AndroidDriver) getContainerInput().getWrappedDriver();
         getContainerInput().click();
         getContainerInput().val(sourceInput);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-    }
-
-    public SelenideElement getContainerDescription() {
-        return $(By.id("com.abmcloud:id/textViewDescriptionContainerMoving"));
-    }
-
-    public SelenideElement getDestinationInput() {
-        return $(By.id("com.abmcloud:id/editTextDestinationContainerMoving"));
     }
 
     public void setDestinationInput(String destinationInput) {
@@ -36,15 +40,7 @@ public class ContainerCardPage {
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
-    private SelenideElement getCommitButton() {
-        return $(By.id("com.abmcloud:id/buttonCommitContainerMoving"));
-    }
-
     public void clickCommitButton() {
         getCommitButton().click();
-    }
-
-    public SelenideElement getSerialNumberInput() {
-        return $(By.id("com.abmcloud:id/editTextSerialNumber"));
     }
 }

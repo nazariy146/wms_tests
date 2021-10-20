@@ -13,31 +13,22 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class ReceptionCardPage {
-    public static AndroidDriver driver;
 
     public static SelenideElement getIdField(String Field) {
         if (Field == "source"){
-            SelenideElement ID =  $(By.id("com.abmcloud:id/editTextControlSource"));
-            return ID;
+            return $(By.id("com.abmcloud:id/editTextControlSource"));
         }
         else if (Field == "product"){
-            SelenideElement ID = $(By.id("com.abmcloud:id/editTextControlBoxBarcode"));
-            return ID;
+            return $(By.id("com.abmcloud:id/editTextControlBoxBarcode"));
         }
         else if (Field == "productInfo"){
-            SelenideElement ID = $(By.id("com.abmcloud:id/textViewControlDescription"));
-            return ID;
-            //return $(By.id("com.abmcloud:id/textViewControlDescription"));
+            return $(By.id("com.abmcloud:id/textViewControlDescription"));
         }
         else if (Field == "container"){
-            SelenideElement ID = $(By.id("com.abmcloud:id/editTextControlDestination"));
-            return ID;
-            //return $(By.id("com.abmcloud:id/editTextControlDestination"));
+            return $(By.id("com.abmcloud:id/editTextControlDestination"));
         }
         else if (Field == "qty"){
-            SelenideElement ID = $(By.id("com.abmcloud:id/editTextControlQty"));
-            return ID;
-            //return $(By.id("com.abmcloud:id/editTextControlQty"));
+            return $(By.id("com.abmcloud:id/editTextControlQty"));
         }
         else if (Field == "commit"){
             return $(By.id("com.abmcloud:id/buttonControlCommit"));
@@ -61,15 +52,12 @@ public class ReceptionCardPage {
             return $(By.id("com.abmcloud:id/editTextTareWeight"));
         }
         else if (Field == "heightSKU"){
-            //return $(By.id("com.abmcloud:id/et_ware_parameters_height"));
             return $(By.id("com.abmcloud:id/et_unit_parameters_height"));
         }
         else if (Field == "widthSKU"){
-            //return $(By.id("com.abmcloud:id/et_ware_parameters_width"));
             return $(By.id("com.abmcloud:id/textinput_placeholder"));
         }
         else if (Field == "lenghtSKU"){
-            //return $(By.id("com.abmcloud:id/et_ware_parameters_length"));
             return $(By.id("com.abmcloud:id/et_unit_parameters_length"));
         }
         else if (Field == "newSeries"){
