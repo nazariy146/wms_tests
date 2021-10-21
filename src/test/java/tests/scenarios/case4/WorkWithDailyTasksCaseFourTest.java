@@ -181,75 +181,66 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         allTasksPage.getWorkTypeTasksQuantity().click();
 
     //Стол31
-        accommodationCardPage.setSourceInput("IN1");
-        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00031 Стол31 IN.01 ➡ C.1.1.1.1 Quantity 10 уп. (5)"));
-        accommodationCardPage.setProductInput("31FRAGSN31Series0131122021");
-        accommodationCardPage.setDestinationInput("C.1.1.1.1");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.verifyData("productInfo", "00031 Стол31 IN.01 ➡ C.1.1.1.1 Quantity 10 уп. (5)");
+        accommodationCardPage.inputData("source","IN1");
+        accommodationCardPage.inputData("product","31FRAGSN31Series0131122021");
+        accommodationCardPage.inputData("destination","C.1.1.1.1");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол32
-        accommodationCardPage.setSourceInput("IN1");
-        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00032 32series01 Стол32 IN.01 ➡ C.1.1.1.2 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("32FRAGSN32Series0131122021");
-        accommodationCardPage.setDestinationInput("C.1.1.1.2");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.verifyData("productInfo", "00032 32series01 Стол32 IN.01 ➡ C.1.1.1.2 Quantity 10 шт");
+        accommodationCardPage.inputData("product","32FRAGSN32Series0131122021");
+        accommodationCardPage.inputData("destination","C.1.1.1.2");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол33
-        accommodationCardPage.setSourceInput("IN1");
-        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00033 31.12.2021 Стол33 IN.01 ➡ C.1.1.1.3 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("33FRAGSN33Series0131122021");
-        accommodationCardPage.setDestinationInput("C.1.1.1.3");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.verifyData("productInfo", "00033 31.12.2021 Стол33 IN.01 ➡ C.1.1.1.3 Quantity 10 шт");
+        accommodationCardPage.inputData("product","33FRAGSN33Series0131122021");
+        accommodationCardPage.inputData("destination","C.1.1.1.3");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол34
-        accommodationCardPage.setSourceInput("IN1");
-        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00034 34series01 31.12.2021 Стол34 IN.01 ➡ C.1.1.1.4 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("34FRAGSN34Series0131122021");
-        accommodationCardPage.setDestinationInput("C.1.1.1.4");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.verifyData("productInfo", "00034 34series01 31.12.2021 Стол34 IN.01 ➡ C.1.1.1.4 Quantity 10 шт");
+        accommodationCardPage.inputData("product","34FRAGSN34Series0131122021");
+        accommodationCardPage.inputData("destination","C.1.1.1.4");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол35
-        accommodationCardPage.setSourceInput("IN1");
-        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00035 Стол35 IN.01 ➡ C.1.1.1.5 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("35FRAGBC35Series0131122021");
-        accommodationCardPage.setDestinationInput("C.1.1.1.5");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.verifyData("productInfo", "00035 Стол35 IN.01 ➡ C.1.1.1.5 Quantity 10 шт");
+        accommodationCardPage.inputData("product","35FRAGBC35Series0131122021");
+        accommodationCardPage.inputData("destination","C.1.1.1.5");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол36
-        accommodationCardPage.setSourceInput("IN1");
-        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00036 36series01 Стол36 IN.01 ➡ C.1.1.1.6 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("36FRAGBC36Series0131122021");
-        accommodationCardPage.setDestinationInput("C.1.1.1.6");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.verifyData("productInfo", "00036 36series01 Стол36 IN.01 ➡ C.1.1.1.6 Quantity 10 шт");
+        accommodationCardPage.inputData("product","36FRAGBC36Series0131122021");
+        accommodationCardPage.inputData("destination","C.1.1.1.6");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол37
-        accommodationCardPage.setSourceInput("IN1");
-        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00037 31.12.2021 Стол37 IN.01 ➡ C.1.1.1.7 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("37FRAGBC37Series0131122021");
-        accommodationCardPage.setDestinationInput("C.1.1.1.7");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.verifyData("productInfo", "00037 31.12.2021 Стол37 IN.01 ➡ C.1.1.1.7 Quantity 10 шт");
+        accommodationCardPage.inputData("product","37FRAGBC37Series0131122021");
+        accommodationCardPage.inputData("destination","C.1.1.1.7");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол38
-        accommodationCardPage.setSourceInput("IN1");
-        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00038 38series01 31.12.2021 Стол38 IN.01 ➡ C.1.1.1.8 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("38FRAGBC38Series0131122021");
-        accommodationCardPage.setDestinationInput("C.1.1.1.8");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.verifyData("productInfo", "00038 38series01 31.12.2021 Стол38 IN.01 ➡ C.1.1.1.8 Quantity 10 шт");
+        accommodationCardPage.inputData("product","38FRAGBC38Series0131122021");
+        accommodationCardPage.inputData("destination","C.1.1.1.8");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол39
-        accommodationCardPage.setSourceInput("IN1");
-        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00039 39series01 31.12.2021 Стол39 IN.01 ➡ C.1.1.1.9 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("39FRAGSN39Series0131122021");
-        accommodationCardPage.setDestinationInput("C.1.1.1.9");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.verifyData("productInfo", "00039 39series01 31.12.2021 Стол39 IN.01 ➡ C.1.1.1.9 Quantity 10 шт");
+        accommodationCardPage.inputData("product","39FRAGSN39Series0131122021");
+        accommodationCardPage.inputData("destination","C.1.1.1.9");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол40
-        accommodationCardPage.setSourceInput("IN1");
-        accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00040 40series01 31.12.2021 Стол40 IN.01 ➡ C.1.1.1.10 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("40FRAGSN40Series0131122021");
-        accommodationCardPage.setDestinationInput("C.1.1.1.10");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.verifyData("productInfo", "00040 40series01 31.12.2021 Стол40 IN.01 ➡ C.1.1.1.10 Quantity 10 шт");
+        accommodationCardPage.inputData("product","40FRAGSN40Series0131122021");
+        accommodationCardPage.inputData("destination","C.1.1.1.10");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     }
 
     /**
