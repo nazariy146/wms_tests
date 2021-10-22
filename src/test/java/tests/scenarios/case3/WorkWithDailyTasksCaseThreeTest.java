@@ -266,121 +266,121 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         allTasksPage.getWorkTypeTasksQuantity().click();
 
     //Стол21
-        accommodationCardPage.setSourceInput("IN.02");//negative test
+        accommodationCardPage.inputData("source","IN.02");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Source does not match the task"));
         clickErrorDialogOkButton();
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00021 Стол21 IN.01 ➡ R.1.1.1.1 Quantity 10 уп. (5)"));
-        accommodationCardPage.setSourceInput("IN");//negative test
+        accommodationCardPage.inputData("source","IN");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Source does not match the task"));
         clickErrorDialogOkButton();
-        accommodationCardPage.setSourceInput("IN.01");//negative test
+        accommodationCardPage.inputData("source","IN.01");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Source does not match the task"));
         clickErrorDialogOkButton();
-        accommodationCardPage.setSourceInput("IN1");//positive test
+        accommodationCardPage.inputData("source","IN1");
         getMessageModalDialog().shouldNotBe(visible);
-        accommodationCardPage.setProductInput("IN.01");//negative test
+        accommodationCardPage.inputData("product","IN.01");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: IN.01"));
         clickErrorDialogOkButton();
-        accommodationCardPage.setProductInput("IN");//negative test
+        accommodationCardPage.inputData("product","IN");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: IN"));
         clickErrorDialogOkButton();
-        accommodationCardPage.setProductInput("00001");//negative test
+        accommodationCardPage.inputData("product","00001");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: 00001"));
         clickErrorDialogOkButton();
-        accommodationCardPage.setProductInput("00002102");//positive test
+        accommodationCardPage.inputData("product","00002102");
         getMessageModalDialog().shouldNotBe(visible);
-        accommodationCardPage.setDestinationInput("A.1.1.1.1");//negative test
+        accommodationCardPage.inputData("destination","A.1.1.1.1");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Location was changed. Continue?"));
         clickErrorDialogOkButton();
-        accommodationCardPage.setDestinationInput("B.1.1.1.1");//positive test
+        accommodationCardPage.inputData("destination","B.1.1.1.1");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Location was changed. Continue?"));
         clickSetOkYesButton();
         accommodationCardPage.checkAmountAndPackaging("5.0", "2");
-        accommodationCardPage.setQuantityInput("3");//negative test
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.inputData("qty","3");
+        accommodationCardPage.clickButton("commit");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("It is impossible to confirm15. Remaining 10"));
         clickErrorDialogOkButton();
-        accommodationCardPage.setQuantityInput("2");//positive test
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.inputData("qty","2");
+        accommodationCardPage.clickButton("commit");
         getMessageModalDialog().shouldNotBe(visible);
     //Стол22
-        accommodationCardPage.setSourceInput("IN1");
+        accommodationCardPage.inputData("source","IN1");
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00022 Стол22 IN.01 ➡ B.1.1.1.2 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("2120021020000");
+        accommodationCardPage.inputData("product","2120021020000");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: 2120021020000"));
         clickErrorDialogOkButton();
-        accommodationCardPage.setProductInput("2110022020000");
+        accommodationCardPage.inputData("product","2110022020000");
         accommodationCardPage.getQuantityInput().shouldHave(exactText("2.000"));
-        accommodationCardPage.setProductInput("2110023020000");
+        accommodationCardPage.inputData("product","2110023020000");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("The entered BC does not correspond to the current task!"));
         clickErrorDialogOkButton();
-        accommodationCardPage.setProductInput("2110022140000");
+        accommodationCardPage.inputData("product","2110022140000");
         accommodationCardPage.getQuantityInput().shouldHave(exactText("16.000"));
-        accommodationCardPage.setDestinationInput("B.1.1.1.2");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.inputData("destination","B.1.1.1.2");
+        accommodationCardPage.clickButton("commit");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("It is impossible to confirm16. Remaining 10"));
         clickErrorDialogOkButton();
         accommodationCardPage.clearQuantityInput();//TODO bag нет возможности очистить келичество, крестик не активен
-        accommodationCardPage.setProductInput("2110022100000");
+        accommodationCardPage.inputData("product","2110022100000");
         accommodationCardPage.getQuantityInput().shouldHave(exactText("10.000"));
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.clickButton("commit");
     //Стол23
-        accommodationCardPage.setSourceInput("IN1");
+        accommodationCardPage.inputData("source","IN1");
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00023 30.12.2021 Стол23 IN.01 ➡ B.1.1.1.3 Quantity 5.5 шт"));
-        accommodationCardPage.setProductInput("2110023055000");
-        accommodationCardPage.setDestinationInput("B.1.1.1.3");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.inputData("product","2110023055000");
+        accommodationCardPage.inputData("destination","B.1.1.1.3");
+        accommodationCardPage.clickButton("commit");
     //Стол23
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00023 31.12.2021 Стол23 IN.01 ➡ B.1.1.1.3 Quantity 4.5 шт"));
-        accommodationCardPage.setProductInput("2110023045000");
-        accommodationCardPage.setDestinationInput("B.1.1.1.3");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.inputData("product","2110023045000");
+        accommodationCardPage.inputData("destination","B.1.1.1.3");
+        accommodationCardPage.clickButton("commit");
     //Стол24
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00024 24Series01 Стол24 IN.01 ➡ B.1.1.1.4 Quantity 2 шт"));
-        accommodationCardPage.setProductInput("2110024020000");
-        accommodationCardPage.setDestinationInput("B.1.1.1.4");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.inputData("product","2110024020000");
+        accommodationCardPage.inputData("destination","B.1.1.1.4");
+        accommodationCardPage.clickButton("commit");
     //Стол24
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00024 24Series02 Стол24 IN.01 ➡ B.1.1.1.4 Quantity 8 шт"));
-        accommodationCardPage.setProductInput("2110024080000");
-        accommodationCardPage.setDestinationInput("B.1.1.1.4");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.inputData("product","2110024080000");
+        accommodationCardPage.inputData("destination","B.1.1.1.4");
+        accommodationCardPage.clickButton("commit");
     //Стол25
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00025 Стол25(0.2) IN.01 ➡ B.1.1.1.5 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("00025");
-        accommodationCardPage.setDestinationInput("B.1.1.1.5");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.inputData("product","00025");
+        accommodationCardPage.inputData("destination","B.1.1.1.5");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол26
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00026 26series01 Стол26(0.2) IN.01 ➡ B.1.1.1.6 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("00026");
-        accommodationCardPage.setDestinationInput("B.1.1.1.6");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.inputData("product","00026");
+        accommodationCardPage.inputData("destination","B.1.1.1.6");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол27
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00027 31.12.2021 Стол27(0.2) IN.01 ➡ B.1.1.1.7 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("00027");
-        accommodationCardPage.setDestinationInput("B.1.1.1.7");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.inputData("product","00027");
+        accommodationCardPage.inputData("destination","B.1.1.1.7");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол28
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00028 Стол28 IN.01 ➡ B.1.1.1.8 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("00028");
-        accommodationCardPage.setDestinationInput("B.1.1.1.8");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.inputData("product","00028");
+        accommodationCardPage.inputData("destination","B.1.1.1.8");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол29
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00029 29Series01 Стол29 IN.01 ➡ B.1.1.1.9 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("00029");
-        accommodationCardPage.setDestinationInput("B.1.1.1.9");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.inputData("product","00029");
+        accommodationCardPage.inputData("destination","B.1.1.1.9");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
     //Стол30
         accommodationCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00030 Стол30 IN.01 ➡ B.1.1.1.10 Quantity 10 шт"));
-        accommodationCardPage.setProductInput("00030");
-        accommodationCardPage.setDestinationInput("B.1.1.1.10");
-        accommodationCardPage.setQuantityInput("10");
-        accommodationCardPage.clickCommitButton();
+        accommodationCardPage.inputData("product","00030");
+        accommodationCardPage.inputData("destination","B.1.1.1.10");
+        accommodationCardPage.inputData("qty","10");
+        accommodationCardPage.clickButton("commit");
         }
 
     @Test (priority = 2, dependsOnMethods = "processingAccommodationTaskTest")

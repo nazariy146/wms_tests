@@ -93,41 +93,36 @@ public class AccommodationCardPage {
     }
 
 
-    public void setSourceInput(String sourceInput) {
-        AndroidDriver driver = (AndroidDriver) getSourceInput().getWrappedDriver();
-        getSourceInput().click();
-        getSourceInput().val(sourceInput);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-    }
-
-    public void setProductInput(String productInput) {
-        AndroidDriver driver = (AndroidDriver) getProductInput().getWrappedDriver();
-        getProductInput().click();
-        getProductInput().val(productInput);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-    }
-
-    public void setDestinationInput(String destinationInput) {
-        AndroidDriver driver = (AndroidDriver) getDestinationInput().getWrappedDriver();
-        getDestinationInput().click();
-        getDestinationInput().val(destinationInput);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-    }
-
-    public void setQuantityInput(String quantityInput) {
-        AndroidDriver driver = (AndroidDriver) getQuantityInput().getWrappedDriver();
-        getQuantityInput().click();
-        getQuantityInput().val(quantityInput);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-    }
-
-    public void clickCommitButton() {
-        getCommitButton().click();
-    }
-
     public void checkAmountAndPackaging(String amount, String packaging) {
         $(By.id("android:id/text1")).shouldHave(exactText(amount));
         $(By.id("com.abmcloud:id/textViewLabelHint")).shouldHave(exactText(packaging));
     }
-
+//   MNV need to dell
+//    public void setSourceInput(String sourceInput) {
+//        AndroidDriver driver = (AndroidDriver) getSourceInput().getWrappedDriver();
+//        getSourceInput().click();
+//        getSourceInput().val(sourceInput);
+//        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+//    }
+//    public void setProductInput(String productInput) {
+//        AndroidDriver driver = (AndroidDriver) getProductInput().getWrappedDriver();
+//        getProductInput().click();
+//        getProductInput().val(productInput);
+//        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+//    }
+//    public void setDestinationInput(String destinationInput) {
+//        AndroidDriver driver = (AndroidDriver) getDestinationInput().getWrappedDriver();
+//        getDestinationInput().click();
+//        getDestinationInput().val(destinationInput);
+//        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+//    }
+//    public void setQuantityInput(String quantityInput) {
+//        AndroidDriver driver = (AndroidDriver) getQuantityInput().getWrappedDriver();
+//        getQuantityInput().click();
+//        getQuantityInput().val(quantityInput);
+//        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+//    }
+//    public void clickCommitButton() {
+//        getCommitButton().click();
+//    }
 }

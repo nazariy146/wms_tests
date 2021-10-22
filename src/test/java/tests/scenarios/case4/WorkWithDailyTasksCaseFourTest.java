@@ -179,7 +179,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
 
         allTasksPage.checkWorkType("Accommodation");
         allTasksPage.getWorkTypeTasksQuantity().click();
-
     //Стол31
         accommodationCardPage.verifyData("productInfo", "00031 Стол31 IN.01 ➡ C.1.1.1.1 Quantity 10 уп. (5)");
         accommodationCardPage.inputData("source","IN1");
