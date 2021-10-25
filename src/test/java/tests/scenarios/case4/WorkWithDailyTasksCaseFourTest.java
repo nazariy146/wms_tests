@@ -490,9 +490,9 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         allTasksPage.getWorkTypeTasksQuantity().click();
 
     //Стол31
-        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00031 Стол31 C.1.1.1.1 ➡ KT1.01.01.01.01 Quantity 10 уп. (5)"));
-        selectionCardPage.setSourceInput("C.1.1.1.1");
-        selectionCardPage.setProductInput("31FRAGSN31Series0131122021");
+        selectionCardPage.verifyData("productInfo", "00031 Стол31 C.1.1.1.1 ➡ KT1.01.01.01.01 Quantity 10 уп. (5)");
+        selectionCardPage.inputData("source", "C.1.1.1.1");
+        selectionCardPage.inputData("product", "31FRAGSN31Series0131122021");
         selectionCardPage.getSerialNumberInput().shouldBe(visible);
         selectionCardPage.checkSerialNumberInputText("");
         selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("00031 Стол31"));
@@ -501,13 +501,13 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         selectionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         selectionCardPage.checkSerialNumberInputText("");
         selectionCardPage.clickCommitSerialNumberButton();
-        selectionCardPage.setDestinationInput("OUT131");
-        selectionCardPage.getQuantityInput().shouldHave(text("10"));
-        selectionCardPage.clickCommitButton();
+        selectionCardPage.inputData("destination", "OUT131");
+        selectionCardPage.inputData("qty", "10");
+        selectionCardPage.clickButton("commit");
     //Стол32
-        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00032 32series01 Стол32 C.1.1.1.2 ➡ KT1.01.01.01.01 Quantity 10 шт"));
-        selectionCardPage.setSourceInput("C.1.1.1.2");
-        selectionCardPage.setProductInput("32FRAGSN32Series0131122021");
+        selectionCardPage.verifyData("productInfo", "00032 32series01 Стол32 C.1.1.1.2 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "C.1.1.1.2");
+        selectionCardPage.inputData("product", "32FRAGSN32Series0131122021");
         selectionCardPage.getSerialNumberInput().shouldBe(visible);
         selectionCardPage.checkSerialNumberInputText("");
     //   selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("00032 32series01 Стол32"));
@@ -516,13 +516,13 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         selectionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         selectionCardPage.checkSerialNumberInputText("");
         selectionCardPage.clickCommitSerialNumberButton();
-        selectionCardPage.setDestinationInput("OUT132");
-        selectionCardPage.getQuantityInput().shouldHave(text("10"));
-        selectionCardPage.clickCommitButton();
+        selectionCardPage.inputData("destination", "OUT132");
+        selectionCardPage.inputData("qty", "10");
+        selectionCardPage.clickButton("commit");
     //Стол33
-        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00033 31.12.2021 Стол33 C.1.1.1.3 ➡ KT1.01.01.01.01 Quantity 10 шт"));
-        selectionCardPage.setSourceInput("C.1.1.1.3");
-        selectionCardPage.setProductInput("33FRAGSN33Series0131122021");
+        selectionCardPage.verifyData("productInfo", "00033 31.12.2021 Стол33 C.1.1.1.3 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "C.1.1.1.3");
+        selectionCardPage.inputData("product", "33FRAGSN33Series0131122021");
         selectionCardPage.getSerialNumberInput().shouldBe(visible);
         selectionCardPage.checkSerialNumberInputText("");
     //   selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("00033 31.12.2021 Стол33"));
@@ -531,13 +531,13 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         selectionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         selectionCardPage.checkSerialNumberInputText("");
         selectionCardPage.clickCommitSerialNumberButton();
-        selectionCardPage.setDestinationInput("OUT133");
-        selectionCardPage.getQuantityInput().shouldHave(text("10"));
-        selectionCardPage.clickCommitButton();
+        selectionCardPage.inputData("destination", "OUT133");
+        selectionCardPage.inputData("qty", "10");
+        selectionCardPage.clickButton("commit");
     //Стол34
-        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00034 34series01 31.12.2021 Стол34 C.1.1.1.4 ➡ KT1.01.01.01.01 Quantity 10 шт"));
-        selectionCardPage.setSourceInput("C.1.1.1.4");
-        selectionCardPage.setProductInput("34FRAGSN34Series0131122021");
+        selectionCardPage.verifyData("productInfo", "00034 34series01 31.12.2021 Стол34 C.1.1.1.4 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "C.1.1.1.4");
+        selectionCardPage.inputData("product", "34FRAGSN34Series0131122021");
         selectionCardPage.getSerialNumberInput().shouldBe(visible);
         selectionCardPage.checkSerialNumberInputText("");
     //   selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("00034 34series01 31.12.2021 Стол34"));
@@ -546,41 +546,40 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         selectionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         selectionCardPage.checkSerialNumberInputText("");
         selectionCardPage.clickCommitSerialNumberButton();
-        selectionCardPage.setDestinationInput("OUT134");
-        selectionCardPage.getQuantityInput().shouldHave(text("10"));
-        selectionCardPage.clickCommitButton();
+        selectionCardPage.inputData("destination", "OUT134");
+        selectionCardPage.inputData("qty", "10");
     //Стол35
-        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00035 Стол35 C.1.1.1.5 ➡ KT1.01.01.01.01 Quantity 10 шт"));
-        selectionCardPage.setSourceInput("C.1.1.1.5");
-        selectionCardPage.setProductInput("35FRAGBC35Series0131122021");
-        selectionCardPage.setDestinationInput("OUT135");
-        selectionCardPage.setQuantityInput("10");
-        selectionCardPage.clickCommitButton();
+        selectionCardPage.verifyData("productInfo", "00035 Стол35 C.1.1.1.5 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "C.1.1.1.5");
+        selectionCardPage.inputData("product", "35FRAGBC35Series0131122021");
+        selectionCardPage.inputData("destination", "OUT135");
+        selectionCardPage.inputData("qty", "10");
+        selectionCardPage.clickButton("commit");
     //Стол36
-        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00036 36series01 Стол36 C.1.1.1.6 ➡ KT1.01.01.01.01 Quantity 10 шт"));
-        selectionCardPage.setSourceInput("C.1.1.1.6");
-        selectionCardPage.setProductInput("36FRAGBC36Series0131122021");
-        selectionCardPage.setDestinationInput("OUT136");
-        selectionCardPage.setQuantityInput("10");
-        selectionCardPage.clickCommitButton();
+        selectionCardPage.verifyData("productInfo", "00036 36series01 Стол36 C.1.1.1.6 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "C.1.1.1.6");
+        selectionCardPage.inputData("product", "36FRAGBC36Series0131122021");
+        selectionCardPage.inputData("destination", "OUT136");
+        selectionCardPage.inputData("qty", "10");
+        selectionCardPage.clickButton("commit");
     //Стол37
-        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00037 31.12.2021 Стол37 C.1.1.1.7 ➡ KT1.01.01.01.01 Quantity 10 шт"));
-        selectionCardPage.setSourceInput("C.1.1.1.7");
-        selectionCardPage.setProductInput("37FRAGBC37Series0131122021");
-        selectionCardPage.setDestinationInput("OUT137");
-        selectionCardPage.setQuantityInput("10");
-        selectionCardPage.clickCommitButton();
+        selectionCardPage.verifyData("productInfo", "00037 31.12.2021 Стол37 C.1.1.1.7 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "C.1.1.1.7");
+        selectionCardPage.inputData("product", "37FRAGBC37Series0131122021");
+        selectionCardPage.inputData("destination", "OUT137");
+        selectionCardPage.inputData("qty", "10");
+        selectionCardPage.clickButton("commit");
     //Стол38
-        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00038 38series01 31.12.2021 Стол38 C.1.1.1.8 ➡ KT1.01.01.01.01 Quantity 10 шт"));
-        selectionCardPage.setSourceInput("C.1.1.1.8");
-        selectionCardPage.setProductInput("38FRAGBC38Series0131122021");
-        selectionCardPage.setDestinationInput("OUT138");
-        selectionCardPage.setQuantityInput("10");
-        selectionCardPage.clickCommitButton();
+        selectionCardPage.verifyData("productInfo", "00038 38series01 31.12.2021 Стол38 C.1.1.1.8 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "C.1.1.1.8");
+        selectionCardPage.inputData("product", "38FRAGBC38Series0131122021");
+        selectionCardPage.inputData("destination", "OUT138");
+        selectionCardPage.inputData("qty", "10");
+        selectionCardPage.clickButton("commit");
     //Стол39
-        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00039 39series01 31.12.2021 Стол39 C.1.1.1.9 ➡ KT1.01.01.01.01 Quantity 10 шт"));
-        selectionCardPage.setSourceInput("C.1.1.1.9");
-        selectionCardPage.setProductInput("39FRAGSN39Series013112202101");
+        selectionCardPage.verifyData("productInfo", "00039 39series01 31.12.2021 Стол39 C.1.1.1.9 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "C.1.1.1.9");
+        selectionCardPage.inputData("product", "39FRAGSN39Series013112202101");
         selectionCardPage.getSerialNumberInput().shouldBe(visible);
         selectionCardPage.checkSerialNumberInputText("");
     //    selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("00039 39series01 31.12.2021 Стол39"));
@@ -607,13 +606,13 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
 //        selectionCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
         selectionCardPage.checkSerialNumberInputText("");
         selectionCardPage.clickCommitSerialNumberButton();
-        selectionCardPage.setDestinationInput("OUT139");
-        selectionCardPage.getQuantityInput().shouldHave(text("10"));
-        selectionCardPage.clickCommitButton();
+        selectionCardPage.inputData("destination", "OUT139");
+        selectionCardPage.inputData("qty", "10");
+        selectionCardPage.clickButton("commit");
     //Стол40
-        selectionCardPage.getProductDescription().shouldBe(visible).shouldHave(text("00040 40series01 31.12.2021 Стол40 C.1.1.1.10 ➡ KT1.01.01.01.01 Quantity 10 шт"));
-        selectionCardPage.setSourceInput("C.1.1.1.10");
-        selectionCardPage.setProductInput("40FRAGSN40Series013112202101 40FRAGSN40Series013112202102 40FRAGSN40Series013112202103");
+        selectionCardPage.verifyData("productInfo", "00040 40series01 31.12.2021 Стол40 C.1.1.1.10 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "C.1.1.1.10");
+        selectionCardPage.inputData("product", "40FRAGSN40Series013112202101 40FRAGSN40Series013112202102 40FRAGSN40Series013112202103");
         selectionCardPage.getSerialNumberInput().shouldBe(visible);
         selectionCardPage.checkSerialNumberInputText("");
     //    receptionCardPage.getSerialNumberProductInfo().shouldHave(exactText("00040 40series01 31.12.2021 Стол40"));
@@ -640,9 +639,9 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
 //        selectionCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
         selectionCardPage.checkSerialNumberInputText("");
         selectionCardPage.clickCommitSerialNumberButton();
-        selectionCardPage.setDestinationInput("OUT140");
-        selectionCardPage.getQuantityInput().shouldHave(text("10"));
-        selectionCardPage.clickCommitButton();
+        selectionCardPage.inputData("destination", "OUT140");
+        selectionCardPage.inputData("qty", "10");
+        selectionCardPage.clickButton("commit");
     }
 
     @Test (priority = 6)
