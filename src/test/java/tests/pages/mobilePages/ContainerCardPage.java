@@ -6,41 +6,47 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ContainerCardPage {
+    AndroidDriver driver;
 
-    private SelenideElement getContainerInput() {
-        return $(By.id("com.abmcloud:id/editTextBoxBarcodeContainerMoving"));
-    }
-    public SelenideElement getContainerDescription() {
-        return $(By.id("com.abmcloud:id/textViewDescriptionContainerMoving"));
-    }
-    public SelenideElement getDestinationInput() {
-        return $(By.id("com.abmcloud:id/editTextDestinationContainerMoving"));
-    }
-    private SelenideElement getCommitButton() {
-        return $(By.id("com.abmcloud:id/buttonCommitContainerMoving"));
-    }
-    public SelenideElement getSerialNumberInput() {
-        return $(By.id("com.abmcloud:id/editTextSerialNumber"));
+    public static SelenideElement getIdField(String Field) {
+        if (Field == "container"){
+            return $(By.id("com.abmcloud:id/editTextBoxBarcodeContainerMoving"));
+        }
+        else if (Field == "containerInfo"){
+            return $(By.id("com.abmcloud:id/textViewDescriptionContainerMoving"));
+        }
+        else if (Field == "destination"){
+            return $(By.id("com.abmcloud:id/editTextDestinationContainerMoving"));
+        }
+        else if (Field == "commit"){
+            return $(By.id("com.abmcloud:id/buttonCommitContainerMoving"));
+        }
+        return null;
     }
 
-    public void setContainerInput(String sourceInput) {
-        AndroidDriver driver = (AndroidDriver) getContainerInput().getWrappedDriver();
-        getContainerInput().click();
-        getContainerInput().val(sourceInput);
+    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
+    }
+
+    public void inputData(String field, String source) {
+        SelenideElement ID = AccommodationCardPage.getIdField(field);
+        ID.click();
+        ID.val(source);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
-    public void setDestinationInput(String destinationInput) {
-        AndroidDriver driver = (AndroidDriver) getDestinationInput().getWrappedDriver();
-        getDestinationInput().click();
-        getDestinationInput().val(destinationInput);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    public void verifyData(String field, String source) {
+        SelenideElement ID = AccommodationCardPage.getIdField(field);
+        ID.shouldHave(text(source));
     }
 
-    public void clickCommitButton() {
-        getCommitButton().click();
+    public void clickButton(String field) {
+        SelenideElement ID = AccommodationCardPage.getIdField(field);
+        ID.click();
     }
+
 }

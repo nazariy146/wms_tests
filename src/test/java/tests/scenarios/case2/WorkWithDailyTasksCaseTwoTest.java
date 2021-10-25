@@ -518,7 +518,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Selection");
-
         //allTasksPage.getReceptionQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
 
@@ -664,57 +663,54 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         allTasksPage.getWorkTypeTasksQuantity().click();
 
     //Стол11
-        containerCardPage.getContainerDescription().shouldHave(text("CON/OUT111 ➡ KT1.01.01.01.01"));
-        containerCardPage.setContainerInput("OUT111");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
-        containerCardPage.clickCommitButton();
+        containerCardPage.verifyData("containerInfo", "CON/OUT111 ➡ KT1.01.01.01.01");
+        containerCardPage.inputData("container", "OUT111");
+        containerCardPage.inputData("destination", "KT1.01.01.01.01");
+        containerCardPage.clickButton("commit");
     //Стол12
-        containerCardPage.getContainerDescription().shouldHave(text("CON/OUT112 ➡ KT1.01.01.01.01"));
-        containerCardPage.setContainerInput("OUT112");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
-        containerCardPage.clickCommitButton();
+        containerCardPage.verifyData("containerInfo", "CON/OUT112 ➡ KT1.01.01.01.01");
+        containerCardPage.inputData("container", "OUT112");
+        containerCardPage.inputData("destination", "KT1.01.01.01.01");
+        containerCardPage.clickButton("commit");
     //Стол13
-        containerCardPage.getContainerDescription().shouldHave(text("CON/OUT113 ➡ KT1.01.01.01.01"));
-        containerCardPage.setContainerInput("OUT113");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
-        containerCardPage.clickCommitButton();
+        containerCardPage.verifyData("containerInfo", "CON/OUT113 ➡ KT1.01.01.01.01");
+        containerCardPage.inputData("container", "OUT113");
+        containerCardPage.inputData("destination", "KT1.01.01.01.01");
+        containerCardPage.clickButton("commit");
     //Стол14
-        containerCardPage.getContainerDescription().shouldHave(text("CON/OUT114 ➡ KT1.01.01.01.01"));
-        containerCardPage.setContainerInput("OUT114");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
-        containerCardPage.clickCommitButton();
+        containerCardPage.verifyData("containerInfo", "CON/OUT114 ➡ KT1.01.01.01.01");
+        containerCardPage.inputData("container", "OUT114");
+        containerCardPage.inputData("destination", "KT1.01.01.01.01");
+        containerCardPage.clickButton("commit");
     //Стол15
-        containerCardPage.getContainerDescription().shouldHave(text("CON/OUT115 ➡ KT1.01.01.01.01"));
-        containerCardPage.setContainerInput("OUT115");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
-        containerCardPage.clickCommitButton();
+        containerCardPage.verifyData("containerInfo", "CON/OUT115 ➡ KT1.01.01.01.01");
+        containerCardPage.inputData("container", "OUT115");
+        containerCardPage.inputData("destination", "KT1.01.01.01.01");
+        containerCardPage.clickButton("commit");
     //Стол16
-        containerCardPage.getContainerDescription().shouldHave(text("CON/OUT116 ➡ KT1.01.01.01.01"));
-        containerCardPage.setContainerInput("OUT116");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
-        containerCardPage.clickCommitButton();
+        containerCardPage.verifyData("containerInfo", "CON/OUT116 ➡ KT1.01.01.01.01");
+        containerCardPage.inputData("container", "OUT116");
+        containerCardPage.inputData("destination", "KT1.01.01.01.01");
+        containerCardPage.clickButton("commit");
     //Стол17
-        containerCardPage.getContainerDescription().shouldHave(text("CON/OUT117 ➡ KT1.01.01.01.01"));
-        containerCardPage.setContainerInput("OUT117");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
-        containerCardPage.clickCommitButton();
+        containerCardPage.verifyData("containerInfo", "CON/OUT117 ➡ KT1.01.01.01.01");
+        containerCardPage.inputData("container", "OUT117");
+        containerCardPage.inputData("destination", "KT1.01.01.01.01");
+        containerCardPage.clickButton("commit");
     //Стол18
-        containerCardPage.getContainerDescription().shouldHave(text("CON/OUT118 ➡ KT1.01.01.01.01"));
-        containerCardPage.setContainerInput("OUT118");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
-        containerCardPage.clickCommitButton();
+        containerCardPage.verifyData("containerInfo", "CON/OUT118 ➡ KT1.01.01.01.01");
+        containerCardPage.inputData("container", "OUT118");
+        containerCardPage.inputData("destination", "KT1.01.01.01.01");
     //Стол19
-        containerCardPage.getContainerDescription().shouldHave(text("CON/OUT119 ➡ KT1.01.01.01.01"));
-        containerCardPage.setContainerInput("OUT119");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
-        containerCardPage.clickCommitButton();
+        containerCardPage.verifyData("containerInfo", "CON/OUT119 ➡ KT1.01.01.01.01");
+        containerCardPage.inputData("container", "OUT119");
+        containerCardPage.inputData("destination", "KT1.01.01.01.01");
+        containerCardPage.clickButton("commit");
     //Стол20
-        containerCardPage.getContainerDescription().shouldHave(text("CON/OUT120 ➡ KT1.01.01.01.01"));
-        containerCardPage.setContainerInput("OUT120");
-        containerCardPage.setDestinationInput("KT1.01.01.01.01");
-        containerCardPage.clickCommitButton();
-
-        allTasksPage.checkWorkType("Control");
+        containerCardPage.verifyData("containerInfo", "CON/OUT120 ➡ KT1.01.01.01.01");
+        containerCardPage.inputData("container", "OUT120");
+        containerCardPage.inputData("destination", "KT1.01.01.01.01");
+        containerCardPage.clickButton("commit");
     }
 
     @Test (priority = 7, dependsOnMethods = "processingContainerTaskTest")
