@@ -14,6 +14,12 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class ReceptionCardPage {
 
+    AndroidDriver driver;
+
+    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
+    }
+
     public static SelenideElement getIdField(String Field) {
         if (Field == "source"){
             return $(By.id("com.abmcloud:id/editTextControlSource"));
@@ -116,11 +122,10 @@ public class ReceptionCardPage {
         return null;
     }
 
-    //MNV develop
     public void inputData(String field, String source) {
-        AndroidDriver driver = (AndroidDriver) getIdField(field).getWrappedDriver();
-        getIdField(field).click();
-        getIdField(field).val(source);
+        SelenideElement ID = getIdField(field);
+        ID.click();
+        ID.val(source);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
@@ -128,17 +133,20 @@ public class ReceptionCardPage {
         getIdField(field).shouldHave(text(source));
     }
 
-    public void inputSerialNumbers(String serialNumber, int numberOfReps) {
-        String Field = "serialNumberInputText";
-        AndroidDriver driver = (AndroidDriver) getIdField(Field).getWrappedDriver();
-        for (int i = 0; i < numberOfReps; i++) {
-            String serialNumber1 = serialNumber+i;
-            getIdField(Field).click();
-            getIdField(Field).val(serialNumber1);
-            driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-        }
+    //MNV need to refactor
+    public SelenideElement getNameSerialNumber(int string) {
+        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]"));//поле наименования СН в колонке Serial number для формы СН
     }
-    //MNV develop
+    public SelenideElement getQtySerialNumber(int string) {
+        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]")); //поле количества СН в колонке Qty fact: для формы СН
+    }
+    public SelenideElement getSerialNumberInput() {
+        return $(By.id("com.abmcloud:id/editTextSerialNumber"));
+    }
+    public SelenideElement getQuantityInput() {
+        return $(By.id("com.abmcloud:id/editTextControlQty"));
+    }
+    //MNV need to refactor
 
     //MNV need to refactor
     public void clickButton(String button) {
@@ -161,12 +169,6 @@ public class ReceptionCardPage {
         $(By.id("android:id/text1")).shouldHave(exactText(amount));
         $(By.id("com.abmcloud:id/labelHintControl")).shouldHave(exactText(packaging));
     }
-    public SelenideElement getNameSerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]"));//поле наименования СН в колонке Serial number для формы СН
-    }
-    public SelenideElement getQtySerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]")); //поле количества СН в колонке Qty fact: для формы СН
-    }
     public void setSerialNumberInputSeveralTimes(String ... serialNumbers) {
         String Field = "serialNumberInputText";
         AndroidDriver driver = (AndroidDriver) getIdField(Field).getWrappedDriver();
@@ -185,11 +187,15 @@ public class ReceptionCardPage {
             driver.pressKey(new KeyEvent(AndroidKey.ENTER));
         }
     }
-    public SelenideElement getSerialNumberInput() {
-        return $(By.id("com.abmcloud:id/editTextSerialNumber"));
-    }
-    public SelenideElement getQuantityInput() {
-        return $(By.id("com.abmcloud:id/editTextControlQty"));
+    public void inputSerialNumbers(String serialNumber, int numberOfReps) {
+        String Field = "serialNumberInputText";
+        AndroidDriver driver = (AndroidDriver) getIdField(Field).getWrappedDriver();
+        for (int i = 0; i < numberOfReps; i++) {
+            String serialNumber1 = serialNumber+i;
+            getIdField(Field).click();
+            getIdField(Field).val(serialNumber1);
+            driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+        }
     }
     //MNV need to refactor
 }

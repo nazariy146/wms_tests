@@ -70,6 +70,7 @@ public class FindRestsPage {
         $(By.id("com.abmcloud:id/switchFreeRemains")).click();
     }
 
+    //MNV need to refactor
     public SelenideElement getQuantityString1() {
         return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"));
     }
@@ -88,26 +89,26 @@ public class FindRestsPage {
     public SelenideElement getQuantityString2() {
         return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.TextView"));
     }
+    //MNV need to refactor
 
+    //MNV need to refactor
     public void checkLocationString1(String expectedLocation1) {
         String actualLocation1 = getLocationString1().getText();
         Assert.assertEquals(actualLocation1, expectedLocation1, "Actual shelf life does not match expected shelf life");
     }
-
     public void checkPartyInfoString1(String partyInfoString1) {
         String actualPartyInfoString1 = getPartyInfoString1().getText();
         Assert.assertEquals(actualPartyInfoString1, partyInfoString1, "Actual shelf life does not match expected shelf life");
     }
-
     public void checkLocationString2(String expectedLocation2) {
         String actualLocation2 = getLocationString2().getText();
         Assert.assertEquals(actualLocation2, expectedLocation2, "Actual shelf life does not match expected shelf life");
     }
-
     public void checkPartyInfoString2(String partyInfoString1) {
         String partyInfoString2 = getPartyInfoString2().getText();
         Assert.assertEquals(partyInfoString2, partyInfoString1, "Actual shelf life does not match expected shelf life");
     }
+    //MNV need to refactor
 }
 
 

@@ -13,6 +13,10 @@ import static com.codeborne.selenide.Selenide.$$;
 public class InventoryCardPage {
     AndroidDriver driver;
 
+    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
+    }
+
     public static SelenideElement getIdField(String Field) {
         if (Field == "source"){
             return $(By.id("com.abmcloud:id/textBoxLocationInv"));
@@ -62,10 +66,6 @@ public class InventoryCardPage {
         return null;
     }
 
-    public void andrDriver(String field) {
-        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
-    }
-
     public void inputData(String field, String source) {
         SelenideElement ID = getIdField(field);
         ID.click();
@@ -89,6 +89,7 @@ public class InventoryCardPage {
         clickButton("ok");
     }
 
+    //MNV need to refactor
     public void selectData(String field, String source) {
         getIdField(field).click();
         $$(By.id("android:id/text1")).find(exactText(source)).click();
@@ -127,5 +128,5 @@ public class InventoryCardPage {
     public SelenideElement getProductUnit() {
         return $(By.xpath("//android.widget.LinearLayout/android.view.ViewGroup[2]/android.widget.LinearLayout[3]/android.widget.Spinner/android.widget.TextView"));
     }
-
+    //MNV need to refactor
 }

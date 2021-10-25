@@ -70,65 +70,14 @@ public class AccommodationCardPage {
         ID.click();
     }
 
-//MNV need to refactor
+    //MNV need to refactor
     public void clearQuantityInput() {
         $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[4]")).click();
     }
-
     public void checkAmountAndPackaging(String amount, String packaging) {
         $(By.id("android:id/text1")).shouldHave(exactText(amount));
         $(By.id("com.abmcloud:id/textViewLabelHint")).shouldHave(exactText(packaging));
     }
-//   MNV need to dell
-
-
-//    public void setSourceInput(String sourceInput) {
-//        AndroidDriver driver = (AndroidDriver) getSourceInput().getWrappedDriver();
-//        getSourceInput().click();
-//        getSourceInput().val(sourceInput);
-//        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-//    }
-//    public void setProductInput(String productInput) {
-//        AndroidDriver driver = (AndroidDriver) getProductInput().getWrappedDriver();
-//        getProductInput().click();
-//        getProductInput().val(productInput);
-//        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-//    }
-//    public void setDestinationInput(String destinationInput) {
-//        AndroidDriver driver = (AndroidDriver) getDestinationInput().getWrappedDriver();
-//        getDestinationInput().click();
-//        getDestinationInput().val(destinationInput);
-//        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-//    }
-//    public void setQuantityInput(String quantityInput) {
-//        AndroidDriver driver = (AndroidDriver) getQuantityInput().getWrappedDriver();
-//        getQuantityInput().click();
-//        getQuantityInput().val(quantityInput);
-//        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-//    }
-//    public void clickCommitButton() {
-//        getCommitButton().click();
-//    }
-//private SelenideElement getSourceInput() {
-//    return $(By.id("com.abmcloud:id/source_edit"));
-//}
-//    public SelenideElement getProductDescription() {
-//        return $(By.id("com.abmcloud:id/textViewDescription"));
-//    }
-//    private SelenideElement getProductInput() {
-//        return $(By.id("com.abmcloud:id/ware_barcode"));
-//    }
-//    public SelenideElement getDestinationInput() {
-//        return $(By.id("com.abmcloud:id/dest_edit"));
-//    }
-//    public SelenideElement getQuantityInput() {
-//        return $(By.id("com.abmcloud:id/editTextQty"));
-//    }
-//    private SelenideElement getCommitButton() {
-//        return $(By.id("com.abmcloud:id/buttonCommit"));
-//    }
-//    public SelenideElement getControlItemIcon() {
-//        return $(By.id("com.abmcloud:id/action_more_menu"));
-//    }
+    //MNV need to refactor
 
 }

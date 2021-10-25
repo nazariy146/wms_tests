@@ -12,8 +12,8 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ProblemSituationCardPage {
 
+    //MNV need to refactor
     private SelenideElement getSourceInput () { return $(By.id("com.abmcloud:id/editTextSource"));}//обращение к полю Source
-
     public void setSourceInput(String sourceCode) { //ввод в поле Source
         getSourceInput().shouldBe(visible);
         AndroidDriver driver = (AndroidDriver) getSourceInput().getWrappedDriver();
@@ -21,7 +21,6 @@ public class ProblemSituationCardPage {
         getSourceInput().val(sourceCode);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
-
     public SelenideElement textViewDescription () { return $(By.id("com.abmcloud:id/textViewDescription"));}//обращение к табличной части (инфа о ПС)
-
+    //MNV need to refactor
 }

@@ -33,19 +33,19 @@ public class ContainerCardPage {
     }
 
     public void inputData(String field, String source) {
-        SelenideElement ID = AccommodationCardPage.getIdField(field);
+        SelenideElement ID = getIdField(field);
         ID.click();
         ID.val(source);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
     public void verifyData(String field, String source) {
-        SelenideElement ID = AccommodationCardPage.getIdField(field);
+        SelenideElement ID = getIdField(field);
         ID.shouldHave(text(source));
     }
 
     public void clickButton(String field) {
-        SelenideElement ID = AccommodationCardPage.getIdField(field);
+        SelenideElement ID = getIdField(field);
         ID.click();
     }
 

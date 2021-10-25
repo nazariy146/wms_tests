@@ -12,26 +12,28 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class RelocationCardPage {
 
+    //MNV need to refactor
     private SelenideElement getSourceInput() {
         return $(By.id("com.abmcloud:id/textBoxSource"));
     }
-
     public SelenideElement getProductInput() {
         return $(By.id("com.abmcloud:id/textBoxBarcode"));
     }
-
     private SelenideElement getQtyInput() {
         return $(By.id("com.abmcloud:id/textBoxQty"));
     }
-
     private SelenideElement getDestinationInput() {
         return $(By.id("com.abmcloud:id/textBoxDestination"));
     }
-
     private SelenideElement getContainerInput() {
         return $(By.id("com.abmcloud:id/editTextDestinationContainer"));
     }
+    public SelenideElement textDescription () { return $(By.id("com.abmcloud:id/textBoxDescription")); }
+    public SelenideElement buttonMoving () { return $(By.id("com.abmcloud:id/buttonCommit"));}
+    public SelenideElement buttonCancel () { return  $(By.id("android:id/button2"));}
+    //MNV need to refactor
 
+    //MNV need to refactor
     public void setSourceInput(String sourceCode) { //поле Source
         getSourceInput().shouldBe(visible);
         AndroidDriver driver = (AndroidDriver) getSourceInput().getWrappedDriver();
@@ -39,7 +41,6 @@ public class RelocationCardPage {
         getSourceInput().val(sourceCode);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
-
     public void setProductInput(String productCode) { //поле Product
         getProductInput().shouldBe(visible);
         AndroidDriver driver = (AndroidDriver) getProductInput().getWrappedDriver();
@@ -47,7 +48,6 @@ public class RelocationCardPage {
         getProductInput().val(productCode);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
-
     public void setQtyInput(String qtyCode) {
         getQtyInput().shouldBe(visible);
         AndroidDriver driver = (AndroidDriver) getQtyInput().getWrappedDriver();
@@ -55,7 +55,6 @@ public class RelocationCardPage {
         getQtyInput().val(qtyCode);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
-
     public void setDestinationInput(String destinationCode) {
         getDestinationInput().shouldBe(visible);
         AndroidDriver driver = (AndroidDriver) getDestinationInput().getWrappedDriver();
@@ -63,7 +62,6 @@ public class RelocationCardPage {
         getDestinationInput().val(destinationCode);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
-
     public void setContainerInput(String containerCode) {
         getContainerInput().shouldBe(visible);
         AndroidDriver driver = (AndroidDriver) getContainerInput().getWrappedDriver();
@@ -71,10 +69,5 @@ public class RelocationCardPage {
         getContainerInput().val(containerCode);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
-
-    public SelenideElement textDescription () { return $(By.id("com.abmcloud:id/textBoxDescription")); }
-
-    public SelenideElement buttonMoving () { return $(By.id("com.abmcloud:id/buttonCommit"));}
-
-    public SelenideElement buttonCancel () { return  $(By.id("android:id/button2"));}
+    //MNV need to refactor
 }

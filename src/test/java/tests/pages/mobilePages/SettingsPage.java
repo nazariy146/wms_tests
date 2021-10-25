@@ -12,6 +12,10 @@ import static com.codeborne.selenide.Selenide.$;
 public class SettingsPage {
     AndroidDriver driver;
 
+    public void andrDriver(String field) {
+        driver = (AndroidDriver) ReceptionCardPage.getIdField(field).getWrappedDriver();
+    }
+
     public void inputData(String field, String source) {
         SelenideElement ID = ReceptionCardPage.getIdField(field);
         ID.click();
@@ -38,9 +42,6 @@ public class SettingsPage {
     }
     public SelenideElement getSaveButton() {
         return $(By.id("com.abmcloud:id/buttonSave"));
-    }
-    public void andrDriver(String field) {
-        driver = (AndroidDriver) ReceptionCardPage.getIdField(field).getWrappedDriver();
     }
     //MNV need to refactor
 }
