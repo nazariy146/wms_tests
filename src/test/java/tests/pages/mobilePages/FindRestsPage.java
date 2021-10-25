@@ -7,26 +7,69 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class FindRestsPage {
+    AndroidDriver driver;
 
-    private SelenideElement getBarcodeInput() {
-        return $(By.id("com.abmcloud:id/barcode"));
+    public static SelenideElement getIdField(String Field) {
+        if (Field == "product"){
+            return $(By.id("com.abmcloud:id/barcode"));
+        }
+        else if (Field == "productInfo"){
+            return $(By.id("com.abmcloud:id/card_view_title"));
+        }
+        else if (Field == "sourceInfo"){
+            return $(By.id("com.abmcloud:id/textViewItem"));
+        }
+        else if (Field == "qty"){
+            return $(By.id("com.abmcloud:id/textViewRecord_count"));
+        }
+        else if (Field == "SeriesInfoString1"){
+            return $(By.id("com.abmcloud:id/textViewSeries"));
+        }
+        else if (Field == "ShelfLifeInfoString1"){
+            return $(By.id("com.abmcloud:id/textViewShelfLife"));
+        }
+        else if (Field == ""){
+            return $(By.id(""));
+        }
+        else if (Field == ""){
+            return $(By.id(""));
+        }
+        else if (Field == ""){
+            return $(By.id(""));
+        }
+        else if (Field == ""){
+            return $(By.id(""));
+        }
+
+        return null;
     }
-    public SelenideElement getProductDescription() {
-        return $(By.id("com.abmcloud:id/card_view_title"));
+
+    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
     }
-    public SelenideElement getProductSeriesInfo() {
-        return $(By.id("com.abmcloud:id/textViewSeries"));
+
+    public void inputData(String field, String source) {
+        SelenideElement ID = getIdField(field);
+        ID.click();
+        ID.val(source);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
-    public SelenideElement getProductShelfLifeInfo() {
-        return $(By.id("com.abmcloud:id/textViewShelfLife"));
+
+    public void verifyData(String field, String source) {
+        SelenideElement ID = getIdField(field);
+        ID.shouldHave(text(source));
     }
-    public SelenideElement getProductQuantity() {
-        return $(By.id("com.abmcloud:id/textViewRecord_count"));
+
+    public void setOnOrOffFreeRemainSwitcher(boolean state) {
+        $(By.id("com.abmcloud:id/switchFreeRemains")).shouldBe(visible);
+        $(By.id("com.abmcloud:id/switchFreeRemains")).click();
     }
+
     public SelenideElement getQuantityString1() {
         return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"));
     }
@@ -44,49 +87,6 @@ public class FindRestsPage {
     }
     public SelenideElement getQuantityString2() {
         return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.TextView"));
-    }
-
-    public void setBarcodeInput(String barCode) {
-        getBarcodeInput().shouldBe(visible);
-        AndroidDriver driver = (AndroidDriver) getBarcodeInput().getWrappedDriver();
-        getBarcodeInput().click();
-        getBarcodeInput().val(barCode);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-    }
-
-    public void checkFreeRemainSwitchState(boolean expectedSwitchState) {
-        /*String actualSwitchStateText = $(By.id("com.abmcloud:id/switchFreeRemains")).getText();
-
-        String expectedSwitchStateText;
-        if (expectedSwitchState)
-        {
-            expectedSwitchStateText = "Free remain ON";
-        }
-
-        else {
-            expectedSwitchStateText = "Free remain OFF";
-        }
-        Assert.assertEquals(actualSwitchStateText, expectedSwitchStateText, "Expected switch state "+expectedSwitchState+ " does not match actual switch state");
-    */}
-
-    public void setOnOrOffFreeRemainSwitcher(boolean state) {
-        $(By.id("com.abmcloud:id/switchFreeRemains")).shouldBe(visible);
-        $(By.id("com.abmcloud:id/switchFreeRemains")).click();
-    }
-
-    public void checkProductLocationInfo(String expectedLocation) {
-        String actualLocation = $(By.id("com.abmcloud:id/textViewItem")).getText();
-        Assert.assertEquals(actualLocation, expectedLocation, "Actual location does not match expected location");
-    }
-
-    public void checkProductSeriesInfo(String expectedSeries) {
-        String actualSeries = getProductSeriesInfo().getText();
-        Assert.assertEquals(actualSeries, expectedSeries, "Actual series does not match expected series");
-    }
-
-    public void checkProductShelfLifeInfo(String expectedShelfLife) {
-        String actualShelfLife = getProductShelfLifeInfo().getText();
-        Assert.assertEquals(actualShelfLife, expectedShelfLife, "Actual shelf life does not match expected shelf life");
     }
 
     public void checkLocationString1(String expectedLocation1) {

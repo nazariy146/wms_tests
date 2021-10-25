@@ -123,10 +123,11 @@ public class ReceptionCardPage {
         getIdField(field).val(source);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
+
     public void verifyData(String field, String source) {
-        //getIDField(field).shouldBe(visible);
         getIdField(field).shouldHave(text(source));
     }
+
     public void inputSerialNumbers(String serialNumber, int numberOfReps) {
         String Field = "serialNumberInputText";
         AndroidDriver driver = (AndroidDriver) getIdField(Field).getWrappedDriver();

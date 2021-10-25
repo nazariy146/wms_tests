@@ -253,88 +253,75 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         //findRestsPage.setOnOrOffFreeRemainSwitcher(false); //вкл переключателя Free remain
 
     //Стол31
-        findRestsPage.setBarcodeInput("31FRAGSN31Series0131122021"); //ввод СН в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00031 Стол31")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.1"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);//проверка табличной части (отстутствие Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);//проверка табличной части (отстутствие СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
+        findRestsPage.inputData("product", "31FRAGSN31Series0131122021");
+        findRestsPage.verifyData("productInfo", "00031 Стол31");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.1");
+        findRestsPage.verifyData("qty", "10");
     //Стол32
-        findRestsPage.setBarcodeInput("32FRAGSN32Series0131122021"); //ввод СН в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00032 Стол32")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.2"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldHave(exactText("32Series01"));//проверка табличной части (Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);//проверка табличной части (отстутствие СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
+        findRestsPage.inputData("product", "32FRAGSN32Series0131122021");
+        findRestsPage.verifyData("productInfo", "00032 Стол32");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.2");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "32Series01");
     //Стол33
-        findRestsPage.setBarcodeInput("33FRAGSN33Series0131122021"); //ввод СН в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00033 Стол33")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.3"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);//проверка табличной части (отстутствие Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldHave(exactText("31.12.2021"));//проверка табличной части (СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
+        findRestsPage.inputData("product", "33FRAGSN33Series0131122021");
+        findRestsPage.verifyData("productInfo", "00033 Стол33");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.3");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
     //Стол34
-        findRestsPage.setBarcodeInput("34FRAGSN34Series0131122021"); //ввод СН в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00034 Стол34")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.4"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldHave(exactText("34Series01"));//проверка табличной части (Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldHave(exactText("31.12.2021"));//проверка табличной части (СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
+        findRestsPage.inputData("product", "34FRAGSN34Series0131122021");
+        findRestsPage.verifyData("productInfo", "00034 Стол34");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.4");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "34Series01");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
     //Стол35
-        findRestsPage.setBarcodeInput("35FRAGBC35Series0131122021"); //ввод ШК в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00035 Стол35")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.5"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);//проверка табличной части (отстутствие Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);//проверка табличной части (отстутствие СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
+        findRestsPage.inputData("product", "35FRAGBC35Series0131122021");
+        findRestsPage.verifyData("productInfo", "00035 Стол35");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.5");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "15series01");
     //Стол36
-        findRestsPage.setBarcodeInput("36FRAGBC36Series0131122021"); //ввод ШК в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00036 Стол36")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.6"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldHave(exactText("36Series01"));//проверка табличной части (Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);//проверка табличной части (отстутствие СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
+        findRestsPage.inputData("product", "36FRAGBC36Series0131122021");
+        findRestsPage.verifyData("productInfo", "00036 Стол36");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.6");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "36Series01");
     //Стол37
-        findRestsPage.setBarcodeInput("37FRAGBC37Series0131122021"); //ввод ШК в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00037 Стол37")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.7"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);//проверка табличной части (отстутствие Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldHave(exactText("31.12.2021"));//проверка табличной части (СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
+        findRestsPage.inputData("product", "37FRAGBC37Series0131122021");
+        findRestsPage.verifyData("productInfo", "00037 Стол37");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.7");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
     //Стол38
-        findRestsPage.setBarcodeInput("38FRAGBC38Series0131122021"); //ввод ШК в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00038 Стол38")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.8"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldHave(exactText("38Series01"));//проверка табличной части (Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldHave(exactText("31.12.2021"));//проверка табличной части (СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
+        findRestsPage.inputData("product", "38FRAGBC38Series0131122021");
+        findRestsPage.verifyData("productInfo", "00038 Стол38");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.8");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "38Series01");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
     //Стол39
-        findRestsPage.setBarcodeInput("39FRAGSN39Series0131122021"); //ввод СН в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00039 Стол39")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.9"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldHave(exactText("39Series01"));//проверка табличной части (Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldHave(exactText("31.12.2021"));//проверка табличной части (СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
+        findRestsPage.inputData("product", "39FRAGSN39Series0131122021");
+        findRestsPage.verifyData("productInfo", "00039 Стол39");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.9");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "39Series01");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
     //Стол40
-        findRestsPage.setBarcodeInput("40FRAGSN40Series013112202101 "+"40FRAGSN40Series013112202102 "+"40FRAGSN40Series013112202103"); //ввод QR-code в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00040 Стол40")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.10"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldHave(exactText("40Series01"));//проверка табличной части (Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldHave(exactText("31.12.2021"));//проверка табличной части (СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
+        findRestsPage.inputData("product", "40FRAGSN40Series013112202101 \"+\"40FRAGSN40Series013112202102 \"+\"40FRAGSN40Series013112202103");
+        findRestsPage.verifyData("productInfo", "00040 Стол40");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.10");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "40Series01");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
     }
 
-    /**
-     * Тест на проверку формы Inventory (Инвентаризация) для номенклатур Стол31-40
-     */
 
     @Test (priority = 3)
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.getStringTasks(2).click();
-     /**
-     * Обычная Инвентаризация для номенклатур Стол31-40
-     */
 
      //Стол 31
         inventoryCardPage.setCellInput("C.1.1.1.1"); //ввод ШК ячейки
@@ -622,78 +609,69 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
     public void checkingFreeAmountTest2() {
         steps.loginAsAdmin();
         allTasksPage.selectFindRestsMenu();
-        //findRestsPage.setOnOrOffFreeRemainSwitcher(false); //вкл переключателя Free remain
-
-    //Стол31
-        findRestsPage.setBarcodeInput("31FRAGSN31Series0131122021"); //ввод СН в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00031 Стол31")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.1"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);//проверка табличной части (отстутствие Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);//проверка табличной части (отстутствие СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
-    //Стол32
-        findRestsPage.setBarcodeInput("32FRAGSN32Series0131122021"); //ввод СН в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00032 Стол32")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.2"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldHave(exactText("32Series01"));//проверка табличной части (Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);//проверка табличной части (отстутствие СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
-    //Стол33
-        findRestsPage.setBarcodeInput("33FRAGSN33Series0131122021"); //ввод СН в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00033 Стол33")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.3"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);//проверка табличной части (отстутствие Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldHave(exactText("31.12.2021"));//проверка табличной части (СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
-    //Стол34
-        findRestsPage.setBarcodeInput("34FRAGSN34Series0131122021"); //ввод СН в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00034 Стол34")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.4"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldHave(exactText("34Series01"));//проверка табличной части (Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldHave(exactText("31.12.2021"));//проверка табличной части (СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
-    //Стол35
-        findRestsPage.setBarcodeInput("35FRAGBC35Series0131122021"); //ввод ШК в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00035 Стол35")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.5"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);//проверка табличной части (отстутствие Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);//проверка табличной части (отстутствие СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
-    //Стол36
-        findRestsPage.setBarcodeInput("36FRAGBC36Series0131122021"); //ввод ШК в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00036 Стол36")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.6"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldHave(exactText("36Series01"));//проверка табличной части (Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);//проверка табличной части (отстутствие СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
-    //Стол37
-        findRestsPage.setBarcodeInput("37FRAGBC37Series0131122021"); //ввод ШК в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00037 Стол37")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.7"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);//проверка табличной части (отстутствие Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldHave(exactText("31.12.2021"));//проверка табличной части (СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
-    //Стол38
-        findRestsPage.setBarcodeInput("38FRAGBC38Series0131122021"); //ввод ШК в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00038 Стол38")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.8"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldHave(exactText("38Series01"));//проверка табличной части (Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldHave(exactText("31.12.2021"));//проверка табличной части (СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
-    //Стол39
-        findRestsPage.setBarcodeInput("39FRAGSN39Series0131122021"); //ввод СН в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00039 Стол39")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.9"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldHave(exactText("39Series01"));//проверка табличной части (Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldHave(exactText("31.12.2021"));//проверка табличной части (СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
-    //Стол40
-        findRestsPage.setBarcodeInput("40FRAGSN40Series013112202101 "+"40FRAGSN40Series013112202102 "+"40FRAGSN40Series013112202103"); //ввод QR-code в поле Barcode
-        findRestsPage.getProductDescription().shouldHave(text("00040 Стол40")); //проверка табличной части (наименование номенклатуры)
-        findRestsPage.checkProductLocationInfo("C.1.1.1.10"); //проверка табличной части (ячейка)
-        findRestsPage.getProductSeriesInfo().shouldHave(exactText("40Series01"));//проверка табличной части (Серии)
-        findRestsPage.getProductShelfLifeInfo().shouldHave(exactText("31.12.2021"));//проверка табличной части (СГ)
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));//проверка табличной части (количество)
+        //Стол31
+        findRestsPage.inputData("product", "31FRAGSN31Series0131122021");
+        findRestsPage.verifyData("productInfo", "00031 Стол31");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.1");
+        findRestsPage.verifyData("qty", "10");
+        //Стол32
+        findRestsPage.inputData("product", "32FRAGSN32Series0131122021");
+        findRestsPage.verifyData("productInfo", "00032 Стол32");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.2");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "32Series01");
+        //Стол33
+        findRestsPage.inputData("product", "33FRAGSN33Series0131122021");
+        findRestsPage.verifyData("productInfo", "00033 Стол33");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.3");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
+        //Стол34
+        findRestsPage.inputData("product", "34FRAGSN34Series0131122021");
+        findRestsPage.verifyData("productInfo", "00034 Стол34");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.4");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "34Series01");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
+        //Стол35
+        findRestsPage.inputData("product", "35FRAGBC35Series0131122021");
+        findRestsPage.verifyData("productInfo", "00035 Стол35");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.5");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "15series01");
+        //Стол36
+        findRestsPage.inputData("product", "36FRAGBC36Series0131122021");
+        findRestsPage.verifyData("productInfo", "00036 Стол36");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.6");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "36Series01");
+        //Стол37
+        findRestsPage.inputData("product", "37FRAGBC37Series0131122021");
+        findRestsPage.verifyData("productInfo", "00037 Стол37");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.7");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
+        //Стол38
+        findRestsPage.inputData("product", "38FRAGBC38Series0131122021");
+        findRestsPage.verifyData("productInfo", "00038 Стол38");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.8");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "38Series01");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
+        //Стол39
+        findRestsPage.inputData("product", "39FRAGSN39Series0131122021");
+        findRestsPage.verifyData("productInfo", "00039 Стол39");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.9");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "39Series01");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
+        //Стол40
+        findRestsPage.inputData("product", "40FRAGSN40Series013112202101 \"+\"40FRAGSN40Series013112202102 \"+\"40FRAGSN40Series013112202103");
+        findRestsPage.verifyData("productInfo", "00040 Стол40");
+        findRestsPage.verifyData("sourceInfo", "C.1.1.1.10");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "40Series01");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
     }
 
     /**

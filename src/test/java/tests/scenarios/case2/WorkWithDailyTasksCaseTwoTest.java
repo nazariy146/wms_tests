@@ -225,91 +225,65 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
     @Test (priority = 2, dependsOnMethods = "processingAccommodationTaskTest")
     public void checkingFreeAmountTest() {
         steps.loginAsAdmin();
-
         allTasksPage.selectFindRestsMenu();
-
-        findRestsPage.checkFreeRemainSwitchState(false);
-        //findRestsPage.setOnOrOffFreeRemainSwitcher(true); //TODO BUG
     //Стол11
-        findRestsPage.setBarcodeInput("11fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00011 Стол11"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.11");
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+        findRestsPage.inputData("product", "11fragbc");
+        findRestsPage.verifyData("productInfo", "00011 Стол11");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.11");
+        findRestsPage.verifyData("qty", "10");
     //Стол12
-        findRestsPage.setBarcodeInput("12fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00012 Стол12"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.12");
-        findRestsPage.checkProductSeriesInfo("12Series01");
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+        findRestsPage.inputData("product", "12fragbc");
+        findRestsPage.verifyData("productInfo", "00012 Стол12");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.12");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "12Series01");
     //Стол13
-        findRestsPage.setBarcodeInput("13fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00013 Стол13"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.13");
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
-        findRestsPage.checkProductShelfLifeInfo("31.12.2021");
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+        findRestsPage.inputData("product", "13fragbc");
+        findRestsPage.verifyData("productInfo", "00013 Стол13");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.13");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
     //Стол14
-        findRestsPage.setBarcodeInput("14fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00014 Стол14"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.14");
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+        findRestsPage.inputData("product", "14fragbc");
+        findRestsPage.verifyData("productInfo", "00014 Стол14");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.14");
+        findRestsPage.verifyData("qty", "10");
     //Стол15
-        findRestsPage.setBarcodeInput("15fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00015 Стол15"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.15");
-        findRestsPage.checkProductSeriesInfo("15series01");
-        findRestsPage.checkProductShelfLifeInfo("31.12.2021");
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+        findRestsPage.inputData("product", "15fragbc");
+        findRestsPage.verifyData("productInfo", "00015 Стол15");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.15");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "15series01");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
     //Стол16
-        findRestsPage.setBarcodeInput("16fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00016 Стол16"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.16");
-        findRestsPage.checkProductSeriesInfo("16series01");
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+        findRestsPage.inputData("product", "16fragbc");
+        findRestsPage.verifyData("productInfo", "00016 Стол16");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.16");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "16series01");
     //Стол17
-        findRestsPage.setBarcodeInput("17fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00017 Стол17"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.17");
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
-        findRestsPage.checkProductShelfLifeInfo("31.12.2021");
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+        findRestsPage.inputData("product", "17fragbc");
+        findRestsPage.verifyData("productInfo", "00017 Стол17");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.17");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
     //Стол18
-        findRestsPage.setBarcodeInput("18fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00018 Стол18"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.18");
-        findRestsPage.checkProductSeriesInfo("18series01");
-        findRestsPage.checkProductShelfLifeInfo("31.12.2021");
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+        findRestsPage.inputData("product", "18fragbc");
+        findRestsPage.verifyData("productInfo", "00018 Стол18");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.18");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "18series01");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
     //Стол19
-        findRestsPage.setBarcodeInput("19fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00019 Стол19"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.19");
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+        findRestsPage.inputData("product", "19fragbc");
+        findRestsPage.verifyData("productInfo", "00019 Стол19");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.19");
+        findRestsPage.verifyData("qty", "10");
     //Стол20
-        findRestsPage.setBarcodeInput("20fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00020 Стол20"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.20");
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+        findRestsPage.inputData("product", "20fragbc");
+        findRestsPage.verifyData("productInfo", "00020 Стол20");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.20");
+        findRestsPage.verifyData("qty", "10");
     }
 
     @Test (priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
@@ -479,89 +453,64 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         allTasksPage.checkWorkType("Selection");
         allTasksPage.selectFindRestsMenu();
 
-        findRestsPage.checkFreeRemainSwitchState(false);
-        findRestsPage.setOnOrOffFreeRemainSwitcher(true); //TODO BUG
-
-    //Стол11
-        findRestsPage.setBarcodeInput("11fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00011 Стол11"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.11");
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
-    //Стол12
-        findRestsPage.setBarcodeInput("12fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00012 Стол12"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.12");
-        findRestsPage.checkProductSeriesInfo("12Series01");
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
-    //Стол13
-        findRestsPage.setBarcodeInput("13fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00013 Стол13"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.13");
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
-        findRestsPage.checkProductShelfLifeInfo("31.12.2021");
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
-    //Стол14
-        findRestsPage.setBarcodeInput("14fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00014 Стол14"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.14");
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
-    //Стол15
-        findRestsPage.setBarcodeInput("15fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00015 Стол15"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.15");
-        findRestsPage.checkProductSeriesInfo("15series01");
-        findRestsPage.checkProductShelfLifeInfo("31.12.2021");
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
-    //Стол16
-        findRestsPage.setBarcodeInput("16fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00016 Стол16"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.16");
-        findRestsPage.checkProductSeriesInfo("16series01");
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
-    //Стол17
-        findRestsPage.setBarcodeInput("17fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00017 Стол17"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.17");
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
-        findRestsPage.checkProductShelfLifeInfo("31.12.2021");
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
-    //Стол18
-        findRestsPage.setBarcodeInput("18fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00018 Стол18"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.18");
-        findRestsPage.checkProductSeriesInfo("18series01");
-        findRestsPage.checkProductShelfLifeInfo("31.12.2021");
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
-    //Стол19
-        findRestsPage.setBarcodeInput("19fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00019 Стол19"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.19");
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
-    //Стол20
-        findRestsPage.setBarcodeInput("20fragbc");
-        findRestsPage.getProductDescription().shouldHave(text("00020 Стол20"));
-        findRestsPage.checkFreeRemainSwitchState(true); //TODO BUG
-        findRestsPage.checkProductLocationInfo("A.1.1.1.20");
-        findRestsPage.getProductSeriesInfo().shouldNotBe(visible);
-        findRestsPage.getProductShelfLifeInfo().shouldNotBe(visible);
-        findRestsPage.getProductQuantity().shouldHave(exactText("10"));
+        //Стол11
+        findRestsPage.inputData("product", "11fragbc");
+        findRestsPage.verifyData("productInfo", "00011 Стол11");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.11");
+        findRestsPage.verifyData("qty", "10");
+        //Стол12
+        findRestsPage.inputData("product", "12fragbc");
+        findRestsPage.verifyData("productInfo", "00012 Стол12");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.12");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "12Series01");
+        //Стол13
+        findRestsPage.inputData("product", "13fragbc");
+        findRestsPage.verifyData("productInfo", "00013 Стол13");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.13");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
+        //Стол14
+        findRestsPage.inputData("product", "14fragbc");
+        findRestsPage.verifyData("productInfo", "00014 Стол14");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.14");
+        findRestsPage.verifyData("qty", "10");
+        //Стол15
+        findRestsPage.inputData("product", "15fragbc");
+        findRestsPage.verifyData("productInfo", "00015 Стол15");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.15");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "15series01");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
+        //Стол16
+        findRestsPage.inputData("product", "16fragbc");
+        findRestsPage.verifyData("productInfo", "00016 Стол16");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.16");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "16series01");
+        //Стол17
+        findRestsPage.inputData("product", "17fragbc");
+        findRestsPage.verifyData("productInfo", "00017 Стол17");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.17");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
+        //Стол18
+        findRestsPage.inputData("product", "18fragbc");
+        findRestsPage.verifyData("productInfo", "00018 Стол18");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.18");
+        findRestsPage.verifyData("qty", "10");
+        findRestsPage.verifyData("SeriesInfoString1", "18series01");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
+        //Стол19
+        findRestsPage.inputData("product", "19fragbc");
+        findRestsPage.verifyData("productInfo", "00019 Стол19");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.19");
+        findRestsPage.verifyData("qty", "10");
+        //Стол20
+        findRestsPage.inputData("product", "20fragbc");
+        findRestsPage.verifyData("productInfo", "00020 Стол20");
+        findRestsPage.verifyData("sourceInfo", "A.1.1.1.20");
+        findRestsPage.verifyData("qty", "10");
     }
 
     @Test (priority = 5, dependsOnMethods = "processingAccommodationTaskTest")
