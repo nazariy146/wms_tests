@@ -7,9 +7,58 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class SelectionCardPage {
+    AndroidDriver driver;
+
+    public static SelenideElement getIdField(String Field) {
+        if (Field == "source"){
+            return $(By.id("com.abmcloud:id/textBoxLocationInv"));
+        }
+        else if (Field == ""){
+            return $(By.id(""));
+        }
+        else if (Field == ""){
+            return $(By.id(""));
+        }
+        else if (Field == ""){
+            return $(By.id(""));
+        }
+        else if (Field == ""){
+            return $(By.id(""));
+        }
+        else if (Field == ""){
+            return $(By.id(""));
+        }
+        else if (Field == ""){
+            return $(By.id(""));
+        }
+
+        return null;
+    }
+
+    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
+    }
+
+    public void inputData(String field, String source) {
+        SelenideElement ID = getIdField(field);
+        ID.click();
+        ID.val(source);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public void verifyData(String field, String source) {
+        SelenideElement ID = getIdField(field);
+        ID.shouldHave(text(source));
+    }
+
+    public void clickButton(String field) {
+        SelenideElement ID = getIdField(field);
+        ID.click();
+    }
 
     private SelenideElement getSourceInput() {
         return $(By.id("com.abmcloud:id/source_edit"));

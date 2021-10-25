@@ -307,7 +307,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         findRestsPage.verifyData("qty", "10");
     }
 
-    @Test (priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
+    @Test //(priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -317,155 +317,135 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.inputData("source", "A.1.1.1.1");
         inventoryCardPage.inputData("product", "0001");
         inventoryCardPage.verifyData("productInfo", "0001 Стол1");
-        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.inputData("qty","10");
         inventoryCardPage.verifyData("itemViewInfo", "0001 Стол1");
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
-        inventoryCardPage.clickInventoryButton();
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
-        clickSetOkYesButton();
-        //Стол2
+        inventoryCardPage.verifyData("qualityInfo", "Кондиция");
+        inventoryCardPage.verifyData("qtyViewInfo", "10.0");
+        inventoryCardPage.clickButtonAndConfirm("inventory");
+    //Стол2
         inventoryCardPage.inputData("source", "A.1.1.1.2");
         inventoryCardPage.inputData("product", "0002");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        inventoryCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableSeries(2).shouldHave(text("Series2"));
         inventoryCardPage.getAvailableSeries(2).click();
-        clickSetOkYesButton();
+        inventoryCardPage.clickButton("ok");
         inventoryCardPage.verifyData("productInfo", "0002 Series2 Стол2");
-        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.inputData("qty","10");
         inventoryCardPage.verifyData("itemViewInfo", "0002 Series2 Стол2");
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
-        inventoryCardPage.clickInventoryButton();
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
-        clickSetOkYesButton();
-        //Стол3
+        inventoryCardPage.verifyData("qualityInfo", "Кондиция");
+        inventoryCardPage.verifyData("qtyViewInfo", "10.0");
+        inventoryCardPage.clickButtonAndConfirm("inventory");
+    //Стол3
         inventoryCardPage.inputData("source", "A.1.1.1.3");
         inventoryCardPage.inputData("product", "0003");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        inventoryCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableExpirationDate2().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableExpirationDate2().click();
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        clickSetOkYesButton();
+        inventoryCardPage.clickButton("ok");
         inventoryCardPage.verifyData("productInfo", "0003 31.12.2021 Стол3");
-        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.inputData("qty","10");
         inventoryCardPage.verifyData("itemViewInfo", "0003 31.12.2021 Стол3");
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
-        inventoryCardPage.clickInventoryButton();
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
-        clickSetOkYesButton();
-        //Стол4
+        inventoryCardPage.verifyData("qualityInfo", "Кондиция");
+        inventoryCardPage.verifyData("qtyViewInfo", "10.0");
+        inventoryCardPage.clickButtonAndConfirm("inventory");
+    //Стол4
         inventoryCardPage.inputData("source", "A.1.1.1.4");
         inventoryCardPage.inputData("product", "0004");
         inventoryCardPage.verifyData("productInfo", "0004 Стол4");
-        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.inputData("qty","10");
         inventoryCardPage.verifyData("itemViewInfo", "0004 Стол4");
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
-        inventoryCardPage.clickInventoryButton();
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
-        clickSetOkYesButton();
-        //Стол5
+        inventoryCardPage.verifyData("qualityInfo", "Кондиция");
+        inventoryCardPage.verifyData("qtyViewInfo", "10.0");
+        inventoryCardPage.clickButtonAndConfirm("inventory");
+    //Стол5
         inventoryCardPage.inputData("source", "A.1.1.1.5");
         inventoryCardPage.inputData("product", "0005");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        inventoryCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableSeries().shouldHave(text("series5"));
         inventoryCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableSeries().click();
         inventoryCardPage.getSeriesBox().shouldHave(text("series5"));
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        clickSetOkYesButton();
+        inventoryCardPage.clickButton("ok");
         inventoryCardPage.verifyData("productInfo", "0005 series5 31.12.2021 Стол5");
-        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.inputData("qty","10");
         inventoryCardPage.verifyData("itemViewInfo", "0005 series5 31.12.2021 Стол5");
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
-        inventoryCardPage.clickInventoryButton();
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
-        clickSetOkYesButton();
+        inventoryCardPage.verifyData("qualityInfo", "Кондиция");
+        inventoryCardPage.verifyData("qtyViewInfo", "10.0");
+        inventoryCardPage.clickButtonAndConfirm("inventory");
     //Стол6
         inventoryCardPage.inputData("source", "A.1.1.1.6");
         inventoryCardPage.inputData("product", "0006");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        inventoryCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableSeries().shouldHave(text("series6"));
         inventoryCardPage.getAvailableSeries().click();
         inventoryCardPage.getSeriesBox().shouldHave(text("series6"));
-        clickSetOkYesButton();
+        inventoryCardPage.clickButton("ok");
         inventoryCardPage.verifyData("productInfo", "0006 series6 Стол6");
-        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.inputData("qty","10");
         inventoryCardPage.verifyData("itemViewInfo", "0006 series6 Стол6");
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
-        inventoryCardPage.clickInventoryButton();
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
-        clickSetOkYesButton();
+        inventoryCardPage.verifyData("qualityInfo", "Кондиция");
+        inventoryCardPage.verifyData("qtyViewInfo", "10.0");
+        inventoryCardPage.clickButtonAndConfirm("inventory");
     //Стол7
         inventoryCardPage.inputData("source", "A.1.1.1.7");
         inventoryCardPage.inputData("product", "0007");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        inventoryCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableExpirationDate().click();
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        clickSetOkYesButton();
+        inventoryCardPage.clickButton("ok");
         inventoryCardPage.verifyData("productInfo", "0007 31.12.2021 Стол7");
-        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.inputData("qty","10");
         inventoryCardPage.verifyData("itemViewInfo", "0007 31.12.2021 Стол7");
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
-        inventoryCardPage.clickInventoryButton();
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
-        clickSetOkYesButton();
+        inventoryCardPage.verifyData("qualityInfo", "Кондиция");
+        inventoryCardPage.verifyData("qtyViewInfo", "10.0");
+        inventoryCardPage.clickButtonAndConfirm("inventory");
     //Стол8
         inventoryCardPage.inputData("source", "A.1.1.1.8");
         inventoryCardPage.inputData("product", "0008");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        inventoryCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableSeries().shouldHave(text("series8"));
         inventoryCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableSeries().click();
         inventoryCardPage.getSeriesBox().shouldHave(text("series8"));
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        clickSetOkYesButton();
+        inventoryCardPage.clickButton("ok");
         inventoryCardPage.verifyData("productInfo", "0008 series8 31.12.2021 Стол8");
-        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.inputData("qty","10");
         inventoryCardPage.verifyData("itemViewInfo", "0008 series8 31.12.2021 Стол8");
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
-        inventoryCardPage.clickInventoryButton();
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
-        clickSetOkYesButton();
+        inventoryCardPage.verifyData("qualityInfo", "Кондиция");
+        inventoryCardPage.verifyData("qtyViewInfo", "10.0");
+        inventoryCardPage.clickButtonAndConfirm("inventory");
     //Стол9
         inventoryCardPage.inputData("source", "A.1.1.1.9");
         inventoryCardPage.inputData("product", "0009");
         inventoryCardPage.verifyData("productInfo", "0009 Стол9");
-        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.inputData("qty","10");
         inventoryCardPage.verifyData("itemViewInfo", "0009 Стол9");
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
-        inventoryCardPage.clickInventoryButton();
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
-        clickSetOkYesButton();
+        inventoryCardPage.verifyData("qualityInfo", "Кондиция");
+        inventoryCardPage.verifyData("qtyViewInfo", "10.0");
+        inventoryCardPage.clickButtonAndConfirm("inventory");
     //Стол10
         inventoryCardPage.inputData("source", "A.1.1.1.10");
         inventoryCardPage.inputData("product", "00010");
         inventoryCardPage.verifyData("productInfo", "00010 Стол10");
-        inventoryCardPage.selectQuality("Кондиция");
+        inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.inputData("qty","10");
         inventoryCardPage.verifyData("itemViewInfo", "00010 Стол10");
-        inventoryCardPage.getQualityViewInfo().shouldHave(text("Кондиция"));
-        inventoryCardPage.getQtyViewInfo().shouldHave(exactText("10.0"));
-        inventoryCardPage.clickInventoryButton();
-        getMessageModalDialog().shouldHave(text("Complete Cell Inventory?"));
-        clickSetOkYesButton();
+        inventoryCardPage.verifyData("qualityInfo", "Кондиция");
+        inventoryCardPage.verifyData("qtyViewInfo", "10.0");
+        inventoryCardPage.clickButtonAndConfirm("inventory");
     }
 
     @Test (priority = 4, dependsOnMethods = "processingInventoryTaskTest")
