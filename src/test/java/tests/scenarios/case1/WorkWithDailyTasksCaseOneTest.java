@@ -27,12 +27,6 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     InventoryCardPage inventoryCardPage = new InventoryCardPage();
     SettingsPage settingsPage = new SettingsPage();
 
-    /**
-     * All tests run on Regress/Case1/wms_regress_case1_Reception_Inventory DB
-     * All tests run according to TestNG priority.
-     * If test fails - next one will be skipped according to TestNG dependsOnMethods
-     */
-
     @Test
     public void processingReceptionTaskTest() throws Exception {
         steps.loginAsAdmin();
