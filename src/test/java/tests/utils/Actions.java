@@ -4,6 +4,8 @@ import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.touch.WaitOptions;
 import org.openqa.selenium.By;
 
@@ -38,5 +40,17 @@ public class Actions {
     public static void hideKeyboard() {
         AppiumDriver driver = (AppiumDriver) $(By.id("com.abmcloud:id/action_more_menu")).getWrappedDriver();
         driver.hideKeyboard();
+    }
+
+    public static void backPage (SelenideElement element){
+        AndroidDriver driver = (AndroidDriver) element.getWrappedDriver();
+        TouchAction touchAction= new TouchAction(driver);
+        driver.pressKey(new KeyEvent(AndroidKey.BACK));
+    }
+
+    public static void fieldEnter (SelenideElement element){
+        AndroidDriver driver = (AndroidDriver) element.getWrappedDriver();
+        TouchAction touchAction= new TouchAction(driver);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 }

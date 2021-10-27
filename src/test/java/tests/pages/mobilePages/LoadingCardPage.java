@@ -11,39 +11,55 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class LoadingCardPage {
 
+    //MNV need to refactor
+    public SelenideElement getRouteSheetInput() {
+        return $(By.id("com.abmcloud:id/textBoxRouteSheet"));
+    }
+    private SelenideElement getGateInput() {
+        return $(By.id("com.abmcloud:id/textBoxAdditionalBarcode"));
+    }
+    private SelenideElement getCargoInput() {
+        return $(By.id("com.abmcloud:id/editTextCargo"));
+    }
+    private SelenideElement getPriorityInfo() {
+        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/text_resource"));
+    }
+    private SelenideElement getClientInfo() {
+        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/textViewClient"));
+    }
+    private SelenideElement getLoadedInfo() {
+        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/textViewLoaded"));
+    }
+    private SelenideElement getNotLoadedInfo() {
+        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/textViewNotLoaded"));
+    }
+    public void clickCommitButton() {
+        $(By.id("com.abmcloud:id/buttonCommitLoading")).click();
+    }
+    public void clickCommitAllCargosButton() {
+        $(By.id("com.abmcloud:id/buttonCommitAllCargos")).click();
+    }
+    //MNV need to refactor
+
+    //MNV need to refactor
     public void checkAndSelectAvailableRouteSheet(String description, String driver) {
         $(By.id("com.abmcloud:id/buttonRouteSheetChoice")).click();
         $(By.id("com.abmcloud:id/select_dialog_listview")).shouldBe(visible);
         $(By.id("com.abmcloud:id/textViewDoc_title")).shouldHave(text(description));
         $(By.id("com.abmcloud:id/textViewDriver")).shouldHave(text(driver)).click();
     }
-
-    public SelenideElement getRouteSheetInput() {
-        return $(By.id("com.abmcloud:id/textBoxRouteSheet"));
-    }
-
     public void setRouteSheetInput(String routeSheetInput) {
         AndroidDriver driver = (AndroidDriver) getRouteSheetInput().getWrappedDriver();
         getRouteSheetInput().click();
         getRouteSheetInput().val(routeSheetInput);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
-
-    private SelenideElement getGateInput() {
-        return $(By.id("com.abmcloud:id/textBoxAdditionalBarcode"));
-    }
-
     public void setGateInput(String gateInput) {
         AndroidDriver driver = (AndroidDriver) getGateInput().getWrappedDriver();
         getGateInput().click();
         getGateInput().val(gateInput);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
-
-    private SelenideElement getCargoInput() {
-        return $(By.id("com.abmcloud:id/editTextCargo"));
-    }
-
     public void setSerialCargoInput(String ... serialNumbers) {
         AndroidDriver driver = (AndroidDriver) getCargoInput().getWrappedDriver();
         for (String s : serialNumbers) {
@@ -52,35 +68,11 @@ public class LoadingCardPage {
             driver.pressKey(new KeyEvent(AndroidKey.ENTER));
         }
     }
-
     public void checkLoadingInfo(String priority, String client, String loaded, String notLoaded) {
         getPriorityInfo().shouldBe(visible).shouldHave(exactText(priority));
         getClientInfo().shouldHave(exactText(client));
         getLoadedInfo().shouldHave(exactText(loaded));
         getNotLoadedInfo().shouldHave(exactText(notLoaded));
     }
-
-    private SelenideElement getPriorityInfo() {
-        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/text_resource"));
-    }
-
-    private SelenideElement getClientInfo() {
-        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/textViewClient"));
-    }
-
-    private SelenideElement getLoadedInfo() {
-        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/textViewLoaded"));
-    }
-
-    private SelenideElement getNotLoadedInfo() {
-        return $(By.xpath("//android.view.ViewGroup[2]/android.widget.LinearLayout")).find(By.id("com.abmcloud:id/textViewNotLoaded"));
-    }
-
-    public void clickCommitButton() {
-        $(By.id("com.abmcloud:id/buttonCommitLoading")).click();
-    }
-
-    public void clickCommitAllCargosButton() {
-        $(By.id("com.abmcloud:id/buttonCommitAllCargos")).click();
-    }
+    //MNV need to refactor
 }

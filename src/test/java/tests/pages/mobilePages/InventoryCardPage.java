@@ -11,132 +11,122 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class InventoryCardPage {
+    AndroidDriver driver;
 
-    private SelenideElement getCellInput() {
-        return $(By.id("com.abmcloud:id/textBoxLocationInv"));
+    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
     }
 
-    public void setCellInput(String sourceInput) {
-        AndroidDriver driver = (AndroidDriver) getCellInput().getWrappedDriver();
-        getCellInput().click();
-        getCellInput().val(sourceInput);
+    public static SelenideElement getIdField(String Field) {
+        if (Field == "source"){
+            return $(By.id("com.abmcloud:id/textBoxLocationInv"));
+        }
+        else if (Field == "product"){
+            return $(By.id("com.abmcloud:id/textBoxBarcodeInv"));
+        }
+        else if (Field == "productInfo"){
+            return $(By.id("com.abmcloud:id/textViewInfoProduct"));
+        }
+        else if (Field == "qty"){
+            return $(By.id("com.abmcloud:id/textBoxQtyInv"));
+        }
+        else if (Field == "palletWeight"){
+            return $(By.id("com.abmcloud:id/editTextPalletWeight"));
+        }
+        else if (Field == "tareQty"){
+            return $(By.id("com.abmcloud:id/editTextTareQty"));
+        }
+        else if (Field == "tareWeight"){
+            return $(By.id("com.abmcloud:id/editTextTareWeight"));
+        }
+        else if (Field == "itemViewInfo"){
+            return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewItemInv")); //поле наименования номенклатуры в колонке Item
+        }
+        else if (Field == "quality"){
+            return $(By.id("android:id/text1"));
+        }
+        else if (Field == "modalDialogMessage"){
+            return $(By.id("android:id/message"));
+        }
+        else if (Field == "inventory"){
+            return $(By.id("com.abmcloud:id/buttonCommitInv"));
+        }
+        else if (Field == "ok"){
+            return $(By.id("android:id/button1"));
+        }
+        else if (Field == "modalDialogTitle"){
+            return $(By.id("com.abmcloud:id/alertTitle"));
+        }
+        else if (Field == "qualityInfo"){
+            return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewQualityInv")); //поле статуса номенклатуры в колонке Quality
+        }
+        else if (Field == "qtyViewInfo"){
+            return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewQtyInv")); //поле количества номенклатуры в колонке Qty
+        }
+        return null;
+    }
+
+    public void inputData(String field, String source) {
+        SelenideElement ID = getIdField(field);
+        ID.click();
+        ID.val(source);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
-    private SelenideElement getProductInput() {
-        return $(By.id("com.abmcloud:id/textBoxBarcodeInv"));
+    public void verifyData(String field, String source) {
+        SelenideElement ID = getIdField(field);
+        ID.shouldHave(text(source));
     }
 
-    public void setProductInput(String sourceInput) {
-        AndroidDriver driver = (AndroidDriver) getProductInput().getWrappedDriver();
-        getProductInput().click();
-        getProductInput().val(sourceInput);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    public void clickButton(String field) {
+        SelenideElement ID = getIdField(field);
+        ID.click();
     }
 
-    private SelenideElement getQtyInput() {
-        return $(By.id("com.abmcloud:id/textBoxQtyInv"));
+    public void clickButtonAndConfirm(String field) {
+        clickButton(field);
+        verifyData("modalDialogMessage", "Complete Cell Inventory?");
+        clickButton("ok");
     }
 
-    public void setQtyInput(String sourceInput) {
-        AndroidDriver driver = (AndroidDriver) getQtyInput().getWrappedDriver();
-        getQtyInput().click();
-        getQtyInput().val(sourceInput);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    //MNV need to refactor
+    public void selectData(String field, String source) {
+        getIdField(field).click();
+        $$(By.id("android:id/text1")).find(exactText(source)).click();
     }
-
     public SelenideElement getAvailableSeries() {
-        return $(By.id("com.abmcloud:id/textViewSeries"));
-    }
+        return $(By.xpath("//android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView[1]"));
 
-    public SelenideElement getSeriesBox() {
-        return $(By.id("com.abmcloud:id/textBoxSeriesPL"));
     }
-
-    public SelenideElement getAvailableExpirationDate() {
-        return $(By.id("com.abmcloud:id/textViewShelfLife"));
-    }
-
-    public SelenideElement getExpirationDateBox() {
-        return $(By.id("com.abmcloud:id/textBoxShelfLifeLP"));
-    }
-
-    public void selectQuality(String qualityType) {
-        $(By.id("android:id/text1")).click();
-        $$(By.id("android:id/text1")).find(exactText(qualityType)).click();
-    }
-
-    public SelenideElement getProductInfo() {
-        return $(By.id("com.abmcloud:id/textViewInfoProduct"));
-    }
-
-    public SelenideElement getItemViewInfo() {
-        return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewItemInv"));
-    }
-
-    public SelenideElement getQualityViewInfo() {
-        return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewQualityInv"));
-    }
-
-    public SelenideElement getQtyViewInfo() {
-        return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewQtyInv"));
-    }
-
-    public void clickInventoryButton() {
-        $(By.id("com.abmcloud:id/buttonCommitInv")).click();
-    }
-
-    public SelenideElement getAvailableExpirationDate1() {
-        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView[2]"));
-    }
-
-    public SelenideElement getAvailableExpirationDate2() {
-        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.TextView[2]"));
-    }
-
     public SelenideElement getAvailableSeries1() {
-        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView[1]"));
+        return $(By.xpath("//androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView"));
     }
-
     public SelenideElement getAvailableSeries2() {
-        return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.TextView[1]"));
+        return $(By.xpath("//androidx.cardview.widget.CardView[3]/android.view.ViewGroup/android.widget.TextView"));
     }
-
-
-    private SelenideElement getPalletWeight() {
-        return $(By.id("com.abmcloud:id/editTextPalletWeight"));
+    public SelenideElement getAvailableSeries(int stroka) {
+        return $(By.xpath("//android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView["+stroka+"]/android.view.ViewGroup/android.widget.TextView")); //поле количества СН в колонке Qty fact: для формы СН
     }
-    public void setPalletWeight(String container) {
-        AndroidDriver driver = (AndroidDriver) getPalletWeight().getWrappedDriver();
-        getPalletWeight().click();
-        getPalletWeight().val(container);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    public SelenideElement getSeriesBox() {
+        return $(By.id("com.abmcloud:id/et_series"));
     }
-    private SelenideElement getTareQty() {
-        return $(By.id("com.abmcloud:id/editTextTareQty"));
+    public SelenideElement getAvailableExpirationDate() {
+        return $(By.xpath("//androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView"));
     }
-    public void setTareQty(String container) {
-        AndroidDriver driver = (AndroidDriver) getTareQty().getWrappedDriver();
-        getTareQty().click();
-        getTareQty().val(container);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    public SelenideElement getAvailableExpirationDateZ22() {
+        return $(By.xpath("//androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView[2]"));
     }
-    private SelenideElement getTareWeight() {
-        return $(By.id("com.abmcloud:id/editTextTareWeight"));
+    public SelenideElement getAvailableExpirationDateZ23() {
+        return $(By.xpath("//androidx.cardview.widget.CardView[3]/android.view.ViewGroup/android.widget.TextView"));
     }
-    public void setTareWeight(String container) {
-        AndroidDriver driver = (AndroidDriver) getTareWeight().getWrappedDriver();
-        getTareWeight().click();
-        getTareWeight().val(container);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    public SelenideElement getExpirationDateBox() {
+        return $(By.id("com.abmcloud:id/et_shelf_life"));
     }
-
-    //////////////////////////////////////
+    public SelenideElement getAvailableExpirationDate2() {
+        return $(By.xpath("//android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView"));
+    }
     public SelenideElement getProductUnit() {
-        return $(By.id("com.abmcloud:id/labelHintInv"));
+        return $(By.xpath("//android.widget.LinearLayout/android.view.ViewGroup[2]/android.widget.LinearLayout[3]/android.widget.Spinner/android.widget.TextView"));
     }
-
-    public SelenideElement getProductQuantity() {
-        return $(By.id("com.abmcloud:id/textBoxQtyInv"));
-    }
+    //MNV need to refactor
 }
