@@ -71,9 +71,6 @@ public class AccommodationCardPage {
     }
 
     //MNV need to refactor
-    public void clearQuantityInput() {
-        $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[4]")).click();
-    }
     public void checkAmountAndPackaging(String amount, String packaging) {
         $(By.id("android:id/text1")).shouldHave(exactText(amount));
         $(By.id("com.abmcloud:id/textViewLabelHint")).shouldHave(exactText(packaging));
