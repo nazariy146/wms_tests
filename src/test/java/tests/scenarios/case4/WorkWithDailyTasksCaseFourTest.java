@@ -711,13 +711,13 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         allTasksPage.getWorkTypeTasksQuantity().click();
 
     //Стол31
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT131");
-        controlCardPage.getProductInfo().shouldHave(text("00031 Стол31"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT131"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT131");
+        controlCardPage.verifyData("productInfo", "00031 Стол31");
+        controlCardPage.verifyData("containerInfo", "OUT131");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("31FRAGSN31Series0131122021");
+        controlCardPage.inputData("product","31FRAGSN31Series0131122021");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00031 Стол31"));
@@ -725,19 +725,19 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(2).shouldHave(exactText("31FRAGSN31Series0131122021"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commit");
     //Стол32
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT132");
-        controlCardPage.getProductInfo().shouldHave(text("00032 Стол32"));
-        controlCardPage.getSeriesInfo().shouldHave(text("32Series01"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT132"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT132");
+        controlCardPage.verifyData("productInfo", "00032 Стол32");
+        controlCardPage.verifyData("containerInfo", "OUT132");
+        controlCardPage.verifyData("seriesInfo", "32Series01");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("32FRAGSN32Series0131122021");
+        controlCardPage.inputData("product","32FRAGSN32Series0131122021");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00032 32Series01 Стол32"));
@@ -745,19 +745,19 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(2).shouldHave(exactText("32FRAGSN32Series0131122021"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commit");
     //Стол33
-        controlCardPage.setCellInput("KT1.01.01.01.01"); //Проблема с Разбором СГ в СН!!!!!!!!!!!!!!!
-        controlCardPage.setContainerInput("OUT133");
-        controlCardPage.getProductInfo().shouldHave(text("00033 Стол33"));
-        controlCardPage.getShelfLifeInfo().shouldHave(text("31.12.2021"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT133"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01"); //Проблема с Разбором СГ в СН!!!!!!!!!!!!!!!
+        controlCardPage.inputData("container","OUT133");
+        controlCardPage.verifyData("productInfo", "00033 Стол33");
+        controlCardPage.verifyData("containerInfo", "OUT133");
+        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("33FRAGSN33Series0131122021");
+        controlCardPage.inputData("product","33FRAGSN33Series0131122021");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00033 31.12.2021 Стол33"));
@@ -765,20 +765,20 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(2).shouldHave(exactText("33FRAGSN33Series0131122021"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commit");
     //Стол34
-        controlCardPage.setCellInput("KT1.01.01.01.01"); //Проблема с Разбором СГ в СН!!!!!!!!!!!!!!! Если ввожу СН без СГ - открывается форма СерииСГ(не должна)
-        controlCardPage.setContainerInput("OUT134");
-        controlCardPage.getProductInfo().shouldHave(text("00034 Стол34"));
-        controlCardPage.getSeriesInfo().shouldHave(text("34Series01"));
-        controlCardPage.getShelfLifeInfo().shouldHave(text("31.12.2021"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT134"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01"); //Проблема с Разбором СГ в СН!!!!!!!!!!!!!!! Если ввожу СН без СГ - открывается форма СерииСГ(не должна)
+        controlCardPage.inputData("container","OUT134");
+        controlCardPage.verifyData("productInfo", "00034 Стол34");
+        controlCardPage.verifyData("containerInfo", "OUT134");
+        controlCardPage.verifyData("seriesInfo", "34Series01");
+        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("34FRAGSN34Series0131122021");
+        controlCardPage.inputData("product","34FRAGSN34Series0131122021");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00034 34Series01 31.12.2021 Стол34"));
@@ -786,72 +786,72 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(2).shouldHave(exactText("34FRAGSN34Series0131122021"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commit");
     //Стол35
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT135");
-        controlCardPage.getProductInfo().shouldHave(text("00035 Стол35"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT135"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT135");
+        controlCardPage.verifyData("productInfo", "00035 Стол35");
+        controlCardPage.verifyData("containerInfo", "OUT135");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("35FRAGBC35Series0131122021");
-        controlCardPage.setQuantityInputInput("10");
+        controlCardPage.inputData("product","35FRAGBC35Series0131122021");
+        controlCardPage.inputData("qty","10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commit");
     //Стол36
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT136");
-        controlCardPage.getProductInfo().shouldHave(text("00036 Стол36"));
-        controlCardPage.getSeriesInfo().shouldHave(text("36Series01"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT136"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT136");
+        controlCardPage.verifyData("productInfo", "00036 Стол36");
+        controlCardPage.verifyData("containerInfo", "OUT136");
+        controlCardPage.verifyData("seriesInfo", "36Series01");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("36FRAGBC36Series0131122021");
-        controlCardPage.setQuantityInputInput("10");
+        controlCardPage.inputData("product","36FRAGBC36Series0131122021");
+        controlCardPage.inputData("qty","10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commit");
     //Стол37
-        controlCardPage.setCellInput("KT1.01.01.01.01"); //Проблема с Разбором СГ в Фрагменте ШК!!!!!!!!!!!!!!!
-        controlCardPage.setContainerInput("OUT137");
-        controlCardPage.getProductInfo().shouldHave(text("00037 Стол37"));
-        controlCardPage.getShelfLifeInfo().shouldHave(text("31.12.2021"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT137"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");//Проблема с Разбором СГ в Фрагменте ШК!!!!!!!!!!!!!!!
+        controlCardPage.inputData("container","OUT137");
+        controlCardPage.verifyData("productInfo", "00037 Стол37");
+        controlCardPage.verifyData("containerInfo", "OUT137");
+        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("37FRAGBC37Series0131122021");
-        controlCardPage.setQuantityInputInput("10");
+        controlCardPage.inputData("product","37FRAGBC37Series0131122021");
+        controlCardPage.inputData("qty","10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commit");
     //Стол38
-        controlCardPage.setCellInput("KT1.01.01.01.01"); //Проблема с Разбором СГ в Фрагменте ШК!!!!!!!!!!!!!!!
-        controlCardPage.setContainerInput("OUT138");
-        controlCardPage.getProductInfo().shouldHave(text("00038 Стол38"));
-        controlCardPage.getSeriesInfo().shouldHave(text("38Series01"));
-        controlCardPage.getShelfLifeInfo().shouldHave(text("31.12.2021"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT138"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");//Проблема с Разбором СГ в Фрагменте ШК!!!!!!!!!!!!!!!
+        controlCardPage.inputData("container","OUT138");
+        controlCardPage.verifyData("productInfo", "00038 Стол38");
+        controlCardPage.verifyData("containerInfo", "OUT138");
+        controlCardPage.verifyData("seriesInfo", "38Series01");
+        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("38FRAGBC38Series0131122021");
-        controlCardPage.setQuantityInputInput("10");
+        controlCardPage.inputData("product","38FRAGBC38Series0131122021");
+        controlCardPage.inputData("qty","10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commit");
     //Стол39
-        controlCardPage.setCellInput("KT1.01.01.01.01"); //Проблема с Разбором СГ в СН!!!!!!!!!!!!!!!
-        controlCardPage.setContainerInput("OUT139");
-        controlCardPage.getProductInfo().shouldHave(text("00039 Стол39"));
-        controlCardPage.getSeriesInfo().shouldHave(text("39Series01"));
-        controlCardPage.getShelfLifeInfo().shouldHave(text("31.12.2021"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT139"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");//Проблема с Разбором СГ в СН!!!!!!!!!!!!!!!
+        controlCardPage.inputData("container","OUT139");
+        controlCardPage.verifyData("productInfo", "00039 Стол39");
+        controlCardPage.verifyData("containerInfo", "OUT139");
+        controlCardPage.verifyData("seriesInfo", "39Series01");
+        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("39FRAGSN39Series013112202101");
+        controlCardPage.inputData("product","39FRAGSN39Series013112202101");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00039 39Series01 31.12.2021 Стол39"));
@@ -877,20 +877,20 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
 //        controlCardPage.getNameSerialNumber(11).shouldHave(exactText("39FRAGSN39Series013112202110"));//проверка СН в колонке Serial Number
 //        controlCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commit");
     //Стол40
-        controlCardPage.setCellInput("KT1.01.01.01.01"); //Проблема с Разбором СГ в СН!!!!!!!!!!!!!!!
-        controlCardPage.setContainerInput("OUT140");
-        controlCardPage.getProductInfo().shouldHave(text("00040 Стол40"));
-        controlCardPage.getSeriesInfo().shouldHave(text("40Series01"));
-        controlCardPage.getShelfLifeInfo().shouldHave(text("31.12.2021"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT140"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01"); //Проблема с Разбором СГ в СН!!!!!!!!!!!!!!!
+        controlCardPage.inputData("container","OUT140");
+        controlCardPage.verifyData("productInfo", "00040 Стол40");
+        controlCardPage.verifyData("containerInfo", "OUT140");
+        controlCardPage.verifyData("seriesInfo", "40Series01");
+        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("40FRAGSN40Series013112202101 40FRAGSN40Series013112202102 40FRAGSN40Series013112202103");
+        controlCardPage.inputData("product","40FRAGSN40Series013112202101 40FRAGSN40Series013112202102 40FRAGSN40Series013112202103");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00040 40Series01 31.12.2021 Стол40"));
@@ -916,10 +916,10 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
 //        controlCardPage.getNameSerialNumber(11).shouldHave(exactText("40FRAGSN40Series013112202110"));//проверка СН в колонке Serial Number
 //        controlCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commit");
     }
 
     @Test (priority = 8)
