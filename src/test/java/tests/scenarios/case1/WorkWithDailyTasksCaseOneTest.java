@@ -731,14 +731,14 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.inputData("container","OUT102");
         controlCardPage.verifyData("productInfo", "0002 Стол2");
         controlCardPage.verifyData("containerInfo", "OUT102");
-        //controlCardPage.getSeriesInfo().shouldBe(visible).shouldHave(text("Series2"));
+        controlCardPage.verifyData("seriesInfo", "Series2");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","0002");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        controlCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableSeries(2).shouldHave(text("Series2"));
         inventoryCardPage.getAvailableSeries(2).click();
-        clickSetOkYesButton();
+        inventoryCardPage.clickButton("modalDialogOK");
         controlCardPage.inputData("qty","10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
@@ -750,11 +750,11 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","0003");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        controlCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableExpirationDate2().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableExpirationDate2().click();
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        clickSetOkYesButton();
+        inventoryCardPage.clickButton("modalDialogOK");
         controlCardPage.inputData("qty","10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
@@ -773,15 +773,15 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber4"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
     //Стол5
         controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT105");
         controlCardPage.verifyData("productInfo", "0005 Стол5");
-        controlCardPage.getSeriesInfo().shouldHave(text("series5"));
-        controlCardPage.getShelfLifeInfo().shouldHave(text("31.12.2021"));
+        controlCardPage.verifyData("seriesInfo", "series5");
+        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021");
         controlCardPage.verifyData("containerInfo", "OUT105");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
@@ -791,7 +791,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.getAvailableSeries().click();
         inventoryCardPage.getSeriesBox().shouldHave(text("series5"));
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        clickSetOkYesButton();
+        inventoryCardPage.clickButton("modalDialogOK");
         controlCardPage.inputData("qty","10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
@@ -799,16 +799,16 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT106");
         controlCardPage.verifyData("productInfo", "0006 Стол6");
-        controlCardPage.getSeriesInfo().shouldHave(text("series6"));
+        controlCardPage.verifyData("seriesInfo", "series6");
         controlCardPage.verifyData("containerInfo", "OUT106");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","0006");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        controlCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableSeries().shouldHave(text("series6"));
         inventoryCardPage.getAvailableSeries().click();
         inventoryCardPage.getSeriesBox().shouldHave(text("series6"));
-        clickSetOkYesButton();
+        inventoryCardPage.clickButton("modalDialogOK");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("0006 series6 Стол6"));
         controlCardPage.checkSerialNumberInputText("");
@@ -816,23 +816,23 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber6"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
     //Стол7
         controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT107");
         controlCardPage.verifyData("productInfo", "0007 Стол7");
-        controlCardPage.getShelfLifeInfo().shouldHave(text("31.12.2021"));
+        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021");
         controlCardPage.verifyData("containerInfo", "OUT107");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","0007");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        controlCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableExpirationDate().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableExpirationDate().click();
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        clickSetOkYesButton();
+        inventoryCardPage.clickButton("modalDialogOK");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("0007 2021-12-31T00:00:00 Стол7")); //TODO BUG: incorrect expiration date
@@ -840,26 +840,26 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber7"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
     //Стол8
         controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT108");
         controlCardPage.verifyData("productInfo", "0008 Стол8");
-        controlCardPage.getSeriesInfo().shouldHave(text("series8"));
-        controlCardPage.getShelfLifeInfo().shouldHave(text("31.12.2021"));
+        controlCardPage.verifyData("seriesInfo", "series8");
+        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021");
         controlCardPage.verifyData("containerInfo", "OUT108");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","0008");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        controlCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableSeries().shouldHave(text("series8"));
         inventoryCardPage.getAvailableExpirationDateZ22().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableSeries().click();
         inventoryCardPage.getSeriesBox().shouldHave(text("series8"));
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        clickSetOkYesButton();
+        inventoryCardPage.clickButton("modalDialogOK");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("0008 series8 2021-12-31T00:00:00 Стол8"));
@@ -867,7 +867,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber8"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
     //Стол9
@@ -902,7 +902,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(11).shouldHave(exactText("serialnumber99"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
     //Стол10
