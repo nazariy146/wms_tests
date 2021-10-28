@@ -209,7 +209,7 @@ public class TestsCancel extends BaseMobileClass {
         controlCardPage.getContainerInfo().shouldHave(text("OUT213"));//проверка табличной части
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("7"));
-        controlCardPage.setItemInput("00027");//ввод артикула номенклатуры
+        controlCardPage.inputData("product","00027");//ввод артикула номенклатуры
         getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));//проверка на отображение формы Серии/СГ
         clickCancelButton();//коик на кнопку Cancel (Отмена)
         controlCardPage.getItemInput().shouldHave(text("Item"));//проверка на пустоту поля Item
@@ -217,7 +217,7 @@ public class TestsCancel extends BaseMobileClass {
         controlCardPage.getContainerInfo().shouldHave(text("OUT213"));//проверка табличной части
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("7"));
-        controlCardPage.setItemInput("00027");//ввод артикула номенклатуры
+        controlCardPage.inputData("product","00027");//ввод артикула номенклатуры
         getAlertModalDialog().shouldBe(visible).shouldHave(text("Series / shelf life"));//проверка на отображение формы Серии/СГ
         backPage(getAlertModalDialog());//закрытие формы Серии/СГ кнопкой Back (Esc)
         controlCardPage.getItemInput().shouldHave(text("Item"));//проверка на пустоту поля Item

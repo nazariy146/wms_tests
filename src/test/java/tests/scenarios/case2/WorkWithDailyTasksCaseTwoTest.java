@@ -699,54 +699,53 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         allTasksPage.getWorkTypeTasksQuantity().click();
 
     //Стол11
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT111");
-        controlCardPage.getProductInfo().shouldHave(text("00011 Стол11"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT111"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT111");
+        controlCardPage.verifyData("productInfo", "00011 Стол11");
+        controlCardPage.verifyData("containerInfo", "OUT111");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("11fragbc");
-        controlCardPage.setQuantityInputInput("10");
-        controlCardPage.clickCommitButton();
+        controlCardPage.inputData("product","11fragbc");
+        controlCardPage.inputData("qty","10");
+        controlCardPage.clickButton("commit");
     //Стол12
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT112");
-        controlCardPage.getProductInfo().shouldHave(text("00012 Стол12"));
-        controlCardPage.getSeriesInfo().shouldBe(visible).shouldHave(text("12Series01"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT112"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT112");
+        controlCardPage.verifyData("productInfo", "00012 Стол12");
+        controlCardPage.verifyData("containerInfo", "OUT112");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("12fragbc");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        controlCardPage.inputData("product","12fragbc");
+        controlCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableSeries(2).shouldHave(text("12Series01"));
         inventoryCardPage.getAvailableSeries(2).click();
-        clickSetOkYesButton();
-        controlCardPage.getSeriesInfo().shouldBe(visible).shouldHave(text("12Series01"));
-        controlCardPage.setQuantityInputInput("10");
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commitSN");
+        controlCardPage.verifyData("seriesInfo", "12Series01");
+        controlCardPage.inputData("qty","10");
+        controlCardPage.clickButton("commit");
     //Стол13
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT113");
-        controlCardPage.getProductInfo().shouldHave(text("00013 Стол13"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT113"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT113");
+        controlCardPage.verifyData("productInfo", "00013 Стол13");
+        controlCardPage.verifyData("containerInfo", "OUT113");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("13fragbc");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        controlCardPage.inputData("product","13fragbc");
+        controlCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableExpirationDate2().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableExpirationDate2().click();
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        clickSetOkYesButton();
-        controlCardPage.setQuantityInputInput("10");
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commitSN");
+        controlCardPage.inputData("qty","10");
+        controlCardPage.clickButton("commit");
     //Стол14
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT114");
-        controlCardPage.getProductInfo().shouldHave(text("00014 Стол14"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT114"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT114");
+        controlCardPage.verifyData("productInfo", "OUT114");
+        controlCardPage.verifyData("containerInfo", "OUT114");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("14fragbc");
+        controlCardPage.inputData("product","14fragbc");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00014 Стол14"));
         controlCardPage.checkSerialNumberInputText("");
@@ -754,38 +753,38 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(2).shouldHave(exactText("14serialnumber01"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commitSN");
+        controlCardPage.clickButton("commit");
     //Стол15
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT115");
-        controlCardPage.getProductInfo().shouldHave(text("00015 Стол15"));
-        controlCardPage.getSeriesInfo().shouldHave(text("15series01"));
-        controlCardPage.getShelfLifeInfo().shouldHave(text("31.12.2021"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT115"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT115");
+        controlCardPage.verifyData("productInfo", "00015 Стол15");
+        controlCardPage.verifyData("containerInfo", "OUT115");
+        controlCardPage.verifyData("seriesInfo", "15series01");
+        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("15fragbc");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        controlCardPage.inputData("product","15fragbc");
+        controlCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableSeries(2).shouldHave(text("15series01"));
         inventoryCardPage.getAvailableSeries(2).click();
-        clickSetOkYesButton();
-        controlCardPage.setQuantityInputInput("10");
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commitSN");
+        controlCardPage.inputData("qty","10");
+        controlCardPage.clickButton("commit");
     //Стол16
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT116");
-        controlCardPage.getProductInfo().shouldHave(text("00016 Стол16"));
-        controlCardPage.getSeriesInfo().shouldHave(text("16series01"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT116"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT116");
+        controlCardPage.verifyData("productInfo", "00016 Стол16");
+        controlCardPage.verifyData("containerInfo", "OUT116");
+        controlCardPage.verifyData("seriesInfo", "16series01");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("16fragbc");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        controlCardPage.inputData("product","16fragbc");
+        controlCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableExpirationDate2().shouldHave(text("16series01"));
         inventoryCardPage.getAvailableSeries().click();
         inventoryCardPage.getSeriesBox().shouldHave(text("16series01"));
-        clickSetOkYesButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00016 16series01 Стол16"));
         controlCardPage.checkSerialNumberInputText("");
@@ -793,22 +792,22 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(2).shouldHave(exactText("16serialnumber01"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commitSN");
+        controlCardPage.clickButton("commit");
     //Стол17
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT117");
-        controlCardPage.getProductInfo().shouldHave(text("00017 Стол17"));
-        controlCardPage.getShelfLifeInfo().shouldHave(text("31.12.2021"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT117"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT117");
+        controlCardPage.verifyData("productInfo", "00017 Стол17");
+        controlCardPage.verifyData("containerInfo", "OUT117");
+        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("17fragbc");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        controlCardPage.inputData("product","17fragbc");
+        controlCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableExpirationDate2().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableExpirationDate2().click();
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        clickSetOkYesButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00017 2021-12-31T00:00:00 Стол17")); //TODO BUG: incorrect expiration date
@@ -816,25 +815,25 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(2).shouldHave(exactText("17serialnumber01"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commitSN");
+        controlCardPage.clickButton("commit");
     //Стол18
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT118");
-        controlCardPage.getProductInfo().shouldHave(text("00018 Стол18"));
-        controlCardPage.getSeriesInfo().shouldHave(text("18series01"));
-        controlCardPage.getShelfLifeInfo().shouldHave(text("31.12.2021"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT118"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT118");
+        controlCardPage.verifyData("productInfo", "00018 Стол18");
+        controlCardPage.verifyData("containerInfo", "OUT118");
+        controlCardPage.verifyData("seriesInfo", "");
+        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("18fragbc");
-        getAlertModalDialog().shouldBe(visible).shouldHave(text("Batch properties"));
+        controlCardPage.inputData("product","18fragbc");
+        controlCardPage.verifyData("modalDialogTitle", "Batch properties");
         inventoryCardPage.getAvailableSeries().shouldHave(text("18series01"));
         inventoryCardPage.getAvailableExpirationDateZ22().shouldHave(text("31.12.2021"));
         inventoryCardPage.getAvailableSeries().click();
         inventoryCardPage.getSeriesBox().shouldHave(text("18series01"));
         inventoryCardPage.getExpirationDateBox().shouldHave(text("31.12.2021"));
-        clickSetOkYesButton();
+        controlCardPage.clickButton("commitSN");
         controlCardPage.getSerialNumberInput().shouldBe(visible);
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00018 18series01 2021-12-31T00:00:00 Стол18"));
@@ -842,16 +841,16 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(2).shouldHave(exactText("18serialnumber01"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commitSN");
+        controlCardPage.clickButton("commit");
     //Стол19
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT119");
-        controlCardPage.getProductInfo().shouldHave(text("00019 Стол19"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT119"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT119");
+        controlCardPage.verifyData("productInfo", "00019 Стол19");
+        controlCardPage.verifyData("containerInfo", "OUT119");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("19fragbc");
+        controlCardPage.inputData("product","19fragbc");
         controlCardPage.checkSerialNumberInputText("");
         controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00019 Стол19"));
         controlCardPage.setSerialNumberInputSeveralTimes("19serialnumber01", "19serialnumber02", "19serialnumber03", "19serialnumber04", "19serialnumber05", "19serialnumber06", "19serialnumber07", "19serialnumber08", "19serialnumber09", "19serialnumber10");
@@ -876,18 +875,18 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.getNameSerialNumber(11).shouldHave(exactText("19serialnumber10"));//проверка СН в колонке Serial Number
         controlCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
         controlCardPage.checkSerialNumberInputText("");
-        controlCardPage.clickCommitSerialNumberButton();
-        controlCardPage.clickCommitButton();
+        controlCardPage.clickButton("commitSN");
+        controlCardPage.clickButton("commit");
     //Стол20
-        controlCardPage.setCellInput("KT1.01.01.01.01");
-        controlCardPage.setContainerInput("OUT120");
-        controlCardPage.getProductInfo().shouldHave(text("00020 Стол20"));
-        controlCardPage.getContainerInfo().shouldHave(text("OUT120"));
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT120");
+        controlCardPage.verifyData("productInfo", "00020 Стол20");
+        controlCardPage.verifyData("containerInfo", "OUT120");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
-        controlCardPage.setItemInput("20fragbc");
-        controlCardPage.setQuantityInputInput("10");
-        controlCardPage.clickCommitButton();
+        controlCardPage.inputData("product","20fragbc");
+        controlCardPage.inputData("qty","10");
+        controlCardPage.clickButton("commit");
 
         /*controlCardPage.setCellInput("KT1.01.01.01.01");
         controlCardPage.setOnOrOffFreeWCSwitcher(true);
@@ -901,7 +900,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.checkAllProductsInfoAndQty(8, "10", "00018 Стол18");
         controlCardPage.checkAllProductsInfoAndQty(9, "10", "00019 Стол19");
         controlCardPage.checkAllProductsInfoAndQty(10, "10", "00020 Стол20");
-        controlCardPage.clickCommitButton();*/
+        controlCardPage.clickButton("commit");*/
     }
 
     @Test (priority = 8, dependsOnMethods = "processingControlTaskTest")
