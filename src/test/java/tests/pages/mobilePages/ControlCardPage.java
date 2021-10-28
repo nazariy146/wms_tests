@@ -18,6 +18,64 @@ import static io.appium.java_client.touch.offset.PointOption.point;
 import static java.time.Duration.ofMillis;
 
 public class ControlCardPage {
+    AndroidDriver driver;
+
+    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
+    }
+
+    public static SelenideElement getIdField(String Field) {
+        if (Field == "source"){
+            return $(By.id("com.abmcloud:id/editTextControlCell"));
+        }
+        else if (Field == "container"){
+            return $(By.id("com.abmcloud:id/editTextControlContainer"));
+        }
+        else if (Field == "productInfo"){
+            return $(By.id("com.abmcloud:id/tv_good"));
+        }
+        else if (Field == "containerInfo"){
+            return $(By.id("com.abmcloud:id/tv_container"));
+        }
+        else if (Field == "product"){
+            return $(By.id("com.abmcloud:id/editTextControlBarcode"));
+        }
+        else if (Field == "qty"){
+            return $(By.id("com.abmcloud:id/editTextCCIlQty"));
+        }
+        else if (Field == "commit"){
+            return $(By.id("com.abmcloud:id/buttonCommitControlContainer"));
+        }
+        else if (Field == ""){
+            return $(By.id(""));
+        }
+        else if (Field == ""){
+            return $(By.id(""));
+        }
+        else if (Field == ""){
+            return $(By.id(""));
+        }
+        return null;
+    }
+
+    public void inputData(String field, String source) {
+        SelenideElement ID = getIdField(field);
+        ID.click();
+        ID.val(source);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public void verifyData(String field, String source) {
+        SelenideElement ID = getIdField(field);
+        ID.shouldHave(text(source));
+    }
+
+    public void clickButton(String field) {
+        SelenideElement ID = getIdField(field);
+        ID.click();
+    }
+
+
 
     //MNV need to refactor
     private SelenideElement getCellInput() {
