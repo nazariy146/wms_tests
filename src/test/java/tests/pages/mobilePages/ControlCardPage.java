@@ -46,11 +46,20 @@ public class ControlCardPage {
         else if (Field == "commit"){
             return $(By.id("com.abmcloud:id/buttonCommitControlContainer"));
         }
-        else if (Field == ""){
-            return $(By.id(""));
+        else if (Field == "seriesInfo"){
+            return $(By.id("com.abmcloud:id/tv_series"));
         }
-        else if (Field == ""){
-            return $(By.id(""));
+        else if (Field == "modalDialogTitle"){
+            return $(By.id("com.abmcloud:id/alertTitle"));
+        }
+        else if (Field == "modalDialogOK"){
+            return $(By.id("android:id/button1"));
+        }
+        else if (Field == "commitSN"){
+            return $(By.id("com.abmcloud:id/buttonSNCommit"));
+        }
+        else if (Field == "shelfLifeInfo"){
+            return $(By.id("com.abmcloud:id/tv_shelflife"));
         }
         else if (Field == ""){
             return $(By.id(""));
@@ -74,8 +83,6 @@ public class ControlCardPage {
         SelenideElement ID = getIdField(field);
         ID.click();
     }
-
-
 
     //MNV need to refactor
     private SelenideElement getCellInput() {
