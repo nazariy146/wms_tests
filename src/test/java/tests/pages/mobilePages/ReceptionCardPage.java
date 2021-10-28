@@ -106,6 +106,9 @@ public class ReceptionCardPage {
         else if (Field == "weightSKU"){
             return $(By.id("com.abmcloud:id/et_unit_parameters_weight"));
         }
+        else if (Field == "clearProductInput"){
+            return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[1]"));
+        }
         return null;
     }
 
@@ -133,69 +136,48 @@ public class ReceptionCardPage {
         getIdField(field).shouldHave(text(source));
     }
 
+    public void clickButton(String button) {
+        getIdField(button).click();
+    }
+
     //MNV need to refactor
     public SelenideElement getNameSerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]"));//поле наименования СН в колонке Serial number для формы СН
+        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]"));
     }
     public SelenideElement getQtySerialNumber(int string) {
         return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]")); //поле количества СН в колонке Qty fact: для формы СН
     }
-    public SelenideElement getSerialNumberInput() {
-        return $(By.id("com.abmcloud:id/editTextSerialNumber"));
-    }
-    public SelenideElement getQuantityInput() {
-        return $(By.id("com.abmcloud:id/editTextControlQty"));
-    }
-    //MNV need to refactor
-
-    //MNV need to refactor
-    public void clickButton(String button) {
-        getIdField(button).click();
-    }
     public void clearProductInput(String clearProductInput) {
         String Field = clearProductInput;
-        getXpathField(Field).click();
+        getIdField(Field).click();
     }
     public void clearContainerInput(String clearContainerInput) {
         String Field = clearContainerInput;
         getXpathField(Field).click();
     }
-    public void checkSerialNumberInputText(String text) {
-        String Field = "serialNumberInputText";
-        String serialNumberText = getIdField(Field).getText();
-        Assert.assertEquals(serialNumberText, text, "SerialNumberInputText is not empty");
-    }
     public void checkAmountAndPackaging(String amount, String packaging) {
         $(By.id("android:id/text1")).shouldHave(exactText(amount));
         $(By.id("com.abmcloud:id/labelHintControl")).shouldHave(exactText(packaging));
     }
-    public void setSerialNumberInputSeveralTimes(String ... serialNumbers) {
-        String Field = "serialNumberInputText";
-        AndroidDriver driver = (AndroidDriver) getIdField(Field).getWrappedDriver();
-        for (String s : serialNumbers) {
-            getIdField(Field).click();
-            getIdField(Field).val(s);
-            driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
+        String field = "serialNumberInputText";
+        for (int i = 0; i < numberOfReps; i++) {
+            inputData(field , serialNumber);
         }
     }
-    public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
-        String Field = "serialNumberInputText";
-        AndroidDriver driver = (AndroidDriver) getIdField(Field).getWrappedDriver();
-        for (int i = 0; i < numberOfReps; i++) {
-            getIdField(Field).click();
-            getIdField(Field).val(serialNumber);
-            driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    public void setSerialNumberInputSeveralTimes(String ... serialNumbers) {
+        String field = "serialNumberInputText";
+        for (String s : serialNumbers) {
+            inputData(field , s);
         }
     }
     public void inputSerialNumbers(String serialNumber, int numberOfReps) {
-        String Field = "serialNumberInputText";
-        AndroidDriver driver = (AndroidDriver) getIdField(Field).getWrappedDriver();
+        String field = "serialNumberInputText";
         for (int i = 0; i < numberOfReps; i++) {
             String serialNumber1 = serialNumber+i;
-            getIdField(Field).click();
-            getIdField(Field).val(serialNumber1);
-            driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+            inputData(field , serialNumber1);
         }
     }
+
     //MNV need to refactor
 }

@@ -40,10 +40,9 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         receptionCardPage.setSerialNumberInputSeveralTimes("31FRAGSN31Series0131122021", 9); // Ввод в поле SerialNumber идентичных СН поочередно в количестве 9 шт
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("31FRAGSN31Series0131122021"));//проверка СН в колонке Serial Number
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.inputData("container","IN1");
-        receptionCardPage.getQuantityInput().shouldHave(text("10")); // Проверка введенного количества СН в поле Quantity
+        receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     //Стол32
         receptionCardPage.verifyData("productInfo", "00032 Стол32 IN.01 Quantity 10 шт");
@@ -52,10 +51,9 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         receptionCardPage.setSerialNumberInputSeveralTimes("32FRAGSN32Series0131122021", 9);
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("32FRAGSN32Series0131122021"));//проверка СН в колонке Serial Number
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.verifyData("productInfo", "00032 32series01 Стол32 IN.01 Quantity 10 шт");
-        receptionCardPage.getQuantityInput().shouldHave(text("10"));
+        receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     //Стол33
         receptionCardPage.verifyData("productInfo", "00033 Стол33 IN.01 Quantity 10 шт");
@@ -64,10 +62,9 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         receptionCardPage.setSerialNumberInputSeveralTimes("33FRAGSN33Series0131122021", 9);
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("33FRAGSN33Series0131122021"));//проверка СН в колонке Serial Number
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.verifyData("productInfo", "00033 31.12.2021 Стол33 IN.01 Quantity 10 шт");
-        receptionCardPage.getQuantityInput().shouldHave(text("10"));
+        receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     //Стол34
         receptionCardPage.verifyData("productInfo", "00034 Стол34 IN.01 Quantity 10 шт");
@@ -76,10 +73,9 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         receptionCardPage.setSerialNumberInputSeveralTimes("34FRAGSN34Series0131122021", 9);
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("34FRAGSN34Series0131122021"));//проверка СН в колонке Serial Number
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.verifyData("productInfo", "00034 34series01 31.12.2021 Стол34 IN.01 Quantity 10 шт");
-        receptionCardPage.getQuantityInput().shouldHave(text("10"));
+        receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     //Стол35
         receptionCardPage.verifyData("productInfo", "00035 Стол35 IN.01 Quantity 10 шт");
@@ -129,10 +125,9 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         receptionCardPage.getQtySerialNumber(10).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
         //receptionCardPage.getNameSerialNumber(11).shouldHave(exactText("39FRAGSN39Series013112202110"));//проверка СН в колонке Serial Number
         //receptionCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.verifyData("productInfo", "00039 39series01 31.12.2021 Стол39 IN.01 Quantity 10 шт");
-        receptionCardPage.getQuantityInput().shouldHave(text("10"));
+        receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     //Стол40
         receptionCardPage.verifyData("productInfo", "00040 Стол40 IN.01 Quantity 10 шт");
@@ -162,7 +157,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.verifyData("productInfo", "00040 40series01 31.12.2021 Стол40 IN.01 Quantity 10 шт");
-        receptionCardPage.getQuantityInput().shouldHave(text("10"));
+        receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     }
 
