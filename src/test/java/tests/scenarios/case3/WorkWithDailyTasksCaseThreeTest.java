@@ -97,22 +97,21 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: 2120021020000"));
         clickErrorDialogOkButton();
         receptionCardPage.inputData("product","2110022020000");
-        receptionCardPage.getQuantityInput().shouldHave(exactText("2.000"));
+        receptionCardPage.verifyData("qty", "2.000");
         receptionCardPage.inputData("product","2110023020000");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("The product doesn't match the task: 00023 [series] [use] [shelf_life] Стол23"));
         clickErrorDialogOkButton();
         receptionCardPage.inputData("product","2110022140000");
-        receptionCardPage.getQuantityInput().shouldHave(exactText("16.000"));
+        receptionCardPage.verifyData("qty", "16.000");
         receptionCardPage.inputData("product","2110022090000");
         receptionCardPage.clickButton("commit");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Can not handle19. Remaining 10"));
         clickErrorDialogOkButton();
-        //receptionCardPage.clearSourceInput("clearSourceInput");
-        receptionCardPage.clearContainerInput("clearContainerInput");
-        receptionCardPage.clearProductInput("clearProductInput");
+        receptionCardPage.clickButton("clearProductInput");
+        receptionCardPage.clickButton("clearProductInput");
         receptionCardPage.inputData("product","2110022100000");
         //receptionCardPage.getQuantityInput().shouldHave(exactText("10.000"));
-        receptionCardPage.getQuantityInput().shouldHave(exactText("20.000")); //TODO bag необходимо очищать кл-во после очистки продакт
+        receptionCardPage.verifyData("qty", "20.000");//TODO bag необходимо очищать кл-во после очистки продакт
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.clickButton("commit");
@@ -131,7 +130,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("expirationDate","31.12.21");
         clickSetOkYesButton();
         receptionCardPage.verifyData("productInfo", "00023 31.12.2021 Стол23 IN.01 Quantity 10 шт");
-        receptionCardPage.getQuantityInput().shouldHave(exactText("2.000"));
+        receptionCardPage.verifyData("qty", "2.000");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.clickButton("commit");
         receptionCardPage.inputData("source", "IN.01");
@@ -141,7 +140,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("expirationDate","30.12.21");
         clickSetOkYesButton();
         receptionCardPage.verifyData("productInfo", "00023 30.12.2021 Стол23 IN.01 Quantity 8 шт");
-        receptionCardPage.getQuantityInput().shouldHave(exactText("5.500"));
+        receptionCardPage.verifyData("qty", "5.500");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.clickButton("commit");
         receptionCardPage.verifyData("productInfo", "00023 Стол23 IN.01 Quantity 2.5 шт");
@@ -152,7 +151,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("expirationDate","31.12.2021");
         clickSetOkYesButton();
         receptionCardPage.verifyData("productInfo", "00023 31.12.2021 Стол23 IN.01 Quantity 2.5 шт");
-        receptionCardPage.getQuantityInput().shouldHave(exactText("2.500"));
+        receptionCardPage.verifyData("qty", "2.500");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.clickButton("commit");
     //Стол24
@@ -163,7 +162,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("newSeries","24Series01");
         clickSetOkYesButton();
         receptionCardPage.verifyData("productInfo", "00024 24Series01 Стол24 IN.01 Quantity 10 шт");
-        receptionCardPage.getQuantityInput().shouldHave(exactText("2.000"));
+        receptionCardPage.verifyData("qty", "2.000");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.clickButton("commit");
         receptionCardPage.verifyData("productInfo", "00024 Стол24 IN.01 Quantity 8 шт");
@@ -172,7 +171,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("newSeries","24Series02");
         clickSetOkYesButton();
         receptionCardPage.verifyData("productInfo", "00024 24Series02 Стол24 IN.01 Quantity 8 шт");
-        receptionCardPage.getQuantityInput().shouldHave(exactText("7.500"));
+        receptionCardPage.verifyData("qty", "7.500");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.clickButton("commit");
         receptionCardPage.verifyData("productInfo", "00024 Стол24 IN.01 Quantity 0.5 шт");
@@ -181,7 +180,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("newSeries","24Series02");
         clickSetOkYesButton();
         receptionCardPage.verifyData("productInfo", "00024 24Series02 Стол24 IN.01 Quantity 0.5 шт");
-        receptionCardPage.getQuantityInput().shouldHave(exactText("0.500"));
+        receptionCardPage.verifyData("qty", "0.500");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.clickButton("commit");
     //Стол25
@@ -905,9 +904,8 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         inventoryCardPage.getAvailableSeries1().shouldHave(text("24Series01"));
         inventoryCardPage.getAvailableSeries1().click();
         controlCardPage.clickButton("commitSN");
-        controlCardPage.setQuantityInputInput("2");
+        controlCardPage.inputData("qty","2");
     //Стол24
-
         controlCardPage.verifyData("productInfo", "00024 Стол24");
         controlCardPage.verifyData("containerInfo", "OUT124");
         controlCardPage.getSeriesInfoString1().shouldHave(text("24Series02"));
@@ -918,7 +916,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         inventoryCardPage.getAvailableSeries2().shouldHave(text("24Series02"));
         inventoryCardPage.getAvailableSeries2().click();
         controlCardPage.clickButton("commitSN");
-        controlCardPage.setQuantityInputInput("8");
+        controlCardPage.inputData("qty","8");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
     //Стол25
@@ -952,7 +950,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.inputData("container","OUT127");
         controlCardPage.verifyData("productInfo", "00027 Стол27");
         controlCardPage.verifyData("containerInfo", "OUT127");;
-        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021"));
+        controlCardPage.verifyData("shelfLifeInfo", "31.12.2021");
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","00027");

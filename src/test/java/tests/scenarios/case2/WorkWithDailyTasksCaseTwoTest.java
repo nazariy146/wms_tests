@@ -39,6 +39,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         allTasksPage.checkWorkType("Reception");
         //allTasksPage.getWorkTypeTasksQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
+        receptionCardPage.andrDriver("source");
     //Стол11
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","11fragbc");
@@ -59,16 +60,13 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
     //Стол14
         receptionCardPage.verifyData("productInfo", "00014 Стол14 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","14fragbc");
-        receptionCardPage.getSerialNumberInput().shouldBe(visible);
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.verifyData("productInfoSN","00014 Стол14");
         receptionCardPage.setSerialNumberInputSeveralTimes("14serialnumber01", 10);
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("14serialnumber01"));//проверка СН в колонке Serial Number
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.inputData("container","IN1");
-        receptionCardPage.getQuantityInput().shouldHave(text("10"));
+        receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     //Стол15
         receptionCardPage.verifyData("productInfo", "00015 15series01 31.12.2021 Стол15 IN.01 Quantity 10 шт");
@@ -82,42 +80,33 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         receptionCardPage.setSerialNumberInputSeveralTimes("16serialnumber01", 10);
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("16serialnumber01"));//проверка СН в колонке Serial Number
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.inputData("container","IN1");
-        receptionCardPage.getQuantityInput().shouldHave(text("10"));
+        receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     //Стол17
         receptionCardPage.verifyData("productInfo", "00017 31.12.2021 Стол17 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","17fragbc");
-        receptionCardPage.getSerialNumberInput().shouldBe(visible);
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.setSerialNumberInputSeveralTimes("17serialnumber01", 10);
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("17serialnumber01"));//проверка СН в колонке Serial Number
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.inputData("container","IN1");
-        receptionCardPage.getQuantityInput().shouldHave(text("10"));
+        receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     //Стол18
         receptionCardPage.verifyData("productInfo", "00018 18series01 31.12.2021 Стол18 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","18fragbc");
-        receptionCardPage.getSerialNumberInput().shouldBe(visible);
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.setSerialNumberInputSeveralTimes("18serialnumber01", 10);
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("18serialnumber01"));//проверка СН в колонке Serial Number
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.inputData("container","IN1");
-        receptionCardPage.getQuantityInput().shouldHave(text("10"));
+        receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     //Стол19
         receptionCardPage.verifyData("productInfo", "00019 Стол19 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","19fragbc");
-        receptionCardPage.getSerialNumberInput().shouldBe(visible);
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.setSerialNumberInputSeveralTimes("19serialnumber01", "19serialnumber02", "19serialnumber03", "19serialnumber04", "19serialnumber05", "19serialnumber06", "19serialnumber07", "19serialnumber08", "19serialnumber09", "19serialnumber10");
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("19serialnumber01"));//проверка СН в колонке Serial Number
         receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
@@ -139,10 +128,9 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         receptionCardPage.getQtySerialNumber(10).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
         receptionCardPage.getNameSerialNumber(11).shouldHave(exactText("19serialnumber10"));//проверка СН в колонке Serial Number
         receptionCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.inputData("container","IN1");
-        receptionCardPage.getQuantityInput().shouldHave(text("10"));
+        receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     //Стол20
         receptionCardPage.verifyData("productInfo", "00020 Стол20 IN.01 Quantity 10 шт");
