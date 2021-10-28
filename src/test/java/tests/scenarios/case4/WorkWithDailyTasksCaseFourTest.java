@@ -154,7 +154,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
 //        receptionCardPage.getQtySerialNumber(10).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
 //        receptionCardPage.getNameSerialNumber(11).shouldHave(exactText("40FRAGSN40Series013112202110"));//проверка СН в колонке Serial Number
 //        receptionCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.checkSerialNumberInputText("");
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.verifyData("productInfo", "00040 40series01 31.12.2021 Стол40 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("qty", "10");

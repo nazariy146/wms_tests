@@ -109,18 +109,18 @@ public class ReceptionCardPage {
         else if (Field == "clearProductInput"){
             return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[1]"));
         }
+        else if (Field == ""){
+            return $(By.xpath(""));
+        }
+        else if (Field == "clearContainerInput"){
+            return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[2]"));
+        }
         return null;
     }
 
     public SelenideElement getXpathField(String Field) {
         if (Field == "clearSourceInput"){
             return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[1]"));
-        }
-        else if (Field == "clearProductInput"){
-            return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[1]"));
-        }
-        else if (Field == "clearContainerInput"){
-            return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[2]"));
         }
         return null;
     }
@@ -147,14 +147,6 @@ public class ReceptionCardPage {
     public SelenideElement getQtySerialNumber(int string) {
         return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]")); //поле количества СН в колонке Qty fact: для формы СН
     }
-    public void clearProductInput(String clearProductInput) {
-        String Field = clearProductInput;
-        getIdField(Field).click();
-    }
-    public void clearContainerInput(String clearContainerInput) {
-        String Field = clearContainerInput;
-        getXpathField(Field).click();
-    }
     public void checkAmountAndPackaging(String amount, String packaging) {
         $(By.id("android:id/text1")).shouldHave(exactText(amount));
         $(By.id("com.abmcloud:id/labelHintControl")).shouldHave(exactText(packaging));
@@ -178,6 +170,5 @@ public class ReceptionCardPage {
             inputData(field , serialNumber1);
         }
     }
-
     //MNV need to refactor
 }

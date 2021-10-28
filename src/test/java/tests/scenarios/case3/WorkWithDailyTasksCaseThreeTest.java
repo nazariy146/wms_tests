@@ -107,9 +107,8 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.clickButton("commit");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Can not handle19. Remaining 10"));
         clickErrorDialogOkButton();
-        //receptionCardPage.clearSourceInput("clearSourceInput");
-        receptionCardPage.clearContainerInput("clearContainerInput");
-        receptionCardPage.clearProductInput("clearProductInput");
+        receptionCardPage.clickButton("clearProductInput");
+        receptionCardPage.clickButton("clearProductInput");
         receptionCardPage.inputData("product","2110022100000");
         //receptionCardPage.getQuantityInput().shouldHave(exactText("10.000"));
         receptionCardPage.verifyData("qty", "20.000");//TODO bag необходимо очищать кл-во после очистки продакт
