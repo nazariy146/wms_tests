@@ -33,8 +33,8 @@ public class AccommodationCardPage {
         else if (Field == "commit"){
             return $(By.id("com.abmcloud:id/buttonCommit"));
         }
-        else if (Field == ""){
-            return $(By.id(""));
+        else if (Field == "clearQty"){
+            return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[4]"));
         }
         else if (Field == ""){
             return $(By.id(""));

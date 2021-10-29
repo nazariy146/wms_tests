@@ -131,26 +131,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.inputData("product","0009");
         receptionCardPage.verifyData("productInfoSN", "0009 Стол9");
         receptionCardPage.inputSerialNumbers("serialnumber9", 10);
-        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber90"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(3).shouldHave(exactText("serialnumber91"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(3).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(4).shouldHave(exactText("serialnumber92"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(4).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(5).shouldHave(exactText("serialnumber93"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(5).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(6).shouldHave(exactText("serialnumber94"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(6).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(7).shouldHave(exactText("serialnumber95"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(7).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(8).shouldHave(exactText("serialnumber96"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(8).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(9).shouldHave(exactText("serialnumber97"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(9).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(10).shouldHave(exactText("serialnumber98"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(10).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(11).shouldHave(exactText("serialnumber99"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
+        receptionCardPage.verifyDataSN();
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.verifyData("productInfo", "0009 Стол9 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("qty","10");

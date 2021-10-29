@@ -86,6 +86,13 @@ public class SelectionCardPage {
     //MNV need to develop
 
     //MNV need to refactor
+    public SelenideElement getNameSerialNumber(int string) {
+        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]"));
+    }
+    public SelenideElement getQtySerialNumber(int string) {
+        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]"));
+    }
+
     public SelenideElement getSerialNumberInput() {
         return $(By.id("com.abmcloud:id/editTextSerialNumber"));
     }
@@ -98,14 +105,6 @@ public class SelectionCardPage {
     public SelenideElement getCommitSerialNumberButton() {
         return $(By.id("com.abmcloud:id/buttonSNCommit"));
     }
-
-    public SelenideElement getNameSerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]")); } //поле наименования СН в колонке Serial number для формы СН
-    public SelenideElement getQtySerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]")); } //поле количества СН в колонке Qty fact: для формы СН
-    //MNV need to refactor
-
-    //MNV need to refactor
     public void checkSerialNumberInputText(String text) {
         String serialNumberText = getSerialNumberInput().getText();
         Assert.assertEquals(serialNumberText, text, "SerialNumberInputText is not empty");

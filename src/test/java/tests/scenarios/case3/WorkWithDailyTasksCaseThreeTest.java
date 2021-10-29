@@ -26,12 +26,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     LoadingCardPage loadingCardPage = new LoadingCardPage();
     InventoryCardPage inventoryCardPage = new InventoryCardPage();
 
-    /**
-     * All tests run on Regress/DT/Case3/wms_regress_case3_Reception DB
-     * All tests run according to TestNG priority.
-     * If test fails - next one will be skipped according to TestNG dependsOnMethods
-     */
-
     @Test
     public void processingNegativeReceptionTaskTest() throws Exception {
         steps.loginAsAdmin();
@@ -319,7 +313,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         accommodationCardPage.clickButton("commit");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("It is impossible to confirm16. Remaining 10"));
         clickErrorDialogOkButton();
-        accommodationCardPage.clearQuantityInput();//TODO bag нет возможности очистить келичество, крестик не активен
+        accommodationCardPage.clickButton("clearQty");//TODO bag нет возможности очистить келичество, крестик не активен
         accommodationCardPage.inputData("product","2110022100000");
         accommodationCardPage.verifyData("qty","10.000");
         accommodationCardPage.clickButton("commit");
@@ -399,21 +393,21 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     //Стол23
         findRestsPage.inputData("product", "2110023055000");
         findRestsPage.verifyData("productInfo", "00023 Стол23");
-        findRestsPage.checkLocationString1("B.1.1.1.3");
-        findRestsPage.checkPartyInfoString1("30.12.2021");
-        findRestsPage.getQuantityString1().shouldHave(exactText("5.5"));
-        findRestsPage.checkLocationString2("B.1.1.1.3");
-        findRestsPage.checkPartyInfoString2("31.12.2021");
-        findRestsPage.getQuantityString2().shouldHave(exactText("4.5"));
+        findRestsPage.verifyData("sourceInfo","B.1.1.1.3");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "30.12.2021");
+        findRestsPage.verifyData("qtyString1", "5.5");
+        findRestsPage.verifyData("checkLocationString2", "B.1.1.1.3");
+        findRestsPage.verifyData("shelfLifeInfoString2", "31.12.2021");
+        findRestsPage.verifyData("qtyString2", "4.5");
     //Стол24
         findRestsPage.inputData("product", "00024");
         findRestsPage.verifyData("productInfo", "00024 Стол24");
-        findRestsPage.checkLocationString1("B.1.1.1.4");
-        findRestsPage.checkPartyInfoString1("24Series01");
-        findRestsPage.getQuantityString1().shouldHave(exactText("2"));
-        findRestsPage.checkLocationString2("B.1.1.1.4");
-        findRestsPage.checkPartyInfoString2("24Series02");
-        findRestsPage.getQuantityString2().shouldHave(exactText("8"));
+        findRestsPage.verifyData("sourceInfo","B.1.1.1.4");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "24Series01");
+        findRestsPage.verifyData("qtyString1", "2");
+        findRestsPage.verifyData("checkLocationString2", "B.1.1.1.4");
+        findRestsPage.verifyData("SeriesInfoString2", "24Series02");
+        findRestsPage.verifyData("qtyString2", "4.5");
     //Стол25
         findRestsPage.inputData("product", "00025");
         findRestsPage.verifyData("productInfo", "00025 Стол25");
@@ -636,21 +630,22 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         //Стол23
         findRestsPage.inputData("product", "2110023055000");
         findRestsPage.verifyData("productInfo", "00023 Стол23");
-        findRestsPage.checkLocationString1("B.1.1.1.3");
-        findRestsPage.checkPartyInfoString1("30.12.2021");
-        findRestsPage.getQuantityString1().shouldHave(exactText("5.5"));
-        findRestsPage.checkLocationString2("B.1.1.1.3");
-        findRestsPage.checkPartyInfoString2("31.12.2021");
-        findRestsPage.getQuantityString2().shouldHave(exactText("4.5"));
+        findRestsPage.verifyData("sourceInfo","B.1.1.1.3");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "30.12.2021");
+        findRestsPage.verifyData("getQuantityString1", "30.12.2021");
+        findRestsPage.verifyData("qtyString1", "5.5");
+        findRestsPage.verifyData("checkLocationString2", "B.1.1.1.3");
+        findRestsPage.verifyData("shelfLifeInfoString2", "31.12.2021");
+        findRestsPage.verifyData("qtyString2", "4.5");
         //Стол24
         findRestsPage.inputData("product", "00024");
         findRestsPage.verifyData("productInfo", "00024 Стол24");
-        findRestsPage.checkLocationString1("B.1.1.1.4");
-        findRestsPage.checkPartyInfoString1("24Series01");
-        findRestsPage.getQuantityString1().shouldHave(exactText("2"));
-        findRestsPage.checkLocationString2("B.1.1.1.4");
-        findRestsPage.checkPartyInfoString2("24Series02");
-        findRestsPage.getQuantityString2().shouldHave(exactText("8"));
+        findRestsPage.verifyData("sourceInfo","B.1.1.1.4");
+        findRestsPage.verifyData("ShelfLifeInfoString1", "24Series01");
+        findRestsPage.verifyData("qtyString1", "2");
+        findRestsPage.verifyData("checkLocationString2", "B.1.1.1.4");
+        findRestsPage.verifyData("seriesInfoString2", "24Series02");
+        findRestsPage.verifyData("qtyString2", "8");
         //Стол25
         findRestsPage.inputData("product", "00025");
         findRestsPage.verifyData("productInfo", "00025 Стол25");

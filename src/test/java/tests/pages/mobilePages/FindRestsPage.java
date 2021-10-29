@@ -27,23 +27,30 @@ public class FindRestsPage {
         else if (Field == "qty"){
             return $(By.id("com.abmcloud:id/textViewRecord_count"));
         }
-        else if (Field == "SeriesInfoString1"){
+        else if (Field == "seriesInfoString1"){
             return $(By.id("com.abmcloud:id/textViewSeries"));
         }
-        else if (Field == "ShelfLifeInfoString1"){
+        else if (Field == "shelfLifeInfoString1"){
             return $(By.id("com.abmcloud:id/textViewShelfLife"));
         }
         else if (Field == "checkLocationString1"){
             return $(By.id("//android.widget.ListView/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.TextView"));
         }
-        else if (Field == ""){
-            return $(By.id(""));
+        else if (Field == "checkLocationString2"){
+            return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.TextView"));
         }
-        else if (Field == ""){
-            return $(By.id(""));
+        else if (Field == "qtyString1"){
+            return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ListView/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView"));
         }
-        else if (Field == ""){
-            return $(By.id(""));
+        else if (Field == "seriesInfoString2"){
+            return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.TextView"));
+
+        }
+        else if (Field == "shelfLifeInfoString2"){
+            return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.TextView"));
+        }
+        else if (Field == "qtyString2"){
+            return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ListView/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.TextView"));
         }
 
         return null;
