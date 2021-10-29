@@ -109,11 +109,15 @@ public class ReceptionCardPage {
         else if (Field == "clearProductInput"){
             return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[1]"));
         }
-        else if (Field == ""){
-            return $(By.xpath(""));
-        }
+
         else if (Field == "clearContainerInput"){
             return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[2]"));
+        }
+        else if (Field == "unitAmount"){
+            return $(By.id("android:id/text1"));
+        }
+        else if (Field == "packaging"){
+            return $(By.id("com.abmcloud:id/labelHintControl"));
         }
         return null;
     }
@@ -133,12 +137,38 @@ public class ReceptionCardPage {
     }
 
     public void verifyData(String field, String source) {
-        getIdField(field).shouldHave(text(source));
+        SelenideElement ID = getIdField(field);
+        ID.shouldHave(text(source));
     }
 
     public void clickButton(String button) {
         getIdField(button).click();
     }
+
+    //MNV need to develop
+    public void verifyDataSN() {
+        getNameSerialNumber(2).shouldHave(text("serialnumber90"));
+        getQtySerialNumber(2).shouldHave(text("1"));
+        getNameSerialNumber(3).shouldHave(text("serialnumber91"));
+        getQtySerialNumber(3).shouldHave(text("1"));
+        getNameSerialNumber(4).shouldHave(text("serialnumber92"));
+        getQtySerialNumber(4).shouldHave(text("1"));
+        getNameSerialNumber(5).shouldHave(text("serialnumber93"));
+        getQtySerialNumber(5).shouldHave(text("1"));
+        getNameSerialNumber(6).shouldHave(text("serialnumber94"));
+        getQtySerialNumber(6).shouldHave(text("1"));
+        getNameSerialNumber(7).shouldHave(text("serialnumber95"));
+        getQtySerialNumber(7).shouldHave(text("1"));
+        getNameSerialNumber(8).shouldHave(text("serialnumber96"));
+        getQtySerialNumber(8).shouldHave(text("1"));
+        getNameSerialNumber(9).shouldHave(text("serialnumber97"));
+        getQtySerialNumber(9).shouldHave(text("1"));
+        getNameSerialNumber(10).shouldHave(text("serialnumber98"));
+        getQtySerialNumber(10).shouldHave(text("1"));
+        getNameSerialNumber(11).shouldHave(text("serialnumber99"));
+        getQtySerialNumber(11).shouldHave(text("1"));
+    }
+    //MNV need to develop
 
     //MNV need to refactor
     public SelenideElement getNameSerialNumber(int string) {
@@ -148,9 +178,10 @@ public class ReceptionCardPage {
         return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]")); //поле количества СН в колонке Qty fact: для формы СН
     }
     public void checkAmountAndPackaging(String amount, String packaging) {
-        $(By.id("android:id/text1")).shouldHave(exactText(amount));
-        $(By.id("com.abmcloud:id/labelHintControl")).shouldHave(exactText(packaging));
+        verifyData("unitAmount", amount);
+        verifyData("packaging", packaging);
     }
+
     public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
         String field = "serialNumberInputText";
         for (int i = 0; i < numberOfReps; i++) {
