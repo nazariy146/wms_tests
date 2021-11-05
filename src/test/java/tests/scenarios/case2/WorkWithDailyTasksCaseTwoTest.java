@@ -26,12 +26,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
     ConsolidateContainerPage consolidateContainerPage = new ConsolidateContainerPage();
     InventoryCardPage inventoryCardPage = new InventoryCardPage();
 
-    /**
-     * All tests run on Regress/Case2/wms_regress_case2_Reception DB
-     * All tests run according to TestNG priority.
-     * If test fails - next one will be skipped according to TestNG dependsOnMethods
-     */
-
     @Test
     public void processingReceptionTaskTest() throws Exception {
         steps.loginAsAdmin();
@@ -147,6 +141,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         allTasksPage.checkWorkType("Accommodation");
         //allTasksPage.getReceptionQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
+        accommodationCardPage.andrDriver("source");
     //Стол11
         accommodationCardPage.verifyData("productInfo", "00011 Стол11 IN.01 ➡ A.1.1.1.11 Quantity 10 шт");
         accommodationCardPage.inputData("source","IN1");
