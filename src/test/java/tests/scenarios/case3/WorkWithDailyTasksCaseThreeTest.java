@@ -32,7 +32,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
         allTasksPage.checkWorkType("Reception");
         allTasksPage.getWorkTypeTasksQuantity().click();
-
+        receptionCardPage.andrDriver("source");
     //Стол21
         receptionCardPage.verifyData("productInfo", "00021 Стол21 IN.01 Quantity 10 уп. (5)");
         receptionCardPage.inputData("source", "IN.02");
@@ -257,7 +257,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
         allTasksPage.checkWorkType("Accommodation");
         allTasksPage.getWorkTypeTasksQuantity().click();
-
+        accommodationCardPage.andrDriver("source");
     //Стол21
         accommodationCardPage.inputData("source","IN.02");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Source does not match the task"));
@@ -380,7 +380,8 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     public void checkingFreeAmountTest() {
         steps.loginAsAdmin();
         allTasksPage.selectFindRestsMenu();
-    //Стол21
+        findRestsPage.andrDriver("source");
+        //Стол21
         findRestsPage.inputData("product", "00002102");
         findRestsPage.verifyData("productInfo", "00021 Стол21");
         findRestsPage.verifyData("sourceInfo", "B.1.1.1.1");
@@ -446,9 +447,8 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     @Test (priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
-
         allTasksPage.getStringTasks(2).click();
-
+        inventoryCardPage.andrDriver("source");
     //Стол21
         inventoryCardPage.inputData("source", "B.1.1.1.1");
         inventoryCardPage.inputData("product", "00002102");
@@ -617,6 +617,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     public void checkingFreeAmountAfterProcessingInventoryTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.selectFindRestsMenu();
+        findRestsPage.andrDriver("source");
         //Стол21
         findRestsPage.inputData("product", "00002102");
         findRestsPage.verifyData("productInfo", "00021 Стол21");
@@ -684,10 +685,9 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     @Test (priority = 5, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingSelectionTaskTest() throws Exception {
         steps.loginAsAdmin();
-
         allTasksPage.checkWorkType("Selection");
         allTasksPage.getWorkTypeTasksQuantity().click();
-
+        selectionCardPage.andrDriver("source");
     //Стол21
         selectionCardPage.verifyData("productInfo", "00021 Стол21 B.1.1.1.1 ➡ KT1.01.01.01.01 Quantity 10 уп. (5)");
         selectionCardPage.inputData("source", "B.1.1.1.1");
@@ -780,10 +780,9 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     @Test (priority = 6, dependsOnMethods = "processingSelectionTaskTest")
     public void processingContainerTaskTest() throws Exception {
         steps.loginAsAdmin();
-
         allTasksPage.checkWorkType("Контейнер");
         allTasksPage.getWorkTypeTasksQuantity().click();
-
+        containerCardPage.andrDriver("source");
     //Стол21
         containerCardPage.verifyData("containerInfo", "CON/OUT121 ➡ KT1.01.01.01.01");
         containerCardPage.inputData("container", "OUT121");
@@ -839,10 +838,9 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     @Test (priority = 7, dependsOnMethods = "processingContainerTaskTest")
     public void processingControlTaskTest() throws Exception {
         steps.loginAsAdmin();
-
         allTasksPage.checkWorkType("Control");
         allTasksPage.getWorkTypeTasksQuantity().click();
-
+        controlCardPage.andrDriver("source");
     //Стол21
         controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT121");
