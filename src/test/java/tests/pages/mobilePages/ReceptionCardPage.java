@@ -97,6 +97,12 @@ public class ReceptionCardPage {
         else if (Field == "modalDialogOK"){
             return $(By.id("android:id/button1"));
         }
+        else if (Field == "modalDialogErrorOK"){
+            return $(By.id("android:id/button2"));
+        }
+        else if (Field == "modalDialogMessage"){
+            return $(By.id("android:id/message"));
+        }
         else if (Field == "editBarcode"){
             return $(By.id("com.abmcloud:id/ib_edit"));
         }
