@@ -36,49 +36,49 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     //Стол21
         receptionCardPage.verifyData("productInfo", "00021 Стол21 IN.01 Quantity 10 уп. (5)");
         receptionCardPage.inputData("source", "IN.02");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("The control box does not match the task"));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "The control box does not match the task");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("source", "IN");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("The control box does not match the task"));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "The control box does not match the task");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("source", "000021");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("The control box does not match the task"));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "The control box does not match the task");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("source", "IN.01");
         getMessageModalDialog().shouldNotBe(visible);
         receptionCardPage.inputData("product","IN.01");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: IN.01"));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "Couldn't find the product by code: IN.01");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("product","IN");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: IN"));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "Couldn't find the product by code: IN");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("product","00001");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: 00001"));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "Couldn't find the product by code: 00001");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.checkAmountAndPackaging("1.0", "10");
         receptionCardPage.inputData("product","00002102");
         getMessageModalDialog().shouldNotBe(visible);
         receptionCardPage.inputData("container","IN.01");
         receptionCardPage.inputData("qty","2");
         receptionCardPage.clickButton("commit");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Not found on the CC Container:IN.01"));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "Not found on the CC Container:IN.01");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("container","00001");
         receptionCardPage.inputData("qty","2");
         receptionCardPage.clickButton("commit");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Not found on the CC Container:00001"));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "Not found on the CC Container:00001");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("container","00002102");
         receptionCardPage.checkAmountAndPackaging("5.0", "2");
         receptionCardPage.inputData("qty","10");
         receptionCardPage.clickButton("commit");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Not found on the CC Container:00002102"));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "Not found on the CC Container:00002102");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.inputData("qty","3");
         receptionCardPage.clickButton("commit");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Can not handle15. Remaining 10"));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "Can not handle15. Remaining 10");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("qty","2");
         receptionCardPage.clickButton("commit");
         getMessageModalDialog().shouldNotBe(visible);
@@ -88,19 +88,19 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
         receptionCardPage.verifyData("productInfo", "00022 Стол22 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","2120021020000");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Couldn't find the product by code: 2120021020000"));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "Couldn't find the product by code: 2120021020000");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("product","2110022020000");
         receptionCardPage.verifyData("qty", "2.000");
         receptionCardPage.inputData("product","2110023020000");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("The product doesn't match the task: 00023 [series] [use] [shelf_life] Стол23"));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "The product doesn't match the task: 00023 [series] [use] [shelf_life] Стол23");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("product","2110022140000");
         receptionCardPage.verifyData("qty", "16.000");
         receptionCardPage.inputData("product","2110022090000");
         receptionCardPage.clickButton("commit");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Can not handle19. Remaining 10"));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "Can not handle19. Remaining 10");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.clickButton("clearProductInput");
         receptionCardPage.clickButton("clearProductInput");
         receptionCardPage.inputData("product","2110022100000");
@@ -114,15 +114,15 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("product","2110023020000");
         receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
         receptionCardPage.inputData("expirationDate","01.04.21");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("Shelf life 01.04.2021 in the past - are you really holding on an expired product?"));
-        clickErrorDialogOkButton();
-        clickErrorDialogOkButton();//TODO bag
+        receptionCardPage.verifyData("modalDialogMessage", "Shelf life 01.04.2021 in the past - are you really holding on an expired product?");
+        receptionCardPage.clickButton("modalDialogErrorOK");
+        receptionCardPage.clickButton("modalDialogErrorOK");//TODO bag
         //добавлена защита от дурака, ввести 99.99.9999 нет возможности
 //        receptionCardPage.inputData("expirationDate","99.99.9999");
-//        getMessageModalDialog().shouldBe(visible).shouldHave(text("Incorrect date value"));
-//        clickErrorDialogOkButton();
+//        receptionCardPage.verifyData("modalDialogMessage", "Incorrect date value");
+//        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("expirationDate","31.12.21");
-        clickSetOkYesButton();
+        receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.verifyData("productInfo", "00023 31.12.2021 Стол23 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("qty", "2.000");
         receptionCardPage.inputData("container","IN1");
@@ -132,7 +132,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.clickButton("cancel");//TODO
         receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
         receptionCardPage.inputData("expirationDate","30.12.21");
-        clickSetOkYesButton();
+        receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.verifyData("productInfo", "00023 30.12.2021 Стол23 IN.01 Quantity 8 шт");
         receptionCardPage.verifyData("qty", "5.500");
         receptionCardPage.inputData("container","IN1");
@@ -143,7 +143,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.clickButton("cancel");//TODO
         receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
         receptionCardPage.inputData("expirationDate","31.12.2021");
-        clickSetOkYesButton();
+        receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.verifyData("productInfo", "00023 31.12.2021 Стол23 IN.01 Quantity 2.5 шт");
         receptionCardPage.verifyData("qty", "2.500");
         receptionCardPage.inputData("container","IN1");
@@ -154,7 +154,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("product","2110024020000");
         receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
         receptionCardPage.inputData("newSeries","24Series01");
-        clickSetOkYesButton();
+        receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.verifyData("productInfo", "00024 24Series01 Стол24 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("qty", "2.000");
         receptionCardPage.inputData("container","IN1");
@@ -163,7 +163,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("product","2110024075000");
         receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
         receptionCardPage.inputData("newSeries","24Series02");
-        clickSetOkYesButton();
+        receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.verifyData("productInfo", "00024 24Series02 Стол24 IN.01 Quantity 8 шт");
         receptionCardPage.verifyData("qty", "7.500");
         receptionCardPage.inputData("container","IN1");
@@ -172,7 +172,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("product","2110024005000");
         receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
         receptionCardPage.inputData("newSeries","24Series02");
-        clickSetOkYesButton();
+        receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.verifyData("productInfo", "00024 24Series02 Стол24 IN.01 Quantity 0.5 шт");
         receptionCardPage.verifyData("qty", "0.500");
         receptionCardPage.inputData("container","IN1");
@@ -187,8 +187,8 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("tareWeight", "0.2");
         receptionCardPage.inputData("qty","2");
         receptionCardPage.clickButton("commit");
-        getMessageModalDialog().shouldBe(visible).shouldHave(text("The total weight, taking into account the weight of the pallet and the tare weight, cannot be equal to zero."));
-        clickErrorDialogOkButton();
+        receptionCardPage.verifyData("modalDialogMessage", "The total weight, taking into account the weight of the pallet and the tare weight, cannot be equal to zero.");
+        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("qty","13");
         receptionCardPage.clickButton("commit");
     //Стол26
@@ -197,7 +197,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("product","00026");
         receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
         receptionCardPage.inputData("newSeries","26series01");
-        clickSetOkYesButton();
+        receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.inputData("palletWeight", "2");
         receptionCardPage.inputData("tareQty", "5");
@@ -211,7 +211,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.clickButton("cancel");//TODO
         receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
         receptionCardPage.inputData("expirationDate","31.12.2021");
-        clickSetOkYesButton();
+        receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.inputData("palletWeight", "2");
         receptionCardPage.inputData("tareQty", "5");
@@ -229,7 +229,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("product","00029");
         receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
         receptionCardPage.inputData("newSeries","29Series01");
-        clickSetOkYesButton();
+        receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.inputData("qty","10");
         receptionCardPage.clickButton("commit");
@@ -244,8 +244,8 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("lenghtSKU","0.2");
         receptionCardPage.inputData("heightSKU","0.1");
         receptionCardPage.inputData("weightSKU","0.4");
-        clickSetOkYesButton();
-        clickSetOkYesButton();
+        receptionCardPage.clickButton("modalDialogOK");
+        receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.inputData("qty","10");
         receptionCardPage.clickButton("commit");
