@@ -580,7 +580,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
     }
 
-    @Test (priority = 5, dependsOnMethods = "processingAccommodationTaskTest")
+    @Test (priority = 6, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingSelectionTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -686,7 +686,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         selectionCardPage.clickButton("commit");
     }
 
-    @Test (priority = 6, dependsOnMethods = "processingSelectionTaskTest")
+    @Test (priority = 7, dependsOnMethods = "processingSelectionTaskTest")
     public void processingContainerTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -745,7 +745,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         containerCardPage.clickButton("commit");
     }
 
-    @Test (priority = 7, dependsOnMethods = "processingContainerTaskTest")
+    @Test (priority = 8, dependsOnMethods = "processingContainerTaskTest")
     public void processingControlTaskTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Control");
@@ -925,7 +925,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.clickButton("commit");
     }
 
-    @Test (priority = 8, dependsOnMethods = "processingControlTaskTest")
+    @Test (priority = 9, dependsOnMethods = "processingControlTaskTest")
     public void processingPackagingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -953,7 +953,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         clickErrorDialogOkButton();
     }
 
-    @Test (priority = 9, dependsOnMethods = "processingPackagingTaskTest")
+    @Test (priority = 10, dependsOnMethods = "processingPackagingTaskTest")
     public void processingLoadingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
