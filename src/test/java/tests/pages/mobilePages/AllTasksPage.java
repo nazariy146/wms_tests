@@ -66,6 +66,12 @@ public class AllTasksPage {
         $(By.id("com.abmcloud:id/design_navigation_view")).find(byId("com.abmcloud:id/find_rests")).click();
     }
 
+    public void selectelocationMenu() {
+        clickMenuIcon();
+        $(By.id("com.abmcloud:id/design_navigation_view")).shouldBe(visible);
+        $(By.id("com.abmcloud:id/design_navigation_view")).find(byId("com.abmcloud:id/find_rests")).click();
+    }
+
     public void selectConsolidateContainerMenu() {
         clickMenuIcon();
         $(By.id("com.abmcloud:id/design_navigation_view")).shouldBe(visible);

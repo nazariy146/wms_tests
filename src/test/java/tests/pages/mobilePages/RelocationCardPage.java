@@ -40,7 +40,6 @@ public class RelocationCardPage {
         }
         else if (Field == "unitAmount"){
             return $(By.id("android:id/text1"));
-
         }
         else if (Field == "unitPackaging"){
             return $(By.id("com.abmcloud:id/textViewLabelHint"));

@@ -57,11 +57,14 @@ public class InventoryCardPage {
         else if (Field == "modalDialogTitle"){
             return $(By.id("com.abmcloud:id/alertTitle"));
         }
+        else if (Field == "modalDialogOK"){
+            return $(By.id("android:id/button1"));
+        }
         else if (Field == "qualityInfo"){
-            return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewQualityInv")); //поле статуса номенклатуры в колонке Quality
+            return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewQualityInv"));
         }
         else if (Field == "qtyViewInfo"){
-            return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewQtyInv")); //поле количества номенклатуры в колонке Qty
+            return $(By.xpath("//android.widget.ListView/android.view.ViewGroup[2]")).find(By.id("com.abmcloud:id/textViewQtyInv"));
         }
         return null;
     }
