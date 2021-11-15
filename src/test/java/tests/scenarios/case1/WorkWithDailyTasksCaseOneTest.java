@@ -26,6 +26,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     LoadingCardPage loadingCardPage = new LoadingCardPage();
     InventoryCardPage inventoryCardPage = new InventoryCardPage();
     RelocationCardPage relocationCardPage = new RelocationCardPage();
+//    RelocationTSDCardPage relocationTSDCardPage = new RelocationTSDCardPage();
     SettingsPage settingsPage = new SettingsPage();
 
     @Test
@@ -580,7 +581,124 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
 
     }
 
-    @Test (priority = 6, dependsOnMethods = "processingAccommodationTaskTest")
+    @Test (priority = 6, dependsOnMethods = "processingRelocationTaskTest")
+    public void processingRelocationTSDTaskTest() throws Exception {
+        steps.loginAsAdmin();
+
+  /*      relocationTSDCardPage.andrDriver("rightMenu");
+        relocationTSDCardPage.clickButton("rightMenu");
+        relocationTSDCardPage.clickButton("relocation");
+    //Стол1
+        relocationTSDCardPage.inputData("source", "A.1.1.2.1");
+        relocationTSDCardPage.inputData("product", "0001");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.1 ➡ 0001 Стол1");
+        relocationTSDCardPage.inputData("qty", "10");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.1 ➡ 0001 Стол1 Quantity 10");
+        relocationTSDCardPage.inputData("destination", "A.1.1.3.1");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.1 ➡ A.1.1.3.1 0001 Стол1 Quantity 10");
+        relocationTSDCardPage.clickButton("moving");
+    //Стол2
+        relocationTSDCardPage.inputData("source", "A.1.1.2.2");
+        relocationTSDCardPage.inputData("product", "0002");
+        relocationTSDCardPage.verifyData("modalDialogTitle", "Batch properties");
+        relocationTSDCardPage.selectData("series", "Series2");
+        relocationTSDCardPage.clickButton("modalDialogOK");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.2 ➡ 0002 Series2 Стол2");
+        relocationTSDCardPage.inputData("qty", "10");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.2 ➡ 0002 Series2 Стол2 Quantity 10");
+        relocationTSDCardPage.inputData("destination", "A.1.1.3.2");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.2 ➡ A.1.1.3.2 0002 Series2 Стол2 Quantity 10");
+        relocationTSDCardPage.clickButton("moving");
+    //Стол3
+        relocationTSDCardPage.inputData("source", "A.1.1.2.3");
+        relocationTSDCardPage.inputData("product", "0003");
+        relocationTSDCardPage.verifyData("modalDialogTitle", "Batch properties");
+        relocationTSDCardPage.selectData("shelfLife", "31.12.2021");
+        relocationTSDCardPage.clickButton("modalDialogOK");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.3 ➡ 0003 31.12.2021 Стол3");
+        relocationTSDCardPage.inputData("qty", "10");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.3 ➡ 0003 31.12.2021 Стол3 Quantity 10");
+        relocationTSDCardPage.inputData("destination", "A.1.1.3.3");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.3 ➡ A.1.1.3.3 0003 31.12.2021 Стол3 Quantity 10");
+        relocationTSDCardPage.clickButton("moving");
+    //Стол4
+        relocationTSDCardPage.inputData("source", "A.1.1.2.4");
+        relocationTSDCardPage.inputData("product", "0004");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.4 ➡ 0004 Стол4");
+        relocationTSDCardPage.inputData("qty", "10");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.4 ➡ 0004 Стол4 Quantity 10");
+        relocationTSDCardPage.inputData("destination", "A.1.1.3.4");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.4 ➡ A.1.1.3.4 0004 Стол4 Quantity 10");
+        relocationTSDCardPage.clickButton("moving");
+    //Стол5
+        relocationTSDCardPage.inputData("source", "A.1.1.2.5");
+        relocationTSDCardPage.inputData("product", "0005");
+        relocationTSDCardPage.verifyData("modalDialogTitle", "Batch properties");
+        relocationTSDCardPage.selectData("series", "Series5");
+        relocationTSDCardPage.clickButton("modalDialogOK");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.5 ➡ 0005 series5 31.12.2021 Стол5");
+        relocationTSDCardPage.inputData("qty", "10");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.5 ➡ 0005 series5 31.12.2021 Стол5 Quantity 10");
+        relocationTSDCardPage.inputData("destination", "A.1.1.3.5");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.5 ➡ A.1.1.3.5 0005 series5 31.12.2021 Стол5 Quantity 10");
+        relocationTSDCardPage.clickButton("moving");
+    //Стол6
+        relocationTSDCardPage.inputData("source", "A.1.1.2.6");
+        relocationTSDCardPage.inputData("product", "0006");
+        relocationTSDCardPage.verifyData("modalDialogTitle", "Batch properties");
+        relocationTSDCardPage.selectData("series", "Series6");
+        relocationTSDCardPage.clickButton("modalDialogOK");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.6 ➡ 0006 series6 Стол6");
+        relocationTSDCardPage.inputData("qty", "10");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.6 ➡ 0006 series6 Стол6 Quantity 10");
+        relocationTSDCardPage.inputData("destination", "A.1.1.3.6");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.6 ➡ A.1.1.3.6 0006 series6 Стол6 Quantity 10");
+        relocationTSDCardPage.clickButton("moving");
+    //Стол7
+        relocationTSDCardPage.inputData("source", "A.1.1.2.7");
+        relocationTSDCardPage.inputData("product", "0007");
+        relocationTSDCardPage.verifyData("modalDialogTitle", "Batch properties");
+        relocationTSDCardPage.selectData("shelfLife", "31.12.2021");
+        relocationTSDCardPage.clickButton("modalDialogOK");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.7 ➡ 0007 31.12.2021 Стол7");
+        relocationTSDCardPage.inputData("qty", "10");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.7 ➡ 0007 31.12.2021 Стол7 Quantity 10");
+        relocationTSDCardPage.inputData("destination", "A.1.1.3.7");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.7 ➡ A.1.1.3.7 0007 31.12.2021 Стол7 Quantity 10");
+        relocationTSDCardPage.clickButton("moving");
+    //Стол8
+        relocationTSDCardPage.inputData("source", "A.1.1.2.8");
+        relocationTSDCardPage.inputData("product", "0008");
+        relocationTSDCardPage.verifyData("modalDialogTitle", "Batch properties");
+        relocationTSDCardPage.selectData("series", "Series8");
+        relocationTSDCardPage.clickButton("modalDialogOK");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.8 ➡ 0008 series8 31.12.2021 Стол8");
+        relocationTSDCardPage.inputData("qty", "10");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.8 ➡ 0008 series8 31.12.2021 Стол8 Quantity 10");
+        relocationTSDCardPage.inputData("destination", "A.1.1.3.8");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.8 ➡ A.1.1.3.8 0008 series8 31.12.2021 Стол8 Quantity 10");
+        relocationTSDCardPage.clickButton("moving");
+    //Стол9
+        relocationTSDCardPage.inputData("source", "A.1.1.2.9");
+        relocationTSDCardPage.inputData("product", "0009");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.9 ➡ 0009 Стол9");
+        relocationTSDCardPage.inputData("qty", "10");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.9 ➡ 0009 Стол9 Quantity 10");
+        relocationTSDCardPage.inputData("destination", "A.1.1.3.9");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.9 ➡ A.1.1.3.9 0009 Стол9 Quantity 10");
+        relocationTSDCardPage.clickButton("moving");
+    //Стол10
+        relocationTSDCardPage.inputData("source", "A.1.1.2.10");
+        relocationTSDCardPage.inputData("product", "00010");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.10 ➡ 00010 Стол10");
+        relocationTSDCardPage.inputData("qty", "10");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.10 ➡ 00010 Стол10 Quantity 10");
+        relocationTSDCardPage.inputData("destination", "A.1.1.3.10");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.10 ➡ A.1.1.3.10 00010 Стол10 Quantity 10");
+        relocationTSDCardPage.clickButton("moving");
+  */  }
+
+    @Test (priority = 7, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingSelectionTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -588,29 +706,29 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         allTasksPage.getWorkTypeTasksQuantity().click();
         selectionCardPage.andrDriver("source");
     //Стол1
-        selectionCardPage.verifyData("productInfo", "0001 Стол1 A.1.1.2.1 ➡ KT1.01.01.01.01 Quantity 10 шт");
-        selectionCardPage.inputData("source", "A.1.1.2.1");
+        selectionCardPage.verifyData("productInfo", "0001 Стол1 A.1.1.3.1 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "A.1.1.3.1");
         selectionCardPage.inputData("product", "0001");
         selectionCardPage.inputData("destination", "OUT101");
         selectionCardPage.inputData("qty", "10");
         selectionCardPage.clickButton("commit");
     //Стол2
-        selectionCardPage.verifyData("productInfo", "0002 Series2 Стол2 A.1.1.2.2 ➡ KT1.01.01.01.01 Quantity 10 шт");
-        selectionCardPage.inputData("source", "A.1.1.2.2");
+        selectionCardPage.verifyData("productInfo", "0002 Series2 Стол2 A.1.1.3.2 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "A.1.1.3.2");
         selectionCardPage.inputData("product", "0002");
         selectionCardPage.inputData("destination", "OUT102");
         selectionCardPage.inputData("qty", "10");
         selectionCardPage.clickButton("commit");
     //Стол3
-        selectionCardPage.verifyData("productInfo", "0003 31.12.2021 Стол3 A.1.1.2.3 ➡ KT1.01.01.01.01 Quantity 10 шт");
-        selectionCardPage.inputData("source", "A.1.1.2.3");
+        selectionCardPage.verifyData("productInfo", "0003 31.12.2021 Стол3 A.1.1.3.3 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "A.1.1.3.3");
         selectionCardPage.inputData("product", "0003");
         selectionCardPage.inputData("destination", "OUT103");
         selectionCardPage.inputData("qty", "10");
         selectionCardPage.clickButton("commit");
     //Стол4
-        selectionCardPage.verifyData("productInfo", "0004 Стол4 A.1.1.2.4 ➡ KT1.01.01.01.01 Quantity 10 шт");
-        selectionCardPage.inputData("source", "A.1.1.2.4");
+        selectionCardPage.verifyData("productInfo", "0004 Стол4 A.1.1.3.4 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "A.1.1.3.4");
         selectionCardPage.inputData("product", "0004");
         selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("0004 Стол4"));
         selectionCardPage.setSerialNumberInputSeveralTimes("serialnumber4", 10);
@@ -621,15 +739,15 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
     //Стол5
-        selectionCardPage.verifyData("productInfo", "0005 series5 31.12.2021 Стол5 A.1.1.2.5 ➡ KT1.01.01.01.01 Quantity 10 шт");
-        selectionCardPage.inputData("source", "A.1.1.2.5");
+        selectionCardPage.verifyData("productInfo", "0005 series5 31.12.2021 Стол5 A.1.1.3.5 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "A.1.1.3.5");
         selectionCardPage.inputData("product", "0005");
         selectionCardPage.inputData("destination", "OUT105");
         selectionCardPage.inputData("qty", "10");
         selectionCardPage.clickButton("commit");
     //Стол6
-        selectionCardPage.verifyData("productInfo", "0006 series6 Стол6 A.1.1.2.6 ➡ KT1.01.01.01.01 Quantity 10 шт");
-        selectionCardPage.inputData("source", "A.1.1.2.6");
+        selectionCardPage.verifyData("productInfo", "0006 series6 Стол6 A.1.1.3.6 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "A.1.1.3.6");
         selectionCardPage.inputData("product", "0006");
         //selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("0006 Стол6")); //TODO BUG не распарсивается в наименовнии Серия
         selectionCardPage.setSerialNumberInputSeveralTimes("serialnumber6", 10);
@@ -640,8 +758,8 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
     //Стол7
-        selectionCardPage.verifyData("productInfo", "0007 31.12.2021 Стол7 A.1.1.2.7 ➡ KT1.01.01.01.01 Quantity 10 шт");
-        selectionCardPage.inputData("source", "A.1.1.2.7");
+        selectionCardPage.verifyData("productInfo", "0007 31.12.2021 Стол7 A.1.1.3.7 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "A.1.1.3.7");
         selectionCardPage.inputData("product", "0007");
         //selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("0007 Стол7")); //TODO BUG
         selectionCardPage.setSerialNumberInputSeveralTimes("serialnumber7", 10);
@@ -652,8 +770,8 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
     //Стол8
-        selectionCardPage.verifyData("productInfo", "0008 series8 31.12.2021 Стол8 A.1.1.2.8 ➡ KT1.01.01.01.01 Quantity 10 шт");
-        selectionCardPage.inputData("source", "A.1.1.2.8");
+        selectionCardPage.verifyData("productInfo", "0008 series8 31.12.2021 Стол8 A.1.1.3.8 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "A.1.1.3.8");
         selectionCardPage.inputData("product", "0008");
         //selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("0008 Стол8")); //TODO BUG
         selectionCardPage.setSerialNumberInputSeveralTimes("serialnumber8", 10);
@@ -664,8 +782,8 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
     //Стол9
-        selectionCardPage.verifyData("productInfo", "0009 Стол9 A.1.1.2.9 ➡ KT1.01.01.01.01 Quantity 10 шт");
-        selectionCardPage.inputData("source", "A.1.1.2.9");
+        selectionCardPage.verifyData("productInfo", "0009 Стол9 A.1.1.3.9 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "A.1.1.3.9");
         selectionCardPage.inputData("product", "0009");
         selectionCardPage.getSerialNumberInput().shouldBe(visible);
         //selectionCardPage.getSerialNumberProductInfo().shouldHave(exactText("0009 Стол9")); //TODO BUG
@@ -678,15 +796,15 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
     //Стол10
-        selectionCardPage.verifyData("productInfo", "00010 Стол10 A.1.1.2.10 ➡ KT1.01.01.01.01 Quantity 10 шт");
-        selectionCardPage.inputData("source", "A.1.1.2.10");
+        selectionCardPage.verifyData("productInfo", "00010 Стол10 A.1.1.3.10 ➡ KT1.01.01.01.01 Quantity 10 шт");
+        selectionCardPage.inputData("source", "A.1.1.3.10");
         selectionCardPage.inputData("product", "00010");
         selectionCardPage.inputData("destination", "OUT110");
         selectionCardPage.inputData("qty", "10");
         selectionCardPage.clickButton("commit");
     }
 
-    @Test (priority = 7, dependsOnMethods = "processingSelectionTaskTest")
+    @Test (priority = 8, dependsOnMethods = "processingSelectionTaskTest")
     public void processingContainerTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -745,7 +863,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         containerCardPage.clickButton("commit");
     }
 
-    @Test (priority = 8, dependsOnMethods = "processingContainerTaskTest")
+    @Test (priority = 9, dependsOnMethods = "processingContainerTaskTest")
     public void processingControlTaskTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Control");
@@ -925,7 +1043,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.clickButton("commit");
     }
 
-    @Test (priority = 9, dependsOnMethods = "processingControlTaskTest")
+    @Test (priority = 10, dependsOnMethods = "processingControlTaskTest")
     public void processingPackagingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -953,7 +1071,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         clickErrorDialogOkButton();
     }
 
-    @Test (priority = 10, dependsOnMethods = "processingPackagingTaskTest")
+    @Test (priority = 11, dependsOnMethods = "processingPackagingTaskTest")
     public void processingLoadingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
