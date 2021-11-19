@@ -24,22 +24,20 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
     LoadingCardPage loadingCardPage = new LoadingCardPage();
     InventoryCardPage inventoryCardPage = new InventoryCardPage();
 
-
     @Test
     public void processingReceptionTaskTest() throws Exception {
-    steps.loginAsAdmin();
-
-    allTasksPage.checkWorkType("Reception"); // Поиск заданий Reception из общего списка доступных заданий на ТСД
-    allTasksPage.getWorkTypeTasksQuantity().click(); // Выбор нужного нам задания (Reception)
-
+        steps.loginAsAdmin();
+        allTasksPage.checkWorkType("Reception");
+        allTasksPage.getWorkTypeTasksQuantity().click();
+        receptionCardPage.andrDriver("source");
     //Стол31
         receptionCardPage.verifyData("productInfo", "00031 Стол31 IN.01 Quantity 10 уп. (5)");
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","31FRAGSN31Series0131122021");
         receptionCardPage.verifyData("productInfoSN", "00031 Стол31");
-        receptionCardPage.setSerialNumberInputSeveralTimes("31FRAGSN31Series0131122021", 9); // Ввод в поле SerialNumber идентичных СН поочередно в количестве 9 шт
-        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("31FRAGSN31Series0131122021"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
+        receptionCardPage.setSerialNumberInputSeveralTimes("31FRAGSN31Series0131122021", 9);
+        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("31FRAGSN31Series0131122021"));
+        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.verifyData("qty", "10");
@@ -49,8 +47,8 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         receptionCardPage.inputData("product","32FRAGSN32Series0131122021");
         receptionCardPage.verifyData("productInfoSN", "00032 32Series01 Стол32");
         receptionCardPage.setSerialNumberInputSeveralTimes("32FRAGSN32Series0131122021", 9);
-        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("32FRAGSN32Series0131122021"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
+        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("32FRAGSN32Series0131122021"));
+        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.verifyData("productInfo", "00032 32series01 Стол32 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("qty", "10");
@@ -60,8 +58,8 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         receptionCardPage.inputData("product","33FRAGSN33Series0131122021");
         receptionCardPage.verifyData("productInfoSN", "00033 31.12.2021 Стол33");
         receptionCardPage.setSerialNumberInputSeveralTimes("33FRAGSN33Series0131122021", 9);
-        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("33FRAGSN33Series0131122021"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
+        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("33FRAGSN33Series0131122021"));
+        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.verifyData("productInfo", "00033 31.12.2021 Стол33 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("qty", "10");
@@ -71,8 +69,8 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         receptionCardPage.inputData("product","34FRAGSN34Series0131122021");
         receptionCardPage.verifyData("productInfoSN", "00034 34Series01 31.12.2021 Стол34");
         receptionCardPage.setSerialNumberInputSeveralTimes("34FRAGSN34Series0131122021", 9);
-        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("34FRAGSN34Series0131122021"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
+        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("34FRAGSN34Series0131122021"));
+        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));
         receptionCardPage.clickButton("commitSN");
         receptionCardPage.verifyData("productInfo", "00034 34series01 31.12.2021 Стол34 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("qty", "10");
@@ -105,24 +103,24 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         receptionCardPage.inputData("product","39FRAGSN39Series013112202101");
         receptionCardPage.verifyData("productInfoSN", "00039 39Series01 31.12.2021 Стол39");
         receptionCardPage.setSerialNumberInputSeveralTimes("39FRAGSN39Series013112202102", "39FRAGSN39Series013112202103", "39FRAGSN39Series013112202104", "39FRAGSN39Series013112202105", "39FRAGSN39Series013112202106", "39FRAGSN39Series013112202107", "39FRAGSN39Series013112202108", "39FRAGSN39Series013112202109", "39FRAGSN39Series013112202110");
-        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("39FRAGSN39Series013112202101"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(3).shouldHave(exactText("39FRAGSN39Series013112202102"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(3).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(4).shouldHave(exactText("39FRAGSN39Series013112202103"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(4).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(5).shouldHave(exactText("39FRAGSN39Series013112202104"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(5).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(6).shouldHave(exactText("39FRAGSN39Series013112202105"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(6).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(7).shouldHave(exactText("39FRAGSN39Series013112202106"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(7).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(8).shouldHave(exactText("39FRAGSN39Series013112202107"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(8).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(9).shouldHave(exactText("39FRAGSN39Series013112202108"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(9).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-        receptionCardPage.getNameSerialNumber(10).shouldHave(exactText("39FRAGSN39Series013112202109"));//проверка СН в колонке Serial Number
-        receptionCardPage.getQtySerialNumber(10).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
+        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("39FRAGSN39Series013112202101"));
+        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("1"));
+        receptionCardPage.getNameSerialNumber(3).shouldHave(exactText("39FRAGSN39Series013112202102"));
+        receptionCardPage.getQtySerialNumber(3).shouldHave(exactText("1"));
+        receptionCardPage.getNameSerialNumber(4).shouldHave(exactText("39FRAGSN39Series013112202103"));
+        receptionCardPage.getQtySerialNumber(4).shouldHave(exactText("1"));
+        receptionCardPage.getNameSerialNumber(5).shouldHave(exactText("39FRAGSN39Series013112202104"));
+        receptionCardPage.getQtySerialNumber(5).shouldHave(exactText("1"));
+        receptionCardPage.getNameSerialNumber(6).shouldHave(exactText("39FRAGSN39Series013112202105"));
+        receptionCardPage.getQtySerialNumber(6).shouldHave(exactText("1"));
+        receptionCardPage.getNameSerialNumber(7).shouldHave(exactText("39FRAGSN39Series013112202106"));
+        receptionCardPage.getQtySerialNumber(7).shouldHave(exactText("1"));
+        receptionCardPage.getNameSerialNumber(8).shouldHave(exactText("39FRAGSN39Series013112202107"));
+        receptionCardPage.getQtySerialNumber(8).shouldHave(exactText("1"));
+        receptionCardPage.getNameSerialNumber(9).shouldHave(exactText("39FRAGSN39Series013112202108"));
+        receptionCardPage.getQtySerialNumber(9).shouldHave(exactText("1"));
+        receptionCardPage.getNameSerialNumber(10).shouldHave(exactText("39FRAGSN39Series013112202109"));
+        receptionCardPage.getQtySerialNumber(10).shouldHave(exactText("1"));
         //receptionCardPage.getNameSerialNumber(11).shouldHave(exactText("39FRAGSN39Series013112202110"));//проверка СН в колонке Serial Number
         //receptionCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
         receptionCardPage.clickButton("commitSN");
@@ -160,7 +158,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         receptionCardPage.clickButton("commit");
     }
 
-    @Test (priority = 1)
+    @Test (priority = 1, dependsOnMethods = "processingReceptionTaskTest")
     public void processingAccommodationTaskTest() throws Exception{
         steps.loginAsAdmin();
 
@@ -229,7 +227,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         accommodationCardPage.clickButton("commit");
     }
 
-    @Test (priority = 2)
+    @Test (priority = 2, dependsOnMethods = "processingAccommodationTaskTest")
     public void checkingFreeAmountTest() {
         steps.loginAsAdmin();
         allTasksPage.selectFindRestsMenu();
@@ -300,7 +298,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
     }
 
-    @Test (priority = 3)
+    @Test (priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.getStringTasks(2).click();
@@ -407,7 +405,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         inventoryCardPage.clickButtonAndConfirm("inventory");
     }
 
-    @Test (priority = 4)
+    @Test (priority = 4, dependsOnMethods = "processingInventoryTaskTest")
     public void checkingFreeAmountTest2() {
         steps.loginAsAdmin();
         allTasksPage.selectFindRestsMenu();
@@ -476,7 +474,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         findRestsPage.verifyData("ShelfLifeInfoString1", "31.12.2021");
     }
 
-    @Test (priority = 5)
+    @Test (priority = 5, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingSelectionTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -638,7 +636,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         selectionCardPage.clickButton("commit");
     }
 
-    @Test (priority = 6)
+    @Test (priority = 6, dependsOnMethods = "processingSelectionTaskTest")
     public void processingContainerTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -697,7 +695,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         containerCardPage.clickButton("commit");
     }
 
-    @Test (priority = 7)
+    @Test (priority = 7, dependsOnMethods = "processingContainerTaskTest")
     public void processingControlTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -916,7 +914,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         controlCardPage.clickButton("commit");
     }
 
-    @Test (priority = 8)
+    @Test (priority = 8, dependsOnMethods = "processingControlTaskTest")
     public void processingPackagingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
@@ -941,7 +939,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         clickSetOkYesButton();
     }
 
-    @Test (priority = 9)
+    @Test (priority = 9, dependsOnMethods = "processingPackagingTaskTest")
     public void processingLoadingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
