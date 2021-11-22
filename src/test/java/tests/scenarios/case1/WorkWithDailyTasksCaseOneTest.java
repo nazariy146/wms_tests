@@ -26,7 +26,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     LoadingCardPage loadingCardPage = new LoadingCardPage();
     InventoryCardPage inventoryCardPage = new InventoryCardPage();
     RelocationCardPage relocationCardPage = new RelocationCardPage();
-//    RelocationTSDCardPage relocationTSDCardPage = new RelocationTSDCardPage();
+    RelocationTSDCardPage relocationTSDCardPage = new RelocationTSDCardPage();
     SettingsPage settingsPage = new SettingsPage();
 
     @Test
@@ -585,7 +585,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     public void processingRelocationTSDTaskTest() throws Exception {
         steps.loginAsAdmin();
 
-  /*      relocationTSDCardPage.andrDriver("rightMenu");
+        relocationTSDCardPage.andrDriver("rightMenu");
         relocationTSDCardPage.clickButton("rightMenu");
         relocationTSDCardPage.clickButton("relocation");
     //Стол1
@@ -696,7 +696,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         relocationTSDCardPage.inputData("destination", "A.1.1.3.10");
         relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.10 ➡ A.1.1.3.10 00010 Стол10 Quantity 10");
         relocationTSDCardPage.clickButton("moving");
-  */  }
+    }
 
     @Test (priority = 7, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingSelectionTaskTest() throws Exception {
