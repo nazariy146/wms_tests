@@ -669,13 +669,13 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         relocationTSDCardPage.clickButton("moving");
     }
 
-    @Test //(priority = 7, dependsOnMethods = "processingRelocationTSDTaskTest")
+    @Test (priority = 7, dependsOnMethods = "processingRelocationTSDTaskTest")
     public void processingSelectionTaskTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Selection");
         allTasksPage.getWorkTypeTasksQuantity().click();
         selectionCardPage.andrDriver("source");
-/*    //Стол31
+    //Стол31
         selectionCardPage.verifyData("productInfo", "00031 Стол31 C.1.1.3.1 ➡ KT1.01.01.01.01 Quantity 10 уп. (5)");
         selectionCardPage.inputData("source", "C.1.1.3.1");
         selectionCardPage.inputData("product", "31FRAGSN31Series0131122021");
@@ -794,7 +794,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         selectionCardPage.clickCommitSerialNumberButton();
         selectionCardPage.inputData("destination", "OUT139");
         selectionCardPage.verifyData("qty", "10");
-        selectionCardPage.clickButton("commit");*/
+        selectionCardPage.clickButton("commit");
     //Стол40
         selectionCardPage.verifyData("productInfo", "00040 40Series01 31.12.2021 Стол40 C.1.1.3.10 ➡ KT1.01.01.01.01 Quantity 10 шт");
         selectionCardPage.inputData("source", "C.1.1.3.10");
