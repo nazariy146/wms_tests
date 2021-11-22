@@ -92,7 +92,6 @@ public class SelectionCardPage {
     public SelenideElement getQtySerialNumber(int string) {
         return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]"));
     }
-
     public SelenideElement getSerialNumberInput() {
         return $(By.id("com.abmcloud:id/editTextSerialNumber"));
     }
@@ -110,7 +109,7 @@ public class SelectionCardPage {
         Assert.assertEquals(serialNumberText, text, "SerialNumberInputText is not empty");
     }
     public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
-        AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
+        //AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
         for (int i = 0; i < numberOfReps; i++) {
             getSerialNumberInput().click();
             getSerialNumberInput().val(serialNumber);
@@ -118,7 +117,7 @@ public class SelectionCardPage {
         }
     }
     public void setSerialNumberInputSeveralTimes(String ... serialNumbers) {
-        AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
+        //AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
         for (String s : serialNumbers) {
             getSerialNumberInput().click();
             getSerialNumberInput().val(s);
