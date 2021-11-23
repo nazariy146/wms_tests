@@ -123,7 +123,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         receptionCardPage.getNameSerialNumber(11).shouldHave(exactText("19serialnumber10"));//проверка СН в колонке Serial Number
         receptionCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
         receptionCardPage.clickButton("commitSN");
-        receptionCardPage.inputData("container","IN1");
+       receptionCardPage.inputData("container","IN1");
         receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     //Стол20

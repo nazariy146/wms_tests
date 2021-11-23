@@ -83,6 +83,16 @@ public class SelectionCardPage {
         getNameSerialNumber(11).shouldHave(text("serialnumber99"));
         getQtySerialNumber(11).shouldHave(text("1"));
     }
+    public void mnvVerifyDataSN(int kolichestvo, String SN) {
+        getNameSerialNumber(2).shouldHave(text("serialnumber90"));
+        for (int i = 0; i < kolichestvo; i++) {
+            int stroka = i+2;
+            String qty = "1";
+            SelenideElement ID  = getQtySerialNumber(stroka);
+            ID.shouldHave(text(qty));
+
+        }
+    }
     //MNV need to develop
 
     //MNV need to refactor
@@ -109,7 +119,6 @@ public class SelectionCardPage {
         Assert.assertEquals(serialNumberText, text, "SerialNumberInputText is not empty");
     }
     public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
-        //AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
         for (int i = 0; i < numberOfReps; i++) {
             getSerialNumberInput().click();
             getSerialNumberInput().val(serialNumber);
@@ -117,7 +126,6 @@ public class SelectionCardPage {
         }
     }
     public void setSerialNumberInputSeveralTimes(String ... serialNumbers) {
-        //AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
         for (String s : serialNumbers) {
             getSerialNumberInput().click();
             getSerialNumberInput().val(s);
