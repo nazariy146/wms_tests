@@ -68,12 +68,10 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.clickButton("commit");
     //Стол4
         receptionCardPage.verifyData("productInfo", "0004 Стол4 IN.01 Quantity 10 шт");
+        receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","0004");
         receptionCardPage.verifyData("productInfoSN", "0004 Стол4");
-        receptionCardPage.setSerialNumberInputSeveralTimes("serialnumber4", 10);
-        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber4"));
-        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));
-        receptionCardPage.clickButton("commitSN");
+        receptionCardPage.inputSN("normal","serialnumber4", 10);
         receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     //Стол5
@@ -93,10 +91,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.inputData("newSeries","series6");
         receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.verifyData("productInfoSN", "0006 series6 Стол6");
-        receptionCardPage.setSerialNumberInputSeveralTimes("serialnumber6", 10);
-        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber6"));
-        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));
-        receptionCardPage.clickButton("commitSN");
+        receptionCardPage.inputSN("normal","serialnumber6", 10);
         receptionCardPage.verifyData("productInfo", "0006 series6 Стол6 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("qty","10");
         receptionCardPage.clickButton("commit");
@@ -106,10 +101,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.inputData("expirationDate","31.12.2021");
         receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.verifyData("productInfoSN", "0007 31.12.2021 Стол7");
-        receptionCardPage.setSerialNumberInputSeveralTimes("serialnumber7", 10);
-        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber7"));
-        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));
-        receptionCardPage.clickButton("commitSN");
+        receptionCardPage.inputSN("normal","serialnumber7", 10);
         receptionCardPage.verifyData("productInfo", "0007 31.12.2021 Стол7 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("qty","10");
         receptionCardPage.clickButton("commit");
@@ -121,10 +113,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.inputData("expirationDate","31.12.2021");
         receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.verifyData("productInfoSN", "0008 series8 31.12.2021 Стол8");
-        receptionCardPage.setSerialNumberInputSeveralTimes("serialnumber8", 10);
-        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("serialnumber8"));
-        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));
-        receptionCardPage.clickButton("commitSN");
+        receptionCardPage.inputSN("normal","serialnumber7", 10);
         receptionCardPage.verifyData("productInfo", "0008 series8 31.12.2021 Стол8 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("qty","10");
         receptionCardPage.clickButton("commit");
@@ -132,9 +121,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.verifyData("productInfo", "0009 Стол9 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","0009");
         receptionCardPage.verifyData("productInfoSN", "0009 Стол9");
-        receptionCardPage.inputSerialNumbers("serialnumber9", 10);
-        receptionCardPage.verifyDataSN();
-        receptionCardPage.clickButton("commitSN");
+        receptionCardPage.inputSN("unique","serialnumber9", 10);
         receptionCardPage.verifyData("productInfo", "0009 Стол9 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("qty","10");
         receptionCardPage.clickButton("commit");
