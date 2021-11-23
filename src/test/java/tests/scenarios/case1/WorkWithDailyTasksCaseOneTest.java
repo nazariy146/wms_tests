@@ -51,9 +51,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     //Стол2
         receptionCardPage.verifyData("productInfo", "0002 Стол2 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","0002");
-        receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputData("newSeries","Series2");
-        receptionCardPage.clickButton("modalDialogOK");
+        receptionCardPage.inputSeries("newSeries","Series2");
         receptionCardPage.verifyData("productInfo", "0002 Series2 Стол2 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("qty","10");
         receptionCardPage.clickButton("commit");
@@ -88,8 +86,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.verifyData("productInfo", "0006 Стол6 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","0006");
         receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputData("newSeries","series6");
-        receptionCardPage.clickButton("modalDialogOK");
+        receptionCardPage.inputSeries("newSeries","Series2");
         receptionCardPage.verifyData("productInfoSN", "0006 series6 Стол6");
         receptionCardPage.inputSN("normal","serialnumber6", 10);
         receptionCardPage.verifyData("productInfo", "0006 series6 Стол6 IN.01 Quantity 10 шт");

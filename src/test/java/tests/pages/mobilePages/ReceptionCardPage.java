@@ -178,6 +178,13 @@ public class ReceptionCardPage {
         }
         clickButton("commitSN");
     }
+    //MNV need to develop
+    public void inputSeries(String field, String sourse) {
+        verifyData("modalDialogTitle", "Batch properties");
+        inputData(field,sourse);
+        clickButton("modalDialogOK");
+    }
+    //MNV need to develop
 
     //MNV need to refactor
     public SelenideElement getNameSerialNumber(int string) {
@@ -190,7 +197,6 @@ public class ReceptionCardPage {
         verifyData("unitAmount", amount);
         verifyData("packaging", packaging);
     }
-
     public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
         String field = "serialNumberInputText";
         for (int i = 0; i < numberOfReps; i++) {
@@ -203,7 +209,6 @@ public class ReceptionCardPage {
             inputData(field , s);
         }
     }
-
     //MNV need to refactor
 
     //MNV need to dell
