@@ -39,6 +39,9 @@ public class ReceptionCardPage {
         else if (Field == "commit"){
             return $(By.id("com.abmcloud:id/buttonControlCommit"));
         }
+        else if (Field == "newShelfLife"){
+            return $(By.id("com.abmcloud:id/et_shelf_life"));
+        }
         else if (Field == "expirationDate"){
             return $(By.id("com.abmcloud:id/et_shelf_life"));
         }
@@ -88,9 +91,6 @@ public class ReceptionCardPage {
         else if (Field == "fieldProduct"){
             return $(By.id("com.abmcloud:id/editTextControlBoxBarcode"));
         }
-        else if (Field == "expirationDate"){
-            return $(By.id("com.abmcloud:id/et_shelf_life"));
-        }
         else if (Field == "modalDialogTitle"){
             return $(By.id("com.abmcloud:id/alertTitle"));
         }
@@ -115,7 +115,6 @@ public class ReceptionCardPage {
         else if (Field == "clearProductInput"){
             return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[1]"));
         }
-
         else if (Field == "clearContainerInput"){
             return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[2]"));
         }
@@ -148,6 +147,17 @@ public class ReceptionCardPage {
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
+    public void inputBatchProperties(boolean seriesOn, boolean shelfLifeOn, String series, String shelfLife) {
+        verifyData("modalDialogTitle", "Batch properties");
+        if (seriesOn == true){
+            inputData("newSeries",series);
+        }
+        if (shelfLifeOn == true){
+            inputData("newShelfLife",shelfLife);
+        }
+        clickButton("modalDialogOK");
+    }
+
     public void verifyData(String field, String source) {
         SelenideElement ID = getIdField(field);
         ID.shouldHave(text(source));
@@ -157,6 +167,7 @@ public class ReceptionCardPage {
         getIdField(button).click();
     }
 
+    //MNV need to develop
     public void inputSN(String typeSN, String SN, int qtySN) {
         if (typeSN == "unique"){
             for (int i = 0, stroka = 2; i < qtySN; i++, stroka++) {
@@ -177,12 +188,6 @@ public class ReceptionCardPage {
             }
         }
         clickButton("commitSN");
-    }
-    //MNV need to develop
-    public void inputSeries(String field, String sourse) {
-        verifyData("modalDialogTitle", "Batch properties");
-        inputData(field,sourse);
-        clickButton("modalDialogOK");
     }
     //MNV need to develop
 
@@ -212,7 +217,6 @@ public class ReceptionCardPage {
     //MNV need to refactor
 
     //MNV need to dell
-
 /*        public void inputSerialNumbers(String serialNumber, int numberOfReps) {
         String field = "serialNumberInputText";
         for (int i = 0; i < numberOfReps; i++) {
@@ -220,6 +224,5 @@ public class ReceptionCardPage {
             inputData(field , serialNumber1);
         }
     }*/
-
     //MNV need to dell
 }
