@@ -51,16 +51,14 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     //Стол2
         receptionCardPage.verifyData("productInfo", "0002 Стол2 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","0002");
-        receptionCardPage.inputSeries("newSeries","Series2");
+        receptionCardPage.inputBatchProperties(true, false,"Series2","");
         receptionCardPage.verifyData("productInfo", "0002 Series2 Стол2 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("qty","10");
         receptionCardPage.clickButton("commit");
     //Стол3
         receptionCardPage.verifyData("productInfo", "0003 Стол3 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","0003");
-        receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputData("expirationDate","31.12.2021");
-        receptionCardPage.clickButton("modalDialogOK");
+        receptionCardPage.inputBatchProperties(false, true, "","31.12.2021");
         receptionCardPage.verifyData("productInfo", "0003 31.12.2021 Стол3 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("qty","10");
         receptionCardPage.clickButton("commit");
@@ -75,18 +73,14 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     //Стол5
         receptionCardPage.verifyData("productInfo", "0005 Стол5 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","0005");
-        receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputData("newSeries","series5");
-        receptionCardPage.inputData("expirationDate","31.12.2021");
-        receptionCardPage.clickButton("modalDialogOK");
+        receptionCardPage.inputBatchProperties(true, true,"series5","31.12.2021");
         receptionCardPage.verifyData("productInfo", "0005 series5 31.12.2021 Стол5 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("qty","10");
         receptionCardPage.clickButton("commit");
     //Стол6
         receptionCardPage.verifyData("productInfo", "0006 Стол6 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","0006");
-        receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputSeries("newSeries","Series2");
+        receptionCardPage.inputBatchProperties(true, false, "series6","series6");
         receptionCardPage.verifyData("productInfoSN", "0006 series6 Стол6");
         receptionCardPage.inputSN("normal","serialnumber6", 10);
         receptionCardPage.verifyData("productInfo", "0006 series6 Стол6 IN.01 Quantity 10 шт");
@@ -94,9 +88,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         receptionCardPage.clickButton("commit");
     //Стол7
         receptionCardPage.inputData("product","0007");
-        receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputData("expirationDate","31.12.2021");
-        receptionCardPage.clickButton("modalDialogOK");
+        receptionCardPage.inputBatchProperties(false, true, "","31.12.2021");
         receptionCardPage.verifyData("productInfoSN", "0007 31.12.2021 Стол7");
         receptionCardPage.inputSN("normal","serialnumber7", 10);
         receptionCardPage.verifyData("productInfo", "0007 31.12.2021 Стол7 IN.01 Quantity 10 шт");
@@ -105,10 +97,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     //Стол8
         receptionCardPage.verifyData("productInfo", "0008 Стол8 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","0008");
-        receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputData("newSeries","series8");
-        receptionCardPage.inputData("expirationDate","31.12.2021");
-        receptionCardPage.clickButton("modalDialogOK");
+        receptionCardPage.inputBatchProperties(true, true, "series8","31.12.2021");
         receptionCardPage.verifyData("productInfoSN", "0008 series8 31.12.2021 Стол8");
         receptionCardPage.inputSN("normal","serialnumber7", 10);
         receptionCardPage.verifyData("productInfo", "0008 series8 31.12.2021 Стол8 IN.01 Quantity 10 шт");
