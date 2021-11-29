@@ -39,6 +39,9 @@ public class ReceptionCardPage {
         else if (Field == "commit"){
             return $(By.id("com.abmcloud:id/buttonControlCommit"));
         }
+        else if (Field == "newShelfLife"){
+            return $(By.id("com.abmcloud:id/et_shelf_life"));
+        }
         else if (Field == "expirationDate"){
             return $(By.id("com.abmcloud:id/et_shelf_life"));
         }
@@ -88,9 +91,6 @@ public class ReceptionCardPage {
         else if (Field == "fieldProduct"){
             return $(By.id("com.abmcloud:id/editTextControlBoxBarcode"));
         }
-        else if (Field == "expirationDate"){
-            return $(By.id("com.abmcloud:id/et_shelf_life"));
-        }
         else if (Field == "modalDialogTitle"){
             return $(By.id("com.abmcloud:id/alertTitle"));
         }
@@ -115,7 +115,6 @@ public class ReceptionCardPage {
         else if (Field == "clearProductInput"){
             return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[1]"));
         }
-
         else if (Field == "clearContainerInput"){
             return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[2]"));
         }
@@ -128,9 +127,15 @@ public class ReceptionCardPage {
         return null;
     }
 
-    public SelenideElement getXpathField(String Field) {
-        if (Field == "clearSourceInput"){
-            return $(By.xpath("(//android.widget.ImageButton[@content-desc=\"Clear text\"])[1]"));
+    public SelenideElement getXpathField(String field, int row) {
+        if (field == "serialNumber"){
+            return $(By.xpath("//android.view.ViewGroup["+row+"]/android.widget.LinearLayout/android.widget.EditText[1]"));
+        }
+        else if (field == "qty"){
+            return $(By.xpath("//android.view.ViewGroup["+row+"]/android.widget.LinearLayout/android.widget.EditText[2]"));
+        }
+        else if (field == "qtyFact"){
+            return $(By.xpath("//android.view.ViewGroup["+row+"]/android.widget.LinearLayout/android.widget.EditText[3]"));
         }
         return null;
     }
@@ -140,6 +145,17 @@ public class ReceptionCardPage {
         ID.click();
         ID.val(source);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public void inputBatchProperties(boolean seriesOn, boolean shelfLifeOn, String series, String shelfLife) {
+        verifyData("modalDialogTitle", "Batch properties");
+        if (seriesOn == true){
+            inputData("newSeries",series);
+        }
+        if (shelfLifeOn == true){
+            inputData("newShelfLife",shelfLife);
+        }
+        clickButton("modalDialogOK");
     }
 
     public void verifyData(String field, String source) {
@@ -152,27 +168,26 @@ public class ReceptionCardPage {
     }
 
     //MNV need to develop
-    public void verifyDataSN() {
-        getNameSerialNumber(2).shouldHave(text("serialnumber90"));
-        getQtySerialNumber(2).shouldHave(text("1"));
-        getNameSerialNumber(3).shouldHave(text("serialnumber91"));
-        getQtySerialNumber(3).shouldHave(text("1"));
-        getNameSerialNumber(4).shouldHave(text("serialnumber92"));
-        getQtySerialNumber(4).shouldHave(text("1"));
-        getNameSerialNumber(5).shouldHave(text("serialnumber93"));
-        getQtySerialNumber(5).shouldHave(text("1"));
-        getNameSerialNumber(6).shouldHave(text("serialnumber94"));
-        getQtySerialNumber(6).shouldHave(text("1"));
-        getNameSerialNumber(7).shouldHave(text("serialnumber95"));
-        getQtySerialNumber(7).shouldHave(text("1"));
-        getNameSerialNumber(8).shouldHave(text("serialnumber96"));
-        getQtySerialNumber(8).shouldHave(text("1"));
-        getNameSerialNumber(9).shouldHave(text("serialnumber97"));
-        getQtySerialNumber(9).shouldHave(text("1"));
-        getNameSerialNumber(10).shouldHave(text("serialnumber98"));
-        getQtySerialNumber(10).shouldHave(text("1"));
-        getNameSerialNumber(11).shouldHave(text("serialnumber99"));
-        getQtySerialNumber(11).shouldHave(text("1"));
+    public void inputSN(String typeSN, String SN, int qtySN) {
+        if (typeSN == "unique"){
+            for (int i = 0, stroka = 2; i < qtySN; i++, stroka++) {
+                String nowSN = SN+i;
+                inputData("serialNumberInputText" , nowSN);
+                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
+                getXpathField("qty", stroka).shouldHave(text("0"));
+                getXpathField("qtyFact", stroka).shouldHave(text("1"));
+            }
+        }
+        else if (typeSN == "normal"){
+            for (int i = 1, stroka = 2; i <= qtySN; i++) {
+                String nowSN = SN;
+                inputData("serialNumberInputText" , nowSN);
+                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
+                getXpathField("qty", stroka).shouldHave(text("0"));
+                getXpathField("qtyFact", stroka).shouldHave(text(""+i));
+            }
+        }
+        clickButton("commitSN");
     }
     //MNV need to develop
 
@@ -181,13 +196,12 @@ public class ReceptionCardPage {
         return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]"));
     }
     public SelenideElement getQtySerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]")); //поле количества СН в колонке Qty fact: для формы СН
+        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]"));
     }
     public void checkAmountAndPackaging(String amount, String packaging) {
         verifyData("unitAmount", amount);
         verifyData("packaging", packaging);
     }
-
     public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
         String field = "serialNumberInputText";
         for (int i = 0; i < numberOfReps; i++) {
@@ -200,12 +214,15 @@ public class ReceptionCardPage {
             inputData(field , s);
         }
     }
-    public void inputSerialNumbers(String serialNumber, int numberOfReps) {
+    //MNV need to refactor
+
+    //MNV need to dell
+/*        public void inputSerialNumbers(String serialNumber, int numberOfReps) {
         String field = "serialNumberInputText";
         for (int i = 0; i < numberOfReps; i++) {
             String serialNumber1 = serialNumber+i;
             inputData(field , serialNumber1);
         }
-    }
-    //MNV need to refactor
+    }*/
+    //MNV need to dell
 }
