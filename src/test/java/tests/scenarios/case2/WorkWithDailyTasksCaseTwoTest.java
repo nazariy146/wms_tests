@@ -1201,7 +1201,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         consolidateContainerPage.clickConsolidateButton();*/
     }
 
-    @Test (priority = 10, dependsOnMethods = "processingConsolidateContainerTask")
+    @Test (priority = 12, dependsOnMethods = "processingConsolidateContainerTask")
     public void processingLoadingTaskTest() throws Exception {
         steps.loginAsAdmin();
 
