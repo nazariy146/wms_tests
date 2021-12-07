@@ -25,8 +25,8 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
     LoadingCardPage loadingCardPage = new LoadingCardPage();
     ConsolidateContainerPage consolidateContainerPage = new ConsolidateContainerPage();
     InventoryCardPage inventoryCardPage = new InventoryCardPage();
-    RelocationCardPage relocationCardPage = new RelocationCardPage();
-    RelocationTSDCardPage relocationTSDCardPage = new RelocationTSDCardPage();
+    //RelocationCardPage relocationCardPage = new RelocationCardPage();
+    //RelocationTSDCardPage relocationTSDCardPage = new RelocationTSDCardPage();
 
     @Test
     public void processingReceptionTaskTest() throws Exception {
@@ -478,7 +478,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         findRestsPage.verifyData("sourceInfo", "A.1.1.1.20");
         findRestsPage.verifyData("qty", "10");
     }
-
+/*
     @Test (priority = 5, dependsOnMethods = "checkingFreeAmountAfterProcessingInventoryTest")
     public void processingRelocationTaskTest() throws Exception {
         steps.loginAsAdmin();
@@ -693,6 +693,8 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.20 ➡ A.1.1.3.20 00020 Стол20 Quantity 10");
         relocationTSDCardPage.clickButton("moving");
     }
+
+ */
 
     @Test (priority = 7, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingSelectionTaskTest() throws Exception {
