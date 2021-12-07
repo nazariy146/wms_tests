@@ -551,6 +551,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         relocationCardPage.verifyData("unitAmount", "1.0");
         relocationCardPage.verifyData("unitPackaging", "10");
         relocationCardPage.clickButton("commit");
+
     }
 
     @Test (priority = 6, dependsOnMethods = "processingRelocationTaskTest")
