@@ -6,7 +6,6 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -224,5 +223,21 @@ public class ReceptionCardPage {
             inputData(field , serialNumber1);
         }
     }*/
+    //MNV need to refactor
+
+    public void clearnQuantity(String field, String source) {
+        SelenideElement ID = getIdField(field);
+        ID.click();
+        ID.clear();
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public void inputWidth (String field) {
+        SelenideElement ID = getIdField(field);
+        ID.click();
+        driver.pressKey(new KeyEvent(AndroidKey.DIGIT_1));
+        driver.pressKey(new KeyEvent(AndroidKey.DIGIT_0));
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
     //MNV need to dell
 }
