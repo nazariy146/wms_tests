@@ -13,6 +13,10 @@ import static com.codeborne.selenide.Selenide.$;
 public class SelectionCardPage {
     AndroidDriver driver;
 
+    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
+    }
+
     public static SelenideElement getIdField(String Field) {
         if (Field == "productInfo"){
             return $(By.id("com.abmcloud:id/textViewDescription"));
@@ -35,12 +39,26 @@ public class SelectionCardPage {
         else if (Field == "tareQty"){
             return $(By.id("com.abmcloud:id/editTextTareQty"));
         }
-
+        else if (Field == "serialNumberInputText"){
+            return $(By.id("com.abmcloud:id/editTextSerialNumber"));
+        }
+        else if (Field == "commitSN"){
+            return $(By.id("com.abmcloud:id/buttonSNCommit"));
+        }
         return null;
     }
 
-    public void andrDriver(String field) {
-        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
+    public SelenideElement getXpathField(String field, int row) {
+        if (field == "serialNumber"){
+            return $(By.xpath("//android.view.ViewGroup["+row+"]/android.widget.LinearLayout/android.widget.EditText[1]"));
+        }
+        else if (field == "qty"){
+            return $(By.xpath("//android.view.ViewGroup["+row+"]/android.widget.LinearLayout/android.widget.EditText[2]"));
+        }
+        else if (field == "qtyFact"){
+            return $(By.xpath("//android.view.ViewGroup["+row+"]/android.widget.LinearLayout/android.widget.EditText[3]"));
+        }
+        return null;
     }
 
     public void inputData(String field, String source) {
@@ -48,6 +66,28 @@ public class SelectionCardPage {
         ID.click();
         ID.val(source);
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public void inputSN(String typeSN, String SN, int qtySN) {
+        if (typeSN == "unique"){
+            for (int i = 0, stroka = 2; i < qtySN; i++, stroka++) {
+                String nowSN = SN+i;
+                inputData("serialNumberInputText" , nowSN);
+                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
+                //getXpathField("qty", stroka).shouldHave(text("0"));
+                getXpathField("qtyFact", stroka).shouldHave(text("1"));
+            }
+        }
+        else if (typeSN == "normal"){
+            for (int i = 1, stroka = 2; i <= qtySN; i++) {
+                String nowSN = SN;
+                inputData("serialNumberInputText" , nowSN);
+                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
+                getXpathField("qty", stroka).shouldHave(text("0"));
+                getXpathField("qtyFact", stroka).shouldHave(text(""+i));
+            }
+        }
+        clickButton("commitSN");
     }
 
     public void verifyData(String field, String source) {

@@ -76,6 +76,28 @@ public class InventoryCardPage {
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
+    public void inputBatchProperties(boolean seriesOn, boolean shelfLifeOn, String action, String series, String shelfLife) {
+        verifyData("modalDialogTitle", "Batch properties");
+        if (action == "input") {
+            if (seriesOn == true) {
+                inputData("newSeries", series);
+            }
+            if (shelfLifeOn == true) {
+                inputData("newShelfLife", shelfLife);
+            }
+        }
+        if (action == "select") {
+            if (seriesOn == true) {
+                $$(By.id("com.abmcloud:id/tv_series")).find(exactText(series)).click();
+            }
+            if (shelfLifeOn == true) {
+                $$(By.id("com.abmcloud:id/tv_shelf_life")).find(exactText(shelfLife)).click();
+            }
+        }
+
+        clickButton("modalDialogOK");
+    }
+
     public void verifyData(String field, String source) {
         SelenideElement ID = getIdField(field);
         ID.shouldHave(text(source));
