@@ -124,7 +124,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 //        receptionCardPage.clickButton("modalDialogErrorOK");
         receptionCardPage.inputData("expirationDate","31.12.21");
         receptionCardPage.clickButton("modalDialogOK");
-        receptionCardPage.verifyData("productInfo", "00023 31.12.2021 Стол23 IN.01 Quantity 10 шт");
+        receptionCardPage.verifyData("productInfo", "00023 30.11.2022 Стол23 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("qty", "2.000");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.clickButton("commit");
@@ -141,7 +141,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","2110023025000");
         receptionCardPage.verifyData("modalDialogTitle", "Batch properties");
-        receptionCardPage.inputData("expirationDate","31.12.2021");
+        receptionCardPage.inputData("expirationDate","30.11.2022");
         receptionCardPage.clickButton("modalDialogOK");
         receptionCardPage.verifyData("productInfo", "00023 31.12.2021 Стол23 IN.01 Quantity 2.5 шт");
         receptionCardPage.verifyData("qty", "2.500");
