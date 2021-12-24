@@ -784,7 +784,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         containerCardPage.clickButton("commit");
     }
 
-    @Test //(priority = 9, dependsOnMethods = "processingContainerTaskTest")
+    @Test (priority = 9, dependsOnMethods = "processingContainerTaskTest")
     public void processingControlTaskTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Control");
