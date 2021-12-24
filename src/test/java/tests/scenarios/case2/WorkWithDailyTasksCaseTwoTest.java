@@ -92,29 +92,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         receptionCardPage.verifyData("productInfo", "00019 Стол19 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","19fragbc");
         receptionCardPage.inputSN("unique","19serialnumber0", 10);
-//        receptionCardPage.setSerialNumberInputSeveralTimes("19serialnumber01", "19serialnumber02", "19serialnumber03", "19serialnumber04", "19serialnumber05", "19serialnumber06", "19serialnumber07", "19serialnumber08", "19serialnumber09", "19serialnumber10");
-//        receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("19serialnumber01"));//проверка СН в колонке Serial Number
-//        receptionCardPage.getQtySerialNumber(2).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        receptionCardPage.getNameSerialNumber(3).shouldHave(exactText("19serialnumber02"));//проверка СН в колонке Serial Number
-//        receptionCardPage.getQtySerialNumber(3).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        receptionCardPage.getNameSerialNumber(4).shouldHave(exactText("19serialnumber03"));//проверка СН в колонке Serial Number
-//        receptionCardPage.getQtySerialNumber(4).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        receptionCardPage.getNameSerialNumber(5).shouldHave(exactText("19serialnumber04"));//проверка СН в колонке Serial Number
-//        receptionCardPage.getQtySerialNumber(5).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        receptionCardPage.getNameSerialNumber(6).shouldHave(exactText("19serialnumber05"));//проверка СН в колонке Serial Number
-//        receptionCardPage.getQtySerialNumber(6).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        receptionCardPage.getNameSerialNumber(7).shouldHave(exactText("19serialnumber06"));//проверка СН в колонке Serial Number
-//        receptionCardPage.getQtySerialNumber(7).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        receptionCardPage.getNameSerialNumber(8).shouldHave(exactText("19serialnumber07"));//проверка СН в колонке Serial Number
-//        receptionCardPage.getQtySerialNumber(8).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        receptionCardPage.getNameSerialNumber(9).shouldHave(exactText("19serialnumber08"));//проверка СН в колонке Serial Number
-//        receptionCardPage.getQtySerialNumber(9).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        receptionCardPage.getNameSerialNumber(10).shouldHave(exactText("19serialnumber09"));//проверка СН в колонке Serial Number
-//        receptionCardPage.getQtySerialNumber(10).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        receptionCardPage.getNameSerialNumber(11).shouldHave(exactText("19serialnumber10"));//проверка СН в колонке Serial Number
-//        receptionCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        receptionCardPage.clickButton("commitSN");
-       receptionCardPage.inputData("container","IN1");
+        receptionCardPage.inputData("container","IN1");
         receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
     //Стол20
@@ -130,7 +108,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         steps.loginAsAdmin();
 
         allTasksPage.checkWorkType("Accommodation");
-        //allTasksPage.getReceptionQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
         accommodationCardPage.andrDriver("source");
     //Стол11

@@ -166,6 +166,7 @@ public class ReceptionCardPage {
                 $$(By.id("com.abmcloud:id/tv_shelf_life")).find(exactText(shelfLife)).click();
             }
         }
+        clickButton("modalDialogOK");
     }
 
     public void verifyData(String field, String source) {
