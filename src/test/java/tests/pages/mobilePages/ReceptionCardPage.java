@@ -166,6 +166,7 @@ public class ReceptionCardPage {
                 $$(By.id("com.abmcloud:id/tv_shelf_life")).find(exactText(shelfLife)).click();
             }
         }
+        clickButton("modalDialogOK");
     }
 
     public void verifyData(String field, String source) {
@@ -184,7 +185,7 @@ public class ReceptionCardPage {
                 String nowSN = SN+i;
                 inputData("serialNumberInputText" , nowSN);
                 getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
-                getXpathField("qty", stroka).shouldHave(text("0"));
+                //getXpathField("qty", stroka).shouldHave(text("0"));
                 getXpathField("qtyFact", stroka).shouldHave(text("1"));
             }
         }

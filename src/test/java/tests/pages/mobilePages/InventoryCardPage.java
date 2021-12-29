@@ -94,7 +94,6 @@ public class InventoryCardPage {
                 $$(By.id("com.abmcloud:id/tv_shelf_life")).find(exactText(shelfLife)).click();
             }
         }
-
         clickButton("modalDialogOK");
     }
 

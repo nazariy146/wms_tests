@@ -30,7 +30,6 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     public void processingReceptionTaskTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Reception");
-        //allTasksPage.getWorkTypeTasksQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
         receptionCardPage.andrDriver("source");
     //Стол1
@@ -790,7 +789,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         allTasksPage.checkWorkType("Control");
         allTasksPage.getWorkTypeTasksQuantity().click();
         controlCardPage.andrDriver("source");
- /*   //Стол1
+    //Стол1
         controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT101");
         controlCardPage.verifyData("productInfo", "0001 Стол1");
@@ -890,7 +889,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         controlCardPage.inputBatchProperties(true, true, "select","series8","01.12.2022");
         controlCardPage.inputSN("normal","serialnumber8", 10);
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
-        controlCardPage.clickButton("commit");*/
+        controlCardPage.clickButton("commit");
     //Стол9
         controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT109");
