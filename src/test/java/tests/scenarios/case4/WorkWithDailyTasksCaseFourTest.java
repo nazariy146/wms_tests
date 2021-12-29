@@ -107,6 +107,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
     //Стол39
         receptionCardPage.verifyData("productInfo", "00039 Стол39 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","39FRAGSN39Series013112202101");
+        //receptionCardPage.inputSN("unique","39FRAGSN39Series01311220210", 10);
         receptionCardPage.verifyData("productInfoSN", "00039 39Series01 31.12.2021 Стол39");
         receptionCardPage.setSerialNumberInputSeveralTimes("39FRAGSN39Series013112202102", "39FRAGSN39Series013112202103", "39FRAGSN39Series013112202104", "39FRAGSN39Series013112202105", "39FRAGSN39Series013112202106", "39FRAGSN39Series013112202107", "39FRAGSN39Series013112202108", "39FRAGSN39Series013112202109", "39FRAGSN39Series013112202110");
         receptionCardPage.getNameSerialNumber(2).shouldHave(exactText("39FRAGSN39Series013112202101"));
