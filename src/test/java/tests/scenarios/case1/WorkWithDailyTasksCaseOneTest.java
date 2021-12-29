@@ -30,7 +30,6 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     public void processingReceptionTaskTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Reception");
-        //allTasksPage.getWorkTypeTasksQuantity().shouldHave(text("10")); // by default 10
         allTasksPage.getWorkTypeTasksQuantity().click();
         receptionCardPage.andrDriver("source");
     //Стол1
