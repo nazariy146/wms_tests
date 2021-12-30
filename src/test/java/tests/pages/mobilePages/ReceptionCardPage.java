@@ -146,8 +146,6 @@ public class ReceptionCardPage {
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
-
-
     public void inputBatchProperties(boolean seriesOn, boolean shelfLifeOn, String action, String series, String shelfLife) {
         verifyData("modalDialogTitle", "Batch properties");
         if (action == "input") {
@@ -178,7 +176,6 @@ public class ReceptionCardPage {
         getIdField(button).click();
     }
 
-    //MNV need to develop
     public void inputSN(String typeSN, String SN, int qtySN) {
         if (typeSN == "unique"){
             for (int i = 0, stroka = 2; i < qtySN; i++, stroka++) {
@@ -189,8 +186,35 @@ public class ReceptionCardPage {
                 getXpathField("qtyFact", stroka).shouldHave(text("1"));
             }
         }
+        if (typeSN == "uniqueSn"){//необходимо скролить для работы
+            for (int i = 0, stroka = 3; i < qtySN; i++, stroka++) {
+                String nowSN = SN+i;
+                inputData("serialNumberInputText" , nowSN);
+                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
+                //getXpathField("qty", stroka).shouldHave(text("0"));
+                getXpathField("qtyFact", stroka).shouldHave(text("1"));
+            }
+        }
+        if (typeSN == "qr"){//необходимо скролить для работы
+            for (int i = 0, stroka = 5; i < qtySN; i++, stroka++) {
+                String nowSN = SN+i;
+                inputData("serialNumberInputText" , nowSN);
+                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
+                //getXpathField("qty", stroka).shouldHave(text("0"));
+                getXpathField("qtyFact", stroka).shouldHave(text("1"));
+            }
+        }
         else if (typeSN == "normal"){
-            for (int i = 1, stroka = 2; i <= qtySN; i++) {
+                for (int i = 1, stroka = 2; i <= qtySN; i++) {
+                    String nowSN = SN;
+                    inputData("serialNumberInputText" , nowSN);
+                    getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
+                    getXpathField("qty", stroka).shouldHave(text("0"));
+                    getXpathField("qtyFact", stroka).shouldHave(text(""+i));
+            }
+        }
+        else if (typeSN == "sn"){
+            for (int i = 2, stroka = 2; i <= qtySN; i++) {
                 String nowSN = SN;
                 inputData("serialNumberInputText" , nowSN);
                 getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
@@ -200,50 +224,18 @@ public class ReceptionCardPage {
         }
         clickButton("commitSN");
     }
-    //MNV need to develop
 
     //MNV need to refactor
-    public SelenideElement getNameSerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]"));
-    }
-    public SelenideElement getQtySerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]"));
-    }
     public void checkAmountAndPackaging(String amount, String packaging) {
         verifyData("unitAmount", amount);
         verifyData("packaging", packaging);
     }
-    public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
-        String field = "serialNumberInputText";
-        for (int i = 0; i < numberOfReps; i++) {
-            inputData(field , serialNumber);
-        }
-    }
-    public void setSerialNumberInputSeveralTimes(String ... serialNumbers) {
-        String field = "serialNumberInputText";
-        for (String s : serialNumbers) {
-            inputData(field , s);
-        }
-    }
-    //MNV need to refactor
-
-    //MNV need to dell
-/*        public void inputSerialNumbers(String serialNumber, int numberOfReps) {
-        String field = "serialNumberInputText";
-        for (int i = 0; i < numberOfReps; i++) {
-            String serialNumber1 = serialNumber+i;
-            inputData(field , serialNumber1);
-        }
-    }*/
-    //MNV need to refactor
-
     public void clearnQuantity(String field, String source) {
         SelenideElement ID = getIdField(field);
         ID.click();
         ID.clear();
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
-
     public void inputWidth (String field) {
         SelenideElement ID = getIdField(field);
         ID.click();
@@ -251,5 +243,33 @@ public class ReceptionCardPage {
         driver.pressKey(new KeyEvent(AndroidKey.DIGIT_0));
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
+    //MNV need to refactor
+
+    //MNV need to dell
+/*    public SelenideElement getNameSerialNumber(int string) {
+        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]"));
+    }*/
+    /*public SelenideElement getQtySerialNumber(int string) {
+        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]"));
+    }*/
+    /*public void setSerialNumberInputSeveralTimes(String ... serialNumbers) {
+        String field = "serialNumberInputText";
+        for (String s : serialNumbers) {
+            inputData(field , s);
+        }
+    }*/
+    /*        public void inputSerialNumbers(String serialNumber, int numberOfReps) {
+        String field = "serialNumberInputText";
+        for (int i = 0; i < numberOfReps; i++) {
+            String serialNumber1 = serialNumber+i;
+            inputData(field , serialNumber1);
+        }
+    }*/
+/*    public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
+        String field = "serialNumberInputText";
+        for (int i = 0; i < numberOfReps; i++) {
+            inputData(field , serialNumber);
+        }
+    }*/
     //MNV need to dell
 }
