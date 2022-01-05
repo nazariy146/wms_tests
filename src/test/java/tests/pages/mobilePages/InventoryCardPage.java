@@ -118,6 +118,18 @@ public class InventoryCardPage {
         getIdField(field).click();
         $$(By.id("android:id/text1")).find(exactText(source)).click();
     }
+    public SelenideElement getAvailableExpirationDateZ23() {
+        return $(By.xpath("//androidx.cardview.widget.CardView[3]/android.view.ViewGroup/android.widget.TextView"));
+    }
+    public SelenideElement getExpirationDateBox() {
+        return $(By.id("com.abmcloud:id/et_shelf_life"));
+    }
+    public SelenideElement getProductUnit() {
+        return $(By.xpath("//android.widget.LinearLayout/android.view.ViewGroup[2]/android.widget.LinearLayout[3]/android.widget.Spinner/android.widget.TextView"));
+    }
+    //MNV need to refactor
+
+    //MNV need to dell
     public SelenideElement getAvailableSeries() {
         return $(By.xpath("//android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView[1]"));
 
@@ -140,17 +152,8 @@ public class InventoryCardPage {
     public SelenideElement getAvailableExpirationDateZ22() {
         return $(By.xpath("//androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView[2]"));
     }
-    public SelenideElement getAvailableExpirationDateZ23() {
-        return $(By.xpath("//androidx.cardview.widget.CardView[3]/android.view.ViewGroup/android.widget.TextView"));
-    }
-    public SelenideElement getExpirationDateBox() {
-        return $(By.id("com.abmcloud:id/et_shelf_life"));
-    }
     public SelenideElement getAvailableExpirationDate2() {
         return $(By.xpath("//android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView"));
     }
-    public SelenideElement getProductUnit() {
-        return $(By.xpath("//android.widget.LinearLayout/android.view.ViewGroup[2]/android.widget.LinearLayout[3]/android.widget.Spinner/android.widget.TextView"));
-    }
-    //MNV need to refactor
+    //MNV need to dell
 }
