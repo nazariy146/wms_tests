@@ -101,7 +101,7 @@ public class SelectionCardPage {
                 String nowSN = SN;
                 inputData("serialNumberInputText" , nowSN);
                 getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
-                getXpathField("qty", stroka).shouldHave(text("0"));
+                //getXpathField("qty", stroka).shouldHave(text("0"));
                 getXpathField("qtyFact", stroka).shouldHave(text(""+i));
             }
         }
@@ -127,7 +127,22 @@ public class SelectionCardPage {
         ID.click();
     }
 
-    //MNV need to develop
+    //MNV need to refactor
+    public SelenideElement getNameSerialNumber(int string) {
+        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]"));
+    }
+    public SelenideElement getQtySerialNumber(int string) {
+        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]"));
+    }
+    public SelenideElement getSerialNumberInput() {
+        return $(By.id("com.abmcloud:id/editTextSerialNumber"));
+    }
+    public SelenideElement getCommitSerialNumberButton() {
+        return $(By.id("com.abmcloud:id/buttonSNCommit"));
+    }
+    //MNV need to refactor
+
+    //MNV need to dell
     public void verifyDataSN() {
         getNameSerialNumber(2).shouldHave(text("serialnumber90"));
         getQtySerialNumber(2).shouldHave(text("1"));
@@ -160,26 +175,14 @@ public class SelectionCardPage {
 
         }
     }
-    //MNV need to develop
-
-    //MNV need to refactor
-    public SelenideElement getNameSerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]"));
+    public void clickCommitSerialNumberButton() {
+        getCommitSerialNumberButton().click();
     }
-    public SelenideElement getQtySerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]"));
-    }
-    public SelenideElement getSerialNumberInput() {
-        return $(By.id("com.abmcloud:id/editTextSerialNumber"));
-    }
-    public SelenideElement getSerialNumberProductInfo() {
-        return $(By.id("com.abmcloud:id/textViewInfo"));
-    }
-    public SelenideElement getCancelSerialNumberButton() {
-        return $(By.id("com.abmcloud:id/buttonSNCancel"));
-    }
-    public SelenideElement getCommitSerialNumberButton() {
-        return $(By.id("com.abmcloud:id/buttonSNCommit"));
+    public void checkSerialNumberQtyFactInEveryRow(String qtyFact, int qtyOfQtyFactsRows) {
+        for(int i = 0; i < qtyOfQtyFactsRows; i++) {
+            String text = $(By.xpath ("//android.widget.EditText[3][@bounds='[995,"+(700+i*95)+"][1440,"+(791+i*95)+"]']")).getText();
+            Assert.assertEquals(qtyFact, text);
+        }
     }
     public void checkSerialNumberInputText(String text) {
         String serialNumberText = getSerialNumberInput().getText();
@@ -199,14 +202,11 @@ public class SelectionCardPage {
             driver.pressKey(new KeyEvent(AndroidKey.ENTER));
         }
     }
-    public void clickCommitSerialNumberButton() {
-        getCommitSerialNumberButton().click();
+    public SelenideElement getSerialNumberProductInfo() {
+        return $(By.id("com.abmcloud:id/textViewInfo"));
     }
-    public void checkSerialNumberQtyFactInEveryRow(String qtyFact, int qtyOfQtyFactsRows) {
-        for(int i = 0; i < qtyOfQtyFactsRows; i++) {
-            String text = $(By.xpath ("//android.widget.EditText[3][@bounds='[995,"+(700+i*95)+"][1440,"+(791+i*95)+"]']")).getText();
-            Assert.assertEquals(qtyFact, text);
-        }
+    public SelenideElement getCancelSerialNumberButton() {
+        return $(By.id("com.abmcloud:id/buttonSNCancel"));
     }
-    //MNV need to refactor
+    //MNV need to dell
 }
