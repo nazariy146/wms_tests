@@ -246,7 +246,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
     @Test (priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
-        //allTasksPage.getWorkTypeTasksQuantity().click();
+
         allTasksPage.getStringTasks(2).click();
         inventoryCardPage.andrDriver("product");
     //Стол 31
@@ -699,7 +699,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
     @Test (priority = 8, dependsOnMethods = "processingSelectionTaskTest")
     public void processingContainerTaskTest() throws Exception {
         steps.loginAsAdmin();
-
         allTasksPage.checkWorkType("Контейнер");
         allTasksPage.getWorkTypeTasksQuantity().click();
         containerCardPage.andrDriver("containerInfo");
@@ -755,40 +754,39 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         containerCardPage.clickButton("commit");
     }
 
-    @Test //(priority = 9, dependsOnMethods = "processingContainerTaskTest")
+    @Test (priority = 9, dependsOnMethods = "processingContainerTaskTest")
     public void processingControlTaskTest() throws Exception {
         steps.loginAsAdmin();
-
         allTasksPage.checkWorkType("Control");
         allTasksPage.getWorkTypeTasksQuantity().click();
         controlCardPage.andrDriver("source");
-//    //Стол31
-//        controlCardPage.inputData("source", "KT1.01.01.01.01");
-//        controlCardPage.inputData("container","OUT131");
-//        controlCardPage.verifyData("productInfo", "00031 Стол31");
-//        controlCardPage.verifyData("containerInfo", "OUT131");
-//        controlCardPage.getControlledQty(1).shouldHave(text("0"));
-//        controlCardPage.getQty(1).shouldHave(text("10"));
-//        controlCardPage.inputData("product","31FRAGSN31Series0101122022");
-//        controlCardPage.inputSN("sn","31FRAGSN31Series0101122022", 10);
-//        controlCardPage.getControlledQty(1).shouldNotBe(visible);
-//        controlCardPage.getQty(1).shouldHave(text("10"));
-//        controlCardPage.clickButton("commit");
-//    //Стол32
-//        controlCardPage.inputData("source", "KT1.01.01.01.01");
-//        controlCardPage.inputData("container","OUT132");
-//        controlCardPage.verifyData("productInfo", "00032 Стол32");
-//        controlCardPage.verifyData("containerInfo", "OUT132");
-//        controlCardPage.verifyData("seriesInfo", "32Series01");
-//        controlCardPage.getControlledQty(1).shouldHave(text("0"));
-//        controlCardPage.getQty(1).shouldHave(text("10"));
-//        controlCardPage.inputData("product","32FRAGSN32Series0101122022");
-//        controlCardPage.inputSN("sn","32FRAGSN32Series0101122022", 10);
-//        controlCardPage.getControlledQty(1).shouldNotBe(visible);
-//        controlCardPage.getQty(1).shouldHave(text("10"));
-//        controlCardPage.clickButton("commit");
+    //Стол31
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT131");
+        controlCardPage.verifyData("productInfo", "00031 Стол31");
+        controlCardPage.verifyData("containerInfo", "OUT131");
+        controlCardPage.getControlledQty(1).shouldHave(text("0"));
+        controlCardPage.getQty(1).shouldHave(text("10"));
+        controlCardPage.inputData("product","31FRAGSN31Series0101122022");
+        controlCardPage.inputSN("sn","31FRAGSN31Series0101122022", 10);
+        controlCardPage.getControlledQty(1).shouldNotBe(visible);
+        controlCardPage.getQty(1).shouldHave(text("10"));
+        controlCardPage.clickButton("commit");
+    //Стол32
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
+        controlCardPage.inputData("container","OUT132");
+        controlCardPage.verifyData("productInfo", "00032 Стол32");
+        controlCardPage.verifyData("containerInfo", "OUT132");
+        controlCardPage.verifyData("seriesInfo", "32Series01");
+        controlCardPage.getControlledQty(1).shouldHave(text("0"));
+        controlCardPage.getQty(1).shouldHave(text("10"));
+        controlCardPage.inputData("product","32FRAGSN32Series0101122022");
+        controlCardPage.inputSN("sn","32FRAGSN32Series0101122022", 10);
+        controlCardPage.getControlledQty(1).shouldNotBe(visible);
+        controlCardPage.getQty(1).shouldHave(text("10"));
+        controlCardPage.clickButton("commit");
     //Стол33
-        controlCardPage.inputData("source", "KT1.01.01.01.01"); //Проблема с Разбором СГ в СН!!!!!!!!!!!!!!!
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT133");
         controlCardPage.verifyData("productInfo", "00033 Стол33");
         controlCardPage.verifyData("containerInfo", "OUT133");
@@ -797,19 +795,11 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","33FRAGSN33Series0101122022");
         controlCardPage.inputSN("sn","33FRAGSN33Series0101122022", 10);
-//        controlCardPage.getSerialNumberInput().shouldBe(visible);
-//        controlCardPage.checkSerialNumberInputText("");
-//        controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00033 01.12.2022 Стол33"));
-//        controlCardPage.setSerialNumberInputSeveralTimes("33FRAGSN33Series0101122022", 9);
-//        controlCardPage.getNameSerialNumber(2).shouldHave(exactText("33FRAGSN33Series0101122022"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.checkSerialNumberInputText("");
-//        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.clickButton("commit");
     //Стол34
-        controlCardPage.inputData("source", "KT1.01.01.01.01"); //Проблема с Разбором СГ в СН!!!!!!!!!!!!!!! Если ввожу СН без СГ - открывается форма СерииСГ(не должна)
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT134");
         controlCardPage.verifyData("productInfo", "00034 Стол34");
         controlCardPage.verifyData("containerInfo", "OUT134");
@@ -819,14 +809,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","34FRAGSN34Series0101122022");
         controlCardPage.inputSN("sn","34FRAGSN34Series0101122022", 10);
-//        controlCardPage.getSerialNumberInput().shouldBe(visible);
-//        controlCardPage.checkSerialNumberInputText("");
-//        controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00034 34Series01 01.12.2022 Стол34"));
-//        controlCardPage.setSerialNumberInputSeveralTimes("34FRAGSN34Series0101122022", 9);
-//        controlCardPage.getNameSerialNumber(2).shouldHave(exactText("34FRAGSN34Series0101122022"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(2).shouldHave(exactText("10"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.checkSerialNumberInputText("");
-//        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.clickButton("commit");
@@ -856,7 +838,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.clickButton("commit");
     //Стол37
-        controlCardPage.inputData("source", "KT1.01.01.01.01");//Проблема с Разбором СГ в Фрагменте ШК!!!!!!!!!!!!!!!
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT137");
         controlCardPage.verifyData("productInfo", "00037 Стол37");
         controlCardPage.verifyData("containerInfo", "OUT137");
@@ -869,7 +851,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.clickButton("commit");
     //Стол38
-        controlCardPage.inputData("source", "KT1.01.01.01.01");//Проблема с Разбором СГ в Фрагменте ШК!!!!!!!!!!!!!!!
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT138");
         controlCardPage.verifyData("productInfo", "00038 Стол38");
         controlCardPage.verifyData("containerInfo", "OUT138");
@@ -883,7 +865,7 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.clickButton("commit");
     //Стол39
-        controlCardPage.inputData("source", "KT1.01.01.01.01");//Проблема с Разбором СГ в СН!!!!!!!!!!!!!!!
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT139");
         controlCardPage.verifyData("productInfo", "00039 Стол39");
         controlCardPage.verifyData("containerInfo", "OUT139");
@@ -893,37 +875,11 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","39FRAGSN39Series010112202209");
         controlCardPage.inputSN("uniqueSn","39FRAGSN39Series01011220220", 9);
-//        controlCardPage.getSerialNumberInput().shouldBe(visible);
-//        controlCardPage.checkSerialNumberInputText("");
-//        controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00039 39Series01 01.12.2022 Стол39"));
-//        controlCardPage.setSerialNumberInputSeveralTimes("39FRAGSN39Series010112202202", "39FRAGSN39Series010112202203", "39FRAGSN39Series010112202204", "39FRAGSN39Series010112202205", "39FRAGSN39Series010112202206", "39FRAGSN39Series010112202207", "39FRAGSN39Series010112202208", "39FRAGSN39Series010112202209", "39FRAGSN39Series010112202210");
-//        controlCardPage.getNameSerialNumber(2).shouldHave(exactText("39FRAGSN39Series010112202201"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(2).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(3).shouldHave(exactText("39FRAGSN39Series010112202202"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(3).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(4).shouldHave(exactText("39FRAGSN39Series010112202203"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(4).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(5).shouldHave(exactText("39FRAGSN39Series010112202204"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(5).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(6).shouldHave(exactText("39FRAGSN39Series010112202205"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(6).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(7).shouldHave(exactText("39FRAGSN39Series010112202206"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(7).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(8).shouldHave(exactText("39FRAGSN39Series010112202207"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(8).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(9).shouldHave(exactText("39FRAGSN39Series010112202208"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(9).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(10).shouldHave(exactText("39FRAGSN39Series010112202209"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(10).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-////        controlCardPage.getNameSerialNumber(11).shouldHave(exactText("39FRAGSN39Series010112202210"));//проверка СН в колонке Serial Number
-////        controlCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.checkSerialNumberInputText("");
-//        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.clickButton("commit");
     //Стол40
-        controlCardPage.inputData("source", "KT1.01.01.01.01"); //Проблема с Разбором СГ в СН!!!!!!!!!!!!!!!
+        controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT140");
         controlCardPage.verifyData("productInfo", "00040 Стол40");
         controlCardPage.verifyData("containerInfo", "OUT140");
@@ -933,32 +889,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","40FRAGSN40Series010112202207 40FRAGSN40Series010112202208 40FRAGSN40Series010112202209");
         controlCardPage.inputSN("qr","40FRAGSN40Series01011220220", 7);
-//        controlCardPage.getSerialNumberInput().shouldBe(visible);
-//        controlCardPage.checkSerialNumberInputText("");
-//        controlCardPage.getSerialNumberProductInfo().shouldHave(exactText("00040 40Series01 01.12.2022 Стол40"));
-//        controlCardPage.setSerialNumberInputSeveralTimes("40FRAGSN40Series010112202204 40FRAGSN40Series010112202205 40FRAGSN40Series010112202206 40FRAGSN40Series010112202207 40FRAGSN40Series010112202208 40FRAGSN40Series010112202209 40FRAGSN40Series010112202210");
-//        controlCardPage.getNameSerialNumber(2).shouldHave(exactText("40FRAGSN40Series010112202201"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(2).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(3).shouldHave(exactText("40FRAGSN40Series010112202202"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(3).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(4).shouldHave(exactText("40FRAGSN40Series010112202203"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(4).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(5).shouldHave(exactText("40FRAGSN40Series010112202204"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(5).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(6).shouldHave(exactText("40FRAGSN40Series010112202205"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(6).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(7).shouldHave(exactText("40FRAGSN40Series010112202206"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(7).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(8).shouldHave(exactText("40FRAGSN40Series010112202207"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(8).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(9).shouldHave(exactText("40FRAGSN40Series010112202208"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(9).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.getNameSerialNumber(10).shouldHave(exactText("40FRAGSN40Series010112202209"));//проверка СН в колонке Serial Number
-//        controlCardPage.getQtySerialNumber(10).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-////        controlCardPage.getNameSerialNumber(11).shouldHave(exactText("40FRAGSN40Series010112202210"));//проверка СН в колонке Serial Number
-////        controlCardPage.getQtySerialNumber(11).shouldHave(exactText("1"));//проверка количества СН в колонке Qty fact:
-//        controlCardPage.checkSerialNumberInputText("");
-//        controlCardPage.clickButton("commitSN");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.clickButton("commit");
@@ -967,22 +897,20 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
     @Test (priority = 10, dependsOnMethods = "processingControlTaskTest")
     public void processingPackagingTaskTest() throws Exception {
         steps.loginAsAdmin();
-
         allTasksPage.checkWorkType("Packaging");
         allTasksPage.getWorkTypeTasksQuantity().click();
 
         packagingCardPage.setCellOrContainerInput("KT1.01.01.01.01");
-
         packagingCardPage.checkCellProductInfoInRow2(1, "OUT131", "10", "0.1", "0.1", "1", "1");
         packagingCardPage.checkCellProductInfoInRow2(2, "OUT132", "10", "0.1", "0.1", "1", "1");
         packagingCardPage.checkCellProductInfoInRow2(3, "OUT133", "10", "0.1", "0.1", "1", "1");
         packagingCardPage.checkCellProductInfoInRow2(4, "OUT134", "10", "0.1", "0.1", "1", "1");
         packagingCardPage.checkCellProductInfoInRow2(5, "OUT135", "10", "0.1", "0.1", "1", "1");
         packagingCardPage.checkCellProductInfoInRow2(6, "OUT136", "10", "0.1", "0.1", "1", "1");
-//        packagingCardPage.checkCellProductInfoInRow2(7, "OUT137", "10", "0.1", "0.1", "1", "1");
-//        packagingCardPage.checkCellProductInfoInRow2(8, "OUT138", "10", "0.1", "0.1", "1", "1");
-//        packagingCardPage.checkCellProductInfoInRow2(9, "OUT139", "10", "1", "1", "1", "1");
-//        packagingCardPage.checkCellProductInfoInRow2(10, "OUT140", "10", "0.1", "0.1", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(7, "OUT137", "10", "0.1", "0.1", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(8, "OUT138", "10", "0.1", "0.1", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(9, "OUT139", "10", "1", "1", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(10, "OUT140", "10", "0.1", "0.1", "1", "1");
         packagingCardPage.clickCreateCargoButton();
         getMessageModalDialog().shouldHave(text("Cargo slots will be created. Continue?"));
         clickSetOkYesButton();
