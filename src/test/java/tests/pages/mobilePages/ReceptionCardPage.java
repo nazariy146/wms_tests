@@ -195,7 +195,7 @@ public class ReceptionCardPage {
                 getXpathField("qtyFact", stroka).shouldHave(text("1"));
             }
         }
-        if (typeSN == "qr"){//необходимо скролить для работы
+        if (typeSN == "qr"){
             for (int i = 0, stroka = 5; i < qtySN; i++, stroka++) {
                 String nowSN = SN+i;
                 inputData("serialNumberInputText" , nowSN);

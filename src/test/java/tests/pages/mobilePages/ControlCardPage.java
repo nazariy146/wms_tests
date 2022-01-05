@@ -97,6 +97,24 @@ public class ControlCardPage {
                 getXpathField("qtyFact", stroka).shouldHave(text("1"));
             }
         }
+        if (typeSN == "uniqueSn"){//необходимо скролить для работы
+            for (int i = 0, stroka = 3; i < qtySN; i++, stroka++) {
+                String nowSN = SN+i;
+                inputData("serialNumberInputText" , nowSN);
+                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
+                //getXpathField("qty", stroka).shouldHave(text("0"));
+                getXpathField("qtyFact", stroka).shouldHave(text("1"));
+            }
+        }
+        if (typeSN == "qr"){
+            for (int i = 0, stroka = 5; i < qtySN; i++, stroka++) {
+                String nowSN = SN+i;
+                inputData("serialNumberInputText" , nowSN);
+                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
+                //getXpathField("qty", stroka).shouldHave(text("0"));
+                getXpathField("qtyFact", stroka).shouldHave(text("1"));
+            }
+        }
         else if (typeSN == "normal"){
             for (int i = 1, stroka = 2; i <= qtySN; i++) {
                 String nowSN = SN;
@@ -106,9 +124,17 @@ public class ControlCardPage {
                 getXpathField("qtyFact", stroka).shouldHave(text(""+i));
             }
         }
+        else if (typeSN == "sn"){
+            for (int i = 2, stroka = 2; i <= qtySN; i++) {
+                String nowSN = SN;
+                inputData("serialNumberInputText" , nowSN);
+                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
+                getXpathField("qty", stroka).shouldHave(text("0"));
+                getXpathField("qtyFact", stroka).shouldHave(text(""+i));
+            }
+        }
         clickButton("commitSN");
     }
-
 
     public void inputBatchProperties(boolean seriesOn, boolean shelfLifeOn, String action, String series, String shelfLife) {
         verifyData("modalDialogTitle", "Batch properties");
@@ -142,31 +168,6 @@ public class ControlCardPage {
         ID.click();
     }
 
-    //MNV need to develop
-    public void verifyDataSN() {
-        getNameSerialNumber(2).shouldHave(text("serialnumber90"));
-        getQtySerialNumber(2).shouldHave(text("1"));
-        getNameSerialNumber(3).shouldHave(text("serialnumber91"));
-        getQtySerialNumber(3).shouldHave(text("1"));
-        getNameSerialNumber(4).shouldHave(text("serialnumber92"));
-        getQtySerialNumber(4).shouldHave(text("1"));
-        getNameSerialNumber(5).shouldHave(text("serialnumber93"));
-        getQtySerialNumber(5).shouldHave(text("1"));
-        getNameSerialNumber(6).shouldHave(text("serialnumber94"));
-        getQtySerialNumber(6).shouldHave(text("1"));
-        getNameSerialNumber(7).shouldHave(text("serialnumber95"));
-        getQtySerialNumber(7).shouldHave(text("1"));
-        getNameSerialNumber(8).shouldHave(text("serialnumber96"));
-        getQtySerialNumber(8).shouldHave(text("1"));
-        getNameSerialNumber(9).shouldHave(text("serialnumber97"));
-        getQtySerialNumber(9).shouldHave(text("1"));
-        getNameSerialNumber(10).shouldHave(text("serialnumber98"));
-        getQtySerialNumber(10).shouldHave(text("1"));
-        getNameSerialNumber(11).shouldHave(text("serialnumber99"));
-        getQtySerialNumber(11).shouldHave(text("1"));
-    }
-    //MNV need to develop
-
     //MNV need to refactor
     public SelenideElement getNameSerialNumber(int string) {
         return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]"));
@@ -174,7 +175,6 @@ public class ControlCardPage {
     public SelenideElement getQtySerialNumber(int string) {
         return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]"));
     }
-
     public SelenideElement getControlledQty(int row) {
         return $(By.xpath("//androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView["+row+"]")).find((By.id("com.abmcloud:id/tv_qty_controlled")));
     }
@@ -186,9 +186,6 @@ public class ControlCardPage {
     }
     public SelenideElement getSerialNumberInput() {
         return $(By.id("com.abmcloud:id/editTextSerialNumber"));
-    }
-    public SelenideElement getSerialNumberProductInfo() {
-        return $(By.id("com.abmcloud:id/textViewInfo"));
     }
     public SelenideElement getControlledQtyString1() {
         return $(By.xpath("//androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[3]"));
@@ -205,26 +202,6 @@ public class ControlCardPage {
     public SelenideElement getQtyString1() {
         return $(By.xpath("//androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[5]"));
     }
-    public void checkSerialNumberInputText(String text) {
-        String serialNumberText = getSerialNumberInput().getText();
-        Assert.assertEquals(serialNumberText, text, "SerialNumberInputText is not empty");
-    }
-    public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
-        AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
-        for (int i = 0; i < numberOfReps; i++) {
-            getSerialNumberInput().click();
-            getSerialNumberInput().val(serialNumber);
-            driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-        }
-    }
-    public void setSerialNumberInputSeveralTimes(String ... serialNumbers) {
-        AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
-        for (String s : serialNumbers) {
-            getSerialNumberInput().click();
-            getSerialNumberInput().val(s);
-            driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-        }
-    }
     public void scrollElement(SelenideElement element) {
         AndroidDriver driver = (AndroidDriver) element.getWrappedDriver();
 
@@ -235,6 +212,9 @@ public class ControlCardPage {
                 .moveTo(point(element.getLocation().x, element.getLocation().y-854))
                 .release().perform();
     }
+    //MNV need to refactor
+
+    //MNV need to dell
     public void checkAllProductsInfoAndQty(int row, String qty, String productInfo) {
         Actions.hideKeyboard();
         if(!getQty(row).isDisplayed()) {
@@ -260,5 +240,50 @@ public class ControlCardPage {
             Assert.assertEquals(qtyFact, text);
         }
     }
-    //MNV need to refactor
+    public void setSerialNumberInputSeveralTimes(String ... serialNumbers) {
+        AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
+        for (String s : serialNumbers) {
+            getSerialNumberInput().click();
+            getSerialNumberInput().val(s);
+            driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+        }
+    }
+    public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
+        AndroidDriver driver = (AndroidDriver) getSerialNumberInput().getWrappedDriver();
+        for (int i = 0; i < numberOfReps; i++) {
+            getSerialNumberInput().click();
+            getSerialNumberInput().val(serialNumber);
+            driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+        }
+    }
+    public void checkSerialNumberInputText(String text) {
+        String serialNumberText = getSerialNumberInput().getText();
+        Assert.assertEquals(serialNumberText, text, "SerialNumberInputText is not empty");
+    }
+    public SelenideElement getSerialNumberProductInfo() {
+        return $(By.id("com.abmcloud:id/textViewInfo"));
+    }
+    public void verifyDataSN() {
+        getNameSerialNumber(2).shouldHave(text("serialnumber90"));
+        getQtySerialNumber(2).shouldHave(text("1"));
+        getNameSerialNumber(3).shouldHave(text("serialnumber91"));
+        getQtySerialNumber(3).shouldHave(text("1"));
+        getNameSerialNumber(4).shouldHave(text("serialnumber92"));
+        getQtySerialNumber(4).shouldHave(text("1"));
+        getNameSerialNumber(5).shouldHave(text("serialnumber93"));
+        getQtySerialNumber(5).shouldHave(text("1"));
+        getNameSerialNumber(6).shouldHave(text("serialnumber94"));
+        getQtySerialNumber(6).shouldHave(text("1"));
+        getNameSerialNumber(7).shouldHave(text("serialnumber95"));
+        getQtySerialNumber(7).shouldHave(text("1"));
+        getNameSerialNumber(8).shouldHave(text("serialnumber96"));
+        getQtySerialNumber(8).shouldHave(text("1"));
+        getNameSerialNumber(9).shouldHave(text("serialnumber97"));
+        getQtySerialNumber(9).shouldHave(text("1"));
+        getNameSerialNumber(10).shouldHave(text("serialnumber98"));
+        getQtySerialNumber(10).shouldHave(text("1"));
+        getNameSerialNumber(11).shouldHave(text("serialnumber99"));
+        getQtySerialNumber(11).shouldHave(text("1"));
+    }
+
 }
