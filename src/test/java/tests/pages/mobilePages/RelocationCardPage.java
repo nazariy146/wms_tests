@@ -44,6 +44,12 @@ public class RelocationCardPage {
         else if (Field == "unitPackaging"){
             return $(By.id("com.abmcloud:id/textViewLabelHint"));
         }
+        else if (Field == "tareQty"){
+            return $(By.id("com.abmcloud:id/editTextTareQty"));
+        }
+        else if (Field == "tareWeight"){
+            return $(By.id("com.abmcloud:id/editTextTareWeight"));
+        }
         return null;
     }
 

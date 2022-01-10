@@ -63,7 +63,7 @@ public class ReceptionCardPage {
             return $(By.id("com.abmcloud:id/et_unit_parameters_height"));
         }
         else if (Field == "widthSKU"){
-            return $(By.id("com.abmcloud:id/textinput_placeholder"));
+            return $(By.id("com.abmcloud:id/et_unit_parameters_width"));
         }
         else if (Field == "lenghtSKU"){
             return $(By.id("com.abmcloud:id/et_unit_parameters_length"));

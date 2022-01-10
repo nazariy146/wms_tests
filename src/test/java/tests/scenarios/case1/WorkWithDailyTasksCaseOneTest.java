@@ -246,7 +246,6 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     @Test (priority = 3, dependsOnMethods = "processingAccommodationTaskTest")
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
-
         allTasksPage.getStringTasks(2).click();
         inventoryCardPage.andrDriver("product");
     //Стол1
@@ -727,7 +726,6 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     @Test (priority = 8, dependsOnMethods = "processingSelectionTaskTest")
     public void processingContainerTaskTest() throws Exception {
         steps.loginAsAdmin();
-
         allTasksPage.checkWorkType("Контейнер");
         allTasksPage.getWorkTypeTasksQuantity().click();
         containerCardPage.andrDriver("containerInfo");
@@ -944,7 +942,6 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
     @Test (priority = 11, dependsOnMethods = "processingPackagingTaskTest")
     public void processingLoadingTaskTest() throws Exception {
         steps.loginAsAdmin();
-
         allTasksPage.checkWorkType("Loading");
         allTasksPage.getWorkTypeTasksQuantity().click();
 
