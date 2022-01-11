@@ -211,7 +211,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         findRestsPage.verifyData("sourceInfo", "A.1.1.1.5");
         findRestsPage.verifyData("qty", "10");
         findRestsPage.verifyData("seriesInfoString1", "series5");
-        findRestsPage.verifyData("shelfLifeInfoString1", "01.12.2022");
+        findRestsPage.verifyData("shelfLifeInfo", "01.12.2022");
     //Стол6
         findRestsPage.inputData("product", "0006");
         findRestsPage.verifyData("productInfo", "0006 Стол6");

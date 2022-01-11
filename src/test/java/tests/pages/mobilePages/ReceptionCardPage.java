@@ -6,6 +6,10 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import tests.steps.Steps;
+
+import java.util.concurrent.TimeUnit;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -224,6 +228,16 @@ public class ReceptionCardPage {
         }
         clickButton("commitSN");
     }
+
+    //MNV need to develop
+    public void selectData(String field, String source) {
+        getIdField(field).click();
+        SelenideElement Element1 = $$(By.id("android:id/text1")).find(exactText(source));
+        Element1.getId();
+        Element1.getClass();
+        Element1.click();
+    }
+    //MNV need to develop
 
     //MNV need to refactor
     public void checkAmountAndPackaging(String amount, String packaging) {
