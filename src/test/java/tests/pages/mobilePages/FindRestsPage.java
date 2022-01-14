@@ -31,6 +31,8 @@ public class FindRestsPage {
             return $(By.id("com.abmcloud:id/textViewSeries"));
         }
         else if (Field == "shelfLifeInfoString1"){
+            //return $(By.id("com.abmcloud:id/textViewShelfLife"));
+            //return $(By.xpath("//android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.TextView[1]"));
             return $(By.xpath("//android.widget.LinearLayout[2]/android.widget.TextView[1]"));
         }
         else if (Field == "shelfLifeInfo"){

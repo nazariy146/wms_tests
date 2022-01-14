@@ -33,7 +33,7 @@ public class BaseMobileClass implements WebDriverProvider {
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         capabilities.setCapability(APP_PACKAGE, "com.abmcloud");
         capabilities.setCapability(APP_ACTIVITY, ".MainActivity");
-        capabilities.setCapability(MobileCapabilityType.NO_RESET, "false");//MNV не сбрасывать данные приложения
+        capabilities.setCapability(MobileCapabilityType.NO_RESET, "true");//MNV не сбрасывать данные приложения
         capabilities.setCapability("autoGrantPermissions", "true");
         capabilities.setCapability("autoAcceptAlerts", "true");
         capabilities.setCapability("newCommandTimeout", "600");

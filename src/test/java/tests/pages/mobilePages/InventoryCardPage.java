@@ -137,7 +137,7 @@ public class InventoryCardPage {
     public SelenideElement getAvailableSeries1() {
         return $(By.xpath("//androidx.cardview.widget.CardView[2]/android.view.ViewGroup/android.widget.TextView"));
     }
-    public SelenideElement getAvailableSeries2() {
+    public SelenideElement getAvailable02series01() {
         return $(By.xpath("//androidx.cardview.widget.CardView[3]/android.view.ViewGroup/android.widget.TextView"));
     }
     public SelenideElement getAvailableSeries(int stroka) {
