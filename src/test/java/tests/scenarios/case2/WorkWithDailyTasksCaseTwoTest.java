@@ -516,7 +516,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
     @Test (priority = 6, dependsOnMethods = "processingRelocationTaskTest")
     public void processingRelocationTSDTaskTest() throws Exception {
         steps.loginAsAdmin();
-
         relocationTSDCardPage.andrDriver("rightMenu");
         relocationTSDCardPage.clickButton("rightMenu");
         relocationTSDCardPage.clickButton("relocation");
