@@ -27,16 +27,16 @@ public class FindRestsPage {
         else if (Field == "qty"){
             return $(By.id("com.abmcloud:id/textViewRecord_count"));
         }
-        else if (Field == "seriesInfoString"){
-            return $(By.id("com.abmcloud:id/textViewSeries"));
+        else if (Field == "seriesInfo"){
+            return $(By.id("com.abmcloud:id/textViewSeries"));//case1,case2
+        }
+        else if (Field == "shelfLifeInfo"){//case1,case2
+            return $(By.id("com.abmcloud:id/textViewShelfLife"));
         }
         else if (Field == "shelfLifeInfoString1"){
             return $(By.xpath("//android.widget.LinearLayout[2]/android.widget.TextView[1]"));
         }
         else if (Field == "shelfLifeInfoString"){
-            return $(By.id("com.abmcloud:id/textViewShelfLife"));
-        }
-        else if (Field == "shelfLifeInfo"){
             return $(By.id("com.abmcloud:id/textViewShelfLife"));
         }
         else if (Field == "checkLocationString1"){

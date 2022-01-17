@@ -33,7 +33,7 @@ public class BaseMobileClass implements WebDriverProvider {
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         capabilities.setCapability(APP_PACKAGE, "com.abmcloud");
         capabilities.setCapability(APP_ACTIVITY, ".MainActivity");
-        capabilities.setCapability(MobileCapabilityType.NO_RESET, "true");//MNV не сбрасывать данные приложения
+        capabilities.setCapability(MobileCapabilityType.NO_RESET, "false");//MNV не сбрасывать данные приложения
         capabilities.setCapability("autoGrantPermissions", "true");
         capabilities.setCapability("autoAcceptAlerts", "true");
         capabilities.setCapability("newCommandTimeout", "600");
@@ -55,16 +55,12 @@ public class BaseMobileClass implements WebDriverProvider {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
 
         open();
+        clickErrorDialogOkButton();
 
-//        clickErrorDialogOkButton();
-//        clickErrorDialogOkButton();
-//        clickErrorDialogOkButton();
-//        clickErrorDialogOkButton();
-
-//        settingsPage = loginPage.clickSettingIcon();
-//        settingsPage.getConnectionStringInput().shouldHave(text("Connection string"));
-//        settingsPage.getConnectionStringInput().sendKeys("http://dmz.abmretail.com:8080/wms_regress_mikn/hs/TSDExchange");
-//        settingsPage.getLicenseInput().sendKeys("wms_regress_mikn");
-//        settingsPage.getSaveButton().click();
+        settingsPage = loginPage.clickSettingIcon();
+        settingsPage.getConnectionStringInput().shouldHave(text("Connection string"));
+        settingsPage.getConnectionStringInput().sendKeys("http://dmz.abmretail.com:8080/wms_regress_mikn/hs/TSDExchange");
+        settingsPage.getLicenseInput().sendKeys("wms_regress_mikn");
+        settingsPage.getSaveButton().click();
     }
 }
