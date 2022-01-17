@@ -383,7 +383,7 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         inventoryCardPage.clickButtonAndConfirm("inventory");
     }
 
-    @Test //(priority = 4, dependsOnMethods = "processingInventoryTaskTest")
+    @Test (priority = 4, dependsOnMethods = "processingInventoryTaskTest")
     public void checkingFreeAmountAfterProcessingInventoryTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.selectFindRestsMenu();
