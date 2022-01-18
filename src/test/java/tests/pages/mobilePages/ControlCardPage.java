@@ -90,16 +90,16 @@ public class ControlCardPage {
     public void inputSN(String typeSN, String SN, int qtySN) {
         if (typeSN == "unique"){
             for (int i = 0, stroka = 2; i < qtySN; i++, stroka++) {
-                String nowSN = SN+i;
+                String nowSN = SN + "serialnumber0" + i;
                 inputData("serialNumberInputText" , nowSN);
                 getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
                 //getXpathField("qty", stroka).shouldHave(text("0"));
                 getXpathField("qtyFact", stroka).shouldHave(text("1"));
             }
         }
-        if (typeSN == "uniqueSn"){//необходимо скролить для работы
-            for (int i = 0, stroka = 3; i < qtySN; i++, stroka++) {
-                String nowSN = SN+i;
+        if (typeSN == "uniqueSn"){
+            for (int i = 1, stroka = 3; i <= qtySN; i++, stroka++) {
+                String nowSN = SN + "FRAGSN" + SN + "Series01" + "31122022" + "0" + i;
                 inputData("serialNumberInputText" , nowSN);
                 getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
                 //getXpathField("qty", stroka).shouldHave(text("0"));
@@ -108,7 +108,7 @@ public class ControlCardPage {
         }
         if (typeSN == "qr"){
             for (int i = 0, stroka = 5; i < qtySN; i++, stroka++) {
-                String nowSN = SN+i;
+                String nowSN = SN + "FRAGSN" + SN + "Series01" + "31122022" + "0" + i;
                 inputData("serialNumberInputText" , nowSN);
                 getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
                 //getXpathField("qty", stroka).shouldHave(text("0"));
@@ -117,7 +117,7 @@ public class ControlCardPage {
         }
         else if (typeSN == "normal"){
             for (int i = 1, stroka = 2; i <= qtySN; i++) {
-                String nowSN = SN;
+                String nowSN = SN + "serialnumber0" + "0";
                 inputData("serialNumberInputText" , nowSN);
                 getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
                 getXpathField("qty", stroka).shouldHave(text("0"));
@@ -126,7 +126,7 @@ public class ControlCardPage {
         }
         else if (typeSN == "sn"){
             for (int i = 2, stroka = 2; i <= qtySN; i++) {
-                String nowSN = SN;
+                String nowSN = SN + "FRAGSN" + SN + "Series01" + "31122022" + "00";
                 inputData("serialNumberInputText" , nowSN);
                 getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
                 getXpathField("qty", stroka).shouldHave(text("0"));
