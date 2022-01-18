@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import tests.steps.Steps;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import static com.codeborne.selenide.Condition.*;
@@ -228,6 +229,7 @@ public class ReceptionCardPage {
 
     public void verifyData(String field, String source) {
         SelenideElement ID = getIdField(field);
+        ID.shouldBe(visible, Duration.ofSeconds(25));
         ID.shouldHave(text(source));
     }
 
