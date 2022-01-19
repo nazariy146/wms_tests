@@ -266,7 +266,7 @@ public class ReceptionCardPage {
             }
         }
         else if (typeSN == "normal"){
-                for (int i = 1, stroka = 2; i <= qtySN; i++) {
+            for (int i = 1, stroka = 2; i <= qtySN; i++) {
                     String nowSN = SN + "serialnumber0" + "0";
                     inputData("serialNumberInputText" , nowSN);
                     getXpathField("serialNumber", stroka).shouldHave(text(nowSN));

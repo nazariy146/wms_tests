@@ -36,12 +36,6 @@ public class LoadingCardPage {
     public void clickCommitButton() {
         $(By.id("com.abmcloud:id/buttonCommitLoading")).click();
     }
-    public void clickCommitAllCargosButton() {
-        $(By.id("com.abmcloud:id/buttonCommitAllCargos")).click();
-    }
-    //MNV need to refactor
-
-    //MNV need to refactor
     public void checkAndSelectAvailableRouteSheet(String description, String driver) {
         $(By.id("com.abmcloud:id/buttonRouteSheetChoice")).click();
         $(By.id("com.abmcloud:id/select_dialog_listview")).shouldBe(visible);
@@ -75,4 +69,10 @@ public class LoadingCardPage {
         getNotLoadedInfo().shouldHave(exactText(notLoaded));
     }
     //MNV need to refactor
+
+    //MNV need to dell
+//    public void clickCommitAllCargosButton() {
+//        $(By.id("com.abmcloud:id/buttonCommitAllCargos")).click();
+//    }
+    //MNV need to dell
 }
