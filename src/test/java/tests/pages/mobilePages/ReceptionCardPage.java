@@ -6,6 +6,11 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import tests.steps.Steps;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -27,7 +32,8 @@ public class ReceptionCardPage {
             return $(By.id("com.abmcloud:id/editTextControlBoxBarcode"));
         }
         else if (Field == "productInfo"){
-            return $(By.id("com.abmcloud:id/textViewControlDescription"));
+            //return $(By.id("com.abmcloud:id/textViewControlDescription")); -MNV release4 need dell
+            return $(By.id("com.abmcloud:id/textViewDescription")); //- release5
         }
         else if (Field == "container"){
             return $(By.id("com.abmcloud:id/editTextControlDestination"));
@@ -123,6 +129,60 @@ public class ReceptionCardPage {
         else if (Field == "packaging"){
             return $(By.id("com.abmcloud:id/labelHintControl"));
         }
+        else if (Field == "package"){
+            return $(By.id("com.abmcloud:id/tv_packing"));
+        }
+        else if (Field == "newSku"){
+            return $(By.id("com.abmcloud:id/ib_add"));
+        }
+        else if (Field == "palletFlag"){
+            return $(By.id("com.abmcloud:id/sw_pallet"));
+        }
+        else if (Field == "pallet"){
+            return $(By.id("com.abmcloud:id/et_pallet"));
+        }
+        else if (Field == "palletEdit"){
+            return $(By.id("com.abmcloud:id/ib_pallet"));
+        }
+        else if (Field == "layerFlag"){
+            return $(By.id("com.abmcloud:id/sw_layer"));
+        }
+        else if (Field == "layer"){
+            return $(By.id("com.abmcloud:id/et_layer"));
+        }
+        else if (Field == "boxFlag"){
+            return $(By.id("com.abmcloud:id/sw_box"));
+        }
+        else if (Field == "box"){
+            return $(By.id("com.abmcloud:id/et_box"));
+        }
+        else if (Field == "boxEdit"){
+            return $(By.id("com.abmcloud:id/ib_box"));
+        }
+        else if (Field == "groupFlag"){
+            return $(By.id("com.abmcloud:id/sw_group"));
+        }
+        else if (Field == "group"){
+            return $(By.id("com.abmcloud:id/et_group"));
+        }
+        else if (Field == "groupEdit"){
+            return $(By.id("com.abmcloud:id/ib_group"));
+        }
+        else if (Field == "BaseFlag"){
+            return $(By.id("com.abmcloud:id/sw_base"));
+        }
+        else if (Field == "base"){
+            return $(By.id("com.abmcloud:id/et_base"));
+        }
+        else if (Field == "skuQty"){
+            return $(By.id("com.abmcloud:id/et_unit_parameters_ratio"));
+        }
+        else if (Field == "skuName"){
+            return $(By.id("com.abmcloud:id/tv_base_unit"));
+        }
+        else if (Field == "skuName"){
+            return $(By.id("com.abmcloud:id/textinput_placeholder"));
+        }
         return null;
     }
 
@@ -169,6 +229,7 @@ public class ReceptionCardPage {
 
     public void verifyData(String field, String source) {
         SelenideElement ID = getIdField(field);
+        ID.shouldBe(visible, Duration.ofSeconds(25));
         ID.shouldHave(text(source));
     }
 
@@ -179,16 +240,16 @@ public class ReceptionCardPage {
     public void inputSN(String typeSN, String SN, int qtySN) {
         if (typeSN == "unique"){
             for (int i = 0, stroka = 2; i < qtySN; i++, stroka++) {
-                String nowSN = SN+i;
+                String nowSN = SN + "serialnumber0" + i;
                 inputData("serialNumberInputText" , nowSN);
                 getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
                 //getXpathField("qty", stroka).shouldHave(text("0"));
                 getXpathField("qtyFact", stroka).shouldHave(text("1"));
             }
         }
-        if (typeSN == "uniqueSn"){//необходимо скролить для работы
-            for (int i = 0, stroka = 3; i < qtySN; i++, stroka++) {
-                String nowSN = SN+i;
+        if (typeSN == "uniqueSn"){
+            for (int i = 1, stroka = 3; i <= qtySN; i++, stroka++) {
+                String nowSN = SN + "FRAGSN" + SN + "Series01" + "31122022" + "0" + i;
                 inputData("serialNumberInputText" , nowSN);
                 getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
                 //getXpathField("qty", stroka).shouldHave(text("0"));
@@ -197,7 +258,7 @@ public class ReceptionCardPage {
         }
         if (typeSN == "qr"){
             for (int i = 0, stroka = 5; i < qtySN; i++, stroka++) {
-                String nowSN = SN+i;
+                String nowSN = SN + "FRAGSN" + SN + "Series01" + "31122022" + "0" + i;
                 inputData("serialNumberInputText" , nowSN);
                 getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
                 //getXpathField("qty", stroka).shouldHave(text("0"));
@@ -206,7 +267,7 @@ public class ReceptionCardPage {
         }
         else if (typeSN == "normal"){
                 for (int i = 1, stroka = 2; i <= qtySN; i++) {
-                    String nowSN = SN;
+                    String nowSN = SN + "serialnumber0" + "0";
                     inputData("serialNumberInputText" , nowSN);
                     getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
                     getXpathField("qty", stroka).shouldHave(text("0"));
@@ -215,7 +276,7 @@ public class ReceptionCardPage {
         }
         else if (typeSN == "sn"){
             for (int i = 2, stroka = 2; i <= qtySN; i++) {
-                String nowSN = SN;
+                String nowSN = SN + "FRAGSN" + SN + "Series01" + "31122022" + "00";
                 inputData("serialNumberInputText" , nowSN);
                 getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
                 getXpathField("qty", stroka).shouldHave(text("0"));
@@ -224,6 +285,21 @@ public class ReceptionCardPage {
         }
         clickButton("commitSN");
     }
+
+    public void selectData(String field, String source) {
+        getIdField(field).click();
+        $$(By.id("android:id/text1")).find(exactText(source)).click();
+    }
+
+    //MNV need to develop
+    public void selectModalDialog(String field, String source) {
+        getIdField(field).click();
+        SelenideElement Element1 = $$(By.id("android:id/text1")).find(exactText(source));
+        Element1.getId();
+        Element1.getClass();
+        Element1.click();
+    }
+    //MNV need to develop
 
     //MNV need to refactor
     public void checkAmountAndPackaging(String amount, String packaging) {
@@ -246,30 +322,5 @@ public class ReceptionCardPage {
     //MNV need to refactor
 
     //MNV need to dell
-/*    public SelenideElement getNameSerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]"));
-    }*/
-    /*public SelenideElement getQtySerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]"));
-    }*/
-    /*public void setSerialNumberInputSeveralTimes(String ... serialNumbers) {
-        String field = "serialNumberInputText";
-        for (String s : serialNumbers) {
-            inputData(field , s);
-        }
-    }*/
-    /*        public void inputSerialNumbers(String serialNumber, int numberOfReps) {
-        String field = "serialNumberInputText";
-        for (int i = 0; i < numberOfReps; i++) {
-            String serialNumber1 = serialNumber+i;
-            inputData(field , serialNumber1);
-        }
-    }*/
-/*    public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
-        String field = "serialNumberInputText";
-        for (int i = 0; i < numberOfReps; i++) {
-            inputData(field , serialNumber);
-        }
-    }*/
     //MNV need to dell
 }
