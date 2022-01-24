@@ -28,10 +28,10 @@ public class FindRestsPage {
             return $(By.id("com.abmcloud:id/textViewRecord_count"));
         }
         else if (Field == "seriesInfo"){
-            return $(By.id("com.abmcloud:id/textViewSeries"));//case1,case2,case3
+            return $(By.id("com.abmcloud:id/textViewSeries"));//case1,case2,case4
         }
-        else if (Field == "shelfLifeInfo"){//case1,case2,case3
-            return $(By.id("com.abmcloud:id/textViewShelfLife"));
+        else if (Field == "shelfLifeInfo"){
+            return $(By.id("com.abmcloud:id/textViewShelfLife"));//case1,case2,case4
         }
         else if (Field == "shelfLifeInfoString1"){
             //return $(By.id("com.abmcloud:id/textViewShelfLife"));

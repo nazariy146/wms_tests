@@ -540,20 +540,16 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         relocationTSDCardPage.inputData("source", "A.1.1.2.12");
         relocationTSDCardPage.inputData("product", "12fragbc");
         relocationTSDCardPage.inputBatchProperties(true, false,"select","12series01","");
-        relocationTSDCardPage.clickButton("modalDialogOK");
-//        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.12 ➡ 00012 12Series01 Стол12");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.12 ➡ 00012 12Series01 Стол12");
         relocationTSDCardPage.inputData("qty", "10");
-//        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.12 ➡ 00012 12Series01 Стол12 Quantity 10");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.12 ➡ 00012 12Series01 Стол12 Quantity 10");
         relocationTSDCardPage.inputData("destination", "A.1.1.3.12");
-//        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.12 ➡ A.1.1.3.12 00012 12Series01 Стол12 Quantity 10");
+        relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.12 ➡ A.1.1.3.12 00012 12Series01 Стол12 Quantity 10");
         relocationTSDCardPage.clickButton("moving");
     //Стол13
         relocationTSDCardPage.inputData("source", "A.1.1.2.13");
         relocationTSDCardPage.inputData("product", "13fragbc");
         relocationTSDCardPage.inputBatchProperties(false, true,"select", "","31.12.2022");
-//        relocationTSDCardPage.verifyData("modalDialogTitle", "Batch properties");
-//        relocationTSDCardPage.selectData("shelfLife", "31.12.2022");
-//        relocationTSDCardPage.clickButton("modalDialogOK");
         relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.13 ➡ 00013 31.12.2022 Стол13");
         relocationTSDCardPage.inputData("qty", "10");
         relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.13 ➡ 00013 31.12.2022 Стол13 Quantity 10");
@@ -573,9 +569,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         relocationTSDCardPage.inputData("source", "A.1.1.2.15");
         relocationTSDCardPage.inputData("product", "15fragbc");
         relocationTSDCardPage.inputBatchProperties(true, false,"select","15Series01","");
-        relocationTSDCardPage.verifyData("modalDialogTitle", "Batch properties");
-        relocationTSDCardPage.selectData("series", "15Series01");
-        relocationTSDCardPage.clickButton("modalDialogOK");
         relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.15 ➡ 00015 15Series01 31.12.2022 Стол15");
         relocationTSDCardPage.inputData("qty", "10");
         relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.15 ➡ 00015 15Series01 31.12.2022 Стол15 Quantity 10");
@@ -586,9 +579,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         relocationTSDCardPage.inputData("source", "A.1.1.2.16");
         relocationTSDCardPage.inputData("product", "16fragbc");
         relocationTSDCardPage.inputBatchProperties(true, false,"select","16series01","");
-//        relocationTSDCardPage.verifyData("modalDialogTitle", "Batch properties");
-//        relocationTSDCardPage.selectData("series", "16series01");
-//        relocationTSDCardPage.clickButton("modalDialogOK");
         relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.16 ➡ 00016 16series01 Стол16");
         relocationTSDCardPage.inputData("qty", "10");
         relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.16 ➡ 00016 16series01 Стол16 Quantity 10");
@@ -599,9 +589,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         relocationTSDCardPage.inputData("source", "A.1.1.2.17");
         relocationTSDCardPage.inputData("product", "17fragbc");
         relocationTSDCardPage.inputBatchProperties(false, true,"select", "","31.12.2022");
-//        relocationTSDCardPage.verifyData("modalDialogTitle", "Batch properties");
-//        relocationTSDCardPage.selectData("shelfLife", "31.12.2022");
-//        relocationTSDCardPage.clickButton("modalDialogOK");
         relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.17 ➡ 00017 31.12.2022 Стол17");
         relocationTSDCardPage.inputData("qty", "10");
         relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.17 ➡ 00017 31.12.2022 Стол17 Quantity 10");
@@ -612,9 +599,6 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         relocationTSDCardPage.inputData("source", "A.1.1.2.18");
         relocationTSDCardPage.inputData("product", "18fragbc");
         relocationTSDCardPage.inputBatchProperties(true, false,"select","18series01","");
-//        relocationTSDCardPage.verifyData("modalDialogTitle", "Batch properties");
-//        relocationTSDCardPage.selectData("series", "18series01");
-//        relocationTSDCardPage.clickButton("modalDialogOK");
         relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.18 ➡ 00018 18series01 31.12.2022 Стол18");
         relocationTSDCardPage.inputData("qty", "10");
         relocationTSDCardPage.verifyData("productInfo", "A.1.1.2.18 ➡ 00018 18series01 31.12.2022 Стол18 Quantity 10");
@@ -672,7 +656,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         selectionCardPage.verifyData("productInfo", "00014 Стол14 A.1.1.3.14 ➡ KT1.01.01.01.01 Quantity 10 шт");
         selectionCardPage.inputData("source", "A.1.1.3.14");
         selectionCardPage.inputData("product", "14fragbc");
-        selectionCardPage.inputSN("normal","14serialnumber01", 10);
+        selectionCardPage.inputSN("normal","14", 10);
         selectionCardPage.inputData("destination", "OUT114");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -687,7 +671,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         selectionCardPage.verifyData("productInfo", "00016 16series01 Стол16 A.1.1.3.16 ➡ KT1.01.01.01.01 Quantity 10 шт");
         selectionCardPage.inputData("source", "A.1.1.3.16");
         selectionCardPage.inputData("product", "16fragbc");
-        selectionCardPage.inputSN("normal","16serialnumber01", 10);
+        selectionCardPage.inputSN("normal","16", 10);
         selectionCardPage.inputData("destination", "OUT116");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -695,7 +679,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         selectionCardPage.verifyData("productInfo", "00017 31.12.2022 Стол17 A.1.1.3.17 ➡ KT1.01.01.01.01 Quantity 10 шт");
         selectionCardPage.inputData("source", "A.1.1.3.17");
         selectionCardPage.inputData("product", "17fragbc");
-        selectionCardPage.inputSN("normal","17serialnumber01", 10);
+        selectionCardPage.inputSN("normal","17", 10);
         selectionCardPage.inputData("destination", "OUT117");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -703,7 +687,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         selectionCardPage.verifyData("productInfo", "00018 18series01 31.12.2022 Стол18 A.1.1.3.18 ➡ KT1.01.01.01.01 Quantity 10 шт");
         selectionCardPage.inputData("source", "A.1.1.3.18");
         selectionCardPage.inputData("product", "18fragbc");
-        selectionCardPage.inputSN("normal","18serialnumber01", 10);
+        selectionCardPage.inputSN("normal","18", 10);
         selectionCardPage.inputData("destination", "OUT118");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -711,7 +695,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         selectionCardPage.verifyData("productInfo", "00019 Стол19 A.1.1.3.19 ➡ KT1.01.01.01.01 Quantity 10 шт");
         selectionCardPage.inputData("source", "A.1.1.3.19");
         selectionCardPage.inputData("product", "19fragbc");
-        selectionCardPage.inputSN("unique","19serialnumber0", 10);
+        selectionCardPage.inputSN("unique","19", 10);
         selectionCardPage.inputData("destination", "OUT119");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -727,7 +711,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
     @Test (priority = 8, dependsOnMethods = "processingSelectionTaskTest")
     public void processingContainerTaskTest() throws Exception {
         steps.loginAsAdmin();
-        allTasksPage.checkWorkType("Контейнер");
+        allTasksPage.checkWorkType("Контейнер (Selection)");
         allTasksPage.getWorkTypeTasksQuantity().click();
         containerCardPage.andrDriver("containerInfo");
     //Стол11
@@ -889,7 +873,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","19fragbc");
-        controlCardPage.inputSN("unique","19serialnumber0", 10);
+        controlCardPage.inputSN("unique","19", 10);
         controlCardPage.clickButton("commit");
     //Стол20
         controlCardPage.inputData("source", "KT1.01.01.01.01");
@@ -990,22 +974,22 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         clickErrorDialogOkButton();
     }
 
-    @Test (priority = 11, dependsOnMethods = "processingPackagingTaskTest")
+    @Test //(priority = 11, dependsOnMethods = "processingPackagingTaskTest")
     public void processingConsolidateContainerTask() {
         steps.loginAsAdmin();
         allTasksPage.selectConsolidateContainerMenu();
         consolidateContainerPage.setSeveralConsolidateContainer(true);
         consolidateContainerPage.setContainerSeveralTimes("9990000000012", "9990000000029", "9990000000036", "9990000000043", "9990000000050", "9990000000067", "9990000000074", "9990000000081", "9990000000098", "9990000000104");
-//        consolidateContainerPage.checkAllProductsInfoAndQty(1, "9990000000012", "Костенко (count 10/countprod. 1) -->");
-//        consolidateContainerPage.checkAllProductsInfoAndQty(2, "9990000000029", "Костенко (count 10/countprod. 1) -->");
-//        consolidateContainerPage.checkAllProductsInfoAndQty(3, "9990000000036", "Костенко (count 10/countprod. 1) -->");
-//        consolidateContainerPage.checkAllProductsInfoAndQty(4, "9990000000043", "Костенко (count 10/countprod. 1) -->");
-//        consolidateContainerPage.checkAllProductsInfoAndQty(5, "9990000000050", "Костенко (count 10/countprod. 1) -->");
-//        consolidateContainerPage.checkAllProductsInfoAndQty(6, "9990000000067", "Костенко (count 10/countprod. 1) -->");
-//        consolidateContainerPage.checkAllProductsInfoAndQty(7, "9990000000074", "Костенко (count 10/countprod. 1) -->");
-//        consolidateContainerPage.checkAllProductsInfoAndQty(8, "9990000000081", "Костенко (count 10/countprod. 1) -->");
-//        consolidateContainerPage.checkAllProductsInfoAndQty(9, "9990000000098", "Костенко (count 10/countprod. 1) -->");
-//        consolidateContainerPage.checkAllProductsInfoAndQty(10, "9990000000104", "Костенко (count 10/countprod. 1) -->");
+        consolidateContainerPage.checkAllProductsInfoAndQty(1, "9990000000012", "Костенко (count 10/countprod. 1) -->");
+        consolidateContainerPage.checkAllProductsInfoAndQty(2, "9990000000029", "Костенко (count 10/countprod. 1) -->");
+        consolidateContainerPage.checkAllProductsInfoAndQty(3, "9990000000036", "Костенко (count 10/countprod. 1) -->");
+        consolidateContainerPage.checkAllProductsInfoAndQty(4, "9990000000043", "Костенко (count 10/countprod. 1) -->");
+        consolidateContainerPage.checkAllProductsInfoAndQty(5, "9990000000050", "Костенко (count 10/countprod. 1) -->");
+        consolidateContainerPage.checkAllProductsInfoAndQty(6, "9990000000067", "Костенко (count 10/countprod. 1) -->");
+        consolidateContainerPage.checkAllProductsInfoAndQty(7, "9990000000074", "Костенко (count 10/countprod. 1) -->");
+        consolidateContainerPage.checkAllProductsInfoAndQty(8, "9990000000081", "Костенко (count 10/countprod. 1) -->");
+        consolidateContainerPage.checkAllProductsInfoAndQty(9, "9990000000098", "Костенко (count 10/countprod. 1) -->");
+        consolidateContainerPage.checkAllProductsInfoAndQty(10, "9990000000104", "Костенко (count 10/countprod. 1) -->");
         consolidateContainerPage.setCreateConsolidateContainer(true);
         consolidateContainerPage.getReceiverInput().shouldBe(disabled);
         consolidateContainerPage.clickConsolidateButton();
