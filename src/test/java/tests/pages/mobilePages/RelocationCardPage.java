@@ -6,12 +6,14 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import tests.steps.Steps;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class RelocationCardPage {
+    Steps steps = new Steps();
 
     AndroidDriver driver;
 
@@ -57,7 +59,7 @@ public class RelocationCardPage {
         SelenideElement ID = getIdField(field);
         ID.click();
         ID.val(source);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+        steps.driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
     public void verifyData(String field, String source) {

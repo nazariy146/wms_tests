@@ -7,16 +7,36 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 import tests.pages.mobilePages.LoginPage;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class Steps {
-    AndroidDriver driver;
+    public  static AndroidDriver driver;
 
     public void andrDriver(String field) {
         driver = (AndroidDriver) getIdField(field).getWrappedDriver();
     }
+
+    public void verifyData(SelenideElement id, String data) {
+        id.shouldBe(visible, Duration.ofSeconds(25));
+        id.shouldHave(text(data));
+    }
+
+    public void inputData(SelenideElement id, String data) {
+        id.click();
+        id.val(data);
+        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+    public void clickButton(SelenideElement id) {
+        id.click();
+    }
+
+
+
 
     public static SelenideElement getIdField(String Field) {
         if (Field == "user"){
@@ -31,21 +51,8 @@ public class Steps {
         else if (Field == "password"){
             return $(By.id("com.abmcloud:id/et_password"));
         }
-
         return null;
     }
-
-    public void inputData(String field, String source) {
-        SelenideElement ID = getIdField(field);
-        ID.click();
-        ID.val(source);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-    }
-
-    public void clickButton(String button) {
-        getIdField(button).click();
-    }
-
     public void selectModalDialog(String field, String source) {
         getIdField(field).click();
         SelenideElement Element1 = $$(By.id("android:id/text1")).find(exactText(source));
@@ -53,12 +60,14 @@ public class Steps {
         Element1.getClass();
         Element1.click();
     }
-
-
     public void loginAsAdmin() {
+        SelenideElement idUser = getIdField("user");
+        SelenideElement idPassword = getIdField("password");
+        SelenideElement idlogIn = getIdField("logIn");
+
         andrDriver("user");
-        inputData("user","Admin");
-        clickButton("password");
-        clickButton("logIn");
+        inputData(idUser,"Admin");
+        clickButton(idPassword);
+        clickButton(idlogIn);
     }
 }
