@@ -5,12 +5,14 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
+import tests.steps.Steps;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class AccommodationCardPage {
+    Steps steps = new Steps();
 
     AndroidDriver driver;
 
@@ -57,7 +59,7 @@ public class AccommodationCardPage {
         SelenideElement ID = AccommodationCardPage.getIdField(field);
         ID.click();
         ID.val(source);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+        steps.driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
     public void verifyData(String field, String source) {

@@ -974,7 +974,7 @@ public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
         clickErrorDialogOkButton();
     }
 
-    @Test //(priority = 11, dependsOnMethods = "processingPackagingTaskTest")
+    @Test (priority = 11, dependsOnMethods = "processingPackagingTaskTest")
     public void processingConsolidateContainerTask() {
         steps.loginAsAdmin();
         allTasksPage.selectConsolidateContainerMenu();

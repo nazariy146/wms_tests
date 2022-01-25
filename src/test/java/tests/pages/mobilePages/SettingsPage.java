@@ -10,6 +10,8 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class SettingsPage {
+
+    ReceptionCardPage receptionCardPage = new ReceptionCardPage();
     AndroidDriver driver;
 
     public void andrDriver(String field) {

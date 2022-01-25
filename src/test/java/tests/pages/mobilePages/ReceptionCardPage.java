@@ -17,11 +17,14 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class ReceptionCardPage {
+    Steps steps = new Steps();
 
     AndroidDriver driver;
 
     public void andrDriver(String field) {
-        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
+        SelenideElement ID = getIdField(field);
+        ID.shouldBe(visible, Duration.ofSeconds(25));
+        driver = (AndroidDriver) ID.getWrappedDriver();
     }
 
     public static SelenideElement getIdField(String Field) {
@@ -203,7 +206,7 @@ public class ReceptionCardPage {
         SelenideElement ID = getIdField(field);
         ID.click();
         ID.val(source);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+        steps.driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
     public void inputBatchProperties(boolean seriesOn, boolean shelfLifeOn, String action, String series, String shelfLife) {

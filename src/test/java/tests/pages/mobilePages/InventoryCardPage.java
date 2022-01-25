@@ -5,12 +5,15 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
+import tests.steps.Steps;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class InventoryCardPage {
+    Steps steps = new Steps();
+
     AndroidDriver driver;
 
     public void andrDriver(String field) {
@@ -73,7 +76,7 @@ public class InventoryCardPage {
         SelenideElement ID = getIdField(field);
         ID.click();
         ID.val(source);
-        driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+        steps.driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
     public void inputBatchProperties(boolean seriesOn, boolean shelfLifeOn, String action, String series, String shelfLife) {
