@@ -32,7 +32,7 @@ public class WorkWithDailyTasksCaseFiveTest extends BaseMobileClass{
     //Стол41
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","00041");
-        receptionCardPage.inputBatchProperties(true, false,"input","41Series01","");
+        //receptionCardPage.inputBatchProperties(true, false,"input","41Series01","");
         receptionCardPage.verifyData("productInfo", "00041 Стол41 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("package", "1");
         receptionCardPage.inputData("container","IN1");
@@ -41,7 +41,7 @@ public class WorkWithDailyTasksCaseFiveTest extends BaseMobileClass{
     //Стол42
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","00042");
-        receptionCardPage.inputBatchProperties(false, true,"input","","31.12.2022");
+        //receptionCardPage.inputBatchProperties(false, true,"input","","31.12.2022");
         receptionCardPage.verifyData("productInfo", "00042 Стол42 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("package", "10-1");
         receptionCardPage.inputData("container","IN1");

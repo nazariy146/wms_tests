@@ -17,7 +17,8 @@ public class ConsolidateContainerPage {
         return $(By.id("com.abmcloud:id/editTextFromContainer"));
     }
     public SelenideElement getSourceInfo(int row) {
-        return $(By.xpath("//android.view.ViewGroup["+(row+1)+"]")).find((By.id("com.abmcloud:id/textViewSource")));
+        //return $(By.xpath("//android.view.ViewGroup["+(row+1)+"]")).find((By.id("com.abmcloud:id/textViewSource")));
+        return $(By.xpath("//android.view.ViewGroup["+(row+1)+"]")).find((By.id("com.abmcloud:id/textViewSource"))); //MNV Release5 Case2
     }
     public SelenideElement getDescriptionInfo(int row) {
         return $(By.xpath("//android.view.ViewGroup["+(row+1)+"]")).find((By.id("com.abmcloud:id/textViewDescription")));

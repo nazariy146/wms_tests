@@ -94,7 +94,8 @@ public class RelocationTSDCardPage {
             $$(By.id(seriesID)).find(exactText(source)).click();
         }
 
-        public void inputBatchProperties(boolean seriesOn, boolean shelfLifeOn, String action, String series, String shelfLife) {
+    //MNV need to dell
+/*        public void inputBatchProperties(boolean seriesOn, boolean shelfLifeOn, String action, String series, String shelfLife) {
         verifyData("modalDialogTitle", "Batch properties");
         if (action == "input") {
             if (seriesOn == true) {
@@ -113,9 +114,8 @@ public class RelocationTSDCardPage {
             }
         }
         clickButton("modalDialogOK");
-    }
-
-
+    }*/
+    //MNV need to dell
 }
 
 
