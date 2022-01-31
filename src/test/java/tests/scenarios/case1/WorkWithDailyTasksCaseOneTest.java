@@ -921,16 +921,16 @@ public class WorkWithDailyTasksCaseOneTest extends BaseMobileClass {
         allTasksPage.getWorkTypeTasksQuantity().click();
 
         packagingCardPage.setCellOrContainerInput("KT1.01.01.01.01");
-        packagingCardPage.checkCellProductInfoInRow2(1, "OUT101", "10", "0.66", "0.66", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(2, "OUT102", "10", "0.66", "0.66", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(3, "OUT103", "10", "0.66", "0.66", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(4, "OUT104", "10", "0.66", "0.66", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(5, "OUT105", "10", "0.66", "0.66", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(6, "OUT106", "10", "0.66", "0.66", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(7, "OUT107", "10", "0.66", "0.66", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(8, "OUT108", "10", "0.66", "0.66", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(9, "OUT109", "10", "0.66", "0.66", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(10, "OUT110", "10", "0.66", "0.66", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(1, "OUT101", "10", "0.66", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(2, "OUT102", "10", "0.66", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(3, "OUT103", "10", "0.66", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(4, "OUT104", "10", "0.66", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(5, "OUT105", "10", "0.66", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(6, "OUT106", "10", "0.66", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(7, "OUT107", "10", "0.66", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(8, "OUT108", "10", "0.66", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(9, "OUT109", "10", "0.66", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(10, "OUT110", "10", "0.66", "10", "1", "1");
 
         packagingCardPage.clickCreateCargoButton();
         getMessageModalDialog().shouldHave(text("Cargo slots will be created. Continue?"));

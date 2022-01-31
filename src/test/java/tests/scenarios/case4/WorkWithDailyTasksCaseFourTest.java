@@ -31,7 +31,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Reception");
         allTasksPage.getWorkTypeTasksQuantity().click();
-        receptionCardPage.andrDriver("product");
     //Стол31
         receptionCardPage.verifyData("productInfo", "00031 Стол31 IN.01 Quantity 10 уп. (5)");
         receptionCardPage.inputData("source", "IN.01");
@@ -128,7 +127,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Accommodation");
         allTasksPage.getWorkTypeTasksQuantity().click();
-        accommodationCardPage.andrDriver("product");
     //Стол31
         accommodationCardPage.verifyData("productInfo", "00031 Стол31 IN.01 ➡ C.1.1.1.1 Quantity 10 уп. (5)");
         accommodationCardPage.inputData("source","IN1");
@@ -206,7 +204,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
     public void checkingFreeAmountTest() {
         steps.loginAsAdmin();
         allTasksPage.selectFindRestsMenu();
-        findRestsPage.andrDriver("product");
     //Стол31
         findRestsPage.inputData("product", "31FRAGSN31Series013112202200");
         findRestsPage.verifyData("productInfo", "00031 Стол31");
@@ -275,7 +272,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.getStringTasks(2).click();
-        inventoryCardPage.andrDriver("product");
     //Стол 31
         inventoryCardPage.inputData("source", "C.1.1.1.1");
         inventoryCardPage.inputData("product", "31FRAGSN31Series013112202200");
@@ -378,7 +374,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
     public void checkingFreeAmountTest2() {
         steps.loginAsAdmin();
         allTasksPage.selectFindRestsMenu();
-        findRestsPage.andrDriver("product");
     //Стол31
         findRestsPage.inputData("product", "31FRAGSN31Series013112202200");
         findRestsPage.verifyData("productInfo", "00031 Стол31");
@@ -448,7 +443,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Moving");
         allTasksPage.getWorkTypeTasksQuantity().click();
-        relocationCardPage.andrDriver("source");
     //Стол31
         relocationCardPage.verifyData("productInfo", "00031 Стол31 C.1.1.1.1 ➡ C.1.1.2.1 Quantity 10 уп. (5)");
         relocationCardPage.inputData("source", "C.1.1.1.1");
@@ -544,7 +538,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
     @Test (priority = 6, dependsOnMethods = "processingRelocationTaskTest")
     public void processingRelocationTSDTaskTest() throws Exception {
         steps.loginAsAdmin();
-        relocationTSDCardPage.andrDriver("rightMenu");
         relocationTSDCardPage.clickButton("rightMenu");
         relocationTSDCardPage.clickButton("relocation");
     //Стол31
@@ -644,7 +637,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Selection");
         allTasksPage.getWorkTypeTasksQuantity().click();
-        selectionCardPage.andrDriver("source");
     //Стол31
         selectionCardPage.verifyData("productInfo", "00031 Стол31 C.1.1.3.1 ➡ KT1.01.01.01.01 Quantity 10 уп. (5)");
         selectionCardPage.inputData("source", "C.1.1.3.1");
@@ -728,7 +720,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Контейнер (Selection)");
         allTasksPage.getWorkTypeTasksQuantity().click();
-        containerCardPage.andrDriver("containerInfo");
     //Стол31
         containerCardPage.verifyData("containerInfo", "CON/OUT131 ➡ KT1.01.01.01.01");
         containerCardPage.inputData("container", "OUT131");
@@ -750,32 +741,32 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         containerCardPage.inputData("destination", "KT1.01.01.01.01");
         containerCardPage.clickButton("commit");
     //Стол35
-        containerCardPage.verifyData("containerInfo", "CON/OUT135 ➡ KT1.01.01.01.01");
+        containerCardPage.verifyData("containerInfo", "CON/OUT135 ➡ KT1.01.01.01.01 ");
         containerCardPage.inputData("container", "OUT135");
         containerCardPage.inputData("destination", "KT1.01.01.01.01");
         containerCardPage.clickButton("commit");
     //Стол36
-        containerCardPage.verifyData("containerInfo", "CON/OUT136 ➡ KT1.01.01.01.01");
+        containerCardPage.verifyData("containerInfo", "CON/OUT136 ➡ KT1.01.01.01.01 ");
         containerCardPage.inputData("container", "OUT136");
         containerCardPage.inputData("destination", "KT1.01.01.01.01");
         containerCardPage.clickButton("commit");
     //Стол37
-        containerCardPage.verifyData("containerInfo", "CON/OUT137 ➡ KT1.01.01.01.01");
+        containerCardPage.verifyData("containerInfo", "CON/OUT137 ➡ KT1.01.01.01.01 ");
         containerCardPage.inputData("container", "OUT137");
         containerCardPage.inputData("destination", "KT1.01.01.01.01");
         containerCardPage.clickButton("commit");
     //Стол38
-        containerCardPage.verifyData("containerInfo", "CON/OUT138 ➡ KT1.01.01.01.01");
+        containerCardPage.verifyData("containerInfo", "CON/OUT138 ➡ KT1.01.01.01.01 ");
         containerCardPage.inputData("container", "OUT138");
         containerCardPage.inputData("destination", "KT1.01.01.01.01");
         containerCardPage.clickButton("commit");
     //Стол39
-        containerCardPage.verifyData("containerInfo", "CON/OUT139 ➡ KT1.01.01.01.01");
+        containerCardPage.verifyData("containerInfo", "CON/OUT139 ➡ KT1.01.01.01.01 ");
         containerCardPage.inputData("container", "OUT139");
         containerCardPage.inputData("destination", "KT1.01.01.01.01");
         containerCardPage.clickButton("commit");
     //Стол40
-        containerCardPage.verifyData("containerInfo", "CON/OUT140 ➡ KT1.01.01.01.01");
+        containerCardPage.verifyData("containerInfo", "CON/OUT140 ➡ KT1.01.01.01.01 ");
         containerCardPage.inputData("container", "OUT140");
         containerCardPage.inputData("destination", "KT1.01.01.01.01");
         containerCardPage.clickButton("commit");
@@ -786,7 +777,6 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Control");
         allTasksPage.getWorkTypeTasksQuantity().click();
-        controlCardPage.andrDriver("source");
     //Стол31
         controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT131");

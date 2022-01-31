@@ -83,13 +83,6 @@ public class FindRestsPage {
         SelenideElement ID = getIdField(field);
         ID.shouldHave(text(source));
     }
-
-    //MNV need to refact
-    public void setOnOrOffFreeRemainSwitcher(boolean state) {
-        $(By.id("com.abmcloud:id/switchFreeRemains")).shouldBe(visible);
-        $(By.id("com.abmcloud:id/switchFreeRemains")).click();
-    }
-    //MNV need to refact
 }
 
 

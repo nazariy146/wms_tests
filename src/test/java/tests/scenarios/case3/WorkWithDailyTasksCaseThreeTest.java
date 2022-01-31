@@ -27,13 +27,13 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     InventoryCardPage inventoryCardPage = new InventoryCardPage();
     RelocationCardPage relocationCardPage = new RelocationCardPage();
     RelocationTSDCardPage relocationTSDCardPage = new RelocationTSDCardPage();
+    FormBatchProperties formBatchProperties = new FormBatchProperties();
 
     @Test
     public void processingNegativeReceptionTaskTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Reception");
         allTasksPage.getWorkTypeTasksQuantity().click();
-        receptionCardPage.andrDriver("source");
     //Стол21
         receptionCardPage.verifyData("productInfo", "00021 Стол21 IN.01 Quantity 10 уп. (5)");
         receptionCardPage.inputData("source", "IN.02");
@@ -125,7 +125,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.clickButton("commit");
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","2110023055000");
-        receptionCardPage.inputBatchProperties(false, true,"input", "","30.12.22");
+        formBatchProperties.input(false,true,"","30.12.2022");
         receptionCardPage.verifyData("productInfo", "00023 30.12.2022 Стол23 IN.01 Quantity 8 шт");
         receptionCardPage.verifyData("qty", "5.500");
         receptionCardPage.inputData("container","IN1");
@@ -133,7 +133,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.verifyData("productInfo", "00023 Стол23 IN.01 Quantity 2.5 шт");
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","2110023025000");
-        receptionCardPage.inputBatchProperties(false, true,"input", "","31.12.22");
+        formBatchProperties.input(false,true,"","31.12.2022");
         receptionCardPage.verifyData("productInfo", "00023 31.12.2022 Стол23 IN.01 Quantity 2.5 шт");
         receptionCardPage.verifyData("qty", "2.500");
         receptionCardPage.inputData("container","IN1");
@@ -142,21 +142,21 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.verifyData("productInfo", "00024 Стол24 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","2110024020000");
-        receptionCardPage.inputBatchProperties(true, false,"input","24Series01","");
+        formBatchProperties.input(true,false,"24Series01","");
         receptionCardPage.verifyData("productInfo", "00024 24Series01 Стол24 IN.01 Quantity 10 шт");
         receptionCardPage.verifyData("qty", "2.000");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.clickButton("commit");
         receptionCardPage.verifyData("productInfo", "00024 Стол24 IN.01 Quantity 8 шт");
         receptionCardPage.inputData("product","2110024075000");
-        receptionCardPage.inputBatchProperties(true, false,"input","24Series02","");
+        formBatchProperties.input(true,false,"24Series02","");
         receptionCardPage.verifyData("productInfo", "00024 24Series02 Стол24 IN.01 Quantity 8 шт");
         receptionCardPage.verifyData("qty", "7.500");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.clickButton("commit");
         receptionCardPage.verifyData("productInfo", "00024 Стол24 IN.01 Quantity 0.5 шт");
         receptionCardPage.inputData("product","2110024005000");
-        receptionCardPage.inputBatchProperties(true, false,"input","24Series02","");
+        formBatchProperties.input(true,false,"24Series02","");
         receptionCardPage.verifyData("productInfo", "00024 24Series02 Стол24 IN.01 Quantity 0.5 шт");
         receptionCardPage.verifyData("qty", "0.500");
         receptionCardPage.inputData("container","IN1");
@@ -179,7 +179,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.verifyData("productInfo", "00026 Стол26 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","00026");
-        receptionCardPage.inputBatchProperties(true, false,"input","26series01","");
+        formBatchProperties.input(true,false,"26series01","");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.inputData("palletWeight", "2");
         receptionCardPage.inputData("tareQty", "5");
@@ -190,7 +190,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.verifyData("productInfo", "00027 Стол27 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","00027");
-        receptionCardPage.inputBatchProperties(false, true,"input", "","31.12.2022");
+        formBatchProperties.input(false,true,"","31.12.2022");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.inputData("palletWeight", "2");
         receptionCardPage.inputData("tareQty", "5");
@@ -206,7 +206,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     //Стол29
         receptionCardPage.verifyData("productInfo", "00029 Стол29 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","00029");
-        receptionCardPage.inputBatchProperties(true, false,"input","29Series01","");
+        formBatchProperties.input(true,false,"29Series01","");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.inputData("qty","10");
         receptionCardPage.clickButton("commit");
@@ -232,7 +232,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
 
         allTasksPage.checkWorkType("Accommodation");
         allTasksPage.getWorkTypeTasksQuantity().click();
-        accommodationCardPage.andrDriver("source");
     //Стол21
         accommodationCardPage.inputData("source","IN.02");
         getMessageModalDialog().shouldBe(visible).shouldHave(text("Source does not match the task"));
@@ -355,7 +354,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     public void checkingFreeAmountTest() {
         steps.loginAsAdmin();
         allTasksPage.selectFindRestsMenu();
-        findRestsPage.andrDriver("product");
     //Стол21
         findRestsPage.inputData("product", "00002102");
         findRestsPage.verifyData("productInfo", "00021 Стол21");
@@ -423,7 +421,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     public void processingInventoryTaskTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.getStringTasks(2).click();
-        inventoryCardPage.andrDriver("product");
     //Стол21
         inventoryCardPage.inputData("source", "B.1.1.1.1");
         inventoryCardPage.inputData("product", "00002102");
@@ -447,7 +444,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     //Стол23
         inventoryCardPage.inputData("source", "B.1.1.1.3");
         inventoryCardPage.inputData("product", "2110023055000");
-        inventoryCardPage.inputBatchProperties(false, true, "select","","30.12.2022");
+        formBatchProperties.select(false,true,"","30.12.2022");
         inventoryCardPage.verifyData("productInfo", "00023 30.12.2022 Стол23");
         inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.verifyData("qty", "5.500");
@@ -457,7 +454,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         inventoryCardPage.verifyData("qtyViewInfo", "5.5");
     //Стол23
         inventoryCardPage.inputData("product", "2110023045000");
-        inventoryCardPage.inputBatchProperties(false, true, "select","","31.12.2022");
+        formBatchProperties.select(false,true,"","31.12.2022");
         inventoryCardPage.verifyData("productInfo", "00023 31.12.2022 Стол23");
         inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.verifyData("qty", "4.500");
@@ -469,7 +466,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     //Стол24
         inventoryCardPage.inputData("source", "B.1.1.1.4");
         inventoryCardPage.inputData("product", "2110024020000");
-        inventoryCardPage.inputBatchProperties(true, false,"select","24Series01","");
+        formBatchProperties.select(true, false,"24Series01","");
         inventoryCardPage.verifyData("productInfo", "00024 24Series01 Стол24");
         inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.verifyData("qty", "2.000");
@@ -480,7 +477,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     //Стол24
         inventoryCardPage.inputData("source", "B.1.1.1.4");
         inventoryCardPage.inputData("product", "2110024080000");
-        inventoryCardPage.inputBatchProperties(true, false,"select","24Series02","");
+        formBatchProperties.select(true, false,"24Series02","");
         inventoryCardPage.verifyData("productInfo", "00024 24Series02 Стол24");
         inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.verifyData("qty", "8.000");
@@ -505,7 +502,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     //Стол26
         inventoryCardPage.inputData("source", "B.1.1.1.6");
         inventoryCardPage.inputData("product", "00026");
-        inventoryCardPage.inputBatchProperties(true, false,"select","26series01","");
+        formBatchProperties.select(true, false,"26series01","");
         inventoryCardPage.verifyData("productInfo", "00026 26Series01 Стол26");
         inventoryCardPage.inputData("palletWeight", "2");
         inventoryCardPage.inputData("tareQty", "5");
@@ -519,7 +516,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     //Стол27
         inventoryCardPage.inputData("source", "B.1.1.1.7");
         inventoryCardPage.inputData("product", "00027");
-        inventoryCardPage.inputBatchProperties(false, true, "select","","31.12.2022");
+        formBatchProperties.select(false,true,"","31.12.2022");
         inventoryCardPage.verifyData("productInfo", "00027 31.12.2022 Стол27");
         inventoryCardPage.inputData("palletWeight", "2");
         inventoryCardPage.inputData("tareQty", "5");
@@ -542,7 +539,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     //Стол29
         inventoryCardPage.inputData("source", "B.1.1.1.9");
         inventoryCardPage.inputData("product", "00029");
-        inventoryCardPage.inputBatchProperties(true, false,"select","29series01","");
+        formBatchProperties.select(true, false,"29series01","");
         inventoryCardPage.verifyData("productInfo", "00029 29Series01 Стол29");
         inventoryCardPage.selectData("quality", "Кондиция");
         inventoryCardPage.inputData("qty","10");
@@ -565,7 +562,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     public void checkingFreeAmountAfterProcessingInventoryTest() throws Exception {
         steps.loginAsAdmin();
         allTasksPage.selectFindRestsMenu();
-        findRestsPage.andrDriver("product");
         //Стол21
         findRestsPage.inputData("product", "00002102");
         findRestsPage.verifyData("productInfo", "00021 Стол21");
@@ -634,7 +630,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Moving");
         allTasksPage.getWorkTypeTasksQuantity().click();
-        relocationCardPage.andrDriver("source");
     //Стол21
         relocationCardPage.verifyData("productInfo", "00021 Стол21 B.1.1.1.1 ➡ B.1.1.2.1 Quantity 10 уп. (5)");
         relocationCardPage.inputData("source", "B.1.1.1.1");
@@ -754,7 +749,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
     @Test (priority = 6, dependsOnMethods = "processingRelocationTaskTest")
     public void processingRelocationTSDTaskTest() throws Exception {
         steps.loginAsAdmin();
-        relocationTSDCardPage.andrDriver("rightMenu");
         relocationTSDCardPage.clickButton("rightMenu");
         relocationTSDCardPage.clickButton("relocation");
     //Стол21
@@ -892,7 +886,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Selection");
         allTasksPage.getWorkTypeTasksQuantity().click();
-        selectionCardPage.andrDriver("source");
     //Стол21
         selectionCardPage.verifyData("productInfo", "00021 Стол21 B.1.1.3.1 ➡ KT1.01.01.01.01 Quantity 10 уп. (5)");
         selectionCardPage.inputData("source", "B.1.1.3.1");
@@ -987,7 +980,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Контейнер");
         allTasksPage.getWorkTypeTasksQuantity().click();
-        containerCardPage.andrDriver("containerInfo");
     //Стол21
         containerCardPage.verifyData("containerInfo", "CON/OUT121 ➡ KT1.01.01.01.01");
         containerCardPage.inputData("container", "OUT121");
@@ -1045,7 +1037,6 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         steps.loginAsAdmin();
         allTasksPage.checkWorkType("Control");
         allTasksPage.getWorkTypeTasksQuantity().click();
-        controlCardPage.andrDriver("source");
     //Стол21
         controlCardPage.inputData("source", "KT1.01.01.01.01");
         controlCardPage.inputData("container","OUT121");
@@ -1077,9 +1068,9 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getControlledQtyString1().shouldHave(text("0"));
         controlCardPage.getQtyString1().shouldHave(text("5.5"));
         controlCardPage.inputData("product","2110023055000");
-        controlCardPage.inputBatchProperties(false, true, "select","","30.12.2022");
+        formBatchProperties.select(false,true,"","30.12.2022");
         controlCardPage.inputData("product","2110023045000");
-        controlCardPage.inputBatchProperties(false, true, "select","","31.12.2022");
+        formBatchProperties.select(false,true,"","31.12.2022");
         controlCardPage.clickButton("commit");
     //Стол24
         controlCardPage.inputData("source", "KT1.01.01.01.01");
@@ -1090,7 +1081,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getControlledQtyString1().shouldHave(text("0"));
         controlCardPage.getQtyString1().shouldHave(text("2"));
         controlCardPage.inputData("product","00024");
-        controlCardPage.inputBatchProperties(true, false,"select","24Series01","");
+        formBatchProperties.select(true, false,"24Series01","");
         controlCardPage.inputData("qty","2");
     //Стол24
         controlCardPage.verifyData("productInfo", "00024 Стол24");
@@ -1099,7 +1090,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getControlledQtyString1().shouldHave(text("0"));
         controlCardPage.getQtyString1().shouldHave(text("8"));
         controlCardPage.inputData("product","00024");
-        controlCardPage.inputBatchProperties(true, false,"select","24Series02","");
+        formBatchProperties.select(true, false,"24Series02","");
         controlCardPage.inputData("qty","8");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
@@ -1123,7 +1114,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","00026");
-        controlCardPage.inputBatchProperties(true, false,"select","26series01","");
+        formBatchProperties.select(true, false,"26series01","");
         controlCardPage.inputData("qty","10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
@@ -1136,7 +1127,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","00027");
-        controlCardPage.inputBatchProperties(false, true, "select","","31.12.2022");
+        formBatchProperties.select(false,true,"","31.12.2022");
         controlCardPage.inputData("qty","10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
@@ -1160,7 +1151,7 @@ public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","00029");
-        controlCardPage.inputBatchProperties(true, false,"select","29series01","");
+        formBatchProperties.select(true, false,"29series01","");
         controlCardPage.inputData("qty","10");
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
