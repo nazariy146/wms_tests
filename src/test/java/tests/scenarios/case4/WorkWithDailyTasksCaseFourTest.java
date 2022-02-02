@@ -918,16 +918,16 @@ public class WorkWithDailyTasksCaseFourTest extends BaseMobileClass {
         allTasksPage.getWorkTypeTasksQuantity().click();
 
         packagingCardPage.setCellOrContainerInput("KT1.01.01.01.01");
-        packagingCardPage.checkCellProductInfoInRow2(1, "OUT131", "10", "0.1", "0.1", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(2, "OUT132", "10", "0.1", "0.1", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(3, "OUT133", "10", "0.1", "0.1", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(4, "OUT134", "10", "0.1", "0.1", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(5, "OUT135", "10", "0.1", "0.1", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(6, "OUT136", "10", "0.1", "0.1", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(7, "OUT137", "10", "0.1", "0.1", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(8, "OUT138", "10", "0.1", "0.1", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(1, "OUT131", "10", "0.1", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(2, "OUT132", "10", "0.1", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(3, "OUT133", "10", "0.1", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(4, "OUT134", "10", "0.1", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(5, "OUT135", "10", "0.1", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(6, "OUT136", "10", "0.1", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(7, "OUT137", "10", "0.1", "10", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(8, "OUT138", "10", "0.1", "10", "1", "1");
         packagingCardPage.checkCellProductInfoInRow2(9, "OUT139", "10", "1", "1", "1", "1");
-        packagingCardPage.checkCellProductInfoInRow2(10, "OUT140", "10", "0.1", "0.1", "1", "1");
+        packagingCardPage.checkCellProductInfoInRow2(10, "OUT140", "10", "0.1", "10", "1", "1");
         packagingCardPage.clickCreateCargoButton();
         getMessageModalDialog().shouldHave(text("Cargo slots will be created. Continue?"));
         clickSetOkYesButton();

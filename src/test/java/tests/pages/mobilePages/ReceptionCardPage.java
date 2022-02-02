@@ -209,8 +209,6 @@ public class ReceptionCardPage {
         steps.driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
-
-
     public void verifyData(String field, String source) {
         SelenideElement ID = getIdField(field);
         ID.shouldBe(visible, Duration.ofSeconds(25));

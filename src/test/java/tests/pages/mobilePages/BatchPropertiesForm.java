@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class FormBatchProperties {
+public class BatchPropertiesForm {
 
     Steps steps = new Steps();
 
