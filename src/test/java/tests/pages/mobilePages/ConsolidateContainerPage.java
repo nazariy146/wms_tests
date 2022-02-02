@@ -23,9 +23,6 @@ public class ConsolidateContainerPage {
     public SelenideElement getDescriptionInfo(int row) {
         return $(By.xpath("//android.view.ViewGroup["+(row+1)+"]")).find((By.id("com.abmcloud:id/textViewDescription")));
     }
-    private SelenideElement getScrollableTable() {
-        return $(By.id("com.abmcloud:id/listViewSource"));
-    }
     public SelenideElement getReceiverInput() {
         return $(By.id("com.abmcloud:id/editTextInContainer"));
     }
@@ -38,11 +35,6 @@ public class ConsolidateContainerPage {
     public void clickConsolidateButton() {
         $(By.id("com.abmcloud:id/buttonConsolidateContainer")).click();
     }
-    public void checkAllProductsInfoAndQty(int row, String source, String description) {
-        //Actions.hideKeyboard();
-        getSourceInfo(row).shouldHave(text(source));
-        getDescriptionInfo(row).shouldHave(text(description));
-    }
     public void setContainerSeveralTimes(String ... container) {
         AndroidDriver driver = (AndroidDriver) getContainerInput().getWrappedDriver();
         for (String s : container) {
@@ -50,6 +42,14 @@ public class ConsolidateContainerPage {
             getContainerInput().val(s);
             driver.pressKey(new KeyEvent(AndroidKey.ENTER));
         }
+    }
+    public void checkAllProductsInfoAndQty(int row, String source, String description) {
+        //Actions.hideKeyboard();
+        getSourceInfo(row).shouldHave(text(source));
+        getDescriptionInfo(row).shouldHave(text(description));
+    }
+    private SelenideElement getScrollableTable() {
+        return $(By.id("com.abmcloud:id/listViewSource"));
     }
     //MNV need to refactor
 }

@@ -15,12 +15,6 @@ import static com.codeborne.selenide.Selenide.$;
 public class RelocationCardPage {
     Steps steps = new Steps();
 
-    AndroidDriver driver;
-
-    public void andrDriver(String field) {
-        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
-    }
-
     public static SelenideElement getIdField(String Field) {
         if (Field == "source"){
             return $(By.id("com.abmcloud:id/source_edit"));
@@ -70,5 +64,13 @@ public class RelocationCardPage {
     public void clickButton(String button) {
         getIdField(button).click();
     }
+
+    //MNV need to dell
+/*    AndroidDriver driver;
+
+    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
+    }*/
+    //MNV need to dell
 
 }

@@ -15,12 +15,6 @@ import static com.codeborne.selenide.Selenide.$$;
 public class RelocationTSDCardPage {
     Steps steps = new Steps();
 
-    AndroidDriver driver;
-
-    public void andrDriver(String field) {
-        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
-    }
-
     public static SelenideElement getIdField(String Field) {
         if (Field == "rightMenu"){
             return $(By.id("com.abmcloud:id/action_more_menu"));
@@ -55,8 +49,14 @@ public class RelocationTSDCardPage {
         else if (Field == "modalDialogOK"){
             return $(By.id("android:id/button1"));
         }
-        else if (Field == ""){
-            return $(By.id(""));
+        else if (Field == "dataPacking"){ //radl combobox упаковки
+            return $(By.id("com.abmcloud:id/tv_packing"));
+        }
+        else if (Field == "packing42-5-4-2-1"){ // выбор из списка упаковки 42-5-4-2-1 для Стола42
+            return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[1]"));
+        }
+        else if (Field == "packing42-5-4-3-1"){ // выбор из списка упаковки 42-5-4-3-1 для Стола42
+            return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[2]"));
         }
         return null;
     }
@@ -95,25 +95,10 @@ public class RelocationTSDCardPage {
         }
 
     //MNV need to dell
-/*        public void inputBatchProperties(boolean seriesOn, boolean shelfLifeOn, String action, String series, String shelfLife) {
-        verifyData("modalDialogTitle", "Batch properties");
-        if (action == "input") {
-            if (seriesOn == true) {
-                inputData("newSeries", series);
-            }
-            if (shelfLifeOn == true) {
-                inputData("newShelfLife", shelfLife);
-            }
-        }
-        if (action == "select") {
-            if (seriesOn == true) {
-                $$(By.id("com.abmcloud:id/tv_series")).find(exactText(series)).click();
-            }
-            if (shelfLifeOn == true) {
-                $$(By.id("com.abmcloud:id/tv_shelf_life")).find(exactText(shelfLife)).click();
-            }
-        }
-        clickButton("modalDialogOK");
+/*    AndroidDriver driver;
+
+    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
     }*/
     //MNV need to dell
 }

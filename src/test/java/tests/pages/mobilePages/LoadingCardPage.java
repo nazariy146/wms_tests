@@ -71,8 +71,5 @@ public class LoadingCardPage {
     //MNV need to refactor
 
     //MNV need to dell
-//    public void clickCommitAllCargosButton() {
-//        $(By.id("com.abmcloud:id/buttonCommitAllCargos")).click();
-//    }
     //MNV need to dell
 }

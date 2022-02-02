@@ -14,12 +14,6 @@ import static com.codeborne.selenide.Selenide.$$;
 public class InventoryCardPage {
     Steps steps = new Steps();
 
-    AndroidDriver driver;
-
-    public void andrDriver(String field) {
-        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
-    }
-
     public static SelenideElement getIdField(String Field) {
         if (Field == "source"){
             return $(By.id("com.abmcloud:id/textBoxLocationInv"));
@@ -47,6 +41,21 @@ public class InventoryCardPage {
         }
         else if (Field == "quality"){
             return $(By.id("android:id/text1"));
+        }
+        else if (Field == "AddInv"){    //radl кнопка +
+            return $(By.id("com.abmcloud:id/buttonAddInv"));
+        }
+        else if (Field == "DelInv"){    //radl кнопка -
+            return $(By.id("com.abmcloud:id/buttonDeleteInv"));
+        }
+        else if (Field == "ChoicePacking"){ // вызов списка доступных упаковок
+            return $(By.id("com.abmcloud:id/tv_packing"));
+        }
+        else if (Field == "Packing42-5-4-2-1"){ //eleo //eleo выбор из списка упаковки 42-5-4-2-1
+            return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.ListView/android.widget.CheckedTextView[2]"));
+        }
+        else if (Field == "Choice43-5-4-3-1"){  //eleo выбор упаковки для удаления
+            return $(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[3]/androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView[1]/android.widget.LinearLayout/android.widget.TextView"));
         }
         else if (Field == "modalDialogMessage"){
             return $(By.id("android:id/message"));
@@ -103,25 +112,9 @@ public class InventoryCardPage {
     //MNV need to refactor
 
     //MNV need to dell
-/*    public void inputBatchProperties(boolean seriesOn, boolean shelfLifeOn, String action, String series, String shelfLife) {
-        verifyData("modalDialogTitle", "Batch properties");
-        if (action == "input") {
-            if (seriesOn == true) {
-                inputData("newSeries", series);
-            }
-            if (shelfLifeOn == true) {
-                inputData("newShelfLife", shelfLife);
-            }
-        }
-        if (action == "select") {
-            if (seriesOn == true) {
-                $$(By.id("com.abmcloud:id/tv_series")).find(exactText(series)).click();
-            }
-            if (shelfLifeOn == true) {
-                $$(By.id("com.abmcloud:id/tv_shelf_life")).find(exactText(shelfLife)).click();
-            }
-        }
-        clickButton("modalDialogOK");
+//    AndroidDriver driver;
+/*    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
     }*/
     //MNV need to dell
 }

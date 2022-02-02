@@ -14,12 +14,6 @@ import static com.codeborne.selenide.Selenide.$;
 public class SelectionCardPage {
     Steps steps = new Steps();
 
-    AndroidDriver driver;
-
-    public void andrDriver(String field) {
-        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
-    }
-
     public static SelenideElement getIdField(String Field) {
         if (Field == "productInfo"){
             return $(By.id("com.abmcloud:id/textViewDescription"));
@@ -131,55 +125,12 @@ public class SelectionCardPage {
     }
 
     //MNV need to refactor
-    public SelenideElement getNameSerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[1]"));
-    }
-    public SelenideElement getQtySerialNumber(int string) {
-        return $(By.xpath("//android.view.ViewGroup["+string+"]/android.widget.LinearLayout/android.widget.EditText[3]"));
-    }
     public SelenideElement getSerialNumberInput() {
         return $(By.id("com.abmcloud:id/editTextSerialNumber"));
     }
-    public SelenideElement getCommitSerialNumberButton() {
-        return $(By.id("com.abmcloud:id/buttonSNCommit"));
-    }
-    //MNV need to refactor
-
-    //MNV need to dell
-    public void verifyDataSN() {
-        getNameSerialNumber(2).shouldHave(text("serialnumber90"));
-        getQtySerialNumber(2).shouldHave(text("1"));
-        getNameSerialNumber(3).shouldHave(text("serialnumber91"));
-        getQtySerialNumber(3).shouldHave(text("1"));
-        getNameSerialNumber(4).shouldHave(text("serialnumber92"));
-        getQtySerialNumber(4).shouldHave(text("1"));
-        getNameSerialNumber(5).shouldHave(text("serialnumber93"));
-        getQtySerialNumber(5).shouldHave(text("1"));
-        getNameSerialNumber(6).shouldHave(text("serialnumber94"));
-        getQtySerialNumber(6).shouldHave(text("1"));
-        getNameSerialNumber(7).shouldHave(text("serialnumber95"));
-        getQtySerialNumber(7).shouldHave(text("1"));
-        getNameSerialNumber(8).shouldHave(text("serialnumber96"));
-        getQtySerialNumber(8).shouldHave(text("1"));
-        getNameSerialNumber(9).shouldHave(text("serialnumber97"));
-        getQtySerialNumber(9).shouldHave(text("1"));
-        getNameSerialNumber(10).shouldHave(text("serialnumber98"));
-        getQtySerialNumber(10).shouldHave(text("1"));
-        getNameSerialNumber(11).shouldHave(text("serialnumber99"));
-        getQtySerialNumber(11).shouldHave(text("1"));
-    }
-    public void mnvVerifyDataSN(int kolichestvo, String SN) {
-        getNameSerialNumber(2).shouldHave(text("serialnumber90"));
-        for (int i = 0; i < kolichestvo; i++) {
-            int stroka = i+2;
-            String qty = "1";
-            SelenideElement ID  = getQtySerialNumber(stroka);
-            ID.shouldHave(text(qty));
-
-        }
-    }
-    public void clickCommitSerialNumberButton() {
-        getCommitSerialNumberButton().click();
+    public void checkSerialNumberInputText(String text) {
+        String serialNumberText = getSerialNumberInput().getText();
+        Assert.assertEquals(serialNumberText, text, "SerialNumberInputText is not empty");
     }
     public void checkSerialNumberQtyFactInEveryRow(String qtyFact, int qtyOfQtyFactsRows) {
         for(int i = 0; i < qtyOfQtyFactsRows; i++) {
@@ -187,29 +138,19 @@ public class SelectionCardPage {
             Assert.assertEquals(qtyFact, text);
         }
     }
-    public void checkSerialNumberInputText(String text) {
-        String serialNumberText = getSerialNumberInput().getText();
-        Assert.assertEquals(serialNumberText, text, "SerialNumberInputText is not empty");
-    }
-    public void setSerialNumberInputSeveralTimes(String serialNumber, int numberOfReps) {
-        for (int i = 0; i < numberOfReps; i++) {
-            getSerialNumberInput().click();
-            getSerialNumberInput().val(serialNumber);
-            driver.pressKey(new KeyEvent(AndroidKey.ENTER));
-        }
-    }
+    //MNV need to refactor
+
+    //MNV need to dell
     public void setSerialNumberInputSeveralTimes(String ... serialNumbers) {
         for (String s : serialNumbers) {
             getSerialNumberInput().click();
             getSerialNumberInput().val(s);
-            driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+            steps.driver.pressKey(new KeyEvent(AndroidKey.ENTER));
         }
     }
-    public SelenideElement getSerialNumberProductInfo() {
-        return $(By.id("com.abmcloud:id/textViewInfo"));
-    }
-    public SelenideElement getCancelSerialNumberButton() {
-        return $(By.id("com.abmcloud:id/buttonSNCancel"));
-    }
+/*    AndroidDriver driver;
+    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
+    }*/
     //MNV need to dell
 }

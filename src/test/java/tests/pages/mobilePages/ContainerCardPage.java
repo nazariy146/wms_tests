@@ -13,8 +13,6 @@ import static com.codeborne.selenide.Selenide.$;
 public class ContainerCardPage {
     Steps steps = new Steps();
 
-    AndroidDriver driver;
-
     public static SelenideElement getIdField(String Field) {
         if (Field == "container"){
             return $(By.id("com.abmcloud:id/editTextBoxBarcodeContainerMoving"));
@@ -29,10 +27,6 @@ public class ContainerCardPage {
             return $(By.id("com.abmcloud:id/buttonCommitContainerMoving"));
         }
         return null;
-    }
-
-    public void andrDriver(String field) {
-        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
     }
 
     public void inputData(String field, String source) {
@@ -51,5 +45,11 @@ public class ContainerCardPage {
         SelenideElement ID = getIdField(field);
         ID.click();
     }
+    //MNV need to dell
+/*    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
+    }*/
+/*    AndroidDriver driver;*/
+    //MNV need to dell
 
 }

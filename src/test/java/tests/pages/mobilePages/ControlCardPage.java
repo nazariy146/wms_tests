@@ -21,12 +21,6 @@ import static java.time.Duration.ofMillis;
 public class ControlCardPage {
     Steps steps = new Steps();
 
-    AndroidDriver driver;
-
-    public void andrDriver(String field) {
-        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
-    }
-
     public static SelenideElement getIdField(String Field) {
         if (Field == "source"){
             return $(By.id("com.abmcloud:id/editTextControlCell"));
@@ -156,12 +150,6 @@ public class ControlCardPage {
     public SelenideElement getQty(int row) {
         return $(By.xpath("//androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView["+row+"]")).find((By.id("com.abmcloud:id/tv_qty")));
     }
-    private SelenideElement getScrollableTable() {
-        return $(By.id("com.abmcloud:id/listViewControlContainer"));
-    }
-    public SelenideElement getSerialNumberInput() {
-        return $(By.id("com.abmcloud:id/editTextSerialNumber"));
-    }
     public SelenideElement getControlledQtyString1() {
         return $(By.xpath("//androidx.cardview.widget.CardView[1]/android.view.ViewGroup/android.widget.TextView[3]"));
     }
@@ -190,51 +178,13 @@ public class ControlCardPage {
     //MNV need to refactor
 
     //MNV need to dell
-    public void checkAllProductsInfoAndQty(int row, String qty, String productInfo) {
-        Actions.hideKeyboard();
-        if(!getQty(row).isDisplayed()) {
-            scrollElement(getScrollableTable());
-        }
-        if (row > 7) {
-            $(By.xpath("//androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView["+(row-2)+"]")).find((By.id("com.abmcloud:id/tv_good"))).shouldHave(text(productInfo));
-            getQty(row-2).shouldHave(text(qty));
-            getControlledQty(row-2).shouldNotBe(visible);
-        }
-        else {
-            $(By.xpath("//androidx.recyclerview.widget.RecyclerView/androidx.cardview.widget.CardView["+row+"]")).find((By.id("com.abmcloud:id/tv_good"))).shouldHave(text(productInfo));
-            getQty(row).shouldHave(text(qty));
-            getControlledQty(row).shouldNotBe(visible);
-        }
-    }
-    public void checkSerialNumberQtyFactInEveryRow(String qtyFact, int qtyOfQtyFactsRows) {
-        for(int i = 0; i < qtyOfQtyFactsRows; i++) {
-            String text = $(By.xpath ("//android.widget.EditText[3][@bounds='[995,"+(700+i*95)+"][1440,"+(791+i*95)+"]']")).getText();
-            Assert.assertEquals(qtyFact, text);
-        }
-    }
-    public void checkSerialNumberInputText(String text) {
-        String serialNumberText = getSerialNumberInput().getText();
-        Assert.assertEquals(serialNumberText, text, "SerialNumberInputText is not empty");
-    }
-/*    public void inputBatchProperties(boolean seriesOn, boolean shelfLifeOn, String action, String series, String shelfLife) {
-        verifyData("modalDialogTitle", "Batch properties");
-        if (action == "input") {
-            if (seriesOn == true) {
-                inputData("newSeries", series);
-            }
-            if (shelfLifeOn == true) {
-                inputData("newShelfLife", shelfLife);
-            }
-        }
-        if (action == "select") {
-            if (seriesOn == true) {
-                $$(By.id("com.abmcloud:id/tv_series")).find(exactText(series)).click();
-            }
-            if (shelfLifeOn == true) {
-                $$(By.id("com.abmcloud:id/tv_shelf_life")).find(exactText(shelfLife)).click();
-            }
-        }
+/*    AndroidDriver driver;
 
-        clickButton("modalDialogOK");
+    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
     }*/
+/*    private SelenideElement getScrollableTable() {
+        return $(By.id("com.abmcloud:id/listViewControlContainer"));
+    }*/
+    //MNV need to dell
 }

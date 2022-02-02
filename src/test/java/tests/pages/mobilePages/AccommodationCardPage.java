@@ -14,8 +14,6 @@ import static com.codeborne.selenide.Selenide.$;
 public class AccommodationCardPage {
     Steps steps = new Steps();
 
-    AndroidDriver driver;
-
     public static SelenideElement getIdField(String Field) {
         if (Field == "source"){
             return $(By.id("com.abmcloud:id/source_edit"));
@@ -51,10 +49,6 @@ public class AccommodationCardPage {
         return null;
     }
 
-    public void andrDriver(String field) {
-        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
-    }
-
     public void inputData(String field, String source) {
         SelenideElement ID = AccommodationCardPage.getIdField(field);
         ID.click();
@@ -73,10 +67,13 @@ public class AccommodationCardPage {
     }
 
     //MNV need to refactor
-    public void checkAmountAndPackaging(String amount, String packaging) {
-        $(By.id("android:id/text1")).shouldHave(exactText(amount));
-        $(By.id("com.abmcloud:id/textViewLabelHint")).shouldHave(exactText(packaging));
-    }
     //MNV need to refactor
+
+    //MNV need to dell
+//    AndroidDriver driver;
+    /*    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
+    }*/
+    //MNV need to dell
 
 }
