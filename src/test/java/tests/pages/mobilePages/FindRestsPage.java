@@ -15,8 +15,6 @@ import static com.codeborne.selenide.Selenide.$;
 public class FindRestsPage {
     Steps steps = new Steps();
 
-    AndroidDriver driver;
-
     public static SelenideElement getIdField(String Field) {
         if (Field == "product"){
             return $(By.id("com.abmcloud:id/barcode"));
@@ -68,10 +66,6 @@ public class FindRestsPage {
         return null;
     }
 
-    public void andrDriver(String field) {
-        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
-    }
-
     public void inputData(String field, String source) {
         SelenideElement ID = getIdField(field);
         ID.click();
@@ -83,6 +77,13 @@ public class FindRestsPage {
         SelenideElement ID = getIdField(field);
         ID.shouldHave(text(source));
     }
+
+    //MNV need to dell
+//    AndroidDriver driver;
+/*    public void andrDriver(String field) {
+        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
+    }*/
+    //MNV need to dell
 }
 
 

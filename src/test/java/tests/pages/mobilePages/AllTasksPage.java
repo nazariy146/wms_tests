@@ -30,23 +30,9 @@ public class AllTasksPage {
             getWorkType().shouldHave(exactText(taskTitle));
     }
 
-    public void checkWorkTypesQty(int qty) throws Exception {
-        $(By.id("com.abmcloud:id/top_app_bar")).shouldBe(visible);
-        if ($$(By.id("com.abmcloud:id/card_view")).size() != qty) {
-            waitUntilPass(WAIT_TASK_TIMEOUT, () -> {
-                refreshPage($(By.id("com.abmcloud:id/top_app_bar")));
-                assertEquals($$(By.id("com.abmcloud:id/card_view")).size(), qty, "Expected quantity of tasks doesn't match actual");
-            });
-        }
-    }
-
     public SelenideElement getWorkTypeTasksQuantity() {
         return $(By.id("com.abmcloud:id/text_qty"));
     }
-
-
-
-
 
     public SelenideElement getRelaxMessage() {
         return $(By.id("com.abmcloud:id/relax_view"));
@@ -62,31 +48,40 @@ public class AllTasksPage {
         $(By.id("com.abmcloud:id/design_navigation_view")).find(byId("com.abmcloud:id/find_rests")).click();
     }
 
-    public void selectelocationMenu() {
-        clickMenuIcon();
-        $(By.id("com.abmcloud:id/design_navigation_view")).shouldBe(visible);
-        $(By.id("com.abmcloud:id/design_navigation_view")).find(byId("com.abmcloud:id/find_rests")).click();
-    }
-
     public void selectConsolidateContainerMenu() {
         clickMenuIcon();
         $(By.id("com.abmcloud:id/design_navigation_view")).shouldBe(visible);
         $(By.id("com.abmcloud:id/design_navigation_view")).find(byId("com.abmcloud:id/consolidate_container")).click();
     }
 
+    public SelenideElement getStringTasks(int row) {
+        return $(By.xpath("//androidx.cardview.widget.CardView[" + row + "]")).find(By.id("com.abmcloud:id/text_qty"));
+
+    }
+    //MNV need to refactor
+    public void checkWorkTypesQty(int qty) throws Exception {
+        $(By.id("com.abmcloud:id/top_app_bar")).shouldBe(visible);
+        if ($$(By.id("com.abmcloud:id/card_view")).size() != qty) {
+            waitUntilPass(WAIT_TASK_TIMEOUT, () -> {
+                refreshPage($(By.id("com.abmcloud:id/top_app_bar")));
+                assertEquals($$(By.id("com.abmcloud:id/card_view")).size(), qty, "Expected quantity of tasks doesn't match actual");
+            });
+        }
+    }
     public void selectRelocation() {
         clickMenuIcon();
         $(By.id("com.abmcloud:id/design_navigation_view")).shouldBe(visible);
         $(By.id("com.abmcloud:id/design_navigation_view")).find(byId("com.abmcloud:id/relocation")).click();
     }
-
-    public SelenideElement getStringTasks(int row) {
-        return $(By.xpath("//androidx.cardview.widget.CardView[" + row + "]")).find(By.id("com.abmcloud:id/text_qty"));
-
+    public void selectelocationMenu() {
+        clickMenuIcon();
+        $(By.id("com.abmcloud:id/design_navigation_view")).shouldBe(visible);
+        $(By.id("com.abmcloud:id/design_navigation_view")).find(byId("com.abmcloud:id/find_rests")).click();
     }
-}
-
-    /*public void searchTasks (String nameTasks) throws Exception {
+    public void clickInventoryTypeTaskQuantity() {
+        $(By.id("com.abmcloud:id/text_qty")).click();
+    }
+/*    public void searchTasks (String nameTasks) throws Exception {
         switch (nameTasks) {
             case 1:
                 getStringTasks(1, nameTasks);
@@ -117,14 +112,12 @@ public class AllTasksPage {
                 $(By.xpath("//androidx.cardview.widget.CardView[7]")).find(By.id("com.abmcloud:id/text_qty")).click();
                 break;
         }
-    }
+    }*/
 
-//       public void clickInventoryTypeTaskQuantity() {
+    //       public void clickInventoryTypeTaskQuantity() {
 //        $(By.xpath("//androidx.cardview.widget.CardView[2]")).find(By.id("com.abmcloud:id/text_qty")).click();
 //    }
-    public void clickInventoryTypeTaskQuantity() {
-        $(By.id("com.abmcloud:id/text_qty")).click();
-    }
+    //MNV need to refactor
+}
 
 
-}*/
