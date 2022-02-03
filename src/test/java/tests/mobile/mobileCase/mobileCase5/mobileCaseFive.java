@@ -1,15 +1,15 @@
-package tests.mobile.mobileCase.case5;
+package tests.mobile.mobileCase.mobileCase5;
 
 import org.testng.annotations.Test;
 import tests.mobile.mobileForm.mobileFormBatchProperties;
 import tests.mobile.mobileUtils.BaseMobileClass;
-import tests.mobile.mobilePages.*;
+import tests.mobile.mobilePagesRefactor.*;
 import tests.mobile.mobileSteps.mobileSteps;
 import java.time.Duration;
 import static com.codeborne.selenide.Condition.*;
 import static tests.mobile.mobileUtils.ModalDialogs.*;
 
-public class WorkWithDailyTasksCaseFiveTest extends BaseMobileClass{
+public class mobileCaseFive extends BaseMobileClass{
     mobileSteps mobileSteps = new mobileSteps();
     AllTasksPage allTasksPage = new AllTasksPage();
     ReceptionCardPage receptionCardPage = new ReceptionCardPage();

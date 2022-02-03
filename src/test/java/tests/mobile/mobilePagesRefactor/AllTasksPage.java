@@ -1,4 +1,4 @@
-package tests.mobile.mobilePages;
+package tests.mobile.mobilePagesRefactor;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;

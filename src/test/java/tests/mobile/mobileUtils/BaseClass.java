@@ -5,7 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import tests.web.webPages.DashboardPage;
+import tests.web.webPages.WebDashboardPage;
 
 import java.time.Duration;
 
@@ -46,12 +46,12 @@ public class BaseClass {
             return $("#splash");
         }
 
-        public DashboardPage loginAsUser() {
+        public WebDashboardPage loginAsUser() {
             getPasswordInput().val(PASSWORD);
             getUserInput().shouldBe(visible, Duration.ofSeconds(10)).val(USERNAME);
             clickOkLoginButton();
             getSplashModal().shouldBe(not(visible), Duration.ofSeconds(10));
-            return new DashboardPage();
+            return new WebDashboardPage();
         }
 
         private SelenideElement getUserInput() {

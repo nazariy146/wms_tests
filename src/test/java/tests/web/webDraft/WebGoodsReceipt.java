@@ -1,19 +1,19 @@
 package tests.web.webDraft;
 
 import tests.mobile.mobileUtils.BaseClass;
-import tests.web.webPages.DashboardPage;
+import tests.web.webPages.WebDashboardPage;
 import tests.web.webPages.WarehouseOperatorPage;
 
 import static com.codeborne.selenide.Condition.text;
 
-public class GoodsReceiptTest extends BaseClass {
+public class WebGoodsReceipt extends BaseClass {
 
     public void createGoodsReceiptDocumentTest() {
         WebLoginPage webLoginPage = new WebLoginPage();
         webLoginPage.getLoginModal().shouldHave(text(WebLoginPage.MODAL_DIALOG_TEXT));
-        DashboardPage dashboardPage = webLoginPage.loginAsUser();
+        WebDashboardPage webDashboardPage = webLoginPage.loginAsUser();
 
-        WarehouseOperatorPage warehouseOperatorPage = dashboardPage.clickWHOperatorTab();
+        WarehouseOperatorPage warehouseOperatorPage = webDashboardPage.clickWHOperatorTab();
         warehouseOperatorPage.clickGoodsReceptionLink();
         warehouseOperatorPage.clickCreateGoodsMovementDocumentButton();
         warehouseOperatorPage.selectDocumentType("Приход");

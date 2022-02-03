@@ -1,4 +1,4 @@
-package tests.mobile.mobilePages;
+package tests.mobile.mobilePagesRefactor;
 
 import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
@@ -26,10 +26,10 @@ public class FindRestsPage {
             return $(By.id("com.abmcloud:id/textViewRecord_count"));
         }
         else if (Field == "seriesInfo"){
-            return $(By.id("com.abmcloud:id/textViewSeries"));//case1,case2,case4
+            return $(By.id("com.abmcloud:id/textViewSeries"));//mobileCase1,case2,case4
         }
         else if (Field == "shelfLifeInfo"){
-            return $(By.id("com.abmcloud:id/textViewShelfLife"));//case1,case2,case4
+            return $(By.id("com.abmcloud:id/textViewShelfLife"));//mobileCase1,case2,case4
         }
         else if (Field == "shelfLifeInfoString1"){
             //return $(By.id("com.abmcloud:id/textViewShelfLife"));

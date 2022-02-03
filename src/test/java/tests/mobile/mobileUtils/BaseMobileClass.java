@@ -9,8 +9,8 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeMethod;
-import tests.mobile.mobilePages.LoginPage;
-import tests.mobile.mobilePages.SettingsPage;
+import tests.mobile.mobilePagesRefactor.LoginPage;
+import tests.mobile.mobilePagesRefactor.SettingsPage;
 
 import java.io.File;
 import java.net.MalformedURLException;

@@ -1,4 +1,4 @@
 package tests.web.webUtils;
 
-public class WebBaseClass {
+public class WebUtils {
 }

@@ -6,7 +6,7 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class DashboardPage {
+public class WebDashboardPage {
     public static final long DASHBOARD_TIMEOUT = Duration.ofSeconds(10).toMillis();
 
     public static final String DASHBOARD_MAIN_TITLE_TEXT = "СЕВА КОПИЯ --ЧМ-- СЕВА КОПИЯ / Администратор";

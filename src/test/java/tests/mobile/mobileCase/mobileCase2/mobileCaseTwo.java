@@ -1,9 +1,9 @@
-package tests.mobile.mobileCase.case2;
+package tests.mobile.mobileCase.mobileCase2;
 
 import org.testng.annotations.Test;
 import tests.mobile.mobileForm.mobileFormBatchProperties;
 import tests.mobile.mobileUtils.BaseMobileClass;
-import tests.mobile.mobilePages.*;
+import tests.mobile.mobilePagesRefactor.*;
 import tests.mobile.mobileSteps.mobileSteps;
 
 import java.time.Duration;
@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.text;
 import static tests.mobile.mobileUtils.ModalDialogs.*;
 
-public class WorkWithDailyTasksCaseTwoTest extends BaseMobileClass {
+public class mobileCaseTwo extends BaseMobileClass {
     mobileSteps mobileSteps = new mobileSteps();
     AllTasksPage allTasksPage = new AllTasksPage();
     ReceptionCardPage receptionCardPage = new ReceptionCardPage();

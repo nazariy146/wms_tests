@@ -1,16 +1,16 @@
-package tests.mobile.mobileCase.case3;
+package tests.mobile.mobileCase.mobileCase3;
 
 import org.testng.annotations.Test;
 import tests.mobile.mobileForm.mobileFormBatchProperties;
 import tests.mobile.mobileUtils.BaseMobileClass;
-import tests.mobile.mobilePages.*;
+import tests.mobile.mobilePagesRefactor.*;
 import tests.mobile.mobileSteps.mobileSteps;
 
 import static com.codeborne.selenide.Condition.*;
 import static tests.mobile.mobileUtils.ModalDialogs.*;
 import static tests.mobile.mobileUtils.ModalDialogs.clickSetOkYesButton;
 
-public class WorkWithDailyTasksCaseThreeTest extends BaseMobileClass {
+public class mobileCaseThree extends BaseMobileClass {
 
     mobileSteps mobileSteps = new mobileSteps();
     AllTasksPage allTasksPage = new AllTasksPage();
