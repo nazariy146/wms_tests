@@ -3,7 +3,7 @@ package tests.mobile.mobileCase.mobileCase4;
 import org.testng.annotations.Test;
 import tests.mobile.mobileUtils.BaseMobileClass;
 import tests.mobile.mobilePagesRefactor.*;
-import tests.mobile.mobileSteps.mobileSteps;
+import tests.mobile.mobileSteps.MobileSteps;
 
 import static com.codeborne.selenide.Condition.*;
 import static tests.mobile.mobileUtils.ModalDialogs.*;
@@ -11,7 +11,7 @@ import static tests.mobile.mobileUtils.ModalDialogs.clickSetOkYesButton;
 
 public class mobileCaseFour extends BaseMobileClass {
 
-    mobileSteps mobileSteps = new mobileSteps();
+    MobileSteps mobileSteps = new MobileSteps();
     AllTasksPage allTasksPage = new AllTasksPage();
     ReceptionCardPage receptionCardPage = new ReceptionCardPage();
     ReceptionCardPage setPalletWeightreceptionCardPage = new ReceptionCardPage();

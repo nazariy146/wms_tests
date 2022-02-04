@@ -1,10 +1,11 @@
 package tests.mobile.mobileCase.mobileCase1;
 
 import org.testng.annotations.Test;
-import tests.mobile.mobileForm.mobileFormBatchProperties;
+import tests.mobile.mobileForm.MobileFormBatchProperties;
+import tests.mobile.mobileForm.*;
 import tests.mobile.mobileUtils.BaseMobileClass;
 import tests.mobile.mobilePagesRefactor.*;
-import tests.mobile.mobileSteps.mobileSteps;
+import tests.mobile.mobileSteps.MobileSteps;
 
 import java.time.Duration;
 
@@ -12,7 +13,7 @@ import static com.codeborne.selenide.Condition.*;
 import static tests.mobile.mobileUtils.ModalDialogs.*;
 
 public class mobileCaseOne extends BaseMobileClass {
-    mobileSteps mobileSteps = new mobileSteps();
+    MobileSteps mobileSteps = new MobileSteps();
     AllTasksPage allTasksPage = new AllTasksPage();
     ReceptionCardPage receptionCardPage = new ReceptionCardPage();
     AccommodationCardPage accommodationCardPage = new AccommodationCardPage();
@@ -25,7 +26,8 @@ public class mobileCaseOne extends BaseMobileClass {
     InventoryCardPage inventoryCardPage = new InventoryCardPage();
     RelocationCardPage relocationCardPage = new RelocationCardPage();
     RelocationTSDCardPage relocationTSDCardPage = new RelocationTSDCardPage();
-    mobileFormBatchProperties mobileFormBatchProperties = new mobileFormBatchProperties();
+    MobileFormBatchProperties mobileFormBatchProperties = new MobileFormBatchProperties();
+    MobileFormSerialNumber mobileFormSerialNumber = new MobileFormSerialNumber();
 
     @Test
     public void processingReceptionTaskTest() throws Exception {
@@ -123,7 +125,7 @@ public class mobileCaseOne extends BaseMobileClass {
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","0009");
         receptionCardPage.verifyData("productInfoSN", "0009 Стол9");
-        receptionCardPage.inputSN("unique","09", 10);
+        mobileFormSerialNumber.unique("09", 10);
         receptionCardPage.verifyData("productInfo", "0009 Стол9 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.verifyData("qty","10");
@@ -716,7 +718,7 @@ public class mobileCaseOne extends BaseMobileClass {
         selectionCardPage.inputData("source", "A.1.1.3.9");
         selectionCardPage.inputData("product", "0009");
         selectionCardPage.getSerialNumberInput().shouldBe(visible);
-        selectionCardPage.inputSN("unique","09", 10);
+        mobileFormSerialNumber.unique("09", 10);
         selectionCardPage.inputData("destination", "OUT109");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -900,7 +902,7 @@ public class mobileCaseOne extends BaseMobileClass {
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","0009");
-        controlCardPage.inputSN("unique","09", 10);
+        mobileFormSerialNumber.unique("09", 10);
         controlCardPage.clickButton("commit");
     //Стол10
         controlCardPage.inputData("source", "KT1.01.01.01.01");

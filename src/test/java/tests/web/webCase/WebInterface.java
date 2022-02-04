@@ -10,14 +10,31 @@ public class WebInterface {
 
     @Test
     public void webInterface() {
-        WebSteps WebSteps = new WebSteps();
+        WebSteps webSteps = new WebSteps();
+        WebInterface webInterface = new WebInterface();
 
-        WebSteps.webOpen1C();
+        webSteps.webOpen1C();                       //запуск 1с
+        webInterface.menuQuick();                   //меню Главное
+        webInterface.menuReceiving();               //меню Приход
+        webInterface.menuShipment();                //меню Отгрузка
+        webInterface.menuInventory();               //меню Запасы
+        webInterface.menuReports();                 //меню Отчеты
+        webInterface.menuBilling();                 //меню Биллинг
+        webInterface.menuCrossTransit();            //меню Кросс транзит
+        webInterface.menuTransportDelivery();       //меню Доставка
+        webInterface.menuDirectories();             //меню Справочники
+        webInterface.menuSettings();                //меню Администрирование
+        webInterface.menuExchange();                //меню Обмен УС
+        webInterface.menuDevelopment();             //меню Разработка
+    }                   //старт проверки интерфейса
 
+    public void menuQuick(){                        //меню Главное
         $("#themesCell_theme_0").click();
         $("#cmd_0_0_txt").shouldHave(text("Монитор эффективности склада"));
         $("#cmd_1_0_txt").shouldHave(text("Управление складом"));
+    }                       //меню Главное
 
+    public void menuReceiving () { //меню Приход
         $("#themesCell_theme_1").click();
         $("#cmd_0_0_txt").shouldHave(text("Контроль поставки"));
         $("#cmd_0_1_txt").shouldHave(text("РМ Возврата товаров"));
@@ -39,15 +56,76 @@ public class WebInterface {
         $("#cmd_1_4_txt").shouldHave(text("Поиск документов по контейнеру / грузоместу"));
         $("#cmd_1_5_txt").shouldHave(text("Учет дополнительных работ"));
         $("#cmd_1_6_txt").shouldHave(text("Распределение позиций между ресурсами"));
+    }                 //меню Приход
 
+    public void menuShipment(){ //меню Отгрузка
         $("#themesCell_theme_2").click();
+
+    }                    //меню Отгрузка
+
+    public void menuInventory(){
         $("#themesCell_theme_3").click();
+
+    }                   //меню Запасы
+
+    public void menuReports(){ //меню Отчеты
         $("#themesCell_theme_4").click();
+
+
+    }                     //меню Отчеты
+
+    public void menuBilling(){ //меню Биллинг
         $("#themesCell_theme_5").click();
+
+
+
+
+
+    }                     //меню Биллинг
+
+    public void menuCrossTransit(){ //меню Кросс транзит
         $("#themesCell_theme_6").click();
+
+
+
+
+    }                //меню Кросс транзит
+
+    public void menuTransportDelivery(){ //меню Доставка
         $("#themesCell_theme_7").click();
 
-        $("#themesCell_theme_1").click();
-        $("#cmd_0_5_txt").click();
-    }
+
+
+
+    }           //меню Доставка
+
+    public void menuDirectories(){ //меню Справочники
+
+
+
+
+
+    }                    //меню Справочники
+
+    public void menuSettings(){ //меню Администрирование
+
+
+
+
+    }                       //меню Администрирование
+
+    public void menuExchange(){ //меню Обмен УС
+
+
+
+
+    }                       //меню Обмен УС
+
+    public void menuDevelopment(){ //меню Разработка
+
+
+
+
+    }                    //меню Разработка
+
 }

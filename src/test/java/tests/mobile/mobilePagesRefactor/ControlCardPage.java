@@ -7,7 +7,7 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.touch.WaitOptions;
 import org.openqa.selenium.By;
-import tests.mobile.mobileSteps.mobileSteps;
+import tests.mobile.mobileSteps.MobileSteps;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -16,7 +16,7 @@ import static io.appium.java_client.touch.offset.PointOption.point;
 import static java.time.Duration.ofMillis;
 
 public class ControlCardPage {
-    mobileSteps mobileSteps = new mobileSteps();
+    MobileSteps mobileSteps = new MobileSteps();
 
     public static SelenideElement getIdField(String Field) {
         if (Field == "source"){

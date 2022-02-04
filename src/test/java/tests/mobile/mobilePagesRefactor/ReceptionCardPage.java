@@ -5,7 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
-import tests.mobile.mobileSteps.mobileSteps;
+import tests.mobile.mobileSteps.MobileSteps;
 
 import java.time.Duration;
 
@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class ReceptionCardPage {
-    mobileSteps mobileSteps = new mobileSteps();
+    MobileSteps mobileSteps = new MobileSteps();
 
     AndroidDriver driver;
 
@@ -45,10 +45,10 @@ public class ReceptionCardPage {
         else if (Field == "expirationDate"){
             return $(By.id("com.abmcloud:id/et_shelf_life"));
         }
-        else if (Field == "serialNumberInputText"){
+        else if (Field == "serialNumberInputText"){ //MNV после Рефакторинга удалить
             return $(By.id("com.abmcloud:id/editTextSerialNumber"));
         }
-        else if (Field == "commitSN"){
+        else if (Field == "commitSN"){ //MNV после Рефакторинга удалить
             return $(By.id("com.abmcloud:id/buttonSNCommit"));
         }
         else if (Field == "palletWeight"){
@@ -242,7 +242,7 @@ public class ReceptionCardPage {
     }
 
     public void inputSN(String typeSN, String SN, int qtySN) {
-        if (typeSN == "unique"){
+/*        if (typeSN == "unique"){
             for (int i = 0, stroka = 2; i < qtySN; i++, stroka++) {
                 String nowSN = SN + "serialnumber0" + i;
                 inputData("serialNumberInputText" , nowSN);
@@ -250,7 +250,7 @@ public class ReceptionCardPage {
                 //getXpathField("qty", stroka).shouldHave(text("0"));
                 getXpathField("qtyFact", stroka).shouldHave(text("1"));
             }
-        }
+        }*/
         if (typeSN == "uniqueSn"){
             for (int i = 1, stroka = 3; i <= qtySN; i++, stroka++) {
                 String nowSN = SN + "FRAGSN" + SN + "Series01" + "31122022" + "0" + i;

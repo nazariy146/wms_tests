@@ -2,49 +2,50 @@ package tests.mobile.mobileForm;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import tests.mobile.mobileSteps.mobileSteps;
+import tests.mobile.mobileSteps.MobileSteps;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class mobileFormBatchProperties {
+public class MobileFormBatchProperties {
+    MobileSteps mobileSteps = new MobileSteps();
 
-    mobileSteps mobileSteps = new mobileSteps();
-
-    public static SelenideElement getId(String Field) {
+    public static SelenideElement getResourceId(String Field) {
         switch (Field) {
-            case "title":
+            case "#title":
                 return $(By.id("com.abmcloud:id/alertTitle"));
-            case "ok":
+            case "#ok":
                 return $(By.id("android:id/button1"));
-            case "series":
+            case "#series":
                 return $(By.id("com.abmcloud:id/et_series"));
-            case "shelfLife":
+            case "#shelfLife":
                 return $(By.id("com.abmcloud:id/et_shelf_life"));
         }
         return null;
     }
 
     public void input (boolean seriesOn, boolean shelfLifeOn, String dataSeries, String dataShelfLife) {
-        SelenideElement idTitle = getId("title");
-        SelenideElement idSeries = getId("series");
-        SelenideElement idShelfLife = getId("shelfLife");
-        SelenideElement idOk = getId("ok");
+        SelenideElement resourceId_Title, resourceId_Series, resourceId_ShelfLife, resourceId_Ok;
 
-        mobileSteps.verifyData(idTitle, "Batch properties");
+        resourceId_Title = getResourceId("#title");
+        resourceId_Series = getResourceId("#series");
+        resourceId_ShelfLife = getResourceId("#shelfLife");
+        resourceId_Ok = getResourceId("#ok");
+
+        mobileSteps.verifyData(resourceId_Title, "Batch properties");
             if (seriesOn == true) {
-                mobileSteps.inputData(idSeries, dataSeries);
+                mobileSteps.inputData(resourceId_Series, dataSeries);
             }
             if (shelfLifeOn == true) {
-                mobileSteps.inputData(idShelfLife, dataShelfLife);
+                mobileSteps.inputData(resourceId_ShelfLife, dataShelfLife);
             }
-        mobileSteps.clickButton(idOk);
+        mobileSteps.clickButton(resourceId_Ok);
     }
 
     public void select (boolean seriesOn, boolean shelfLifeOn, String series, String shelfLife) {
-        SelenideElement idTitle = getId("title");
-        SelenideElement idOk = getId("ok");
+        SelenideElement idTitle = getResourceId("#title");
+        SelenideElement idOk = getResourceId("#ok");
 
         mobileSteps.verifyData(idTitle, "Batch properties");
             if (seriesOn == true) {

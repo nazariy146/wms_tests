@@ -4,13 +4,13 @@ import com.codeborne.selenide.SelenideElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
-import tests.mobile.mobileSteps.mobileSteps;
+import tests.mobile.mobileSteps.MobileSteps;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class FindRestsPage {
-    mobileSteps mobileSteps = new mobileSteps();
+    MobileSteps mobileSteps = new MobileSteps();
 
     public static SelenideElement getIdField(String Field) {
         if (Field == "product"){

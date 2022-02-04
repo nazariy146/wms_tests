@@ -1,16 +1,17 @@
 package tests.mobile.mobileCase.mobileCase5;
 
 import org.testng.annotations.Test;
-import tests.mobile.mobileForm.mobileFormBatchProperties;
+import tests.mobile.mobileForm.MobileFormBatchProperties;
+import tests.mobile.mobileForm.MobileFormSerialNumber;
 import tests.mobile.mobileUtils.BaseMobileClass;
 import tests.mobile.mobilePagesRefactor.*;
-import tests.mobile.mobileSteps.mobileSteps;
+import tests.mobile.mobileSteps.MobileSteps;
 import java.time.Duration;
 import static com.codeborne.selenide.Condition.*;
 import static tests.mobile.mobileUtils.ModalDialogs.*;
 
 public class mobileCaseFive extends BaseMobileClass{
-    mobileSteps mobileSteps = new mobileSteps();
+    MobileSteps mobileSteps = new MobileSteps();
     AllTasksPage allTasksPage = new AllTasksPage();
     ReceptionCardPage receptionCardPage = new ReceptionCardPage();
     AccommodationCardPage accommodationCardPage = new AccommodationCardPage();
@@ -23,7 +24,8 @@ public class mobileCaseFive extends BaseMobileClass{
     InventoryCardPage inventoryCardPage = new InventoryCardPage();
     RelocationCardPage relocationCardPage = new RelocationCardPage();
     RelocationTSDCardPage relocationTSDCardPage = new RelocationTSDCardPage();
-    mobileFormBatchProperties mobileFormBatchProperties = new mobileFormBatchProperties();
+    MobileFormBatchProperties mobileFormBatchProperties = new MobileFormBatchProperties();
+    MobileFormSerialNumber mobileFormSerialNumber = new MobileFormSerialNumber();
 
     @Test
     public void processingReceptionTaskTest() throws Exception {
@@ -1226,7 +1228,7 @@ public class mobileCaseFive extends BaseMobileClass{
         selectionCardPage.verifyData("productInfo", "00048 Стол48 C.1.1.1.48 ➡ KT1.01.01.01.01 Packing 48-5-4-3-1 Quantity 10 шт");
         selectionCardPage.inputData("source", "C.1.1.1.48");
         selectionCardPage.inputData("product", "00048"); //TODO bug не распознает 48SnPack00
-        selectionCardPage.inputSN("unique","48", 10);
+        mobileFormSerialNumber.unique("48", 10);
         selectionCardPage.inputData("destination", "OUT148");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -1398,7 +1400,7 @@ public class mobileCaseFive extends BaseMobileClass{
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","00048");
-        controlCardPage.inputSN("unique","48", 10);
+        mobileFormSerialNumber.unique("48", 10);
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.clickButton("commit");
     //Стол49

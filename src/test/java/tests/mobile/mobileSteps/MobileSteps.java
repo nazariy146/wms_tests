@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class mobileSteps {
+public class MobileSteps {
 
     public  static AndroidDriver mobileDriver;
 
@@ -20,19 +20,19 @@ public class mobileSteps {
         mobileDriver = (AndroidDriver) getIdField(field).getWrappedDriver();
     }
 
-    public void verifyData(SelenideElement id, String data) {
-        id.shouldBe(visible, Duration.ofSeconds(25));
-        id.shouldHave(text(data));
+    public void verifyData(SelenideElement resourceId, String data) {
+        resourceId.shouldBe(visible, Duration.ofSeconds(25));
+        resourceId.shouldHave(text(data));
     }
 
-    public void inputData(SelenideElement id, String data) {
-        id.click();
-        id.val(data);
+    public void inputData(SelenideElement resourceId, String data) {
+        resourceId.click();
+        resourceId.val(data);
         mobileDriver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
-    public void clickButton(SelenideElement id) {
-        id.click();
+    public void clickButton(SelenideElement resourceId) {
+        resourceId.click();
     }
 
     //MNV need to refactor
