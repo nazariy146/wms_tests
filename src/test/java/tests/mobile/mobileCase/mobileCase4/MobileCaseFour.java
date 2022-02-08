@@ -1,6 +1,7 @@
 package tests.mobile.mobileCase.mobileCase4;
 
 import org.testng.annotations.Test;
+import tests.mobile.mobileForm.MobileFormSerialNumber;
 import tests.mobile.mobileUtils.BaseMobileClass;
 import tests.mobile.mobilePagesRefactor.*;
 import tests.mobile.mobileSteps.MobileSteps;
@@ -9,7 +10,7 @@ import static com.codeborne.selenide.Condition.*;
 import static tests.mobile.mobileUtils.ModalDialogs.*;
 import static tests.mobile.mobileUtils.ModalDialogs.clickSetOkYesButton;
 
-public class mobileCaseFour extends BaseMobileClass {
+public class MobileCaseFour extends BaseMobileClass {
 
     MobileSteps mobileSteps = new MobileSteps();
     AllTasksPage allTasksPage = new AllTasksPage();
@@ -25,6 +26,7 @@ public class mobileCaseFour extends BaseMobileClass {
     InventoryCardPage inventoryCardPage = new InventoryCardPage();
     RelocationCardPage relocationCardPage = new RelocationCardPage();
     RelocationTSDCardPage relocationTSDCardPage = new RelocationTSDCardPage();
+    MobileFormSerialNumber mobileFormSerialNumber = new MobileFormSerialNumber();
 
     @Test
     public void processingReceptionTaskTest() throws Exception {
@@ -105,7 +107,7 @@ public class mobileCaseFour extends BaseMobileClass {
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","39FRAGSN39Series013112202200");
         receptionCardPage.verifyData("productInfoSN", "00039 39Series01 31.12.2022 Стол39");
-        receptionCardPage.inputSN("uniqueSn","39", 9);
+        mobileFormSerialNumber.uniqueSn("39", 9);
         receptionCardPage.verifyData("productInfo", "00039 39series01 31.12.2022 Стол39 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.verifyData("qty", "10");
@@ -115,7 +117,7 @@ public class mobileCaseFour extends BaseMobileClass {
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","40FRAGSN40Series013112202207 40FRAGSN40Series013112202208 40FRAGSN40Series013112202209");
         receptionCardPage.verifyData("productInfoSN", "00040 40Series01 31.12.2022 Стол40");
-        receptionCardPage.inputSN("qr","40", 7);
+        mobileFormSerialNumber.unique("40", 7);
         receptionCardPage.verifyData("productInfo", "00040 40series01 31.12.2022 Стол40 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.verifyData("qty", "10");
@@ -193,7 +195,6 @@ public class mobileCaseFour extends BaseMobileClass {
     //Стол40
         accommodationCardPage.verifyData("productInfo", "00040 40series01 31.12.2022 Стол40 IN.01 ➡ C.1.1.1.10 Quantity 10 шт");
         accommodationCardPage.inputData("source","IN1");
-        //accommodationCardPage.inputData("product","40FRAGSN40Series013112202200");
         accommodationCardPage.inputData("product","40FRAGSN40Series013112202207 40FRAGSN40Series013112202208 40FRAGSN40Series013112202209");//MNV лучше сканировать QR
         accommodationCardPage.inputData("destination","C.1.1.1.10");
         accommodationCardPage.inputData("qty","10");
@@ -701,7 +702,7 @@ public class mobileCaseFour extends BaseMobileClass {
         selectionCardPage.verifyData("productInfo", "00039 39series01 31.12.2022 Стол39 C.1.1.3.9 ➡ KT1.01.01.01.01 Quantity 10 шт");
         selectionCardPage.inputData("source", "C.1.1.3.9");
         selectionCardPage.inputData("product", "39FRAGSN39Series013112202200");
-        selectionCardPage.inputSN("uniqueSn","39", 9);
+        mobileFormSerialNumber.uniqueSn("39", 9);
         selectionCardPage.inputData("destination", "OUT139");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -709,7 +710,7 @@ public class mobileCaseFour extends BaseMobileClass {
         selectionCardPage.verifyData("productInfo", "00040 40Series01 31.12.2022 Стол40 C.1.1.3.10 ➡ KT1.01.01.01.01 Quantity 10 шт");
         selectionCardPage.inputData("source", "C.1.1.3.10");
         selectionCardPage.inputData("product", "40FRAGSN40Series013112202207 40FRAGSN40Series013112202208 40FRAGSN40Series013112202209");
-        selectionCardPage.inputSN("qr","40", 7);
+        mobileFormSerialNumber.unique("40", 7);
         selectionCardPage.inputData("destination", "OUT140");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -891,7 +892,7 @@ public class mobileCaseFour extends BaseMobileClass {
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","39FRAGSN39Series013112202200");
-        controlCardPage.inputSN("uniqueSn","39", 9);
+        mobileFormSerialNumber.uniqueSn("39", 9);
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.clickButton("commit");
@@ -905,7 +906,7 @@ public class mobileCaseFour extends BaseMobileClass {
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","40FRAGSN40Series013112202207 40FRAGSN40Series013112202208 40FRAGSN40Series013112202209");
-        controlCardPage.inputSN("qr","40", 7);
+        mobileFormSerialNumber.unique("40", 7);
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.clickButton("commit");

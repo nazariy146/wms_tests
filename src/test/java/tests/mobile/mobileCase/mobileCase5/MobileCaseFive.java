@@ -10,7 +10,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.*;
 import static tests.mobile.mobileUtils.ModalDialogs.*;
 
-public class mobileCaseFive extends BaseMobileClass{
+public class MobileCaseFive extends BaseMobileClass{
     MobileSteps mobileSteps = new MobileSteps();
     AllTasksPage allTasksPage = new AllTasksPage();
     ReceptionCardPage receptionCardPage = new ReceptionCardPage();

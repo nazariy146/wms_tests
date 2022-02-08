@@ -14,18 +14,18 @@ public class WebInterface {
         WebInterface webInterface = new WebInterface();
 
         webSteps.webOpen1C();                       //запуск 1с
-        webInterface.menuQuick();                   //меню Главное
-        webInterface.menuReceiving();               //меню Приход
-        webInterface.menuShipment();                //меню Отгрузка
-        webInterface.menuInventory();               //меню Запасы
-        webInterface.menuReports();                 //меню Отчеты
-        webInterface.menuBilling();                 //меню Биллинг
-        webInterface.menuCrossTransit();            //меню Кросс транзит
-        webInterface.menuTransportDelivery();       //меню Доставка
-        webInterface.menuDirectories();             //меню Справочники
-        webInterface.menuSettings();                //меню Администрирование
-        webInterface.menuExchange();                //меню Обмен УС
-        webInterface.menuDevelopment();             //меню Разработка
+        this.menuQuick();                   //меню Главное
+        this.menuReceiving();               //меню Приход
+        this.menuShipment();                //меню Отгрузка
+        this.menuInventory();               //меню Запасы
+        this.menuReports();                 //меню Отчеты
+        this.menuBilling();                 //меню Биллинг
+        this.menuCrossTransit();            //меню Кросс транзит
+        this.menuTransportDelivery();       //меню Доставка
+        this.menuDirectories();             //меню Справочники
+        this.menuSettings();                //меню Администрирование
+        this.menuExchange();                //меню Обмен УС
+        this.menuDevelopment();             //меню Разработка
     }                   //старт проверки интерфейса
 
     public void menuQuick(){                        //меню Главное

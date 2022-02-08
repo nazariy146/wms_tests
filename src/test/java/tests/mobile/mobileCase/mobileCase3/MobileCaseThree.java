@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Condition.*;
 import static tests.mobile.mobileUtils.ModalDialogs.*;
 import static tests.mobile.mobileUtils.ModalDialogs.clickSetOkYesButton;
 
-public class mobileCaseThree extends BaseMobileClass {
+public class MobileCaseThree extends BaseMobileClass {
 
     MobileSteps mobileSteps = new MobileSteps();
     AllTasksPage allTasksPage = new AllTasksPage();

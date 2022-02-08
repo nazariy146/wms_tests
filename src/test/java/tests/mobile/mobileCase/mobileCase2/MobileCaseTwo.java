@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.text;
 import static tests.mobile.mobileUtils.ModalDialogs.*;
 
-public class mobileCaseTwo extends BaseMobileClass {
+public class MobileCaseTwo extends BaseMobileClass {
     MobileSteps mobileSteps = new MobileSteps();
     AllTasksPage allTasksPage = new AllTasksPage();
     ReceptionCardPage receptionCardPage = new ReceptionCardPage();

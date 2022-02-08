@@ -251,7 +251,7 @@ public class ReceptionCardPage {
                 getXpathField("qtyFact", stroka).shouldHave(text("1"));
             }
         }*/
-        if (typeSN == "uniqueSn"){
+/*        if (typeSN == "uniqueSn"){
             for (int i = 1, stroka = 3; i <= qtySN; i++, stroka++) {
                 String nowSN = SN + "FRAGSN" + SN + "Series01" + "31122022" + "0" + i;
                 inputData("serialNumberInputText" , nowSN);
@@ -259,8 +259,8 @@ public class ReceptionCardPage {
                 //getXpathField("qty", stroka).shouldHave(text("0"));
                 getXpathField("qtyFact", stroka).shouldHave(text("1"));
             }
-        }
-        if (typeSN == "qr"){
+        }*/
+/*        if (typeSN == "qr"){
             for (int i = 0, stroka = 5; i < qtySN; i++, stroka++) {
                 String nowSN = SN + "FRAGSN" + SN + "Series01" + "31122022" + "0" + i;
                 inputData("serialNumberInputText" , nowSN);
@@ -268,8 +268,11 @@ public class ReceptionCardPage {
                 //getXpathField("qty", stroka).shouldHave(text("0"));
                 getXpathField("qtyFact", stroka).shouldHave(text("1"));
             }
-        }
-        else if (typeSN == "normal"){
+        }*/
+
+
+
+        /*        else if (typeSN == "normal"){
             for (int i = 1, stroka = 2; i <= qtySN; i++) {
                     String nowSN = SN + "serialnumber0" + "0";
                     inputData("serialNumberInputText" , nowSN);
@@ -286,7 +289,7 @@ public class ReceptionCardPage {
                 getXpathField("qty", stroka).shouldHave(text("0"));
                 getXpathField("qtyFact", stroka).shouldHave(text(""+i));
             }
-        }
+        }*/
         clickButton("commitSN");
     }
 

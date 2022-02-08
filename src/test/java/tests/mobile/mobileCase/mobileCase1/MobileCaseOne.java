@@ -12,7 +12,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.*;
 import static tests.mobile.mobileUtils.ModalDialogs.*;
 
-public class mobileCaseOne extends BaseMobileClass {
+public class MobileCaseOne extends BaseMobileClass {
     MobileSteps mobileSteps = new MobileSteps();
     AllTasksPage allTasksPage = new AllTasksPage();
     ReceptionCardPage receptionCardPage = new ReceptionCardPage();
@@ -34,7 +34,7 @@ public class mobileCaseOne extends BaseMobileClass {
         mobileSteps.loginAsAdmin();
         allTasksPage.checkWorkType("Reception");
         allTasksPage.getWorkTypeTasksQuantity().click();
-    //Стол1
+/*    //Стол1
         receptionCardPage.verifyData("productInfo", "0001 Стол1 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","0001");
@@ -58,7 +58,7 @@ public class mobileCaseOne extends BaseMobileClass {
         receptionCardPage.verifyData("productInfo", "0002 02series01 Стол2 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.inputData("qty","10");
-        receptionCardPage.clickButton("commit");
+        receptionCardPage.clickButton("commit");*/
     //Стол3
         receptionCardPage.verifyData("productInfo", "0003 Стол3 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("source", "IN.01");
