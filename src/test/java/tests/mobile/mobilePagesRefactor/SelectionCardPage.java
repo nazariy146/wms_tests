@@ -44,73 +44,11 @@ public class SelectionCardPage {
         return null;
     }
 
-    public SelenideElement getXpathField(String field, int row) {
-        if (field == "serialNumber"){
-            return $(By.xpath("//android.view.ViewGroup["+row+"]/android.widget.LinearLayout/android.widget.EditText[1]"));
-        }
-        else if (field == "qty"){
-            return $(By.xpath("//android.view.ViewGroup["+row+"]/android.widget.LinearLayout/android.widget.EditText[2]"));
-        }
-        else if (field == "qtyFact"){
-            return $(By.xpath("//android.view.ViewGroup["+row+"]/android.widget.LinearLayout/android.widget.EditText[3]"));
-        }
-        return null;
-    }
-
     public void inputData(String field, String source) {
         SelenideElement ID = getIdField(field);
         ID.click();
         ID.val(source);
         mobileSteps.mobileDriver.pressKey(new KeyEvent(AndroidKey.ENTER));
-    }
-
-    public void inputSN(String typeSN, String SN, int qtySN) {
-        if (typeSN == "unique"){
-            for (int i = 0, stroka = 2; i < qtySN; i++, stroka++) {
-                String nowSN = SN + "serialnumber0" + i;
-                inputData("serialNumberInputText" , nowSN);
-                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
-                //getXpathField("qty", stroka).shouldHave(text("0"));
-                getXpathField("qtyFact", stroka).shouldHave(text("1"));
-            }
-        }
-        if (typeSN == "uniqueSn"){
-            for (int i = 1, stroka = 3; i <= qtySN; i++, stroka++) {
-                String nowSN = SN + "FRAGSN" + SN + "Series01" + "31122022" + "0" + i;
-                inputData("serialNumberInputText" , nowSN);
-                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
-                //getXpathField("qty", stroka).shouldHave(text("0"));
-                getXpathField("qtyFact", stroka).shouldHave(text("1"));
-            }
-        }
-        if (typeSN == "qr"){
-            for (int i = 0, stroka = 5; i < qtySN; i++, stroka++) {
-                String nowSN = SN + "FRAGSN" + SN + "Series01" + "31122022" + "0" + i;
-                inputData("serialNumberInputText" , nowSN);
-                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
-                //getXpathField("qty", stroka).shouldHave(text("0"));
-                getXpathField("qtyFact", stroka).shouldHave(text("1"));
-            }
-        }
-        else if (typeSN == "normal"){
-            for (int i = 1, stroka = 2; i <= qtySN; i++) {
-                String nowSN = SN + "serialnumber0" + "0";
-                inputData("serialNumberInputText" , nowSN);
-                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
-                getXpathField("qty", stroka).shouldHave(text("0"));
-                getXpathField("qtyFact", stroka).shouldHave(text(""+i));
-            }
-        }
-        else if (typeSN == "sn"){
-            for (int i = 2, stroka = 2; i <= qtySN; i++) {
-                String nowSN = SN + "FRAGSN" + SN + "Series01" + "31122022" + "00";
-                inputData("serialNumberInputText" , nowSN);
-                getXpathField("serialNumber", stroka).shouldHave(text(nowSN));
-                getXpathField("qty", stroka).shouldHave(text("0"));
-                getXpathField("qtyFact", stroka).shouldHave(text(""+i));
-            }
-        }
-        clickButton("commitSN");
     }
 
     public void verifyData(String field, String source) {
@@ -140,16 +78,5 @@ public class SelectionCardPage {
     //MNV need to refactor
 
     //MNV need to dell
-    public void setSerialNumberInputSeveralTimes(String ... serialNumbers) {
-        for (String s : serialNumbers) {
-            getSerialNumberInput().click();
-            getSerialNumberInput().val(s);
-            mobileSteps.mobileDriver.pressKey(new KeyEvent(AndroidKey.ENTER));
-        }
-    }
-/*    AndroidDriver driver;
-    public void andrDriver(String field) {
-        driver = (AndroidDriver) getIdField(field).getWrappedDriver();
-    }*/
     //MNV need to dell
 }

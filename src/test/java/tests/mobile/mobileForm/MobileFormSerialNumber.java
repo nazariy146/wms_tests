@@ -62,7 +62,7 @@ public class MobileFormSerialNumber {
         mobileSteps.clickButton(resourceId_Commit);
         }
 
-    public void qr(String SN, int qtySN) {
+    public void qr (String SN, int qtySN) {
         SelenideElement resourceId_SerialNumber, resourceId_TableSerialNumber, resourceId_TableQtyFact, resourceId_Commit;
         int tableSerialNumber = 1, tableQty = 2, tableQtyFact = 3;
 
@@ -80,4 +80,45 @@ public class MobileFormSerialNumber {
             }
         mobileSteps.clickButton(resourceId_Commit);
         }
+
+    public void normal(String SN, int qtySN) {
+        SelenideElement resourceId_SerialNumber, resourceId_TableSerialNumber, resourceId_TableQtyFact, resourceId_Commit;
+        int tableSerialNumber = 1, tableQty = 2, tableQtyFact = 3;
+
+        resourceId_SerialNumber = getResourceId("#serialNumber");
+        resourceId_Commit = getResourceId("#commit");
+
+        for (int i = 1, row = 2; i <= qtySN; i++) {
+
+            String nowSN = SN + "serialnumber0" + "0";
+            resourceId_TableSerialNumber = getXpathTable(row, tableSerialNumber);
+            resourceId_TableQtyFact = getXpathTable(row, tableQtyFact);
+
+            mobileSteps.inputData(resourceId_SerialNumber, nowSN);
+            mobileSteps.verifyData(resourceId_TableSerialNumber, nowSN);
+            mobileSteps.verifyData(resourceId_TableQtyFact, ""+i);
+        }
+        mobileSteps.clickButton(resourceId_Commit);
     }
+
+    public void sn (String SN, int qtySN) {
+        SelenideElement resourceId_SerialNumber, resourceId_TableSerialNumber, resourceId_TableQtyFact, resourceId_Commit;
+        int tableSerialNumber = 1, tableQty = 2, tableQtyFact = 3;
+
+        resourceId_SerialNumber = getResourceId("#serialNumber");
+        resourceId_Commit = getResourceId("#commit");
+
+        for (int i = 2, row = 2; i <= qtySN; i++) {
+
+            String nowSN = SN + "FRAGSN" + SN + "Series01" + "31122022" + "00";
+            resourceId_TableSerialNumber = getXpathTable(row, tableSerialNumber);
+            resourceId_TableQtyFact = getXpathTable(row, tableQtyFact);
+
+            mobileSteps.inputData(resourceId_SerialNumber, nowSN);
+            mobileSteps.verifyData(resourceId_TableSerialNumber, nowSN);
+            mobileSteps.verifyData(resourceId_TableQtyFact, ""+i);
+        }
+        mobileSteps.clickButton(resourceId_Commit);
+    }
+
+}

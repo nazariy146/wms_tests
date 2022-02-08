@@ -62,7 +62,7 @@ public class MobileCaseTwo extends BaseMobileClass {
         receptionCardPage.verifyData("productInfo", "00014 Стол14 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","14fragbc");
         receptionCardPage.verifyData("productInfoSN","00014 Стол14");
-        receptionCardPage.inputSN("normal","14", 10);
+        mobileFormSerialNumber.normal("14", 10);
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
@@ -77,7 +77,7 @@ public class MobileCaseTwo extends BaseMobileClass {
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.verifyData("productInfo", "00016 16series01 Стол16 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","16fragbc");
-        receptionCardPage.inputSN("normal","16", 10);
+        mobileFormSerialNumber.normal("16", 10);
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
@@ -85,7 +85,7 @@ public class MobileCaseTwo extends BaseMobileClass {
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.verifyData("productInfo", "00017 31.12.2022 Стол17 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","17fragbc");
-        receptionCardPage.inputSN("normal","17", 10);
+        mobileFormSerialNumber.normal("17", 10);
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
@@ -93,7 +93,7 @@ public class MobileCaseTwo extends BaseMobileClass {
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.verifyData("productInfo", "00018 18series01 31.12.2022 Стол18 IN.01 Quantity 10 шт");
         receptionCardPage.inputData("product","18fragbc");
-        receptionCardPage.inputSN("normal","18", 10);
+        mobileFormSerialNumber.normal("18", 10);
         receptionCardPage.inputData("container","IN1");
         receptionCardPage.verifyData("qty", "10");
         receptionCardPage.clickButton("commit");
@@ -651,7 +651,7 @@ public class MobileCaseTwo extends BaseMobileClass {
         selectionCardPage.verifyData("productInfo", "00014 Стол14 A.1.1.3.14 ➡ KT1.01.01.01.01 Quantity 10 шт");
         selectionCardPage.inputData("source", "A.1.1.3.14");
         selectionCardPage.inputData("product", "14fragbc");
-        selectionCardPage.inputSN("normal","14", 10);
+        mobileFormSerialNumber.normal("14", 10);
         selectionCardPage.inputData("destination", "OUT114");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -666,7 +666,7 @@ public class MobileCaseTwo extends BaseMobileClass {
         selectionCardPage.verifyData("productInfo", "00016 16series01 Стол16 A.1.1.3.16 ➡ KT1.01.01.01.01 Quantity 10 шт");
         selectionCardPage.inputData("source", "A.1.1.3.16");
         selectionCardPage.inputData("product", "16fragbc");
-        selectionCardPage.inputSN("normal","16", 10);
+        mobileFormSerialNumber.normal("16", 10);
         selectionCardPage.inputData("destination", "OUT116");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -674,7 +674,7 @@ public class MobileCaseTwo extends BaseMobileClass {
         selectionCardPage.verifyData("productInfo", "00017 31.12.2022 Стол17 A.1.1.3.17 ➡ KT1.01.01.01.01 Quantity 10 шт");
         selectionCardPage.inputData("source", "A.1.1.3.17");
         selectionCardPage.inputData("product", "17fragbc");
-        selectionCardPage.inputSN("normal","17", 10);
+        mobileFormSerialNumber.normal("17", 10);
         selectionCardPage.inputData("destination", "OUT117");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -682,7 +682,7 @@ public class MobileCaseTwo extends BaseMobileClass {
         selectionCardPage.verifyData("productInfo", "00018 18series01 31.12.2022 Стол18 A.1.1.3.18 ➡ KT1.01.01.01.01 Quantity 10 шт");
         selectionCardPage.inputData("source", "A.1.1.3.18");
         selectionCardPage.inputData("product", "18fragbc");
-        selectionCardPage.inputSN("normal","18", 10);
+        mobileFormSerialNumber.normal("18", 10);
         selectionCardPage.inputData("destination", "OUT118");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -806,7 +806,7 @@ public class MobileCaseTwo extends BaseMobileClass {
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","14fragbc");
-        controlCardPage.inputSN("normal","14", 10);
+        mobileFormSerialNumber.normal("14", 10);
         controlCardPage.clickButton("commit");
     //Стол15
         controlCardPage.inputData("source", "KT1.01.01.01.01");
@@ -831,7 +831,7 @@ public class MobileCaseTwo extends BaseMobileClass {
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","16fragbc");
         mobileFormBatchProperties.select(true,false,"16series01","");
-        controlCardPage.inputSN("normal","16", 10);
+        mobileFormSerialNumber.normal("16", 10);
         controlCardPage.clickButton("commit");
     //Стол17
         controlCardPage.inputData("source", "KT1.01.01.01.01");
@@ -843,7 +843,7 @@ public class MobileCaseTwo extends BaseMobileClass {
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","17fragbc");
         mobileFormBatchProperties.select(false,true,"","31.12.2022");
-        controlCardPage.inputSN("normal","17", 10);
+        mobileFormSerialNumber.normal("17", 10);
         controlCardPage.clickButton("commit");
     //Стол18
         controlCardPage.inputData("source", "KT1.01.01.01.01");
@@ -856,7 +856,7 @@ public class MobileCaseTwo extends BaseMobileClass {
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","18fragbc");
         mobileFormBatchProperties.select(true,true,"18series01","31.12.2022");
-        controlCardPage.inputSN("normal","18", 10);
+        mobileFormSerialNumber.normal("18", 10);
         controlCardPage.clickButton("commit");
     //Стол19
         controlCardPage.inputData("source", "KT1.01.01.01.01");

@@ -514,7 +514,7 @@ public class MobileCaseFive extends BaseMobileClass{
     //Стол49
         receptionCardPage.inputData("source", "IN.01");
         receptionCardPage.inputData("product","49FRAGSN49Series013112202200");
-        receptionCardPage.inputSN("sn","49", 10);
+        mobileFormSerialNumber.sn("49", 10);
 
         receptionCardPage.clickButton("newSku");
         receptionCardPage.clickButton("palletFlag");
@@ -1236,7 +1236,7 @@ public class MobileCaseFive extends BaseMobileClass{
         selectionCardPage.verifyData("productInfo", "00049 Стол49 C.1.1.1.49 ➡ KT1.01.01.01.01 Packing 49-5-4-3-1 Quantity 10 шт");
         selectionCardPage.inputData("source", "C.1.1.1.49");
         selectionCardPage.inputData("product","49FRAGSN49Series013112202200");
-        selectionCardPage.inputSN("sn","49", 10);
+        mobileFormSerialNumber.sn("49", 10);
         selectionCardPage.inputData("destination", "OUT149");
         selectionCardPage.verifyData("qty", "10");
         selectionCardPage.clickButton("commit");
@@ -1411,7 +1411,7 @@ public class MobileCaseFive extends BaseMobileClass{
         controlCardPage.getControlledQty(1).shouldHave(text("0"));
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.inputData("product","49FRAGSN49Series013112202200");
-        controlCardPage.inputSN("sn","49", 10);
+        mobileFormSerialNumber.sn("49", 10);
         controlCardPage.getControlledQty(1).shouldNotBe(visible);
         controlCardPage.getQty(1).shouldHave(text("10"));
         controlCardPage.clickButton("commit");
